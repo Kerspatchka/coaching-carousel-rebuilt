@@ -1,0 +1,6017 @@
+{
+  "generatedAt": "2026-08-13T16:05:03.286Z",
+  "method": "Median native ExpectedContractProgramPoints by offered role and five-level Coach.Level band; cells with fewer than three samples use the role median; prices rounded to five.",
+  "training": {
+    "observations": 241,
+    "roleFallbacks": {
+      "DefensiveCoordinator": {
+        "samples": 84,
+        "price": 70
+      },
+      "OffensiveCoordinator": {
+        "samples": 80,
+        "price": 75
+      },
+      "HeadCoach": {
+        "samples": 77,
+        "price": 260
+      }
+    },
+    "meanAbsoluteError": 22.46887966804979,
+    "medianAbsoluteError": 20,
+    "maximumAbsoluteError": 130,
+    "cells": {
+      "DefensiveCoordinator:20": {
+        "samples": 16,
+        "price": 150,
+        "rawMedian": 150
+      },
+      "OffensiveCoordinator:15": {
+        "samples": 50,
+        "price": 65,
+        "rawMedian": 65
+      },
+      "OffensiveCoordinator:10": {
+        "samples": 10,
+        "price": 30,
+        "rawMedian": 30
+      },
+      "DefensiveCoordinator:15": {
+        "samples": 59,
+        "price": 65,
+        "rawMedian": 65
+      },
+      "DefensiveCoordinator:10": {
+        "samples": 7,
+        "price": 30,
+        "rawMedian": 30
+      },
+      "OffensiveCoordinator:20": {
+        "samples": 13,
+        "price": 140,
+        "rawMedian": 140
+      },
+      "OffensiveCoordinator:25": {
+        "samples": 4,
+        "price": 245,
+        "rawMedian": 245
+      },
+      "HeadCoach:30": {
+        "samples": 10,
+        "price": 260,
+        "rawMedian": 260
+      },
+      "HeadCoach:25": {
+        "samples": 9,
+        "price": 230,
+        "rawMedian": 230
+      },
+      "HeadCoach:45": {
+        "samples": 4,
+        "price": 440,
+        "rawMedian": 440
+      },
+      "HeadCoach:35": {
+        "samples": 13,
+        "price": 335,
+        "rawMedian": 335
+      },
+      "HeadCoach:40": {
+        "samples": 5,
+        "price": 380,
+        "rawMedian": 380
+      },
+      "DefensiveCoordinator:25": {
+        "samples": 2,
+        "price": 185,
+        "rawMedian": 185
+      },
+      "HeadCoach:50": {
+        "samples": 5,
+        "price": 675,
+        "rawMedian": 675
+      },
+      "OffensiveCoordinator:35": {
+        "samples": 3,
+        "price": 300,
+        "rawMedian": 300
+      },
+      "HeadCoach:55": {
+        "samples": 3,
+        "price": 830,
+        "rawMedian": 830
+      },
+      "HeadCoach:20": {
+        "samples": 14,
+        "price": 155,
+        "rawMedian": 155
+      },
+      "HeadCoach:15": {
+        "samples": 14,
+        "price": 30,
+        "rawMedian": 30
+      }
+    }
+  },
+  "bw3Affordability": {
+    "teams": 143,
+    "affordable": 116,
+    "overBudget": 27,
+    "overBudgetTeams": [
+      {
+        "teamRow": 1,
+        "team": "Akron",
+        "pool": 285,
+        "modeledCost": 360,
+        "residual": -75,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 275,
+            "coach": "J. Moorhead",
+            "level": 28,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 410,
+            "coach": "J. Ward",
+            "level": 15,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 390,
+            "coach": "T. Tibesar",
+            "level": 15,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 15,
+        "team": "Buffalo",
+        "pool": 230,
+        "modeledCost": 285,
+        "residual": -55,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 239,
+            "coach": "P. Lembo",
+            "level": 24,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 391,
+            "coach": "T. Tokarz",
+            "level": 16,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 125,
+            "coach": "B. Dougherty",
+            "level": 16,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 18,
+        "team": "C. Michigan",
+        "pool": 255,
+        "modeledCost": 360,
+        "residual": -105,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 126,
+            "coach": "M. Drinkall",
+            "level": 25,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 83,
+            "coach": "J. Chapin",
+            "level": 17,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 97,
+            "coach": "S. Cronin",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 25,
+        "team": "UConn",
+        "pool": 380,
+        "modeledCost": 465,
+        "residual": -85,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 71,
+            "coach": "J. Candle",
+            "level": 35,
+            "price": 335
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 69,
+            "coach": "N. Campanile",
+            "level": 15,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 256,
+            "coach": "R. Manalac",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 26,
+        "team": "Delaware",
+        "pool": 230,
+        "modeledCost": 360,
+        "residual": -130,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 76,
+            "coach": "R. Carty",
+            "level": 26,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 14,
+            "coach": "T. Archer",
+            "level": 17,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 340,
+            "coach": "M. Rojas",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 28,
+        "team": "E. Michigan",
+        "pool": 370,
+        "modeledCost": 390,
+        "residual": -20,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 96,
+            "coach": "C. Creighton",
+            "level": 34,
+            "price": 260
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 317,
+            "coach": "M. Piatkowski",
+            "level": 18,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 240,
+            "coach": "R. Lester",
+            "level": 19,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 30,
+        "team": "FCS East",
+        "pool": 0,
+        "modeledCost": 255,
+        "residual": -255,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 38,
+            "coach": "R. Bethel",
+            "level": 20,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 346,
+            "coach": "R. Rutherford",
+            "level": 10,
+            "price": 30
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 67,
+            "coach": "H. Callahan",
+            "level": 7,
+            "price": 70
+          }
+        ]
+      },
+      {
+        "teamRow": 31,
+        "team": "FCS Midwest",
+        "pool": 0,
+        "modeledCost": 260,
+        "residual": -260,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 28,
+            "coach": "F. Bates",
+            "level": 21,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 420,
+            "coach": "J. Wilbert",
+            "level": 9,
+            "price": 75
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 389,
+            "coach": "R. Thornton",
+            "level": 11,
+            "price": 30
+          }
+        ]
+      },
+      {
+        "teamRow": 32,
+        "team": "FCS Northwest",
+        "pool": 0,
+        "modeledCost": 175,
+        "residual": -175,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 412,
+            "coach": "R. Warner",
+            "level": 18,
+            "price": 30
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 237,
+            "coach": "C. Leighton",
+            "level": 6,
+            "price": 75
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 81,
+            "coach": "J. Chance",
+            "level": 5,
+            "price": 70
+          }
+        ]
+      },
+      {
+        "teamRow": 33,
+        "team": "FCS Southeast",
+        "pool": 0,
+        "modeledCost": 260,
+        "residual": -260,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 387,
+            "coach": "A. Thayer",
+            "level": 20,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 77,
+            "coach": "B. Casey",
+            "level": 8,
+            "price": 75
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 212,
+            "coach": "W. Kane",
+            "level": 10,
+            "price": 30
+          }
+        ]
+      },
+      {
+        "teamRow": 34,
+        "team": "FCS West",
+        "pool": 0,
+        "modeledCost": 260,
+        "residual": -260,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 399,
+            "coach": "S. Vela",
+            "level": 20,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 142,
+            "coach": "R. Finley",
+            "level": 9,
+            "price": 75
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 102,
+            "coach": "H. Dallas",
+            "level": 10,
+            "price": 30
+          }
+        ]
+      },
+      {
+        "teamRow": 35,
+        "team": "FIU",
+        "pool": 195,
+        "modeledCost": 360,
+        "residual": -165,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 364,
+            "coach": "W. Simmons",
+            "level": 25,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 91,
+            "coach": "N. Coleman",
+            "level": 17,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 114,
+            "coach": "J. Dewitt",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 41,
+        "team": "Ga Southern",
+        "pool": 300,
+        "modeledCost": 390,
+        "residual": -90,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 184,
+            "coach": "C. Helton",
+            "level": 31,
+            "price": 260
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 8,
+            "coach": "R. Aplin",
+            "level": 19,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 287,
+            "coach": "M. Mutz",
+            "level": 19,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 42,
+        "team": "Georgia State",
+        "pool": 215,
+        "modeledCost": 285,
+        "residual": -70,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 266,
+            "coach": "D. McGee",
+            "level": 24,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 407,
+            "coach": "A. Waller",
+            "level": 18,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 129,
+            "coach": "C. Dustin",
+            "level": 16,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 51,
+        "team": "James Madison",
+        "pool": 555,
+        "modeledCost": 570,
+        "residual": -15,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 289,
+            "coach": "B. Napier",
+            "level": 45,
+            "price": 440
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 1,
+            "coach": "C. Aiken",
+            "level": 15,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 24,
+            "coach": "R. Bala",
+            "level": 15,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 54,
+        "team": "Kennesaw St.",
+        "pool": 270,
+        "modeledCost": 285,
+        "residual": -15,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 254,
+            "coach": "J. Mack",
+            "level": 24,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 271,
+            "coach": "M. Militello",
+            "level": 18,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 261,
+            "coach": "M. Mattioli",
+            "level": 18,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 55,
+        "team": "Kent State",
+        "pool": 215,
+        "modeledCost": 285,
+        "residual": -70,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 72,
+            "coach": "M. Carney",
+            "level": 23,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 310,
+            "coach": "C. Patterson",
+            "level": 17,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 398,
+            "coach": "C. Valeria",
+            "level": 16,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 57,
+        "team": "Liberty",
+        "pool": 380,
+        "modeledCost": 550,
+        "residual": -170,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 80,
+            "coach": "J. Chadwell",
+            "level": 35,
+            "price": 335
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 203,
+            "coach": "N. Issac",
+            "level": 19,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 325,
+            "coach": "S. Quinn",
+            "level": 20,
+            "price": 150
+          }
+        ]
+      },
+      {
+        "teamRow": 69,
+        "team": "MTSU",
+        "pool": 310,
+        "modeledCost": 390,
+        "residual": -80,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 260,
+            "coach": "D. Mason",
+            "level": 30,
+            "price": 260
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 354,
+            "coach": "A. Scelfo",
+            "level": 18,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 377,
+            "coach": "B. Stewart",
+            "level": 19,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 73,
+        "team": "Missouri State",
+        "pool": 225,
+        "modeledCost": 285,
+        "residual": -60,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 426,
+            "coach": "C. Woods",
+            "level": 23,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 64,
+            "coach": "M. Cala",
+            "level": 18,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 100,
+            "coach": "J. Curtis",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 78,
+        "team": "New Mexico",
+        "pool": 490,
+        "modeledCost": 510,
+        "residual": -20,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 131,
+            "coach": "J. Eck",
+            "level": 41,
+            "price": 380
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 356,
+            "coach": "L. Schleusner",
+            "level": 19,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 297,
+            "coach": "S. Nowinsky",
+            "level": 19,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 79,
+        "team": "New Mexico St.",
+        "pool": 305,
+        "modeledCost": 360,
+        "residual": -55,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 347,
+            "coach": "T. Sanchez",
+            "level": 26,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 431,
+            "coach": "D. Yost",
+            "level": 18,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 279,
+            "coach": "J. Morris",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 90,
+        "team": "Old Dominion",
+        "pool": 260,
+        "modeledCost": 360,
+        "residual": -100,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 327,
+            "coach": "R. Rahne",
+            "level": 27,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 93,
+            "coach": "K. Cook",
+            "level": 17,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 358,
+            "coach": "B. Seiler",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 99,
+        "team": "Sac State",
+        "pool": 240,
+        "modeledCost": 285,
+        "residual": -45,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 74,
+            "coach": "A. Carter",
+            "level": 24,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 221,
+            "coach": "E. Kiesau",
+            "level": 16,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 88,
+            "coach": "A. Clark",
+            "level": 16,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 100,
+        "team": "Sam Houston",
+        "pool": 180,
+        "modeledCost": 285,
+        "residual": -105,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 248,
+            "coach": "P. Longo",
+            "level": 23,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 313,
+            "coach": "Z. Patterson",
+            "level": 16,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 18,
+            "coach": "F Aughtry-Lindsay",
+            "level": 16,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 123,
+        "team": "UL Monroe",
+        "pool": 240,
+        "modeledCost": 325,
+        "residual": -85,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 401,
+            "coach": "B. Vincent",
+            "level": 28,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 384,
+            "coach": "N. Tanner",
+            "level": 14,
+            "price": 30
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 437,
+            "coach": "D. Harper",
+            "level": 15,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 124,
+        "team": "UMass",
+        "pool": 200,
+        "modeledCost": 215,
+        "residual": -15,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 173,
+            "coach": "J. Harasymiak",
+            "level": 21,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 411,
+            "coach": "M. Warner",
+            "level": 13,
+            "price": 30
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 220,
+            "coach": "J. Keyte",
+            "level": 13,
+            "price": 30
+          }
+        ]
+      }
+    ],
+    "lowestResidualTeams": [
+      {
+        "teamRow": 31,
+        "team": "FCS Midwest",
+        "pool": 0,
+        "modeledCost": 260,
+        "residual": -260,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 28,
+            "coach": "F. Bates",
+            "level": 21,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 420,
+            "coach": "J. Wilbert",
+            "level": 9,
+            "price": 75
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 389,
+            "coach": "R. Thornton",
+            "level": 11,
+            "price": 30
+          }
+        ]
+      },
+      {
+        "teamRow": 33,
+        "team": "FCS Southeast",
+        "pool": 0,
+        "modeledCost": 260,
+        "residual": -260,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 387,
+            "coach": "A. Thayer",
+            "level": 20,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 77,
+            "coach": "B. Casey",
+            "level": 8,
+            "price": 75
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 212,
+            "coach": "W. Kane",
+            "level": 10,
+            "price": 30
+          }
+        ]
+      },
+      {
+        "teamRow": 34,
+        "team": "FCS West",
+        "pool": 0,
+        "modeledCost": 260,
+        "residual": -260,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 399,
+            "coach": "S. Vela",
+            "level": 20,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 142,
+            "coach": "R. Finley",
+            "level": 9,
+            "price": 75
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 102,
+            "coach": "H. Dallas",
+            "level": 10,
+            "price": 30
+          }
+        ]
+      },
+      {
+        "teamRow": 30,
+        "team": "FCS East",
+        "pool": 0,
+        "modeledCost": 255,
+        "residual": -255,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 38,
+            "coach": "R. Bethel",
+            "level": 20,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 346,
+            "coach": "R. Rutherford",
+            "level": 10,
+            "price": 30
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 67,
+            "coach": "H. Callahan",
+            "level": 7,
+            "price": 70
+          }
+        ]
+      },
+      {
+        "teamRow": 32,
+        "team": "FCS Northwest",
+        "pool": 0,
+        "modeledCost": 175,
+        "residual": -175,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 412,
+            "coach": "R. Warner",
+            "level": 18,
+            "price": 30
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 237,
+            "coach": "C. Leighton",
+            "level": 6,
+            "price": 75
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 81,
+            "coach": "J. Chance",
+            "level": 5,
+            "price": 70
+          }
+        ]
+      },
+      {
+        "teamRow": 57,
+        "team": "Liberty",
+        "pool": 380,
+        "modeledCost": 550,
+        "residual": -170,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 80,
+            "coach": "J. Chadwell",
+            "level": 35,
+            "price": 335
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 203,
+            "coach": "N. Issac",
+            "level": 19,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 325,
+            "coach": "S. Quinn",
+            "level": 20,
+            "price": 150
+          }
+        ]
+      },
+      {
+        "teamRow": 35,
+        "team": "FIU",
+        "pool": 195,
+        "modeledCost": 360,
+        "residual": -165,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 364,
+            "coach": "W. Simmons",
+            "level": 25,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 91,
+            "coach": "N. Coleman",
+            "level": 17,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 114,
+            "coach": "J. Dewitt",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 26,
+        "team": "Delaware",
+        "pool": 230,
+        "modeledCost": 360,
+        "residual": -130,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 76,
+            "coach": "R. Carty",
+            "level": 26,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 14,
+            "coach": "T. Archer",
+            "level": 17,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 340,
+            "coach": "M. Rojas",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 18,
+        "team": "C. Michigan",
+        "pool": 255,
+        "modeledCost": 360,
+        "residual": -105,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 126,
+            "coach": "M. Drinkall",
+            "level": 25,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 83,
+            "coach": "J. Chapin",
+            "level": 17,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 97,
+            "coach": "S. Cronin",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 100,
+        "team": "Sam Houston",
+        "pool": 180,
+        "modeledCost": 285,
+        "residual": -105,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 248,
+            "coach": "P. Longo",
+            "level": 23,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 313,
+            "coach": "Z. Patterson",
+            "level": 16,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 18,
+            "coach": "F Aughtry-Lindsay",
+            "level": 16,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 90,
+        "team": "Old Dominion",
+        "pool": 260,
+        "modeledCost": 360,
+        "residual": -100,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 327,
+            "coach": "R. Rahne",
+            "level": 27,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 93,
+            "coach": "K. Cook",
+            "level": 17,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 358,
+            "coach": "B. Seiler",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 41,
+        "team": "Ga Southern",
+        "pool": 300,
+        "modeledCost": 390,
+        "residual": -90,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 184,
+            "coach": "C. Helton",
+            "level": 31,
+            "price": 260
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 8,
+            "coach": "R. Aplin",
+            "level": 19,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 287,
+            "coach": "M. Mutz",
+            "level": 19,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 25,
+        "team": "UConn",
+        "pool": 380,
+        "modeledCost": 465,
+        "residual": -85,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 71,
+            "coach": "J. Candle",
+            "level": 35,
+            "price": 335
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 69,
+            "coach": "N. Campanile",
+            "level": 15,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 256,
+            "coach": "R. Manalac",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 123,
+        "team": "UL Monroe",
+        "pool": 240,
+        "modeledCost": 325,
+        "residual": -85,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 401,
+            "coach": "B. Vincent",
+            "level": 28,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 384,
+            "coach": "N. Tanner",
+            "level": 14,
+            "price": 30
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 437,
+            "coach": "D. Harper",
+            "level": 15,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 69,
+        "team": "MTSU",
+        "pool": 310,
+        "modeledCost": 390,
+        "residual": -80,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 260,
+            "coach": "D. Mason",
+            "level": 30,
+            "price": 260
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 354,
+            "coach": "A. Scelfo",
+            "level": 18,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 377,
+            "coach": "B. Stewart",
+            "level": 19,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 1,
+        "team": "Akron",
+        "pool": 285,
+        "modeledCost": 360,
+        "residual": -75,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 275,
+            "coach": "J. Moorhead",
+            "level": 28,
+            "price": 230
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 410,
+            "coach": "J. Ward",
+            "level": 15,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 390,
+            "coach": "T. Tibesar",
+            "level": 15,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 42,
+        "team": "Georgia State",
+        "pool": 215,
+        "modeledCost": 285,
+        "residual": -70,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 266,
+            "coach": "D. McGee",
+            "level": 24,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 407,
+            "coach": "A. Waller",
+            "level": 18,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 129,
+            "coach": "C. Dustin",
+            "level": 16,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 55,
+        "team": "Kent State",
+        "pool": 215,
+        "modeledCost": 285,
+        "residual": -70,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 72,
+            "coach": "M. Carney",
+            "level": 23,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 310,
+            "coach": "C. Patterson",
+            "level": 17,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 398,
+            "coach": "C. Valeria",
+            "level": 16,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 73,
+        "team": "Missouri State",
+        "pool": 225,
+        "modeledCost": 285,
+        "residual": -60,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 426,
+            "coach": "C. Woods",
+            "level": 23,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 64,
+            "coach": "M. Cala",
+            "level": 18,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 100,
+            "coach": "J. Curtis",
+            "level": 17,
+            "price": 65
+          }
+        ]
+      },
+      {
+        "teamRow": 15,
+        "team": "Buffalo",
+        "pool": 230,
+        "modeledCost": 285,
+        "residual": -55,
+        "affordable": false,
+        "assignments": [
+          {
+            "role": "HeadCoach",
+            "coachRow": 239,
+            "coach": "P. Lembo",
+            "level": 24,
+            "price": 155
+          },
+          {
+            "role": "OffensiveCoordinator",
+            "coachRow": 391,
+            "coach": "T. Tokarz",
+            "level": 16,
+            "price": 65
+          },
+          {
+            "role": "DefensiveCoordinator",
+            "coachRow": 125,
+            "coach": "B. Dougherty",
+            "level": 16,
+            "price": 65
+          }
+        ]
+      }
+    ]
+  },
+  "teamPricing": [
+    {
+      "teamRow": 0,
+      "team": "Air Force",
+      "pool": 540,
+      "modeledCost": 465,
+      "residual": 75,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 66,
+          "coach": "T. Calhoun",
+          "level": 39,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 388,
+          "coach": "M. Thiessen",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 345,
+          "coach": "S. Russ",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 1,
+      "team": "Akron",
+      "pool": 285,
+      "modeledCost": 360,
+      "residual": -75,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 275,
+          "coach": "J. Moorhead",
+          "level": 28,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 410,
+          "coach": "J. Ward",
+          "level": 15,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 390,
+          "coach": "T. Tibesar",
+          "level": 15,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 2,
+      "team": "Alabama",
+      "pool": 6930,
+      "modeledCost": 405,
+      "residual": 6525,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 108,
+          "coach": "K. DeBoer",
+          "level": 69,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 166,
+          "coach": "R. Grubb",
+          "level": 30,
+          "price": 75
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 424,
+          "coach": "K. Wommack",
+          "level": 30,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 3,
+      "team": "App St.",
+      "pool": 740,
+      "modeledCost": 390,
+      "residual": 350,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 247,
+          "coach": "D. Loggains",
+          "level": 32,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 7,
+          "coach": "M. Anthony",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 371,
+          "coach": "D. Smith",
+          "level": 18,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 4,
+      "team": "Arizona",
+      "pool": 1515,
+      "modeledCost": 550,
+      "residual": 965,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 51,
+          "coach": "B. Brennan",
+          "level": 33,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 123,
+          "coach": "S. Doege",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 160,
+          "coach": "D. Gonzales",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 5,
+      "team": "Arizona State",
+      "pool": 3030,
+      "modeledCost": 1120,
+      "residual": 1910,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 118,
+          "coach": "K. Dillingham",
+          "level": 57,
+          "price": 830
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 16,
+          "coach": "M. Arroyo",
+          "level": 23,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 409,
+          "coach": "B. Ward",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 6,
+      "team": "Arkansas",
+      "pool": 2665,
+      "modeledCost": 730,
+      "residual": 1935,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 363,
+          "coach": "R. Silverfield",
+          "level": 47,
+          "price": 440
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 95,
+          "coach": "T. Cramsey",
+          "level": 23,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 335,
+          "coach": "R. Roberts",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 7,
+      "team": "Arkansas State",
+      "pool": 425,
+      "modeledCost": 390,
+      "residual": 35,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 208,
+          "coach": "B. Jones",
+          "level": 32,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 6,
+          "coach": "G. Altman",
+          "level": 15,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 264,
+          "coach": "G. McCarley",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 8,
+      "team": "Army",
+      "pool": 3540,
+      "modeledCost": 570,
+      "residual": 2970,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 273,
+          "coach": "J. Monken",
+          "level": 45,
+          "price": 440
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 428,
+          "coach": "C. Worley",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 121,
+          "coach": "D. Dixon",
+          "level": 18,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 9,
+      "team": "Auburn",
+      "pool": 3765,
+      "modeledCost": 885,
+      "residual": 2880,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 159,
+          "coach": "A. Golesh",
+          "level": 50,
+          "price": 675
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 161,
+          "coach": "J. Gordon",
+          "level": 24,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 128,
+          "coach": "D. Durkin",
+          "level": 25,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 10,
+      "team": "Ball State",
+      "pool": 285,
+      "modeledCost": 285,
+      "residual": 0,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 396,
+          "coach": "M. Uremovich",
+          "level": 24,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 176,
+          "coach": "C. Harmon",
+          "level": 15,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 228,
+          "coach": "J. Knowles",
+          "level": 15,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 11,
+      "team": "Baylor",
+      "pool": 1615,
+      "modeledCost": 625,
+      "residual": 990,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 10,
+          "coach": "D. Aranda",
+          "level": 37,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 374,
+          "coach": "J. Spavital",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 226,
+          "coach": "J. Klanderman",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 12,
+      "team": "Boise State",
+      "pool": 2385,
+      "modeledCost": 465,
+      "residual": 1920,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 103,
+          "coach": "S. Danielson",
+          "level": 35,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 321,
+          "coach": "N. Potter",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 85,
+          "coach": "E. Chinander",
+          "level": 18,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 13,
+      "team": "Boston College",
+      "pool": 2165,
+      "modeledCost": 595,
+      "residual": 1570,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 298,
+          "coach": "B. O'Brien",
+          "level": 42,
+          "price": 380
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 58,
+          "coach": "A. Brown",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 341,
+          "coach": "T. Roof",
+          "level": 23,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 14,
+      "team": "Bowling Green",
+      "pool": 415,
+      "modeledCost": 360,
+      "residual": 55,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 154,
+          "coach": "E. George",
+          "level": 25,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 296,
+          "coach": "G. Nosal",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 46,
+          "coach": "J. Bowden",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 15,
+      "team": "Buffalo",
+      "pool": 230,
+      "modeledCost": 285,
+      "residual": -55,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 239,
+          "coach": "P. Lembo",
+          "level": 24,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 391,
+          "coach": "T. Tokarz",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 125,
+          "coach": "B. Dougherty",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 16,
+      "team": "BYU",
+      "pool": 3175,
+      "modeledCost": 1225,
+      "residual": 1950,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 366,
+          "coach": "K. Sitake",
+          "level": 55,
+          "price": 830
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 336,
+          "coach": "A. Roderick",
+          "level": 26,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 320,
+          "coach": "K. Poppinga",
+          "level": 24,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 17,
+      "team": "California",
+      "pool": 2835,
+      "modeledCost": 390,
+      "residual": 2445,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 251,
+          "coach": "T. Lupoi",
+          "level": 31,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 373,
+          "coach": "J. Somerville",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 201,
+          "coach": "M. Hutchings",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 18,
+      "team": "C. Michigan",
+      "pool": 255,
+      "modeledCost": 360,
+      "residual": -105,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 126,
+          "coach": "M. Drinkall",
+          "level": 25,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 83,
+          "coach": "J. Chapin",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 97,
+          "coach": "S. Cronin",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 19,
+      "team": "Charlotte",
+      "pool": 1080,
+      "modeledCost": 285,
+      "residual": 795,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 2,
+          "coach": "T. Albin",
+          "level": 24,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 144,
+          "coach": "T. Fitch",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 138,
+          "coach": "N. Faanes",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 20,
+      "team": "Cincinnati",
+      "pool": 1610,
+      "modeledCost": 655,
+      "residual": 955,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 351,
+          "coach": "S. Satterfield",
+          "level": 46,
+          "price": 440
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 255,
+          "coach": "A. Strongin",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 427,
+          "coach": "N. Woody",
+          "level": 20,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 21,
+      "team": "Clemson",
+      "pool": 4250,
+      "modeledCost": 575,
+      "residual": 3675,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 383,
+          "coach": "D. Swinney",
+          "level": 70,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 277,
+          "coach": "C. Morris",
+          "level": 26,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 4,
+          "coach": "T. Allen",
+          "level": 31,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 22,
+      "team": "C. Carolina",
+      "pool": 410,
+      "modeledCost": 360,
+      "residual": 50,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 31,
+          "coach": "R. Beard",
+          "level": 25,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 438,
+          "coach": "N. Petrino",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 440,
+          "coach": "L. Scott",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 23,
+      "team": "Colorado",
+      "pool": 3570,
+      "modeledCost": 655,
+      "residual": 2915,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 309,
+          "coach": "K. Patrick",
+          "level": 33,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 257,
+          "coach": "B. Marion",
+          "level": 25,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 259,
+          "coach": "C. Marve",
+          "level": 20,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 24,
+      "team": "Colorado State",
+      "pool": 815,
+      "modeledCost": 570,
+      "residual": 245,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 276,
+          "coach": "J. Mora",
+          "level": 45,
+          "price": 440
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 392,
+          "coach": "P. Tracy",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 380,
+          "coach": "T. Summers",
+          "level": 18,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 25,
+      "team": "UConn",
+      "pool": 380,
+      "modeledCost": 465,
+      "residual": -85,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 71,
+          "coach": "J. Candle",
+          "level": 35,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 69,
+          "coach": "N. Campanile",
+          "level": 15,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 256,
+          "coach": "R. Manalac",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 26,
+      "team": "Delaware",
+      "pool": 230,
+      "modeledCost": 360,
+      "residual": -130,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 76,
+          "coach": "R. Carty",
+          "level": 26,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 14,
+          "coach": "T. Archer",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 340,
+          "coach": "M. Rojas",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 27,
+      "team": "Duke",
+      "pool": 2325,
+      "modeledCost": 965,
+      "residual": 1360,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 115,
+          "coach": "M. Diaz",
+          "level": 54,
+          "price": 675
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 53,
+          "coach": "J. Brewer",
+          "level": 20,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 307,
+          "coach": "J. Patke",
+          "level": 21,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 28,
+      "team": "E. Michigan",
+      "pool": 370,
+      "modeledCost": 390,
+      "residual": -20,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 96,
+          "coach": "C. Creighton",
+          "level": 34,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 317,
+          "coach": "M. Piatkowski",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 240,
+          "coach": "R. Lester",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 29,
+      "team": "East Carolina",
+      "pool": 1975,
+      "modeledCost": 360,
+      "residual": 1615,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 177,
+          "coach": "B. Harrell",
+          "level": 26,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 104,
+          "coach": "J. Davis",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 172,
+          "coach": "J. Hankins",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 30,
+      "team": "FCS East",
+      "pool": 0,
+      "modeledCost": 255,
+      "residual": -255,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 38,
+          "coach": "R. Bethel",
+          "level": 20,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 346,
+          "coach": "R. Rutherford",
+          "level": 10,
+          "price": 30
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 67,
+          "coach": "H. Callahan",
+          "level": 7,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 31,
+      "team": "FCS Midwest",
+      "pool": 0,
+      "modeledCost": 260,
+      "residual": -260,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 28,
+          "coach": "F. Bates",
+          "level": 21,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 420,
+          "coach": "J. Wilbert",
+          "level": 9,
+          "price": 75
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 389,
+          "coach": "R. Thornton",
+          "level": 11,
+          "price": 30
+        }
+      ]
+    },
+    {
+      "teamRow": 32,
+      "team": "FCS Northwest",
+      "pool": 0,
+      "modeledCost": 175,
+      "residual": -175,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 412,
+          "coach": "R. Warner",
+          "level": 18,
+          "price": 30
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 237,
+          "coach": "C. Leighton",
+          "level": 6,
+          "price": 75
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 81,
+          "coach": "J. Chance",
+          "level": 5,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 33,
+      "team": "FCS Southeast",
+      "pool": 0,
+      "modeledCost": 260,
+      "residual": -260,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 387,
+          "coach": "A. Thayer",
+          "level": 20,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 77,
+          "coach": "B. Casey",
+          "level": 8,
+          "price": 75
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 212,
+          "coach": "W. Kane",
+          "level": 10,
+          "price": 30
+        }
+      ]
+    },
+    {
+      "teamRow": 34,
+      "team": "FCS West",
+      "pool": 0,
+      "modeledCost": 260,
+      "residual": -260,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 399,
+          "coach": "S. Vela",
+          "level": 20,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 142,
+          "coach": "R. Finley",
+          "level": 9,
+          "price": 75
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 102,
+          "coach": "H. Dallas",
+          "level": 10,
+          "price": 30
+        }
+      ]
+    },
+    {
+      "teamRow": 35,
+      "team": "FIU",
+      "pool": 195,
+      "modeledCost": 360,
+      "residual": -165,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 364,
+          "coach": "W. Simmons",
+          "level": 25,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 91,
+          "coach": "N. Coleman",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 114,
+          "coach": "J. Dewitt",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 36,
+      "team": "Florida",
+      "pool": 4335,
+      "modeledCost": 990,
+      "residual": 3345,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 381,
+          "coach": "J. Sumrall",
+          "level": 52,
+          "price": 675
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 139,
+          "coach": "B. Faulkner",
+          "level": 26,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 415,
+          "coach": "B. White",
+          "level": 25,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 37,
+      "team": "FLA Atlantic",
+      "pool": 585,
+      "modeledCost": 360,
+      "residual": 225,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 225,
+          "coach": "Z. Kittley",
+          "level": 25,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 404,
+          "coach": "J. Walker",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 113,
+          "coach": "B. Dewhurst",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 38,
+      "team": "Florida State",
+      "pool": 4315,
+      "modeledCost": 730,
+      "residual": 3585,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 295,
+          "coach": "M. Norvell",
+          "level": 46,
+          "price": 440
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 178,
+          "coach": "T. Harris, Jr.",
+          "level": 21,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 417,
+          "coach": "T. White",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 39,
+      "team": "Fresno State",
+      "pool": 775,
+      "modeledCost": 390,
+      "residual": 385,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 136,
+          "coach": "M. Entz",
+          "level": 34,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 105,
+          "coach": "J. Davis",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 37,
+          "coach": "N. Benedetto",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 40,
+      "team": "Georgia",
+      "pool": 5875,
+      "modeledCost": 575,
+      "residual": 5300,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 368,
+          "coach": "K. Smart",
+          "level": 80,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 43,
+          "coach": "M. Bobo",
+          "level": 28,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 357,
+          "coach": "G. Schumann",
+          "level": 27,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 41,
+      "team": "Ga Southern",
+      "pool": 300,
+      "modeledCost": 390,
+      "residual": -90,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 184,
+          "coach": "C. Helton",
+          "level": 31,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 8,
+          "coach": "R. Aplin",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 287,
+          "coach": "M. Mutz",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 42,
+      "team": "Georgia State",
+      "pool": 215,
+      "modeledCost": 285,
+      "residual": -70,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 266,
+          "coach": "D. McGee",
+          "level": 24,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 407,
+          "coach": "A. Waller",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 129,
+          "coach": "C. Dustin",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 43,
+      "team": "Georgia Tech",
+      "pool": 3780,
+      "modeledCost": 730,
+      "residual": 3050,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 219,
+          "coach": "B. Key",
+          "level": 49,
+          "price": 440
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 63,
+          "coach": "G. Burdell",
+          "level": 20,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 359,
+          "coach": "J. Semore",
+          "level": 23,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 44,
+      "team": "Hawai'i",
+      "pool": 815,
+      "modeledCost": 390,
+      "residual": 425,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 82,
+          "coach": "T. Chang",
+          "level": 30,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 12,
+          "coach": "A. Arceneaux",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 206,
+          "coach": "J. Johnson",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 45,
+      "team": "Houston",
+      "pool": 1370,
+      "modeledCost": 965,
+      "residual": 405,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 152,
+          "coach": "W. Fritz",
+          "level": 54,
+          "price": 675
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 288,
+          "coach": "S. Nagle",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 15,
+          "coach": "A. Armstrong",
+          "level": 21,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 46,
+      "team": "Illinois",
+      "pool": 4525,
+      "modeledCost": 1040,
+      "residual": 3485,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 40,
+          "coach": "B. Bielema",
+          "level": 55,
+          "price": 830
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 250,
+          "coach": "B. Lunney Jr.",
+          "level": 24,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 180,
+          "coach": "B. Hauck",
+          "level": 29,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 47,
+      "team": "Indiana",
+      "pool": 4330,
+      "modeledCost": 405,
+      "residual": 3925,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 87,
+          "coach": "C. Cignetti",
+          "level": 80,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 360,
+          "coach": "M. Shanahan",
+          "level": 30,
+          "price": 75
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 168,
+          "coach": "B. Haines",
+          "level": 30,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 48,
+      "team": "Iowa",
+      "pool": 4630,
+      "modeledCost": 1145,
+      "residual": 3485,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 89,
+          "coach": "M. Cloud",
+          "level": 55,
+          "price": 830
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 241,
+          "coach": "T. Lester",
+          "level": 26,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 306,
+          "coach": "P. Parker",
+          "level": 29,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 49,
+      "team": "Iowa State",
+      "pool": 2670,
+      "modeledCost": 465,
+      "residual": 2205,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 339,
+          "coach": "J. Rogers",
+          "level": 33,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 338,
+          "coach": "T. Roehl",
+          "level": 20,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 42,
+          "coach": "J. Bobbit",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 50,
+      "team": "Jax State",
+      "pool": 340,
+      "modeledCost": 285,
+      "residual": 55,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 216,
+          "coach": "C. Kelly",
+          "level": 24,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 413,
+          "coach": "L. Washington",
+          "level": 15,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 421,
+          "coach": "B. Williams",
+          "level": 15,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 51,
+      "team": "James Madison",
+      "pool": 555,
+      "modeledCost": 570,
+      "residual": -15,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 289,
+          "coach": "B. Napier",
+          "level": 45,
+          "price": 440
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 1,
+          "coach": "C. Aiken",
+          "level": 15,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 24,
+          "coach": "R. Bala",
+          "level": 15,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 52,
+      "team": "Kansas",
+      "pool": 1305,
+      "modeledCost": 1120,
+      "residual": 185,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 238,
+          "coach": "L. Leipold",
+          "level": 57,
+          "price": 830
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 432,
+          "coach": "J. Zebrowski",
+          "level": 23,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 265,
+          "coach": "D. McDonald",
+          "level": 24,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 53,
+      "team": "Kansas State",
+      "pool": 2615,
+      "modeledCost": 550,
+      "residual": 2065,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 227,
+          "coach": "C. Klein",
+          "level": 34,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 315,
+          "coach": "J. Peterson",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 156,
+          "coach": "S. Gleeson",
+          "level": 23,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 54,
+      "team": "Kennesaw St.",
+      "pool": 270,
+      "modeledCost": 285,
+      "residual": -15,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 254,
+          "coach": "J. Mack",
+          "level": 24,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 271,
+          "coach": "M. Militello",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 261,
+          "coach": "M. Mattioli",
+          "level": 18,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 55,
+      "team": "Kent State",
+      "pool": 215,
+      "modeledCost": 285,
+      "residual": -70,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 72,
+          "coach": "M. Carney",
+          "level": 23,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 310,
+          "coach": "C. Patterson",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 398,
+          "coach": "C. Valeria",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 56,
+      "team": "Kentucky",
+      "pool": 1850,
+      "modeledCost": 550,
+      "residual": 1300,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 376,
+          "coach": "W. Stein",
+          "level": 33,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 367,
+          "coach": "J. Sloan",
+          "level": 24,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 27,
+          "coach": "J. Bateman",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 57,
+      "team": "Liberty",
+      "pool": 380,
+      "modeledCost": 550,
+      "residual": -170,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 80,
+          "coach": "J. Chadwell",
+          "level": 35,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 203,
+          "coach": "N. Issac",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 325,
+          "coach": "S. Quinn",
+          "level": 20,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 58,
+      "team": "Louisiana",
+      "pool": 385,
+      "modeledCost": 360,
+      "residual": 25,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 112,
+          "coach": "M. Desormeaux",
+          "level": 27,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 291,
+          "coach": "D. Narmour",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 120,
+          "coach": "D. Dixon",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 59,
+      "team": "Louisiana Tech",
+      "pool": 485,
+      "modeledCost": 360,
+      "residual": 125,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 99,
+          "coach": "S. Cumbie",
+          "level": 26,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 197,
+          "coach": "B. Howard",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 302,
+          "coach": "L. Olson",
+          "level": 18,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 60,
+      "team": "Louisville",
+      "pool": 1860,
+      "modeledCost": 1225,
+      "residual": 635,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 56,
+          "coach": "J. Brohm",
+          "level": 57,
+          "price": 830
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 55,
+          "coach": "B. Brohm",
+          "level": 26,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 191,
+          "coach": "W. Wescott",
+          "level": 20,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 61,
+      "team": "LSU",
+      "pool": 4910,
+      "modeledCost": 405,
+      "residual": 4505,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 222,
+          "coach": "L. Kiffin",
+          "level": 67,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 414,
+          "coach": "C. Weis Jr.",
+          "level": 31,
+          "price": 75
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 22,
+          "coach": "B. Baker",
+          "level": 28,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 62,
+      "team": "Marshall",
+      "pool": 395,
+      "modeledCost": 285,
+      "residual": 110,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 155,
+          "coach": "T. Gibson",
+          "level": 24,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 372,
+          "coach": "R. Smith",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 230,
+          "coach": "B. Lambert",
+          "level": 18,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 63,
+      "team": "Maryland",
+      "pool": 1610,
+      "modeledCost": 625,
+      "residual": 985,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 245,
+          "coach": "M. Locksley",
+          "level": 36,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 395,
+          "coach": "C. Trickett",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 314,
+          "coach": "J. Perry",
+          "level": 21,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 64,
+      "team": "Memphis",
+      "pool": 1410,
+      "modeledCost": 475,
+      "residual": 935,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 199,
+          "coach": "C. Huff",
+          "level": 30,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 41,
+          "coach": "A. Bobango",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 157,
+          "coach": "E. Glover",
+          "level": 20,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 65,
+      "team": "Miami",
+      "pool": 5495,
+      "modeledCost": 575,
+      "residual": 4920,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 188,
+          "coach": "L. Hernandez",
+          "level": 65,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 106,
+          "coach": "S. Dawson",
+          "level": 28,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 189,
+          "coach": "C. Hetherman",
+          "level": 31,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 66,
+      "team": "Miami (OH)",
+      "pool": 655,
+      "modeledCost": 445,
+      "residual": 210,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 258,
+          "coach": "C. Martin",
+          "level": 26,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 326,
+          "coach": "G. Ragland",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 50,
+          "coach": "B. Brechin",
+          "level": 20,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 67,
+      "team": "Michigan",
+      "pool": 7075,
+      "modeledCost": 575,
+      "residual": 6500,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 418,
+          "coach": "K. Whittingham",
+          "level": 64,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 32,
+          "coach": "J. Beck",
+          "level": 26,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 193,
+          "coach": "J. Hill",
+          "level": 29,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 68,
+      "team": "Michigan State",
+      "pool": 4555,
+      "modeledCost": 965,
+      "residual": 3590,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 145,
+          "coach": "P. Fitzgerald",
+          "level": 53,
+          "price": 675
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 362,
+          "coach": "N. Sheridan",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 343,
+          "coach": "J. Rossi",
+          "level": 24,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 69,
+      "team": "MTSU",
+      "pool": 310,
+      "modeledCost": 390,
+      "residual": -80,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 260,
+          "coach": "D. Mason",
+          "level": 30,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 354,
+          "coach": "A. Scelfo",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 377,
+          "coach": "B. Stewart",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 70,
+      "team": "Minnesota",
+      "pool": 3780,
+      "modeledCost": 670,
+      "residual": 3110,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 146,
+          "coach": "P. Fleck",
+          "level": 42,
+          "price": 380
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 174,
+          "coach": "G. Harbaugh Jr.",
+          "level": 21,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 92,
+          "coach": "D. Collins",
+          "level": 21,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 71,
+      "team": "Mississippi St",
+      "pool": 2295,
+      "modeledCost": 625,
+      "residual": 1670,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 235,
+          "coach": "J. Lebby",
+          "level": 35,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 312,
+          "coach": "R. Patterson",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 196,
+          "coach": "B. Horn",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 72,
+      "team": "Missouri",
+      "pool": 2065,
+      "modeledCost": 1040,
+      "residual": 1025,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 127,
+          "coach": "E. Drinkwitz",
+          "level": 55,
+          "price": 830
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 244,
+          "coach": "C. Lindsey",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 29,
+          "coach": "C. Batoon",
+          "level": 25,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 73,
+      "team": "Missouri State",
+      "pool": 225,
+      "modeledCost": 285,
+      "residual": -60,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 426,
+          "coach": "C. Woods",
+          "level": 23,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 64,
+          "coach": "M. Cala",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 100,
+          "coach": "J. Curtis",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 74,
+      "team": "Navy",
+      "pool": 3015,
+      "modeledCost": 465,
+      "residual": 2550,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 292,
+          "coach": "B. Newberry",
+          "level": 39,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 52,
+          "coach": "M. Brennan",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 402,
+          "coach": "P. Volker",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 75,
+      "team": "NC State",
+      "pool": 2150,
+      "modeledCost": 465,
+      "residual": 1685,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 124,
+          "coach": "D. Doeren",
+          "level": 39,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 342,
+          "coach": "K. Roper",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 133,
+          "coach": "D. Eliot",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 76,
+      "team": "Nebraska",
+      "pool": 4640,
+      "modeledCost": 1045,
+      "residual": 3595,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 331,
+          "coach": "M. Rhule",
+          "level": 50,
+          "price": 675
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 195,
+          "coach": "D. Holgorsen",
+          "level": 35,
+          "price": 300
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 19,
+          "coach": "R. Aurich",
+          "level": 26,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 77,
+      "team": "Nevada",
+      "pool": 630,
+      "modeledCost": 445,
+      "residual": 185,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 86,
+          "coach": "J. Choate",
+          "level": 26,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 26,
+          "coach": "B. Bartalone",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 202,
+          "coach": "K. Ioane",
+          "level": 20,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 78,
+      "team": "New Mexico",
+      "pool": 490,
+      "modeledCost": 510,
+      "residual": -20,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 131,
+          "coach": "J. Eck",
+          "level": 41,
+          "price": 380
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 356,
+          "coach": "L. Schleusner",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 297,
+          "coach": "S. Nowinsky",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 79,
+      "team": "New Mexico St.",
+      "pool": 305,
+      "modeledCost": 360,
+      "residual": -55,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 347,
+          "coach": "T. Sanchez",
+          "level": 26,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 431,
+          "coach": "D. Yost",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 279,
+          "coach": "J. Morris",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 80,
+      "team": "North Carolina",
+      "pool": 2005,
+      "modeledCost": 605,
+      "residual": 1400,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 249,
+          "coach": "H. Luna",
+          "level": 42,
+          "price": 380
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 316,
+          "coach": "B. Petrino",
+          "level": 33,
+          "price": 75
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 35,
+          "coach": "S. Belichick",
+          "level": 21,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 81,
+      "team": "NDSU",
+      "pool": 635,
+      "modeledCost": 520,
+      "residual": 115,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 318,
+          "coach": "T. Polasek",
+          "level": 27,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 232,
+          "coach": "D. Larson",
+          "level": 20,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 301,
+          "coach": "G. Olson",
+          "level": 20,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 82,
+      "team": "North Texas",
+      "pool": 1335,
+      "modeledCost": 360,
+      "residual": 975,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 436,
+          "coach": "N. Brown",
+          "level": 25,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 434,
+          "coach": "M. Bloesch",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 439,
+          "coach": "M. Powledge",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 83,
+      "team": "NIU",
+      "pool": 670,
+      "modeledCost": 285,
+      "residual": 385,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 175,
+          "coach": "R. Harley",
+          "level": 23,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 349,
+          "coach": "Q. Sanders",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 167,
+          "coach": "C. Hagen",
+          "level": 15,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 84,
+      "team": "Northwestern",
+      "pool": 1155,
+      "modeledCost": 655,
+      "residual": 500,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 48,
+          "coach": "D. Braun",
+          "level": 45,
+          "price": 440
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 405,
+          "coach": "I. O'Connor",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 149,
+          "coach": "P. Foster",
+          "level": 20,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 85,
+      "team": "Notre Dame",
+      "pool": 5665,
+      "modeledCost": 405,
+      "residual": 5260,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 151,
+          "coach": "M. Freeman",
+          "level": 71,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 110,
+          "coach": "M. Denbrock",
+          "level": 32,
+          "price": 75
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 17,
+          "coach": "C. Ash",
+          "level": 32,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 86,
+      "team": "Ohio",
+      "pool": 470,
+      "modeledCost": 285,
+      "residual": 185,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 181,
+          "coach": "J. Hauser",
+          "level": 23,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 204,
+          "coach": "S. Isphording",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 262,
+          "coach": "K. Mattix",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 87,
+      "team": "Ohio State",
+      "pool": 5810,
+      "modeledCost": 405,
+      "residual": 5405,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 107,
+          "coach": "R. Day",
+          "level": 76,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 369,
+          "coach": "A. Smith",
+          "level": 32,
+          "price": 75
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 308,
+          "coach": "M. Patricia",
+          "level": 33,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 88,
+      "team": "Oklahoma",
+      "pool": 6900,
+      "modeledCost": 575,
+      "residual": 6325,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 400,
+          "coach": "B. Venables",
+          "level": 60,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 11,
+          "coach": "B. Arbuckle",
+          "level": 28,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 65,
+          "coach": "J. Bowker",
+          "level": 26,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 89,
+      "team": "Oklahoma State",
+      "pool": 1655,
+      "modeledCost": 730,
+      "residual": 925,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 278,
+          "coach": "E. Morris",
+          "level": 45,
+          "price": 440
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 57,
+          "coach": "S. Brophy",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 78,
+          "coach": "S. Cassity",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 90,
+      "team": "Old Dominion",
+      "pool": 260,
+      "modeledCost": 360,
+      "residual": -100,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 327,
+          "coach": "R. Rahne",
+          "level": 27,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 93,
+          "coach": "K. Cook",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 358,
+          "coach": "B. Seiler",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 91,
+      "team": "Ole Miss",
+      "pool": 3885,
+      "modeledCost": 990,
+      "residual": 2895,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 158,
+          "coach": "P. Golding",
+          "level": 51,
+          "price": 675
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 23,
+          "coach": "J. Baker",
+          "level": 25,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 59,
+          "coach": "B. Brown",
+          "level": 26,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 92,
+      "team": "Oregon",
+      "pool": 4345,
+      "modeledCost": 575,
+      "residual": 3770,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 231,
+          "coach": "D. Lanning",
+          "level": 71,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 269,
+          "coach": "D. Mehringer",
+          "level": 27,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 171,
+          "coach": "C. Hampton",
+          "level": 27,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 93,
+      "team": "Oregon State",
+      "pool": 910,
+      "modeledCost": 285,
+      "residual": 625,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 361,
+          "coach": "J. Shephard",
+          "level": 23,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 101,
+          "coach": "M. Dahlen",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 253,
+          "coach": "M. Macintyre",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 94,
+      "team": "Penn State",
+      "pool": 4895,
+      "modeledCost": 575,
+      "residual": 4320,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 70,
+          "coach": "M. Campbell",
+          "level": 61,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 282,
+          "coach": "T. Mouser",
+          "level": 26,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 252,
+          "coach": "D. Lynn",
+          "level": 31,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 95,
+      "team": "Pittsburgh",
+      "pool": 4255,
+      "modeledCost": 670,
+      "residual": 3585,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 290,
+          "coach": "P. Narduzzi",
+          "level": 41,
+          "price": 380
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 36,
+          "coach": "K. Bell",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 348,
+          "coach": "C. Sanders",
+          "level": 21,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 96,
+      "team": "Purdue",
+      "pool": 1965,
+      "modeledCost": 475,
+      "residual": 1490,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 299,
+          "coach": "B. Odom",
+          "level": 33,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 187,
+          "coach": "J. Henson",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 211,
+          "coach": "K. Kane",
+          "level": 20,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 97,
+      "team": "Rice",
+      "pool": 1645,
+      "modeledCost": 285,
+      "residual": 1360,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 0,
+          "coach": "S. Abell",
+          "level": 22,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 284,
+          "coach": "V. Munch",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 213,
+          "coach": "J. Kay",
+          "level": 15,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 98,
+      "team": "Rutgers",
+      "pool": 1660,
+      "modeledCost": 510,
+      "residual": 1150,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 355,
+          "coach": "G. Schiano",
+          "level": 42,
+          "price": 380
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 116,
+          "coach": "T. DiCitro",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 73,
+          "coach": "B. Carpenter",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 99,
+      "team": "Sac State",
+      "pool": 240,
+      "modeledCost": 285,
+      "residual": -45,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 74,
+          "coach": "A. Carter",
+          "level": 24,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 221,
+          "coach": "E. Kiesau",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 88,
+          "coach": "A. Clark",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 100,
+      "team": "Sam Houston",
+      "pool": 180,
+      "modeledCost": 285,
+      "residual": -105,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 248,
+          "coach": "P. Longo",
+          "level": 23,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 313,
+          "coach": "Z. Patterson",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 18,
+          "coach": "F Aughtry-Lindsay",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 101,
+      "team": "San Diego St.",
+      "pool": 555,
+      "modeledCost": 390,
+      "residual": 165,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 242,
+          "coach": "S. Lewis",
+          "level": 33,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 207,
+          "coach": "M. Johnson",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 379,
+          "coach": "D. Sumler",
+          "level": 18,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 102,
+      "team": "San Jose State",
+      "pool": 875,
+      "modeledCost": 465,
+      "residual": 410,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 293,
+          "coach": "K. Niumatalolo",
+          "level": 38,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 378,
+          "coach": "C. Stutzmann",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 141,
+          "coach": "B. Filimoeatu",
+          "level": 18,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 103,
+      "team": "SMU",
+      "pool": 2375,
+      "modeledCost": 965,
+      "residual": 1410,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 233,
+          "coach": "R. Lashlee",
+          "level": 53,
+          "price": 675
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 209,
+          "coach": "G. Justice",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 98,
+          "coach": "M. Crum",
+          "level": 23,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 104,
+      "team": "South Alabama",
+      "pool": 295,
+      "modeledCost": 285,
+      "residual": 10,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 9,
+          "coach": "M. Applewhite",
+          "level": 24,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 122,
+          "coach": "J. Dockery",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 303,
+          "coach": "T. Orlando",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 105,
+      "team": "South Carolina",
+      "pool": 2150,
+      "modeledCost": 965,
+      "residual": 1185,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 30,
+          "coach": "S. Beamer",
+          "level": 53,
+          "price": 675
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 54,
+          "coach": "K. Briles",
+          "level": 23,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 416,
+          "coach": "C. White",
+          "level": 23,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 106,
+      "team": "Southern Miss",
+      "pool": 480,
+      "modeledCost": 285,
+      "residual": 195,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 433,
+          "coach": "B. Anderson",
+          "level": 23,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 79,
+          "coach": "K. Cefalo",
+          "level": 15,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 435,
+          "coach": "J. Bolden",
+          "level": 15,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 107,
+      "team": "Stanford",
+      "pool": 2240,
+      "modeledCost": 390,
+      "residual": 1850,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 322,
+          "coach": "T. Pritchard",
+          "level": 31,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 183,
+          "coach": "T. Heffernan",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 332,
+          "coach": "K. Richard",
+          "level": 18,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 108,
+      "team": "Syracuse",
+      "pool": 2640,
+      "modeledCost": 540,
+      "residual": 2100,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 60,
+          "coach": "F. Brown",
+          "level": 37,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 294,
+          "coach": "J. Nixon",
+          "level": 20,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 215,
+          "coach": "V. Kehres",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 109,
+      "team": "TCU",
+      "pool": 3860,
+      "modeledCost": 730,
+      "residual": 3130,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 130,
+          "coach": "S. Dykes",
+          "level": 45,
+          "price": 440
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 333,
+          "coach": "A. RIcker",
+          "level": 20,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 21,
+          "coach": "A. Avalos",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 110,
+      "team": "Temple",
+      "pool": 600,
+      "modeledCost": 360,
+      "residual": 240,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 214,
+          "coach": "K. Keeler",
+          "level": 26,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 406,
+          "coach": "T. Walker",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 370,
+          "coach": "B. Smith",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 111,
+      "team": "Tennessee",
+      "pool": 5260,
+      "modeledCost": 1225,
+      "residual": 4035,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 190,
+          "coach": "J. Heupel",
+          "level": 58,
+          "price": 830
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 170,
+          "coach": "J. Halzle",
+          "level": 26,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 243,
+          "coach": "D. Dowdle",
+          "level": 20,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 112,
+      "team": "Texas",
+      "pool": 4755,
+      "modeledCost": 405,
+      "residual": 4350,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 350,
+          "coach": "S. Sarkisian",
+          "level": 70,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 147,
+          "coach": "K. Flood",
+          "level": 31,
+          "price": 75
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 286,
+          "coach": "W. Muschamp",
+          "level": 37,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 113,
+      "team": "Texas A&M",
+      "pool": 3610,
+      "modeledCost": 1120,
+      "residual": 2490,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 134,
+          "coach": "M. Elko",
+          "level": 58,
+          "price": 830
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 419,
+          "coach": "H. Wiggins",
+          "level": 23,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 186,
+          "coach": "L. Hemphill",
+          "level": 24,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 114,
+      "team": "Texas State",
+      "pool": 630,
+      "modeledCost": 390,
+      "residual": 240,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 223,
+          "coach": "G. Kinne",
+          "level": 32,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 218,
+          "coach": "L. Keopple",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 423,
+          "coach": "W. Windham",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 115,
+      "team": "Texas Tech",
+      "pool": 1820,
+      "modeledCost": 885,
+      "residual": 935,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 268,
+          "coach": "J. McGuire",
+          "level": 53,
+          "price": 675
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 236,
+          "coach": "M. Leftwich",
+          "level": 24,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 425,
+          "coach": "S. Wood",
+          "level": 25,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 116,
+      "team": "Toledo",
+      "pool": 600,
+      "modeledCost": 285,
+      "residual": 315,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 205,
+          "coach": "M. Jacobs",
+          "level": 24,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 330,
+          "coach": "C. Reisert",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 61,
+          "coach": "J. Brown",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 117,
+      "team": "Troy",
+      "pool": 610,
+      "modeledCost": 285,
+      "residual": 325,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 305,
+          "coach": "G. Parker",
+          "level": 24,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 20,
+          "coach": "A. Austin",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 429,
+          "coach": "D. Wright",
+          "level": 18,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 118,
+      "team": "Tulane",
+      "pool": 2000,
+      "modeledCost": 360,
+      "residual": 1640,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 169,
+          "coach": "W. Hall",
+          "level": 24,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 68,
+          "coach": "R. Callaway",
+          "level": 21,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 319,
+          "coach": "T. Polk",
+          "level": 18,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 119,
+      "team": "Tulsa",
+      "pool": 1580,
+      "modeledCost": 360,
+      "residual": 1220,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 229,
+          "coach": "T. Lamb",
+          "level": 25,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 25,
+          "coach": "K. Barbay",
+          "level": 15,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 328,
+          "coach": "J. Reardon",
+          "level": 15,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 120,
+      "team": "UAB",
+      "pool": 790,
+      "modeledCost": 370,
+      "residual": 420,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 280,
+          "coach": "A. Mortensen",
+          "level": 23,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 422,
+          "coach": "J. Wilson",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 162,
+          "coach": "T. Grantham",
+          "level": 21,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 121,
+      "team": "UCF",
+      "pool": 1450,
+      "modeledCost": 625,
+      "residual": 825,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 153,
+          "coach": "S. Frost",
+          "level": 35,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 94,
+          "coach": "S. Cooper",
+          "level": 21,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 165,
+          "coach": "A. Grinch",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 122,
+      "team": "UCLA",
+      "pool": 3555,
+      "modeledCost": 730,
+      "residual": 2825,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 84,
+          "coach": "B. Chesney",
+          "level": 47,
+          "price": 440
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 217,
+          "coach": "D. Kennedy",
+          "level": 23,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 194,
+          "coach": "C. Hitschler",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 123,
+      "team": "UL Monroe",
+      "pool": 240,
+      "modeledCost": 325,
+      "residual": -85,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 401,
+          "coach": "B. Vincent",
+          "level": 28,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 384,
+          "coach": "N. Tanner",
+          "level": 14,
+          "price": 30
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 437,
+          "coach": "D. Harper",
+          "level": 15,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 124,
+      "team": "UMass",
+      "pool": 200,
+      "modeledCost": 215,
+      "residual": -15,
+      "affordable": false,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 173,
+          "coach": "J. Harasymiak",
+          "level": 21,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 411,
+          "coach": "M. Warner",
+          "level": 13,
+          "price": 30
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 220,
+          "coach": "J. Keyte",
+          "level": 13,
+          "price": 30
+        }
+      ]
+    },
+    {
+      "teamRow": 125,
+      "team": "UNLV",
+      "pool": 615,
+      "modeledCost": 570,
+      "residual": 45,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 283,
+          "coach": "D. Mullen",
+          "level": 45,
+          "price": 440
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 111,
+          "coach": "C. Dennis",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 13,
+          "coach": "S. Archer",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 126,
+      "team": "USC",
+      "pool": 5885,
+      "modeledCost": 575,
+      "residual": 5310,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 334,
+          "coach": "L. Riley",
+          "level": 60,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 119,
+          "coach": "L. Dillon",
+          "level": 27,
+          "price": 245
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 311,
+          "coach": "G. Patterson",
+          "level": 35,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 127,
+      "team": "USF",
+      "pool": 995,
+      "modeledCost": 390,
+      "residual": 605,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 179,
+          "coach": "B. Hartline",
+          "level": 32,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 33,
+          "coach": "T. Beck",
+          "level": 19,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 3,
+          "coach": "J. Aldridge",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 128,
+      "team": "Utah",
+      "pool": 3950,
+      "modeledCost": 550,
+      "residual": 3400,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 353,
+          "coach": "M. Scalley",
+          "level": 33,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 267,
+          "coach": "K. McGiven",
+          "level": 23,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 382,
+          "coach": "C. Swan",
+          "level": 24,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 129,
+      "team": "Utah State",
+      "pool": 1005,
+      "modeledCost": 360,
+      "residual": 645,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 281,
+          "coach": "A. Moss",
+          "level": 29,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 430,
+          "coach": "F. Wynn",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 324,
+          "coach": "M. Quinn",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 130,
+      "team": "UTEP",
+      "pool": 565,
+      "modeledCost": 285,
+      "residual": 280,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 403,
+          "coach": "S. Walden",
+          "level": 23,
+          "price": 155
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 304,
+          "coach": "J. Pappalardo",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 39,
+          "coach": "K. Beyer",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 131,
+      "team": "UTSA",
+      "pool": 1315,
+      "modeledCost": 390,
+      "residual": 925,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 393,
+          "coach": "J. Traylor",
+          "level": 33,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 47,
+          "coach": "R. Bowie",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 246,
+          "coach": "J. Loepp",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 132,
+      "team": "Vanderbilt",
+      "pool": 2920,
+      "modeledCost": 965,
+      "residual": 1955,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 234,
+          "coach": "C. Lea",
+          "level": 52,
+          "price": 675
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 34,
+          "coach": "T. Beck",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 163,
+          "coach": "S. Gregory",
+          "level": 23,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 133,
+      "team": "Virginia",
+      "pool": 835,
+      "modeledCost": 625,
+      "residual": 210,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 135,
+          "coach": "T. Elliott",
+          "level": 35,
+          "price": 335
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 224,
+          "coach": "D. Kitchings",
+          "level": 23,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 344,
+          "coach": "J. Rudzinski",
+          "level": 23,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 134,
+      "team": "Virginia Tech",
+      "pool": 2420,
+      "modeledCost": 470,
+      "residual": 1950,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 150,
+          "coach": "J. Franklin",
+          "level": 60,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 198,
+          "coach": "T. Howle",
+          "level": 21,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 323,
+          "coach": "B. Pry",
+          "level": 25,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 135,
+      "team": "Wake Forest",
+      "pool": 1295,
+      "modeledCost": 670,
+      "residual": 625,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 117,
+          "coach": "J. Dickert",
+          "level": 41,
+          "price": 380
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 137,
+          "coach": "R. Ezell",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 182,
+          "coach": "S. Hazelton",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 136,
+      "team": "Washington",
+      "pool": 4630,
+      "modeledCost": 590,
+      "residual": 4040,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 143,
+          "coach": "J. Fisch",
+          "level": 44,
+          "price": 380
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 285,
+          "coach": "D. Murphy",
+          "level": 20,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 408,
+          "coach": "R. Walters",
+          "level": 25,
+          "price": 70
+        }
+      ]
+    },
+    {
+      "teamRow": 137,
+      "team": "Washington St.",
+      "pool": 1225,
+      "modeledCost": 445,
+      "residual": 780,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 274,
+          "coach": "K. Moore",
+          "level": 27,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 272,
+          "coach": "M. Miller",
+          "level": 18,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 49,
+          "coach": "T. Bray",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 138,
+      "team": "West Virginia",
+      "pool": 2795,
+      "modeledCost": 670,
+      "residual": 2125,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 337,
+          "coach": "R. Rodriguez",
+          "level": 44,
+          "price": 380
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 148,
+          "coach": "J. Foster",
+          "level": 22,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 5,
+          "coach": "Z. Alley",
+          "level": 22,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 139,
+      "team": "W. Kentucky",
+      "pool": 390,
+      "modeledCost": 390,
+      "residual": 0,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 185,
+          "coach": "T. Helton",
+          "level": 30,
+          "price": 260
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 329,
+          "coach": "B. Reeder",
+          "level": 17,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 270,
+          "coach": "D. Merritt",
+          "level": 17,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 140,
+      "team": "W. Michigan",
+      "pool": 385,
+      "modeledCost": 360,
+      "residual": 25,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 386,
+          "coach": "L. Taylor",
+          "level": 28,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 132,
+          "coach": "A. Edmonds",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 200,
+          "coach": "T. Humphrey",
+          "level": 16,
+          "price": 65
+        }
+      ]
+    },
+    {
+      "teamRow": 141,
+      "team": "Wisconsin",
+      "pool": 2790,
+      "modeledCost": 670,
+      "residual": 2120,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 140,
+          "coach": "L. Fickell",
+          "level": 43,
+          "price": 380
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 164,
+          "coach": "J. Grimes",
+          "level": 24,
+          "price": 140
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 394,
+          "coach": "M. Tressel",
+          "level": 24,
+          "price": 150
+        }
+      ]
+    },
+    {
+      "teamRow": 142,
+      "team": "Wyoming",
+      "pool": 865,
+      "modeledCost": 360,
+      "residual": 505,
+      "affordable": true,
+      "assignments": [
+        {
+          "role": "HeadCoach",
+          "coachRow": 352,
+          "coach": "J. Sawvel",
+          "level": 26,
+          "price": 230
+        },
+        {
+          "role": "OffensiveCoordinator",
+          "coachRow": 385,
+          "coach": "C. Taylor",
+          "level": 16,
+          "price": 65
+        },
+        {
+          "role": "DefensiveCoordinator",
+          "coachRow": 45,
+          "coach": "A. Bohl",
+          "level": 19,
+          "price": 65
+        }
+      ]
+    }
+  ]
+}

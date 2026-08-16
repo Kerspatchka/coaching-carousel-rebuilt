@@ -1,0 +1,1025 @@
+{
+  "generatedAt": "2026-08-13T21:01:09.787Z",
+  "sourceReport": "C:\\Users\\steel\\AppData\\Local\\Temp\\ccr-weekly-prestige-analysis.json",
+  "method": "Five-fold linear ridge models with role-specific slopes. Validation groups keep all observations for the same coach or opening in one fold.",
+  "modelDefinitions": {
+    "roleOnly": [
+      "intercept",
+      "role_OffensiveCoordinator",
+      "role_DefensiveCoordinator"
+    ],
+    "roleLevel": [
+      "intercept",
+      "role_OffensiveCoordinator",
+      "role_DefensiveCoordinator",
+      "level_HeadCoach",
+      "level_OffensiveCoordinator",
+      "level_DefensiveCoordinator"
+    ],
+    "roleGrade": [
+      "intercept",
+      "role_OffensiveCoordinator",
+      "role_DefensiveCoordinator",
+      "grade_HeadCoach",
+      "grade_OffensiveCoordinator",
+      "grade_DefensiveCoordinator"
+    ],
+    "roleScore": [
+      "intercept",
+      "role_OffensiveCoordinator",
+      "role_DefensiveCoordinator",
+      "score_HeadCoach",
+      "score_OffensiveCoordinator",
+      "score_DefensiveCoordinator"
+    ],
+    "roleLevelGrade": [
+      "intercept",
+      "role_OffensiveCoordinator",
+      "role_DefensiveCoordinator",
+      "level_HeadCoach",
+      "level_OffensiveCoordinator",
+      "level_DefensiveCoordinator",
+      "grade_HeadCoach",
+      "grade_OffensiveCoordinator",
+      "grade_DefensiveCoordinator"
+    ],
+    "roleLevelScore": [
+      "intercept",
+      "role_OffensiveCoordinator",
+      "role_DefensiveCoordinator",
+      "level_HeadCoach",
+      "level_OffensiveCoordinator",
+      "level_DefensiveCoordinator",
+      "score_HeadCoach",
+      "score_OffensiveCoordinator",
+      "score_DefensiveCoordinator"
+    ],
+    "roleLevelGradeScore": [
+      "intercept",
+      "role_OffensiveCoordinator",
+      "role_DefensiveCoordinator",
+      "level_HeadCoach",
+      "level_OffensiveCoordinator",
+      "level_DefensiveCoordinator",
+      "grade_HeadCoach",
+      "grade_OffensiveCoordinator",
+      "grade_DefensiveCoordinator",
+      "score_HeadCoach",
+      "score_OffensiveCoordinator",
+      "score_DefensiveCoordinator"
+    ]
+  },
+  "expectedProgramPoints": {
+    "observations": 241,
+    "uniqueCoaches": 189,
+    "uniqueOpenings": 170,
+    "stages": {
+      "CONFCHAMP": 147,
+      "BW1": 78,
+      "BW2": 16
+    },
+    "results": {
+      "overall": {
+        "roleOnly": {
+          "groupedByCoach": {
+            "samples": 241,
+            "meanAbsoluteError": 79.765,
+            "medianAbsoluteError": 53.258,
+            "rootMeanSquaredError": 123.784,
+            "rSquared": 0.3054
+          },
+          "groupedByOpening": {
+            "samples": 241,
+            "meanAbsoluteError": 79.183,
+            "medianAbsoluteError": 54.231,
+            "rootMeanSquaredError": 121.137,
+            "rSquared": 0.3348
+          }
+        },
+        "roleLevel": {
+          "groupedByCoach": {
+            "samples": 241,
+            "meanAbsoluteError": 22.627,
+            "medianAbsoluteError": 11.27,
+            "rootMeanSquaredError": 34.613,
+            "rSquared": 0.9457
+          },
+          "groupedByOpening": {
+            "samples": 241,
+            "meanAbsoluteError": 24.045,
+            "medianAbsoluteError": 11.256,
+            "rootMeanSquaredError": 39.481,
+            "rSquared": 0.9293
+          }
+        },
+        "roleGrade": {
+          "groupedByCoach": {
+            "samples": 241,
+            "meanAbsoluteError": 39.56,
+            "medianAbsoluteError": 27.119,
+            "rootMeanSquaredError": 61.083,
+            "rSquared": 0.8309
+          },
+          "groupedByOpening": {
+            "samples": 241,
+            "meanAbsoluteError": 39.259,
+            "medianAbsoluteError": 24.084,
+            "rootMeanSquaredError": 62.789,
+            "rSquared": 0.8213
+          }
+        },
+        "roleScore": {
+          "groupedByCoach": {
+            "samples": 241,
+            "meanAbsoluteError": 35.881,
+            "medianAbsoluteError": 22.928,
+            "rootMeanSquaredError": 55.3,
+            "rSquared": 0.8614
+          },
+          "groupedByOpening": {
+            "samples": 241,
+            "meanAbsoluteError": 36.972,
+            "medianAbsoluteError": 24.816,
+            "rootMeanSquaredError": 57.895,
+            "rSquared": 0.8481
+          }
+        },
+        "roleLevelGrade": {
+          "groupedByCoach": {
+            "samples": 241,
+            "meanAbsoluteError": 17.335,
+            "medianAbsoluteError": 10.484,
+            "rootMeanSquaredError": 29.103,
+            "rSquared": 0.9616
+          },
+          "groupedByOpening": {
+            "samples": 241,
+            "meanAbsoluteError": 18.455,
+            "medianAbsoluteError": 9.196,
+            "rootMeanSquaredError": 33.708,
+            "rSquared": 0.9485
+          }
+        },
+        "roleLevelScore": {
+          "groupedByCoach": {
+            "samples": 241,
+            "meanAbsoluteError": 21.109,
+            "medianAbsoluteError": 11.643,
+            "rootMeanSquaredError": 33.406,
+            "rSquared": 0.9494
+          },
+          "groupedByOpening": {
+            "samples": 241,
+            "meanAbsoluteError": 22.646,
+            "medianAbsoluteError": 12.365,
+            "rootMeanSquaredError": 38.623,
+            "rSquared": 0.9324
+          }
+        },
+        "roleLevelGradeScore": {
+          "groupedByCoach": {
+            "samples": 241,
+            "meanAbsoluteError": 15.171,
+            "medianAbsoluteError": 7.881,
+            "rootMeanSquaredError": 26.393,
+            "rSquared": 0.9684
+          },
+          "groupedByOpening": {
+            "samples": 241,
+            "meanAbsoluteError": 16.324,
+            "medianAbsoluteError": 8.252,
+            "rootMeanSquaredError": 31.255,
+            "rSquared": 0.9557
+          }
+        }
+      },
+      "byRole": {
+        "HeadCoach": {
+          "observations": 77,
+          "results": {
+            "roleOnly": {
+              "groupedByCoach": {
+                "samples": 77,
+                "meanAbsoluteError": 144.699,
+                "medianAbsoluteError": 126.379,
+                "rootMeanSquaredError": 198.785,
+                "rSquared": -0.0939
+              },
+              "groupedByOpening": {
+                "samples": 77,
+                "meanAbsoluteError": 138.592,
+                "medianAbsoluteError": 105.769,
+                "rootMeanSquaredError": 191.019,
+                "rSquared": -0.0101
+              }
+            },
+            "roleLevel": {
+              "groupedByCoach": {
+                "samples": 77,
+                "meanAbsoluteError": 39.393,
+                "medianAbsoluteError": 30.759,
+                "rootMeanSquaredError": 51.194,
+                "rSquared": 0.9274
+              },
+              "groupedByOpening": {
+                "samples": 77,
+                "meanAbsoluteError": 44.559,
+                "medianAbsoluteError": 32.665,
+                "rootMeanSquaredError": 61.514,
+                "rSquared": 0.8952
+              }
+            },
+            "roleGrade": {
+              "groupedByCoach": {
+                "samples": 77,
+                "meanAbsoluteError": 74.701,
+                "medianAbsoluteError": 58.676,
+                "rootMeanSquaredError": 99.637,
+                "rSquared": 0.7252
+              },
+              "groupedByOpening": {
+                "samples": 77,
+                "meanAbsoluteError": 72.639,
+                "medianAbsoluteError": 47.356,
+                "rootMeanSquaredError": 102.036,
+                "rSquared": 0.7118
+              }
+            },
+            "roleScore": {
+              "groupedByCoach": {
+                "samples": 77,
+                "meanAbsoluteError": 63.312,
+                "medianAbsoluteError": 46.795,
+                "rootMeanSquaredError": 88.554,
+                "rSquared": 0.7829
+              },
+              "groupedByOpening": {
+                "samples": 77,
+                "meanAbsoluteError": 65.934,
+                "medianAbsoluteError": 44.583,
+                "rootMeanSquaredError": 93.472,
+                "rSquared": 0.7581
+              }
+            },
+            "roleLevelGrade": {
+              "groupedByCoach": {
+                "samples": 77,
+                "meanAbsoluteError": 36.927,
+                "medianAbsoluteError": 29.44,
+                "rootMeanSquaredError": 48.835,
+                "rSquared": 0.934
+              },
+              "groupedByOpening": {
+                "samples": 77,
+                "meanAbsoluteError": 39,
+                "medianAbsoluteError": 29.16,
+                "rootMeanSquaredError": 56.33,
+                "rSquared": 0.9122
+              }
+            },
+            "roleLevelScore": {
+              "groupedByCoach": {
+                "samples": 77,
+                "meanAbsoluteError": 39.761,
+                "medianAbsoluteError": 31.911,
+                "rootMeanSquaredError": 52.499,
+                "rSquared": 0.9237
+              },
+              "groupedByOpening": {
+                "samples": 77,
+                "meanAbsoluteError": 44.584,
+                "medianAbsoluteError": 32.246,
+                "rootMeanSquaredError": 61.874,
+                "rSquared": 0.894
+              }
+            },
+            "roleLevelGradeScore": {
+              "groupedByCoach": {
+                "samples": 77,
+                "meanAbsoluteError": 31.818,
+                "medianAbsoluteError": 21.371,
+                "rootMeanSquaredError": 44.001,
+                "rSquared": 0.9464
+              },
+              "groupedByOpening": {
+                "samples": 77,
+                "meanAbsoluteError": 34.23,
+                "medianAbsoluteError": 19.003,
+                "rootMeanSquaredError": 52.391,
+                "rSquared": 0.924
+              }
+            }
+          }
+        },
+        "OffensiveCoordinator": {
+          "observations": 80,
+          "results": {
+            "roleOnly": {
+              "groupedByCoach": {
+                "samples": 80,
+                "meanAbsoluteError": 54.269,
+                "medianAbsoluteError": 47.146,
+                "rootMeanSquaredError": 71.842,
+                "rSquared": -0.0092
+              },
+              "groupedByOpening": {
+                "samples": 80,
+                "meanAbsoluteError": 56.668,
+                "medianAbsoluteError": 50.612,
+                "rootMeanSquaredError": 77.008,
+                "rSquared": -0.1596
+              }
+            },
+            "roleLevel": {
+              "groupedByCoach": {
+                "samples": 80,
+                "meanAbsoluteError": 15.113,
+                "medianAbsoluteError": 10.214,
+                "rootMeanSquaredError": 23.474,
+                "rSquared": 0.8923
+              },
+              "groupedByOpening": {
+                "samples": 80,
+                "meanAbsoluteError": 13.978,
+                "medianAbsoluteError": 11.143,
+                "rootMeanSquaredError": 22.679,
+                "rSquared": 0.8994
+              }
+            },
+            "roleGrade": {
+              "groupedByCoach": {
+                "samples": 80,
+                "meanAbsoluteError": 22.321,
+                "medianAbsoluteError": 16.73,
+                "rootMeanSquaredError": 29.535,
+                "rSquared": 0.8294
+              },
+              "groupedByOpening": {
+                "samples": 80,
+                "meanAbsoluteError": 23.343,
+                "medianAbsoluteError": 17.075,
+                "rootMeanSquaredError": 32.319,
+                "rSquared": 0.7958
+              }
+            },
+            "roleScore": {
+              "groupedByCoach": {
+                "samples": 80,
+                "meanAbsoluteError": 23.914,
+                "medianAbsoluteError": 19.348,
+                "rootMeanSquaredError": 29.725,
+                "rSquared": 0.8272
+              },
+              "groupedByOpening": {
+                "samples": 80,
+                "meanAbsoluteError": 23.998,
+                "medianAbsoluteError": 19.894,
+                "rootMeanSquaredError": 29.796,
+                "rSquared": 0.8264
+              }
+            },
+            "roleLevelGrade": {
+              "groupedByCoach": {
+                "samples": 80,
+                "meanAbsoluteError": 8.1,
+                "medianAbsoluteError": 6.194,
+                "rootMeanSquaredError": 11.407,
+                "rSquared": 0.9746
+              },
+              "groupedByOpening": {
+                "samples": 80,
+                "meanAbsoluteError": 9.18,
+                "medianAbsoluteError": 5.465,
+                "rootMeanSquaredError": 15.541,
+                "rSquared": 0.9528
+              }
+            },
+            "roleLevelScore": {
+              "groupedByCoach": {
+                "samples": 80,
+                "meanAbsoluteError": 13.673,
+                "medianAbsoluteError": 9.098,
+                "rootMeanSquaredError": 20.532,
+                "rSquared": 0.9176
+              },
+              "groupedByOpening": {
+                "samples": 80,
+                "meanAbsoluteError": 13.336,
+                "medianAbsoluteError": 8.423,
+                "rootMeanSquaredError": 23.02,
+                "rSquared": 0.8964
+              }
+            },
+            "roleLevelGradeScore": {
+              "groupedByCoach": {
+                "samples": 80,
+                "meanAbsoluteError": 6.713,
+                "medianAbsoluteError": 4.831,
+                "rootMeanSquaredError": 10.632,
+                "rSquared": 0.9779
+              },
+              "groupedByOpening": {
+                "samples": 80,
+                "meanAbsoluteError": 7.799,
+                "medianAbsoluteError": 4.996,
+                "rootMeanSquaredError": 13.298,
+                "rSquared": 0.9654
+              }
+            }
+          }
+        },
+        "DefensiveCoordinator": {
+          "observations": 84,
+          "results": {
+            "roleOnly": {
+              "groupedByCoach": {
+                "samples": 84,
+                "meanAbsoluteError": 44.524,
+                "medianAbsoluteError": 45.933,
+                "rootMeanSquaredError": 53.131,
+                "rSquared": -0.0036
+              },
+              "groupedByOpening": {
+                "samples": 84,
+                "meanAbsoluteError": 46.169,
+                "medianAbsoluteError": 46.27,
+                "rootMeanSquaredError": 54.826,
+                "rSquared": -0.0687
+              }
+            },
+            "roleLevel": {
+              "groupedByCoach": {
+                "samples": 84,
+                "meanAbsoluteError": 14.416,
+                "medianAbsoluteError": 9.072,
+                "rootMeanSquaredError": 22.584,
+                "rSquared": 0.8187
+              },
+              "groupedByOpening": {
+                "samples": 84,
+                "meanAbsoluteError": 14.828,
+                "medianAbsoluteError": 9.824,
+                "rootMeanSquaredError": 22.664,
+                "rSquared": 0.8174
+              }
+            },
+            "roleGrade": {
+              "groupedByCoach": {
+                "samples": 84,
+                "meanAbsoluteError": 23.766,
+                "medianAbsoluteError": 21.973,
+                "rootMeanSquaredError": 27.815,
+                "rSquared": 0.7249
+              },
+              "groupedByOpening": {
+                "samples": 84,
+                "meanAbsoluteError": 23.819,
+                "medianAbsoluteError": 22.359,
+                "rootMeanSquaredError": 27.796,
+                "rSquared": 0.7253
+              }
+            },
+            "roleScore": {
+              "groupedByCoach": {
+                "samples": 84,
+                "meanAbsoluteError": 22.134,
+                "medianAbsoluteError": 18.857,
+                "rootMeanSquaredError": 27.275,
+                "rSquared": 0.7355
+              },
+              "groupedByOpening": {
+                "samples": 84,
+                "meanAbsoluteError": 22.781,
+                "medianAbsoluteError": 18.787,
+                "rootMeanSquaredError": 27.607,
+                "rSquared": 0.729
+              }
+            },
+            "roleLevelGrade": {
+              "groupedByCoach": {
+                "samples": 84,
+                "meanAbsoluteError": 8.171,
+                "medianAbsoluteError": 7.013,
+                "rootMeanSquaredError": 10.957,
+                "rSquared": 0.9573
+              },
+              "groupedByOpening": {
+                "samples": 84,
+                "meanAbsoluteError": 8.456,
+                "medianAbsoluteError": 7.189,
+                "rootMeanSquaredError": 11.009,
+                "rSquared": 0.9569
+              }
+            },
+            "roleLevelScore": {
+              "groupedByCoach": {
+                "samples": 84,
+                "meanAbsoluteError": 11.094,
+                "medianAbsoluteError": 7.766,
+                "rootMeanSquaredError": 16.547,
+                "rSquared": 0.9027
+              },
+              "groupedByOpening": {
+                "samples": 84,
+                "meanAbsoluteError": 11.403,
+                "medianAbsoluteError": 8.652,
+                "rootMeanSquaredError": 16.302,
+                "rSquared": 0.9055
+              }
+            },
+            "roleLevelGradeScore": {
+              "groupedByCoach": {
+                "samples": 84,
+                "meanAbsoluteError": 7.966,
+                "medianAbsoluteError": 6.607,
+                "rootMeanSquaredError": 10.776,
+                "rSquared": 0.9587
+              },
+              "groupedByOpening": {
+                "samples": 84,
+                "meanAbsoluteError": 8.031,
+                "medianAbsoluteError": 6.023,
+                "rootMeanSquaredError": 10.874,
+                "rSquared": 0.958
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "bw1TeamInterest": {
+    "observations": 318,
+    "uniqueCoaches": 89,
+    "uniqueOpenings": 53,
+    "results": {
+      "overall": {
+        "roleOnly": {
+          "groupedByCoach": {
+            "samples": 318,
+            "meanAbsoluteError": 4.171,
+            "medianAbsoluteError": 0.772,
+            "rootMeanSquaredError": 10.199,
+            "rSquared": 0.4192
+          },
+          "groupedByOpening": {
+            "samples": 318,
+            "meanAbsoluteError": 4.149,
+            "medianAbsoluteError": 1.256,
+            "rootMeanSquaredError": 9.781,
+            "rSquared": 0.4658
+          }
+        },
+        "roleLevel": {
+          "groupedByCoach": {
+            "samples": 318,
+            "meanAbsoluteError": 2.491,
+            "medianAbsoluteError": 0.62,
+            "rootMeanSquaredError": 5.571,
+            "rSquared": 0.8267
+          },
+          "groupedByOpening": {
+            "samples": 318,
+            "meanAbsoluteError": 2.546,
+            "medianAbsoluteError": 0.569,
+            "rootMeanSquaredError": 6.17,
+            "rSquared": 0.7874
+          }
+        },
+        "roleGrade": {
+          "groupedByCoach": {
+            "samples": 318,
+            "meanAbsoluteError": 2.47,
+            "medianAbsoluteError": 0.138,
+            "rootMeanSquaredError": 6.167,
+            "rSquared": 0.7876
+          },
+          "groupedByOpening": {
+            "samples": 318,
+            "meanAbsoluteError": 2.508,
+            "medianAbsoluteError": 0.173,
+            "rootMeanSquaredError": 6.498,
+            "rSquared": 0.7642
+          }
+        },
+        "roleScore": {
+          "groupedByCoach": {
+            "samples": 318,
+            "meanAbsoluteError": 2.209,
+            "medianAbsoluteError": 0.072,
+            "rootMeanSquaredError": 5.83,
+            "rSquared": 0.8102
+          },
+          "groupedByOpening": {
+            "samples": 318,
+            "meanAbsoluteError": 2.251,
+            "medianAbsoluteError": 0.092,
+            "rootMeanSquaredError": 6.159,
+            "rSquared": 0.7882
+          }
+        },
+        "roleLevelGrade": {
+          "groupedByCoach": {
+            "samples": 318,
+            "meanAbsoluteError": 2.267,
+            "medianAbsoluteError": 0.395,
+            "rootMeanSquaredError": 5.412,
+            "rSquared": 0.8364
+          },
+          "groupedByOpening": {
+            "samples": 318,
+            "meanAbsoluteError": 2.408,
+            "medianAbsoluteError": 0.33,
+            "rootMeanSquaredError": 5.966,
+            "rSquared": 0.8013
+          }
+        },
+        "roleLevelScore": {
+          "groupedByCoach": {
+            "samples": 318,
+            "meanAbsoluteError": 2.374,
+            "medianAbsoluteError": 0.465,
+            "rootMeanSquaredError": 5.437,
+            "rSquared": 0.835
+          },
+          "groupedByOpening": {
+            "samples": 318,
+            "meanAbsoluteError": 2.536,
+            "medianAbsoluteError": 0.467,
+            "rootMeanSquaredError": 6.137,
+            "rSquared": 0.7897
+          }
+        },
+        "roleLevelGradeScore": {
+          "groupedByCoach": {
+            "samples": 318,
+            "meanAbsoluteError": 2.368,
+            "medianAbsoluteError": 0.355,
+            "rootMeanSquaredError": 5.512,
+            "rSquared": 0.8303
+          },
+          "groupedByOpening": {
+            "samples": 318,
+            "meanAbsoluteError": 2.5,
+            "medianAbsoluteError": 0.385,
+            "rootMeanSquaredError": 6.215,
+            "rSquared": 0.7843
+          }
+        }
+      },
+      "byRole": {
+        "HeadCoach": {
+          "observations": 72,
+          "results": {
+            "roleOnly": {
+              "groupedByCoach": {
+                "samples": 72,
+                "meanAbsoluteError": 14.949,
+                "medianAbsoluteError": 11.323,
+                "rootMeanSquaredError": 20.691,
+                "rSquared": -0.1319
+              },
+              "groupedByOpening": {
+                "samples": 72,
+                "meanAbsoluteError": 14.252,
+                "medianAbsoluteError": 9.414,
+                "rootMeanSquaredError": 19.708,
+                "rSquared": -0.027
+              }
+            },
+            "roleLevel": {
+              "groupedByCoach": {
+                "samples": 72,
+                "meanAbsoluteError": 7.853,
+                "medianAbsoluteError": 5.261,
+                "rootMeanSquaredError": 10.781,
+                "rSquared": 0.6927
+              },
+              "groupedByOpening": {
+                "samples": 72,
+                "meanAbsoluteError": 8.424,
+                "medianAbsoluteError": 6.135,
+                "rootMeanSquaredError": 12.265,
+                "rSquared": 0.6022
+              }
+            },
+            "roleGrade": {
+              "groupedByCoach": {
+                "samples": 72,
+                "meanAbsoluteError": 9.325,
+                "medianAbsoluteError": 7.097,
+                "rootMeanSquaredError": 12.504,
+                "rSquared": 0.5866
+              },
+              "groupedByOpening": {
+                "samples": 72,
+                "meanAbsoluteError": 9.595,
+                "medianAbsoluteError": 6.407,
+                "rootMeanSquaredError": 13.294,
+                "rSquared": 0.5327
+              }
+            },
+            "roleScore": {
+              "groupedByCoach": {
+                "samples": 72,
+                "meanAbsoluteError": 8.344,
+                "medianAbsoluteError": 6.114,
+                "rootMeanSquaredError": 11.701,
+                "rSquared": 0.638
+              },
+              "groupedByOpening": {
+                "samples": 72,
+                "meanAbsoluteError": 8.635,
+                "medianAbsoluteError": 7.093,
+                "rootMeanSquaredError": 12.59,
+                "rSquared": 0.5809
+              }
+            },
+            "roleLevelGrade": {
+              "groupedByCoach": {
+                "samples": 72,
+                "meanAbsoluteError": 7.93,
+                "medianAbsoluteError": 5.95,
+                "rootMeanSquaredError": 10.848,
+                "rSquared": 0.6888
+              },
+              "groupedByOpening": {
+                "samples": 72,
+                "meanAbsoluteError": 8.558,
+                "medianAbsoluteError": 6.547,
+                "rootMeanSquaredError": 12.129,
+                "rSquared": 0.611
+              }
+            },
+            "roleLevelScore": {
+              "groupedByCoach": {
+                "samples": 72,
+                "meanAbsoluteError": 7.975,
+                "medianAbsoluteError": 5.355,
+                "rootMeanSquaredError": 10.946,
+                "rSquared": 0.6832
+              },
+              "groupedByOpening": {
+                "samples": 72,
+                "meanAbsoluteError": 8.484,
+                "medianAbsoluteError": 6.582,
+                "rootMeanSquaredError": 12.456,
+                "rSquared": 0.5898
+              }
+            },
+            "roleLevelGradeScore": {
+              "groupedByCoach": {
+                "samples": 72,
+                "meanAbsoluteError": 8.157,
+                "medianAbsoluteError": 6.19,
+                "rootMeanSquaredError": 11.105,
+                "rSquared": 0.6739
+              },
+              "groupedByOpening": {
+                "samples": 72,
+                "meanAbsoluteError": 8.526,
+                "medianAbsoluteError": 6.88,
+                "rootMeanSquaredError": 12.603,
+                "rSquared": 0.58
+              }
+            }
+          }
+        },
+        "OffensiveCoordinator": {
+          "observations": 114,
+          "results": {
+            "roleOnly": {
+              "groupedByCoach": {
+                "samples": 114,
+                "meanAbsoluteError": 1.613,
+                "medianAbsoluteError": 0.865,
+                "rootMeanSquaredError": 4.235,
+                "rSquared": -0.0051
+              },
+              "groupedByOpening": {
+                "samples": 114,
+                "meanAbsoluteError": 1.961,
+                "medianAbsoluteError": 1.256,
+                "rootMeanSquaredError": 4.439,
+                "rSquared": -0.1041
+              }
+            },
+            "roleLevel": {
+              "groupedByCoach": {
+                "samples": 114,
+                "meanAbsoluteError": 1.35,
+                "medianAbsoluteError": 0.684,
+                "rootMeanSquaredError": 3.505,
+                "rSquared": 0.3117
+              },
+              "groupedByOpening": {
+                "samples": 114,
+                "meanAbsoluteError": 1.181,
+                "medianAbsoluteError": 0.754,
+                "rootMeanSquaredError": 3.22,
+                "rSquared": 0.4189
+              }
+            },
+            "roleGrade": {
+              "groupedByCoach": {
+                "samples": 114,
+                "meanAbsoluteError": 0.618,
+                "medianAbsoluteError": 0.016,
+                "rootMeanSquaredError": 2.5,
+                "rSquared": 0.6499
+              },
+              "groupedByOpening": {
+                "samples": 114,
+                "meanAbsoluteError": 0.576,
+                "medianAbsoluteError": 0.049,
+                "rootMeanSquaredError": 2.277,
+                "rSquared": 0.7095
+              }
+            },
+            "roleScore": {
+              "groupedByCoach": {
+                "samples": 114,
+                "meanAbsoluteError": 0.684,
+                "medianAbsoluteError": 0.038,
+                "rootMeanSquaredError": 2.795,
+                "rSquared": 0.5623
+              },
+              "groupedByOpening": {
+                "samples": 114,
+                "meanAbsoluteError": 0.604,
+                "medianAbsoluteError": 0.062,
+                "rootMeanSquaredError": 2.274,
+                "rSquared": 0.7101
+              }
+            },
+            "roleLevelGrade": {
+              "groupedByCoach": {
+                "samples": 114,
+                "meanAbsoluteError": 0.803,
+                "medianAbsoluteError": 0.194,
+                "rootMeanSquaredError": 2.574,
+                "rSquared": 0.6287
+              },
+              "groupedByOpening": {
+                "samples": 114,
+                "meanAbsoluteError": 0.793,
+                "medianAbsoluteError": 0.312,
+                "rootMeanSquaredError": 2.331,
+                "rSquared": 0.6955
+              }
+            },
+            "roleLevelScore": {
+              "groupedByCoach": {
+                "samples": 114,
+                "meanAbsoluteError": 1.322,
+                "medianAbsoluteError": 0.915,
+                "rootMeanSquaredError": 2.495,
+                "rSquared": 0.6513
+              },
+              "groupedByOpening": {
+                "samples": 114,
+                "meanAbsoluteError": 1.438,
+                "medianAbsoluteError": 1.251,
+                "rootMeanSquaredError": 2.547,
+                "rSquared": 0.6364
+              }
+            },
+            "roleLevelGradeScore": {
+              "groupedByCoach": {
+                "samples": 114,
+                "meanAbsoluteError": 1.181,
+                "medianAbsoluteError": 0.861,
+                "rootMeanSquaredError": 2.409,
+                "rSquared": 0.6748
+              },
+              "groupedByOpening": {
+                "samples": 114,
+                "meanAbsoluteError": 1.311,
+                "medianAbsoluteError": 1.03,
+                "rootMeanSquaredError": 2.512,
+                "rSquared": 0.6465
+              }
+            }
+          }
+        },
+        "DefensiveCoordinator": {
+          "observations": 132,
+          "results": {
+            "roleOnly": {
+              "groupedByCoach": {
+                "samples": 132,
+                "meanAbsoluteError": 0.502,
+                "medianAbsoluteError": 0.292,
+                "rootMeanSquaredError": 1.252,
+                "rSquared": -0.0162
+              },
+              "groupedByOpening": {
+                "samples": 132,
+                "meanAbsoluteError": 0.527,
+                "medianAbsoluteError": 0.333,
+                "rootMeanSquaredError": 1.259,
+                "rSquared": -0.0266
+              }
+            },
+            "roleLevel": {
+              "groupedByCoach": {
+                "samples": 132,
+                "meanAbsoluteError": 0.553,
+                "medianAbsoluteError": 0.49,
+                "rootMeanSquaredError": 0.865,
+                "rSquared": 0.5151
+              },
+              "groupedByOpening": {
+                "samples": 132,
+                "meanAbsoluteError": 0.517,
+                "medianAbsoluteError": 0.419,
+                "rootMeanSquaredError": 0.837,
+                "rSquared": 0.5461
+              }
+            },
+            "roleGrade": {
+              "groupedByCoach": {
+                "samples": 132,
+                "meanAbsoluteError": 0.331,
+                "medianAbsoluteError": 0.138,
+                "rootMeanSquaredError": 0.967,
+                "rSquared": 0.3944
+              },
+              "groupedByOpening": {
+                "samples": 132,
+                "meanAbsoluteError": 0.311,
+                "medianAbsoluteError": 0.173,
+                "rootMeanSquaredError": 0.921,
+                "rSquared": 0.4509
+              }
+            },
+            "roleScore": {
+              "groupedByCoach": {
+                "samples": 132,
+                "meanAbsoluteError": 0.179,
+                "medianAbsoluteError": 0.073,
+                "rootMeanSquaredError": 0.672,
+                "rSquared": 0.7076
+              },
+              "groupedByOpening": {
+                "samples": 132,
+                "meanAbsoluteError": 0.192,
+                "medianAbsoluteError": 0.092,
+                "rootMeanSquaredError": 0.679,
+                "rSquared": 0.7014
+              }
+            },
+            "roleLevelGrade": {
+              "groupedByCoach": {
+                "samples": 132,
+                "meanAbsoluteError": 0.443,
+                "medianAbsoluteError": 0.359,
+                "rootMeanSquaredError": 0.808,
+                "rSquared": 0.5769
+              },
+              "groupedByOpening": {
+                "samples": 132,
+                "meanAbsoluteError": 0.449,
+                "medianAbsoluteError": 0.307,
+                "rootMeanSquaredError": 0.894,
+                "rSquared": 0.4824
+              }
+            },
+            "roleLevelScore": {
+              "groupedByCoach": {
+                "samples": 132,
+                "meanAbsoluteError": 0.228,
+                "medianAbsoluteError": 0.103,
+                "rootMeanSquaredError": 0.692,
+                "rSquared": 0.6895
+              },
+              "groupedByOpening": {
+                "samples": 132,
+                "meanAbsoluteError": 0.239,
+                "medianAbsoluteError": 0.066,
+                "rootMeanSquaredError": 0.709,
+                "rSquared": 0.6743
+              }
+            },
+            "roleLevelGradeScore": {
+              "groupedByCoach": {
+                "samples": 132,
+                "meanAbsoluteError": 0.235,
+                "medianAbsoluteError": 0.055,
+                "rootMeanSquaredError": 0.961,
+                "rSquared": 0.4018
+              },
+              "groupedByOpening": {
+                "samples": 132,
+                "meanAbsoluteError": 0.24,
+                "medianAbsoluteError": 0.056,
+                "rootMeanSquaredError": 0.976,
+                "rSquared": 0.3827
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "evaluatedAt": "2026-08-15T19:52:20.650Z",
+  "files": {
+    "reference": "C:\\Users\\steel\\OneDrive\\Documents\\SMG CFB27\\Tools\\coaching-carousel-rebuilt\\assets\\ref_saves\\DYNASTY-CCRY1EOS",
+    "test": "C:\\Users\\steel\\OneDrive\\Documents\\SMG CFB27\\Tools\\coaching-carousel-rebuilt\\assets\\ref_saves\\DYNASTY-CCRE1EGOALS-AUTOSAVE",
+    "output": "C:\\Users\\steel\\OneDrive\\Documents\\SMG CFB27\\Tools\\coaching-carousel-rebuilt\\assets\\analysis\\e1e-coach-contract-goals-points-autosave-result.json"
+  },
+  "airForce": {
+    "reference": {
+      "remaining": 575,
+      "staffSpent": 360,
+      "headCoachBudget": 330,
+      "offensiveCoordinatorBudget": 15,
+      "defensiveCoordinatorBudget": 15,
+      "coachContractGoals": 0,
+      "rollover": 410,
+      "programPointBudget": 1570,
+      "staffPool": 935,
+      "nilSpent": 470
+    },
+    "test": {
+      "remaining": 575,
+      "staffSpent": 335,
+      "headCoachBudget": 305,
+      "offensiveCoordinatorBudget": 15,
+      "defensiveCoordinatorBudget": 15,
+      "coachContractGoals": 0,
+      "rollover": 385,
+      "programPointBudget": 1545,
+      "staffPool": 910,
+      "nilSpent": 470
+    }
+  },
+  "testVsReferenceTargetDifferences": [
+    {
+      "table": "teams",
+      "row": 0,
+      "field": "RolloverProgramPoints",
+      "before": 410,
+      "after": 385
+    },
+    {
+      "table": "teams",
+      "row": 0,
+      "field": "StaffProgramPointsSpent",
+      "before": 360,
+      "after": 335
+    },
+    {
+      "table": "teams",
+      "row": 0,
+      "field": "ProgramPointBudget",
+      "before": 1570,
+      "after": 1545
+    },
+    {
+      "table": "teams",
+      "row": 0,
+      "field": "HeadCoachProgramPointBudget",
+      "before": 330,
+      "after": 305
+    }
+  ],
+  "expectedPersistentDelta": {
+    "remainingProgramPoints": 25,
+    "staffProgramPointsSpent": -25,
+    "headCoachProgramPointBudget": -25,
+    "coachContractGoalsProgramPoints": 25,
+    "rolloverProgramPoints": 0,
+    "programPointBudget": 0
+  },
+  "status": "failed"
+}

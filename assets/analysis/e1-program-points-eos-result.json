@@ -1,0 +1,29 @@
+{
+  "evaluatedAt": "2026-08-15T18:55:25.795Z",
+  "files": {
+    "reference": "C:\\Users\\steel\\OneDrive\\Documents\\SMG CFB27\\Tools\\coaching-carousel-rebuilt\\assets\\ref_saves\\DYNASTY-CCRY1EOS",
+    "test": "C:\\Users\\steel\\OneDrive\\Documents\\EA SPORTS College Football 27\\saves\\DYNASTY-CCRE1POINTSEOS",
+    "output": "C:\\Users\\steel\\OneDrive\\Documents\\SMG CFB27\\Tools\\coaching-carousel-rebuilt\\assets\\analysis\\e1-program-points-eos-result.json"
+  },
+  "comparisonBasis": "Existing native EOS fixture from the identical BW3 source; no new control or sham advance required.",
+  "airForce": {
+    "reference": {
+      "remaining": 575,
+      "staffSpent": 360,
+      "total": 935,
+      "nilSpent": 470
+    },
+    "test": {
+      "remaining": 575,
+      "staffSpent": 360,
+      "total": 935,
+      "nilSpent": 470
+    }
+  },
+  "testVsReferenceTargetDifferences": [],
+  "expectedPersistentDelta": {
+    "remainingProgramPoints": 25,
+    "staffProgramPointsSpent": -25
+  },
+  "status": "failed"
+}

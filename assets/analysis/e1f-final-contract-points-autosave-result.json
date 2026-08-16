@@ -1,0 +1,63 @@
+{
+  "evaluatedAt": "2026-08-15T20:23:58.276Z",
+  "files": {
+    "reference": "C:\\Users\\steel\\OneDrive\\Documents\\SMG CFB27\\Tools\\coaching-carousel-rebuilt\\assets\\ref_saves\\DYNASTY-CCRY1EOS",
+    "test": "C:\\Users\\steel\\OneDrive\\Documents\\SMG CFB27\\Tools\\coaching-carousel-rebuilt\\assets\\ref_saves\\DYNASTY-CCRE1FFINAL-AUTOSAVE",
+    "output": "C:\\Users\\steel\\OneDrive\\Documents\\SMG CFB27\\Tools\\coaching-carousel-rebuilt\\assets\\analysis\\e1f-final-contract-points-autosave-result.json"
+  },
+  "kentState": {
+    "reference": {
+      "remaining": 360,
+      "staffSpent": 30,
+      "headCoachBudget": 30,
+      "offensiveCoordinatorBudget": 0,
+      "defensiveCoordinatorBudget": 0,
+      "rollover": 50,
+      "programPointBudget": 460,
+      "staffPool": 390,
+      "nilSpent": 10
+    },
+    "test": {
+      "remaining": 385,
+      "staffSpent": 5,
+      "headCoachBudget": 5,
+      "offensiveCoordinatorBudget": 0,
+      "defensiveCoordinatorBudget": 0,
+      "rollover": 50,
+      "programPointBudget": 460,
+      "staffPool": 390,
+      "nilSpent": 10
+    }
+  },
+  "testVsReferenceTargetDifferences": [
+    {
+      "table": "teams",
+      "row": 55,
+      "field": "StaffProgramPointsSpent",
+      "before": 30,
+      "after": 5
+    },
+    {
+      "table": "teams",
+      "row": 55,
+      "field": "RemainingProgramPoints",
+      "before": 360,
+      "after": 385
+    },
+    {
+      "table": "teams",
+      "row": 55,
+      "field": "HeadCoachProgramPointBudget",
+      "before": 30,
+      "after": 5
+    }
+  ],
+  "expectedTrueRefundDelta": {
+    "remainingProgramPoints": 25,
+    "staffProgramPointsSpent": -25,
+    "headCoachProgramPointBudget": -25,
+    "rolloverProgramPoints": 0,
+    "programPointBudget": 0
+  },
+  "status": "passed"
+}

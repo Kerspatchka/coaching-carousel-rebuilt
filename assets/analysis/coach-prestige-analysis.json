@@ -1,0 +1,1059 @@
+{
+  "generatedAt": "2026-08-13T20:52:12.345Z",
+  "sourceReport": "C:\\Users\\steel\\AppData\\Local\\Temp\\ccr-weekly-prestige-analysis.json",
+  "method": "Read-only summary of CoachPrestige, CoachPrestigeScore, weekly transitions, and BW1 offer-market relationships.",
+  "gradeDistributions": {
+    "PRE": {
+      "F": {
+        "coaches": 122,
+        "minimumScore": 0,
+        "maximumScore": 155,
+        "distinctScores": 29
+      },
+      "Dminus": {
+        "coaches": 76,
+        "minimumScore": 0,
+        "maximumScore": 300,
+        "distinctScores": 11
+      },
+      "D": {
+        "coaches": 20,
+        "minimumScore": 100,
+        "maximumScore": 300,
+        "distinctScores": 14
+      },
+      "Dplus": {
+        "coaches": 27,
+        "minimumScore": 80,
+        "maximumScore": 330,
+        "distinctScores": 20
+      },
+      "Cminus": {
+        "coaches": 36,
+        "minimumScore": 145,
+        "maximumScore": 475,
+        "distinctScores": 22
+      },
+      "C": {
+        "coaches": 49,
+        "minimumScore": 180,
+        "maximumScore": 510,
+        "distinctScores": 27
+      },
+      "Cplus": {
+        "coaches": 33,
+        "minimumScore": 200,
+        "maximumScore": 580,
+        "distinctScores": 22
+      },
+      "Bminus": {
+        "coaches": 32,
+        "minimumScore": 255,
+        "maximumScore": 670,
+        "distinctScores": 21
+      },
+      "B": {
+        "coaches": 27,
+        "minimumScore": 280,
+        "maximumScore": 750,
+        "distinctScores": 18
+      },
+      "Bplus": {
+        "coaches": 21,
+        "minimumScore": 330,
+        "maximumScore": 825,
+        "distinctScores": 15
+      },
+      "Aminus": {
+        "coaches": 14,
+        "minimumScore": 370,
+        "maximumScore": 890,
+        "distinctScores": 13
+      },
+      "A": {
+        "coaches": 20,
+        "minimumScore": 420,
+        "maximumScore": 975,
+        "distinctScores": 16
+      },
+      "Aplus": {
+        "coaches": 16,
+        "minimumScore": 460,
+        "maximumScore": 1500,
+        "distinctScores": 11
+      }
+    },
+    "W15": {
+      "F": {
+        "coaches": 107,
+        "minimumScore": 0,
+        "maximumScore": 175,
+        "distinctScores": 65
+      },
+      "Dminus": {
+        "coaches": 84,
+        "minimumScore": 0,
+        "maximumScore": 185,
+        "distinctScores": 21
+      },
+      "D": {
+        "coaches": 21,
+        "minimumScore": 100,
+        "maximumScore": 294,
+        "distinctScores": 18
+      },
+      "Dplus": {
+        "coaches": 36,
+        "minimumScore": 133,
+        "maximumScore": 328,
+        "distinctScores": 28
+      },
+      "Cminus": {
+        "coaches": 39,
+        "minimumScore": 164,
+        "maximumScore": 466,
+        "distinctScores": 35
+      },
+      "C": {
+        "coaches": 36,
+        "minimumScore": 206,
+        "maximumScore": 499,
+        "distinctScores": 32
+      },
+      "Cplus": {
+        "coaches": 31,
+        "minimumScore": 254,
+        "maximumScore": 598,
+        "distinctScores": 24
+      },
+      "Bminus": {
+        "coaches": 25,
+        "minimumScore": 267,
+        "maximumScore": 658,
+        "distinctScores": 24
+      },
+      "B": {
+        "coaches": 29,
+        "minimumScore": 310,
+        "maximumScore": 773,
+        "distinctScores": 28
+      },
+      "Bplus": {
+        "coaches": 16,
+        "minimumScore": 357,
+        "maximumScore": 839,
+        "distinctScores": 15
+      },
+      "Aminus": {
+        "coaches": 7,
+        "minimumScore": 402,
+        "maximumScore": 926,
+        "distinctScores": 7
+      },
+      "A": {
+        "coaches": 11,
+        "minimumScore": 433,
+        "maximumScore": 970,
+        "distinctScores": 11
+      },
+      "Aplus": {
+        "coaches": 51,
+        "minimumScore": 464,
+        "maximumScore": 1829,
+        "distinctScores": 48
+      }
+    },
+    "CONFCHAMP": {
+      "F": {
+        "coaches": 107,
+        "minimumScore": 0,
+        "maximumScore": 175,
+        "distinctScores": 65
+      },
+      "Dminus": {
+        "coaches": 84,
+        "minimumScore": 0,
+        "maximumScore": 185,
+        "distinctScores": 21
+      },
+      "D": {
+        "coaches": 21,
+        "minimumScore": 100,
+        "maximumScore": 294,
+        "distinctScores": 19
+      },
+      "Dplus": {
+        "coaches": 35,
+        "minimumScore": 138,
+        "maximumScore": 328,
+        "distinctScores": 26
+      },
+      "Cminus": {
+        "coaches": 40,
+        "minimumScore": 156,
+        "maximumScore": 466,
+        "distinctScores": 36
+      },
+      "C": {
+        "coaches": 35,
+        "minimumScore": 211,
+        "maximumScore": 499,
+        "distinctScores": 31
+      },
+      "Cplus": {
+        "coaches": 31,
+        "minimumScore": 226,
+        "maximumScore": 598,
+        "distinctScores": 24
+      },
+      "Bminus": {
+        "coaches": 25,
+        "minimumScore": 267,
+        "maximumScore": 658,
+        "distinctScores": 24
+      },
+      "B": {
+        "coaches": 30,
+        "minimumScore": 301,
+        "maximumScore": 773,
+        "distinctScores": 27
+      },
+      "Bplus": {
+        "coaches": 16,
+        "minimumScore": 357,
+        "maximumScore": 839,
+        "distinctScores": 15
+      },
+      "Aminus": {
+        "coaches": 6,
+        "minimumScore": 402,
+        "maximumScore": 926,
+        "distinctScores": 6
+      },
+      "A": {
+        "coaches": 12,
+        "minimumScore": 448,
+        "maximumScore": 970,
+        "distinctScores": 12
+      },
+      "Aplus": {
+        "coaches": 51,
+        "minimumScore": 469,
+        "maximumScore": 1848,
+        "distinctScores": 47
+      }
+    },
+    "BW1": {
+      "F": {
+        "coaches": 103,
+        "minimumScore": 0,
+        "maximumScore": 175,
+        "distinctScores": 62
+      },
+      "Dminus": {
+        "coaches": 84,
+        "minimumScore": 0,
+        "maximumScore": 185,
+        "distinctScores": 20
+      },
+      "D": {
+        "coaches": 24,
+        "minimumScore": 66,
+        "maximumScore": 294,
+        "distinctScores": 22
+      },
+      "Dplus": {
+        "coaches": 35,
+        "minimumScore": 135,
+        "maximumScore": 328,
+        "distinctScores": 27
+      },
+      "Cminus": {
+        "coaches": 37,
+        "minimumScore": 156,
+        "maximumScore": 466,
+        "distinctScores": 34
+      },
+      "C": {
+        "coaches": 38,
+        "minimumScore": 200,
+        "maximumScore": 499,
+        "distinctScores": 34
+      },
+      "Cplus": {
+        "coaches": 31,
+        "minimumScore": 235,
+        "maximumScore": 598,
+        "distinctScores": 26
+      },
+      "Bminus": {
+        "coaches": 23,
+        "minimumScore": 267,
+        "maximumScore": 658,
+        "distinctScores": 21
+      },
+      "B": {
+        "coaches": 31,
+        "minimumScore": 310,
+        "maximumScore": 773,
+        "distinctScores": 29
+      },
+      "Bplus": {
+        "coaches": 18,
+        "minimumScore": 357,
+        "maximumScore": 849,
+        "distinctScores": 17
+      },
+      "Aminus": {
+        "coaches": 6,
+        "minimumScore": 437,
+        "maximumScore": 940,
+        "distinctScores": 6
+      },
+      "A": {
+        "coaches": 11,
+        "minimumScore": 492,
+        "maximumScore": 1050,
+        "distinctScores": 11
+      },
+      "Aplus": {
+        "coaches": 52,
+        "minimumScore": 539,
+        "maximumScore": 1994,
+        "distinctScores": 48
+      }
+    },
+    "BW2": {
+      "F": {
+        "coaches": 106,
+        "minimumScore": 0,
+        "maximumScore": 175,
+        "distinctScores": 65
+      },
+      "Dminus": {
+        "coaches": 79,
+        "minimumScore": 0,
+        "maximumScore": 167,
+        "distinctScores": 14
+      },
+      "D": {
+        "coaches": 28,
+        "minimumScore": 66,
+        "maximumScore": 294,
+        "distinctScores": 24
+      },
+      "Dplus": {
+        "coaches": 33,
+        "minimumScore": 142,
+        "maximumScore": 328,
+        "distinctScores": 26
+      },
+      "Cminus": {
+        "coaches": 29,
+        "minimumScore": 156,
+        "maximumScore": 466,
+        "distinctScores": 26
+      },
+      "C": {
+        "coaches": 42,
+        "minimumScore": 200,
+        "maximumScore": 499,
+        "distinctScores": 38
+      },
+      "Cplus": {
+        "coaches": 31,
+        "minimumScore": 228,
+        "maximumScore": 598,
+        "distinctScores": 25
+      },
+      "Bminus": {
+        "coaches": 23,
+        "minimumScore": 267,
+        "maximumScore": 658,
+        "distinctScores": 21
+      },
+      "B": {
+        "coaches": 27,
+        "minimumScore": 312,
+        "maximumScore": 773,
+        "distinctScores": 26
+      },
+      "Bplus": {
+        "coaches": 17,
+        "minimumScore": 369,
+        "maximumScore": 849,
+        "distinctScores": 16
+      },
+      "Aminus": {
+        "coaches": 6,
+        "minimumScore": 383,
+        "maximumScore": 926,
+        "distinctScores": 6
+      },
+      "A": {
+        "coaches": 15,
+        "minimumScore": 444,
+        "maximumScore": 959,
+        "distinctScores": 15
+      },
+      "Aplus": {
+        "coaches": 57,
+        "minimumScore": 537,
+        "maximumScore": 2034,
+        "distinctScores": 50
+      }
+    },
+    "BW3": {
+      "F": {
+        "coaches": 105,
+        "minimumScore": 0,
+        "maximumScore": 175,
+        "distinctScores": 64
+      },
+      "Dminus": {
+        "coaches": 80,
+        "minimumScore": 0,
+        "maximumScore": 167,
+        "distinctScores": 15
+      },
+      "D": {
+        "coaches": 28,
+        "minimumScore": 66,
+        "maximumScore": 294,
+        "distinctScores": 24
+      },
+      "Dplus": {
+        "coaches": 33,
+        "minimumScore": 142,
+        "maximumScore": 328,
+        "distinctScores": 26
+      },
+      "Cminus": {
+        "coaches": 29,
+        "minimumScore": 156,
+        "maximumScore": 466,
+        "distinctScores": 26
+      },
+      "C": {
+        "coaches": 42,
+        "minimumScore": 200,
+        "maximumScore": 499,
+        "distinctScores": 38
+      },
+      "Cplus": {
+        "coaches": 31,
+        "minimumScore": 228,
+        "maximumScore": 598,
+        "distinctScores": 25
+      },
+      "Bminus": {
+        "coaches": 23,
+        "minimumScore": 267,
+        "maximumScore": 658,
+        "distinctScores": 21
+      },
+      "B": {
+        "coaches": 27,
+        "minimumScore": 312,
+        "maximumScore": 773,
+        "distinctScores": 26
+      },
+      "Bplus": {
+        "coaches": 17,
+        "minimumScore": 369,
+        "maximumScore": 849,
+        "distinctScores": 16
+      },
+      "Aminus": {
+        "coaches": 6,
+        "minimumScore": 383,
+        "maximumScore": 926,
+        "distinctScores": 6
+      },
+      "A": {
+        "coaches": 15,
+        "minimumScore": 444,
+        "maximumScore": 959,
+        "distinctScores": 15
+      },
+      "Aplus": {
+        "coaches": 57,
+        "minimumScore": 537,
+        "maximumScore": 2034,
+        "distinctScores": 52
+      }
+    },
+    "EOS": {
+      "F": {
+        "coaches": 148,
+        "minimumScore": 0,
+        "maximumScore": 175,
+        "distinctScores": 68
+      },
+      "Dminus": {
+        "coaches": 42,
+        "minimumScore": 0,
+        "maximumScore": 219,
+        "distinctScores": 17
+      },
+      "D": {
+        "coaches": 28,
+        "minimumScore": 100,
+        "maximumScore": 314,
+        "distinctScores": 25
+      },
+      "Dplus": {
+        "coaches": 38,
+        "minimumScore": 139,
+        "maximumScore": 343,
+        "distinctScores": 36
+      },
+      "Cminus": {
+        "coaches": 22,
+        "minimumScore": 192,
+        "maximumScore": 466,
+        "distinctScores": 19
+      },
+      "C": {
+        "coaches": 42,
+        "minimumScore": 216,
+        "maximumScore": 499,
+        "distinctScores": 39
+      },
+      "Cplus": {
+        "coaches": 30,
+        "minimumScore": 256,
+        "maximumScore": 598,
+        "distinctScores": 24
+      },
+      "Bminus": {
+        "coaches": 20,
+        "minimumScore": 273,
+        "maximumScore": 661,
+        "distinctScores": 19
+      },
+      "B": {
+        "coaches": 27,
+        "minimumScore": 317,
+        "maximumScore": 787,
+        "distinctScores": 27
+      },
+      "Bplus": {
+        "coaches": 18,
+        "minimumScore": 378,
+        "maximumScore": 849,
+        "distinctScores": 16
+      },
+      "Aminus": {
+        "coaches": 10,
+        "minimumScore": 408,
+        "maximumScore": 926,
+        "distinctScores": 10
+      },
+      "A": {
+        "coaches": 7,
+        "minimumScore": 502,
+        "maximumScore": 972,
+        "distinctScores": 7
+      },
+      "Aplus": {
+        "coaches": 61,
+        "minimumScore": 484,
+        "maximumScore": 2179,
+        "distinctScores": 55
+      }
+    },
+    "LEAVING": {
+      "F": {
+        "coaches": 144,
+        "minimumScore": 0,
+        "maximumScore": 175,
+        "distinctScores": 67
+      },
+      "Dminus": {
+        "coaches": 45,
+        "minimumScore": 0,
+        "maximumScore": 172,
+        "distinctScores": 19
+      },
+      "D": {
+        "coaches": 28,
+        "minimumScore": 90,
+        "maximumScore": 314,
+        "distinctScores": 24
+      },
+      "Dplus": {
+        "coaches": 37,
+        "minimumScore": 127,
+        "maximumScore": 343,
+        "distinctScores": 36
+      },
+      "Cminus": {
+        "coaches": 19,
+        "minimumScore": 139,
+        "maximumScore": 448,
+        "distinctScores": 16
+      },
+      "C": {
+        "coaches": 45,
+        "minimumScore": 192,
+        "maximumScore": 510,
+        "distinctScores": 41
+      },
+      "Cplus": {
+        "coaches": 34,
+        "minimumScore": 247,
+        "maximumScore": 616,
+        "distinctScores": 28
+      },
+      "Bminus": {
+        "coaches": 17,
+        "minimumScore": 273,
+        "maximumScore": 661,
+        "distinctScores": 16
+      },
+      "B": {
+        "coaches": 26,
+        "minimumScore": 302,
+        "maximumScore": 787,
+        "distinctScores": 26
+      },
+      "Bplus": {
+        "coaches": 20,
+        "minimumScore": 378,
+        "maximumScore": 849,
+        "distinctScores": 18
+      },
+      "Aminus": {
+        "coaches": 11,
+        "minimumScore": 408,
+        "maximumScore": 926,
+        "distinctScores": 11
+      },
+      "A": {
+        "coaches": 7,
+        "minimumScore": 545,
+        "maximumScore": 1013,
+        "distinctScores": 7
+      },
+      "Aplus": {
+        "coaches": 60,
+        "minimumScore": 484,
+        "maximumScore": 2179,
+        "distinctScores": 54
+      }
+    }
+  },
+  "transitions": [
+    {
+      "from": "PRE",
+      "to": "W15",
+      "scoreChanges": 412,
+      "gradeChanges": 192,
+      "bothChanges": 192,
+      "scoreOnlyChanges": 220,
+      "gradeOnlyChanges": 0,
+      "scoreDeltas": {
+        "1": 1,
+        "3": 3,
+        "5": 6,
+        "6": 3,
+        "8": 2,
+        "10": 12,
+        "11": 1,
+        "12": 2,
+        "13": 1,
+        "14": 9,
+        "15": 14,
+        "16": 4,
+        "17": 20,
+        "18": 7,
+        "19": 3,
+        "20": 9,
+        "21": 3,
+        "22": 3,
+        "23": 6,
+        "24": 5,
+        "25": 8,
+        "26": 8,
+        "27": 6,
+        "29": 3,
+        "30": 3,
+        "31": 3,
+        "32": 10,
+        "33": 2,
+        "34": 3,
+        "36": 9,
+        "38": 3,
+        "39": 3,
+        "40": 6,
+        "41": 3,
+        "43": 3,
+        "44": 3,
+        "52": 9,
+        "53": 3,
+        "54": 3,
+        "57": 3,
+        "62": 3,
+        "66": 3,
+        "67": 3,
+        "68": 3,
+        "84": 3,
+        "91": 6,
+        "94": 3,
+        "101": 3,
+        "110": 3,
+        "112": 3,
+        "153": 3,
+        "169": 3,
+        "174": 3,
+        "181": 3,
+        "208": 3,
+        "216": 3,
+        "239": 3,
+        "261": 3,
+        "283": 3,
+        "304": 3,
+        "316": 3,
+        "329": 3,
+        "405": 3,
+        "413": 3,
+        "440": 3,
+        "494": 3,
+        "568": 3,
+        "-30": 3,
+        "-24": 3,
+        "-23": 3,
+        "-21": 6,
+        "-19": 6,
+        "-18": 9,
+        "-17": 3,
+        "-16": 12,
+        "-14": 9,
+        "-12": 9,
+        "-9": 9,
+        "-7": 17,
+        "-6": 2,
+        "-5": 2,
+        "-4": 14,
+        "-2": 9,
+        "-1": 4
+      },
+      "gradeMoves": {
+        "1": 75,
+        "2": 25,
+        "3": 19,
+        "4": 6,
+        "5": 3,
+        "6": 1,
+        "-3": 1,
+        "-2": 17,
+        "-1": 45
+      },
+      "activeTeamDeltaConsistency": {
+        "teams": 138,
+        "uniformAcrossCurrentStaff": 125,
+        "divergentAcrossCurrentStaff": 13
+      }
+    },
+    {
+      "from": "W15",
+      "to": "CONFCHAMP",
+      "scoreChanges": 75,
+      "gradeChanges": 5,
+      "bothChanges": 5,
+      "scoreOnlyChanges": 70,
+      "gradeOnlyChanges": 0,
+      "scoreDeltas": {
+        "5": 45,
+        "15": 15,
+        "30": 12,
+        "50": 3
+      },
+      "gradeMoves": {
+        "1": 5
+      },
+      "activeTeamDeltaConsistency": {
+        "teams": 138,
+        "uniformAcrossCurrentStaff": 138,
+        "divergentAcrossCurrentStaff": 0
+      }
+    },
+    {
+      "from": "CONFCHAMP",
+      "to": "BW1",
+      "scoreChanges": 126,
+      "gradeChanges": 21,
+      "bothChanges": 20,
+      "scoreOnlyChanges": 106,
+      "gradeOnlyChanges": 1,
+      "scoreDeltas": {
+        "5": 9,
+        "9": 18,
+        "10": 3,
+        "19": 3,
+        "20": 9,
+        "26": 6,
+        "31": 3,
+        "35": 3,
+        "36": 9,
+        "40": 6,
+        "45": 3,
+        "49": 3,
+        "50": 6,
+        "54": 3,
+        "55": 6,
+        "56": 3,
+        "65": 3,
+        "71": 3,
+        "79": 3,
+        "80": 6,
+        "90": 3,
+        "101": 3,
+        "105": 3,
+        "115": 3,
+        "120": 3,
+        "146": 3
+      },
+      "gradeMoves": {
+        "1": 20,
+        "2": 1
+      },
+      "activeTeamDeltaConsistency": {
+        "teams": 138,
+        "uniformAcrossCurrentStaff": 138,
+        "divergentAcrossCurrentStaff": 0
+      }
+    },
+    {
+      "from": "BW1",
+      "to": "BW2",
+      "scoreChanges": 153,
+      "gradeChanges": 60,
+      "bothChanges": 43,
+      "scoreOnlyChanges": 110,
+      "gradeOnlyChanges": 17,
+      "scoreDeltas": {
+        "7": 51,
+        "12": 36,
+        "17": 9,
+        "40": 21,
+        "52": 3,
+        "107": 3,
+        "134": 3,
+        "139": 3,
+        "144": 3,
+        "-20": 21
+      },
+      "gradeMoves": {
+        "1": 40,
+        "2": 4,
+        "3": 4,
+        "-1": 12
+      },
+      "activeTeamDeltaConsistency": {
+        "teams": 138,
+        "uniformAcrossCurrentStaff": 138,
+        "divergentAcrossCurrentStaff": 0
+      }
+    },
+    {
+      "from": "BW2",
+      "to": "BW3",
+      "scoreChanges": 12,
+      "gradeChanges": 1,
+      "bothChanges": 0,
+      "scoreOnlyChanges": 12,
+      "gradeOnlyChanges": 1,
+      "scoreDeltas": {
+        "40": 6,
+        "62": 3,
+        "77": 3
+      },
+      "gradeMoves": {
+        "1": 1
+      },
+      "activeTeamDeltaConsistency": {
+        "teams": 138,
+        "uniformAcrossCurrentStaff": 138,
+        "divergentAcrossCurrentStaff": 0
+      }
+    },
+    {
+      "from": "BW3",
+      "to": "EOS",
+      "scoreChanges": 109,
+      "gradeChanges": 113,
+      "bothChanges": 21,
+      "scoreOnlyChanges": 88,
+      "gradeOnlyChanges": 92,
+      "scoreDeltas": {
+        "5": 22,
+        "15": 3,
+        "20": 25,
+        "25": 11,
+        "30": 6,
+        "35": 3,
+        "40": 6,
+        "45": 6,
+        "55": 6,
+        "60": 3,
+        "65": 3,
+        "75": 3,
+        "145": 6,
+        "275": 3,
+        "472": 3
+      },
+      "gradeMoves": {
+        "1": 21,
+        "5": 1,
+        "-2": 4,
+        "-1": 87
+      },
+      "activeTeamDeltaConsistency": {
+        "teams": 138,
+        "uniformAcrossCurrentStaff": 131,
+        "divergentAcrossCurrentStaff": 7
+      }
+    },
+    {
+      "from": "EOS",
+      "to": "LEAVING",
+      "scoreChanges": 0,
+      "gradeChanges": 44,
+      "bothChanges": 0,
+      "scoreOnlyChanges": 0,
+      "gradeOnlyChanges": 44,
+      "scoreDeltas": {},
+      "gradeMoves": {
+        "1": 29,
+        "-1": 15
+      },
+      "activeTeamDeltaConsistency": {
+        "teams": 138,
+        "uniformAcrossCurrentStaff": 138,
+        "divergentAcrossCurrentStaff": 0
+      }
+    }
+  ],
+  "bw1MarketEvidence": {
+    "HeadCoach": {
+      "offers": 72,
+      "uniqueCandidates": 46,
+      "nextCheckpointWinners": 12,
+      "correlations": {
+        "gradeToTeamInterest": 0.8061,
+        "scoreToTeamInterest": 0.8407,
+        "levelToTeamInterest": 0.8548,
+        "gradeToExpectedProgramPoints": 0.9119,
+        "scoreToExpectedProgramPoints": 0.93,
+        "levelToExpectedProgramPoints": 0.9751
+      },
+      "winnerComparison": {
+        "averageWinnerGradeIndex": 5.3333,
+        "averageOtherGradeIndex": 4.8833,
+        "averageWinnerScore": 451.8333,
+        "averageOtherScore": 408.3,
+        "averageWinnerTeamInterest": 32.0833,
+        "averageOtherTeamInterest": 22.0833
+      }
+    },
+    "OffensiveCoordinator": {
+      "offers": 114,
+      "uniqueCandidates": 49,
+      "nextCheckpointWinners": 18,
+      "correlations": {
+        "gradeToTeamInterest": 0.876,
+        "scoreToTeamInterest": 0.8485,
+        "levelToTeamInterest": 0.7152,
+        "gradeToExpectedProgramPoints": 0.9692,
+        "scoreToExpectedProgramPoints": 0.9902,
+        "levelToExpectedProgramPoints": 0.9501
+      },
+      "winnerComparison": {
+        "averageWinnerGradeIndex": 1.5556,
+        "averageOtherGradeIndex": 1.4688,
+        "averageWinnerScore": 41.3889,
+        "averageOtherScore": 33.625,
+        "averageWinnerTeamInterest": 2.8333,
+        "averageOtherTeamInterest": 1.6979
+      }
+    },
+    "DefensiveCoordinator": {
+      "offers": 132,
+      "uniqueCandidates": 44,
+      "nextCheckpointWinners": 22,
+      "correlations": {
+        "gradeToTeamInterest": 0.6987,
+        "scoreToTeamInterest": 0.8593,
+        "levelToTeamInterest": 0.7877,
+        "gradeToExpectedProgramPoints": 0.9083,
+        "scoreToExpectedProgramPoints": 0.9907,
+        "levelToExpectedProgramPoints": 0.8549
+      },
+      "winnerComparison": {
+        "averageWinnerGradeIndex": 1.1818,
+        "averageOtherGradeIndex": 1.1091,
+        "averageWinnerScore": 26.2273,
+        "averageOtherScore": 9.9545,
+        "averageWinnerTeamInterest": 1.5,
+        "averageOtherTeamInterest": 1.2182
+      }
+    }
+  },
+  "schemaEvidence": {
+    "declaredSchema": {
+      "major": 486,
+      "minor": 1,
+      "gameYear": 27
+    },
+    "staffHiringTuningFields": [
+      "ACAwardsContractProgramPointsModifier",
+      "BetterJobInterestModifier",
+      "CoachInterestThreshold",
+      "CoachLevelToContractProgramPointsSpline",
+      "CoachPrestigePointsSpline",
+      "CoachPrestigeScoreGradeSpline",
+      "CoachPrestigeStaticWeeks",
+      "CoachPrestigeToContractProgramPointsSpline",
+      "ContractLengthInterestMultiplier",
+      "ContractProgramPointsNCWonModifier",
+      "CoordinatorEarnedPoints_Multiplier",
+      "CoordinatorExpectedPoints_Multiplier",
+      "CoordinatorLeaveChanceBonus",
+      "CoordinatorPrestigeScoreMultiplier",
+      "CoordinatorRoleModifier",
+      "CoordPrestigePenalty",
+      "HCAwardsContractProgramPointsModifier",
+      "InPlayOffsContractProgramPointsModifier",
+      "InterestedThresholdForOffer",
+      "JobInterestCutOff",
+      "JobInterestNormalizer",
+      "JobSecurityCoachPrestigeSpline",
+      "JobSecurityToInterestPointsSpline",
+      "LeaveForNFLPrestigeOddsThreshold",
+      "MaxCandidatePrestigePoints",
+      "MaxJobSecurity",
+      "MaxProgramPointsOffer",
+      "PrestigeCompareScoreSpline",
+      "PrestigeCompareScoreSplineBuffer",
+      "PrestigeInterestPointsSpline",
+      "ProgramPointsContractLengthModifier",
+      "ProgramPointsToCoachPointsSpline",
+      "ProgramPointsToInterestPercentSpline",
+      "RolePrestigeDiffToProgramPointsPctSpline",
+      "SchoolPrestigeToContractPointsSpline",
+      "TeamPrestigeCoachPrestigeSpline",
+      "TeamPrestigeToInterestPointsSpline",
+      "UserExpressedInterestScoreBonus",
+      "UserPrestigeBonus",
+      "WorseJobInterestModifier"
+    ],
+    "mySchoolCoachPrestigeTuningFields": [
+      "CoachPrestigeRankToGradeRange",
+      "DCPerformanceWeight",
+      "HCPerformanceWeight",
+      "OCPerformanceWeight"
+    ]
+  }
+}
