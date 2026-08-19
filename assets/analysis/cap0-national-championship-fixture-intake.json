@@ -1,0 +1,62 @@
+{
+  "experimentId": "CAP-0",
+  "evaluatedAt": "2026-08-17",
+  "status": "intake-validation-complete",
+  "checkpoint": {
+    "canonicalName": "CFP National Championship week",
+    "currentStage": "NFLSeason",
+    "currentWeekType": "NationalChampionship",
+    "currentWeek": 20,
+    "currentSeasonYear": 2026,
+    "isCarouselPeriodActive": true,
+    "legacyResearchLabel": "BW3"
+  },
+  "schema": {
+    "gameYear": 27,
+    "major": 833,
+    "minor": 0
+  },
+  "fixtures": [
+    {
+      "file": "DYNASTY-TEST1NATCHAMP",
+      "archivePath": "assets/ref_saves/capacity-policy/cap0-sources/DYNASTY-TEST1NATCHAMP",
+      "length": 9646981,
+      "sha256": "FB090BE76CCE6D51E24CEC3FCB66F3AABF66B124FAADE8CD03565CFACE50E4A2",
+      "jobOpenings": { "capacity": 408, "active": 186, "minimumRow": 0, "maximumRow": 185, "contiguousFromZero": true, "nextRecordToUse": 186, "emptyRecordMapSize": 222 },
+      "offerArrays": { "capacity": 408, "active": 186, "nextRecordToUse": 186, "emptyRecordMapSize": 222 },
+      "coachTransactions": { "capacity": 300, "active": 112, "minimumRow": 0, "maximumRow": 111, "nextRecordToUse": 112, "emptyRecordMapSize": 188 },
+      "indexedStaffMoves": 111,
+      "contractOffers": { "activeRows": 1, "pendingRows": 1, "realPendingOffers": 0, "populatedOfferArrays": 0 },
+      "teams": { "capacity": 143, "active": 143 },
+      "coaches": { "capacity": 632, "active": 497 }
+    },
+    {
+      "file": "DYNASTY-TEST2NATCHAMP",
+      "archivePath": "assets/ref_saves/capacity-policy/cap0-sources/DYNASTY-TEST2NATCHAMP",
+      "length": 9646981,
+      "sha256": "2D0C17DA5F1240BE4C28342846AC2A84BF99955046D0CFD0E18F8F4F1D755636",
+      "jobOpenings": { "capacity": 408, "active": 190, "minimumRow": 0, "maximumRow": 189, "contiguousFromZero": true, "nextRecordToUse": 190, "emptyRecordMapSize": 218 },
+      "offerArrays": { "capacity": 408, "active": 190, "nextRecordToUse": 190, "emptyRecordMapSize": 218 },
+      "coachTransactions": { "capacity": 300, "active": 110, "minimumRow": 0, "maximumRow": 109, "nextRecordToUse": 110, "emptyRecordMapSize": 190 },
+      "indexedStaffMoves": 109,
+      "contractOffers": { "activeRows": 1, "pendingRows": 1, "realPendingOffers": 0, "populatedOfferArrays": 0 },
+      "teams": { "capacity": 143, "active": 143 },
+      "coaches": { "capacity": 632, "active": 497 }
+    },
+    {
+      "file": "DYNASTY-TEST3NATCHAMP",
+      "archivePath": "assets/ref_saves/capacity-policy/cap0-sources/DYNASTY-TEST3NATCHAMP",
+      "length": 9646981,
+      "sha256": "05C21801FD502657BC691597C8E4C3833B677D0EF21757A98FA131B4391E4365",
+      "jobOpenings": { "capacity": 408, "active": 187, "minimumRow": 0, "maximumRow": 186, "contiguousFromZero": true, "nextRecordToUse": 187, "emptyRecordMapSize": 221 },
+      "offerArrays": { "capacity": 408, "active": 187, "nextRecordToUse": 187, "emptyRecordMapSize": 221 },
+      "coachTransactions": { "capacity": 300, "active": 113, "minimumRow": 0, "maximumRow": 112, "nextRecordToUse": 113, "emptyRecordMapSize": 187 },
+      "indexedStaffMoves": 112,
+      "contractOffers": { "activeRows": 1, "pendingRows": 1, "realPendingOffers": 0, "populatedOfferArrays": 0 },
+      "teams": { "capacity": 143, "active": 143 },
+      "coaches": { "capacity": 632, "active": 497 }
+    }
+  ],
+  "result": "The three sources are valid, distinct National Championship-week saves, and native staged opening and indexed Staff Moves counts vary by save. This intake does not establish a safe mutation ceiling.",
+  "implementationConsequence": "Inventory topology per save; do not hard-code 192 openings or 124 indexed Staff Moves as universally available."
+}

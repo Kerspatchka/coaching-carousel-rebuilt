@@ -1,5 +1,5 @@
 /*
- * Prepare the three-arm Bowl Week 3 SelectedCoach authority experiment.
+ * Prepare the three-arm CFP National Championship week SelectedCoach authority experiment.
  *
  * Preview (default):
  *   node scripts/prepare-bw3-selected-coach-swap.js
@@ -210,8 +210,8 @@ function validateSource(state) {
   const populatedArrays = offerArrays.records.filter((record) => record && !record.isEmpty && getFields(record)
     .filter((name) => /^StaffPersonContractOffer\d+$/i.test(name))
     .some((name) => record[name] && record[name] !== EMPTY_REF));
-  assert(realOffers.length === 0, `Expected no real BW3 offers, found ${realOffers.length}.`);
-  assert(populatedArrays.length === 0, `Expected no populated BW3 offer arrays, found ${populatedArrays.length}.`);
+  assert(realOffers.length === 0, `Expected no real National Championship-week offers, found ${realOffers.length}.`);
+  assert(populatedArrays.length === 0, `Expected no populated National Championship-week offer arrays, found ${populatedArrays.length}.`);
 
   const selectedRefs = new Map();
   for (const opening of activeOpenings) {
@@ -310,7 +310,7 @@ async function main() {
   const schemaPath = process.env.CCR_SCHEMA_PATH ? path.resolve(process.env.CCR_SCHEMA_PATH) : '';
   assert(fs.existsSync(options.source), `Source save not found: ${options.source}`);
   assert(schemaPath && fs.existsSync(schemaPath), 'Set CCR_SCHEMA_PATH to the tested CFB27_833_0.gz schema.');
-  assert(sha256(options.source) === EXPECTED_SOURCE_SHA256, 'Source BW3 fixture hash does not match the tested fixture.');
+  assert(sha256(options.source) === EXPECTED_SOURCE_SHA256, 'Source National Championship-week fixture hash does not match the tested fixture.');
 
   const sourceState = await loadExperimentState(options.source, schemaPath);
   const sourceValidation = validateSource(sourceState);
@@ -385,7 +385,7 @@ async function main() {
       testFocusedSemanticDifferences: testDifferences,
       status: 'passed'
     },
-    nextAction: 'Copy each DYNASTY-* arm into the game save directory, advance exactly once from Bowl Week 3 to End of Season, and save each result under a distinct EOS name.'
+    nextAction: 'Copy each DYNASTY-* arm into the game save directory, advance exactly once from CFP National Championship week to End of Season, and save each result under a distinct EOS name.'
   };
   fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
   process.stdout.write(`${JSON.stringify(manifest, null, 2)}\n`);

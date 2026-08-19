@@ -1,0 +1,72 @@
+{
+  "experimentId": "CAP-R",
+  "evaluatedAt": "2026-08-18",
+  "status": "validated by CAP-1B EOS pass",
+  "ownerTable": {
+    "name": "JobOpening[]",
+    "uniqueId": 2358764614,
+    "tableIdInEvaluatedFixtures": 4727,
+    "recordCapacity": 1,
+    "referenceSlotCount": 408,
+    "recordRow": 0
+  },
+  "fixtureObservations": [
+    {
+      "fixture": "DYNASTY-TEST1NATCHAMP",
+      "activeJobOpenings": 186,
+      "jobOpeningOwnerArraySize": 186
+    },
+    {
+      "fixture": "DYNASTY-TEST2NATCHAMP",
+      "activeJobOpenings": 190,
+      "jobOpeningOwnerArraySize": 190
+    },
+    {
+      "fixture": "DYNASTY-TEST3NATCHAMP",
+      "activeJobOpenings": 187,
+      "jobOpeningOwnerArraySize": 187
+    }
+  ],
+  "cap1TreatmentObservation": {
+    "fixture": "DYNASTY-CCRCAP1T1",
+    "activatedJobOpeningRow": 186,
+    "jobOpeningOwnerArraySize": 186,
+    "newRowReferencedByJobOpeningOwnerArray": false,
+    "pairedStaffPersonContractOfferArrayReferencedByJobOpening": true,
+    "newTransactionReferencedByTransactionHistoryEntryArray": true
+  },
+  "finding": "CAP-1 synchronized the physical JobOpening row, paired offer-array owner, Coach state, and indexed Staff Moves transaction, but did not append the new JobOpening reference to JobOpening[] or increase its logical array size. Native opening rows are referenced by JobOpening[]. The CAP-1 failure therefore does not prove a fixed save-specific assignment pool.",
+  "currentHypothesis": "The EOS assignment resolver enumerates the logical JobOpening[] owner array, while physical cleanup scans the JobOpening table. Growing JobOpening[] from the native size by one and inserting a reference to the newly activated row may make the new assignment authoritative.",
+  "representationCeiling": {
+    "jobOpeningPhysicalRows": 408,
+    "jobOpeningOwnerReferenceSlots": 408,
+    "meaning": "Expansion through the existing schema may be possible up to 408 simultaneously registered opening events. Exceeding 408 would require a separate, unproven table/schema resizing technique."
+  },
+  "publicSourceReview": [
+    {
+      "repository": "bep713/madden-franchise",
+      "revision": "ab48706d0e0f1cc5864b6f5f9a1738821f32bd5a",
+      "learning": "Provides physical empty-row bookkeeping and reverse-reference inspection, but no carousel-specific resolver expansion."
+    },
+    {
+      "repository": "bep713/madden-franchise-editor",
+      "revision": "94b09375549e7c931e2782818c0724d5aed361c3",
+      "learning": "Can activate rows within existing capacity and recalculate empty-row references; table import is explicitly trimmed to existing record capacity."
+    },
+    {
+      "repository": "elrey-430/cfb27-roster-generator",
+      "revision": "5be1baad39a2ff366d0f15193e354bb0c0911734",
+      "learning": "Its native writer edits populated records and skips empty records; it does not demonstrate logical owner-array growth."
+    }
+  ],
+  "nextExperiment": {
+    "id": "CAP-1B",
+    "treatment": "Repeat one CAP-1 cascade while also setting the next JobOpening[] reference slot and incrementing its logical array size by one.",
+    "status": "passed",
+    "artifact": "assets/experiments/capacity-policy/cap1b-owner-array-expansion/DYNASTY-CCRCAP1B",
+    "sha256": "1131BB5323DE0416F0877ACCAED519878986C97B096F8074F51EFE0EEB91F20F",
+    "humanValidationRequired": false,
+    "eosEvaluation": "assets/experiments/capacity-policy/cap1b-owner-array-expansion/eos-evaluation.json",
+    "validatedConsequence": "Registering opening row 186 in JobOpening[] and growing the logical size from 186 to 187 committed the full declared cascade with coherent employment, history, topology cleanup, and named/autosave agreement."
+  }
+}

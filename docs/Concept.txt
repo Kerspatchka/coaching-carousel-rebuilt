@@ -1,0 +1,859 @@
+COACHING CAROUSEL REBUILT — PRODUCT CONCEPT
+
+Document status: Phase 2 working concept
+Last updated: 2026-08-18
+
+This document records product decisions only after they have been discussed and approved. Unresolved rules are identified explicitly rather than filled in by assumption.
+
+Terminology correction: CCR's supported interception checkpoint is CFP National Championship week (`SeasonInfo.CurrentWeekType = NationalChampionship`, week 20), not Bowl Week 3. Legacy filenames, experiment IDs, script names, link targets, and machine evidence containing `bw3` remain unchanged only to preserve research traceability.
+
+
+1. CORE EXPERIENCE
+
+Coaching Carousel Rebuilt (CCR) runs a complete coaching carousel outside EA Sports College Football 27. The carousel is turn-based within each major part. The user manually advances each turn so that departures, searches, offers, decisions, hires, and resulting vacancies can be followed as an unfolding story rather than shown only as a final staff list.
+
+The experience is organized into three main parts:
+
+Part 1 — Departures and Initial Market Formation
+
+- Coaches leave the dynasty universe for NFL opportunities.
+- Coaches retire.
+- Unexpected events can remove coaches from their positions.
+- Coaches can be fired unconditionally for performance so poor that the school changes direction regardless of the available market.
+- Schools can identify additional incumbents as vulnerable for possible replacement during Part 2.
+- These decisions form the initial set of vacancies.
+
+Part 2 — The Coaching Market
+
+- Schools consider HC, OC, and DC changes based on contract performance and the realistic alternatives available.
+- Schools evaluate candidates and make offers.
+- Coaches receiving offers consider their available options.
+- Accepted offers create new openings whenever an employed coach leaves another school.
+- New vacancies enter the active turn queue and cause the carousel to cascade.
+- The market repeats until every HC, OC, and DC position for the upcoming season is filled.
+- The user-controlled team's applications, offers, coordinator hiring, and other interactive decisions will be designed when the Part 2 flow is discussed. Those rules are not yet defined here.
+
+Part 3 — Review and Story Building
+
+- The user reviews every departure, firing, retention, promotion, hire, and vacancy chain.
+- CCR highlights the major stories created by the carousel for the upcoming season.
+- Exact recap, review, and presentation rules remain to be designed.
+
+CCR will include a configuration/settings file containing sliders and other controls for the simulation rules. Users will be able to tune the behavior of the carousel, including event frequency and the relative influence of relevant factors. Exact settings will be specified alongside each completed rule system.
+
+
+2. HEAD-COACH DEPARTURES AND INTERNAL SUCCESSION
+
+When a head coach retires, leaves for an NFL opportunity, or accepts another college job, the school conducts an Internal Succession Review before opening the job to outside candidates.
+
+Internal Succession Review:
+
+1. The school evaluates its OC and DC independently as possible HC successors.
+2. The school may rank one coordinator ahead of the other and approach its preferred candidate first.
+3. An internal promotion is an offer, not an automatic assignment. The coordinator may accept or decline after considering other opportunities.
+4. If the preferred coordinator declines, the school may consider the other coordinator.
+5. If the OC is promoted to HC, the DC remains with the school and the OC position becomes vacant.
+6. If the DC is promoted to HC, the OC remains with the school and the DC position becomes vacant.
+7. The coordinator who remains is retained by the school but is not locked out of the wider market and may later accept another job.
+8. If neither coordinator is selected or accepts the HC promotion, the school Cleans House. Both coordinators are released into the coaching pool, and the HC, OC, and DC positions become vacant.
+
+"Cleans House" is the official CCR phrase for this outcome.
+
+Coordinators released because the school Cleans House are recorded as Staff Not Retained rather than as performance firings unless they were independently fired for performance.
+
+If a head coach is fired for performance, the school does not conduct an Internal Succession Review. It automatically Cleans House: the HC, OC, and DC are released and all three positions become vacant.
+
+
+3. NFL DEPARTURES
+
+NFL departures are rare, seeded, explainable events. NFL poaching should target successful college coordinators more frequently than college head coaches.
+
+Relative frequency:
+
+- OC/DC to NFL: the normal form of NFL poaching represented by CCR.
+- HC to NFL: a rarer, headline-level event generally reserved for highly attractive candidates.
+- Because CFB27 represents only HC, OC, and DC jobs, CCR records the destination generically as an NFL opportunity. It does not invent a specific NFL team or job title.
+
+Coordinator NFL appeal can consider:
+
+- recent performance;
+- age and career trajectory;
+- coach level and prestige;
+- career resume;
+- scheme or specialty fit only when supported by reliable save data.
+
+Head-coach NFL appeal can consider:
+
+- exceptional recent success;
+- sustained career success;
+- coach level and prestige;
+- age and career trajectory;
+- program and competitive context;
+- a substantially lower base departure rate than coordinators.
+
+Age should create a plausible career window rather than making the youngest coach automatically the most attractive. A rising young coordinator may be a stronger NFL candidate than an older, more prestigious college HC.
+
+Prior NFL experience must not affect the simulation unless it is available as reliable current-save evidence or later introduced as an explicit, visibly labeled configuration input. CCR-generated fictional lore cannot secretly affect NFL eligibility or probability.
+
+Planned NFL configuration controls include:
+
+- coordinator NFL departure frequency;
+- head-coach NFL departure frequency;
+- age influence;
+- recent-performance influence;
+- prestige/resume influence;
+- maximum total NFL departures per season.
+
+Exact probabilities and defaults remain to be calibrated. The default behavior should ordinarily create more coordinator departures than HC departures, and an NFL-bound HC should remain a notable event.
+
+Staff consequences:
+
+- If an OC or DC leaves for the NFL, only that coordinator position becomes vacant.
+- If an HC leaves for the NFL, the school conducts an Internal Succession Review.
+
+User-controlled coach handling within NFL departures is deferred until the broader user-interaction rules are designed.
+
+
+4. RETIREMENTS
+
+Retirement is a seeded, explainable departure from the dynasty universe. Age is the dominant factor.
+
+Core retirement rules:
+
+- Coaches age 60 or younger have a 0% retirement chance.
+- Retirement probability begins at age 61 and increases progressively with every additional year.
+- A losing season increases retirement likelihood.
+- An expiring contract can increase retirement likelihood slightly.
+- Multiple contract years remaining can decrease retirement likelihood slightly.
+- A longer coaching career can increase retirement likelihood modestly.
+- HCs, OCs, and DCs are all eligible once they meet the age requirement.
+- NFL departures are evaluated first; a coach can leave for only one reason.
+- There is no mandatory retirement age unless the user enables one through configuration.
+
+Retiring on Top:
+
+- Retiring on Top is exclusive to a coach whose team won the National Championship that season.
+- No other winning season, conference championship, bowl victory, playoff appearance, or runner-up finish can trigger this special retirement modifier.
+- The modifier applies only to an otherwise age-eligible older coach and remains subordinate to the age-based retirement model.
+
+Staff consequences:
+
+- If an OC or DC retires, only that coordinator position becomes vacant.
+- If an HC retires, the school conducts an Internal Succession Review.
+
+Exact age-curve percentages, performance modifiers, contract modifiers, and configuration defaults remain to be calibrated.
+
+
+5. UNEXPECTED SCENARIOS
+
+"Unexpected Scenarios" is the official name of CCR's fictional random-event system. Each individual event is presented as an Unexpected Scenario.
+
+Unexpected Scenarios are seeded, explainable events intended to create occasional memorable disruption without overwhelming the ordinary performance and hiring systems. They are explicitly part of an unofficial fan-made simulation. CCR may create rich fictional scenarios involving any coach, including real-world coaches represented in the save, provided the interface clearly and consistently identifies the material as fictional simulation content rather than real information or native dynasty history.
+
+Seasonal frequency:
+
+- CCR first determines a small seasonal event allowance and then selects eligible coaches through weighted seeded RNG.
+- The default should produce zero or one scenario in most seasons, occasionally two, with a default maximum of two.
+- The system must not apply a near-5% independent roll to every coach because that could create an implausibly large number of events across the full coaching population.
+- Exact frequencies and weights remain to be calibrated.
+
+Approved scenario categories:
+
+1. Unexpected Resignation
+   - The coach unexpectedly steps away from college coaching.
+   - An HC departure triggers an Internal Succession Review.
+   - An OC/DC departure opens only that coordinator position.
+
+2. Conflict with the Athletic Director
+   - Primarily an HC scenario.
+   - Results in a mutual separation or resignation.
+   - The school conducts an Internal Succession Review rather than automatically Cleaning House.
+
+3. Recruiting or Compliance Violation
+   - Forces the affected coach out.
+   - Can affect an HC, OC, or DC.
+   - Scenario severity determines whether only the affected coach leaves or the school Cleans House.
+
+4. Personal-Conduct Violation
+   - Forces the affected coach out.
+   - An HC departure normally triggers an Internal Succession Review unless the scenario is explicitly program-wide.
+   - An OC/DC departure normally opens only that coordinator position.
+
+5. Program-Wide Scandal
+   - An exceptionally rare and highly disruptive scenario, primarily associated with the HC.
+   - The school automatically Cleans House.
+
+Every scenario has an explicit staff-consequence level:
+
+- Coach Removed: only the affected coach exits. If the affected coach is the HC, the school conducts an Internal Succession Review.
+- Cleans House: the entire HC/OC/DC staff is released and all three positions become vacant.
+
+User-controlled HC protection:
+
+- If an Unexpected Scenario would remove a user-controlled HC, CCR pauses before applying it.
+- The user may accept the scenario or nullify it.
+- Nullifying the scenario consumes that event; CCR does not reroll it against another coach.
+- The choice is recorded in the session audit because user choices are part of the reproducible carousel result.
+- A nullified scenario does not appear as an actual event in the final carousel story.
+
+Visible settings requirement:
+
+- Unexpected Scenario controls must be clearly visible in the tool's Settings menu and cannot exist only as hidden configuration-file values.
+- The visible settings include a master on/off control, exact frequency and probability controls, maximum scenarios per season, category/severity weights, HC-versus-coordinator targeting, program-wide-scenario frequency, and user-controlled-HC protection.
+- These values appear directly in the normal Settings interface under the shared configuration schema; Unexpected Scenarios do not add a preset or advanced/custom layer.
+
+
+6. PERFORMANCE-BASED STAFF EVALUATION
+
+Every employed HC, OC, and DC is evaluated into one of three Part 1 statuses:
+
+- Fire: performance is unacceptable, and the coach is dismissed regardless of which replacements are available.
+- Vulnerable: performance is disappointing but does not justify immediate dismissal; the incumbent remains employed while the school considers credible upgrades during Part 2.
+- Secure: the school does not initiate a replacement search, although the coach can still voluntarily accept another opportunity if eligible.
+
+Performance must be evaluated relative to the school and role rather than from raw wins alone. The approved evaluation dimensions are:
+
+- current-season results relative to program expectations;
+- the native three-year contract-performance window;
+- career and current-school resume;
+- native job-security state;
+- tenure and new-hire grace;
+- program prestige and expected standard;
+- role-specific performance for OC and DC.
+
+Consequences:
+
+- An HC classified as Fire is dismissed in Part 1 and the school automatically Cleans House.
+- An OC or DC classified as Fire while the HC remains is dismissed individually; only that coordinator position opens.
+- A Vulnerable coach remains in place unless the school completes an approved replacement during Part 2.
+- A Secure coach is not shopped by the current school but remains eligible to consider other jobs.
+
+Newly hired coaches receive reasonable grace unless performance is catastrophic. The exact grace period, catastrophic-performance override, score construction, thresholds, and user-controlled-coach protections remain to be approved.
+
+Approved Job Evaluation Score:
+
+CCR displays an explainable Job Evaluation Score from 0 through 100. Higher scores represent a stronger case for retention. Every component and reason code is visible to the user.
+
+HC weighting:
+
+- 35 points: current results versus contract expectation;
+- 20 points: three-year contract-performance trend;
+- 15 points: native job-security state and movement;
+- 10 points: program-adjusted season performance;
+- 10 points: tenure and new-hire grace;
+- 10 points: career and current-school credibility.
+
+OC/DC weighting:
+
+- 35 points: unit performance relative to unit talent;
+- 20 points: current Team and contract performance;
+- 15 points: three-year contract-performance trend;
+- 10 points: native job-security state;
+- 10 points: Team record;
+- 5 points: tenure and new-hire grace;
+- 5 points: career and prestige credibility.
+
+Coordinator unit overachievement is calculated from the coordinator's linked Team context:
+
+  Unit Overachievement = unit performance percentile - unit talent percentile
+
+OC evaluation uses offensive rank/scoring relative to offensive roster strength. DC evaluation uses defensive rank/scoring defense relative to defensive roster strength.
+
+Approved initial classification thresholds:
+
+- 0-24: Fire;
+- 25-44: Vulnerable;
+- 45-100: Secure.
+
+A Fire classification additionally requires at least two independent primary failure signals. A single questionable or duplicated native signal cannot cause an unconditional dismissal. Primary failure signals can include Hot Seat or extremely low security, major failure against the contract expectation, catastrophic program-adjusted record, bottom-tier unit performance, severe unit underachievement, or a sustained negative performance trend.
+
+These weights and thresholds are the approved initial model. Calibration may adjust their numerical defaults only through an explicit later Phase 2 decision supported by full-fixture output and turnover review.
+
+The CFP National Championship week evidence supports the following native inputs, subject to the role-specific limitations documented below:
+
+- current-season Wins and Losses;
+- `EarnedContractPoints_ThisYear`, `EarnedContractPoints_LastYear`, and `EarnedContractPoints_TwoYearsAgo`;
+- current and season-start job-security state;
+- contract expectation/progress and contract term;
+- `SeasonsWithTeam` and `YearsCoaching`;
+- Coach prestige grade/score and level;
+- aggregate career and current-school resume;
+- linked Team prestige, rankings, ratings, scoring, and role-specific offensive or defensive rank.
+
+Important evidence constraints:
+
+- The current-year earned contract points are identical across the three staff members at 137 of 138 active programs in the analyzed CFP National Championship week fixture. They describe shared Team results and cannot independently distinguish OC performance from DC performance.
+- Coach-level season/career points-for and points-against are populated for HCs but are zero for every active OC and DC in the fixture. Coordinator evaluation must use linked Team offensive/defensive data instead.
+- Missing older contract-point values cannot automatically be interpreted as poor performance; zero can represent unavailable history for a newer coach.
+- The CFP National Championship week save does not contain a complete year-by-year employment or unit-performance history.
+
+
+7. TURNOVER CALIBRATION
+
+CCR uses real-world FBS staff-change totals as broad calibration bands:
+
+- HC: 22-30 changed seats in a normal season;
+- OC: 45-55 changed seats in a normal season;
+- DC: 45-55 changed seats in a normal season.
+
+These are calibration bands, not hard yearly quotas. The final totals must emerge from causal departures, firings, promotions, accepted offers, HC staff decisions, NFL moves, and vacancy cascades. Calibration is evaluated across many seeds; CCR does not manufacture arbitrary vacancies merely to hit an exact total.
+
+HC turnover receives explicit attention because insufficient HC movement is a common criticism of the native carousel. The normal CCR configuration should not routinely finish far below the approved HC band without an explainable unusually quiet season.
+
+Extensions do not count as staff changes because the seat's occupant remains the same. They are reported separately.
+
+
+8. CONTRACT DECISIONS AND EXTENSIONS
+
+CFB27 represents an accepted renewal as an explicit resolved carousel event rather than an invisible contract edit. CCR therefore includes a Contract Decisions turn after departures and performance evaluation but before the open market.
+
+Expiring contracts:
+
+- Extend: the school offers a new contract term and program-point amount.
+- Do Not Renew: the incumbent enters the coaching pool and the position becomes vacant.
+- Offer Declined: the incumbent rejects the extension, enters the coaching pool, and the position becomes vacant.
+
+HC consequences:
+
+- If the school does not renew the HC for performance or direction reasons, the school Cleans House.
+- If the HC rejects an extension and voluntarily leaves, the school conducts an Internal Succession Review.
+- If the HC accepts, the staff remains intact at that moment, although coordinators remain eligible for other opportunities.
+
+Coordinator consequences:
+
+- An OC/DC nonrenewal or declined expiring-contract offer opens only that coordinator position.
+
+Proactive extensions:
+
+- Schools may extend a successful Secure coach before the final contract year.
+- Eligibility considers Job Evaluation Score, remaining contract years, poaching risk, and whether the coach recently received an extension.
+- A proactive extension can improve compensation and commitment but does not make the coach impossible to hire away.
+- An accepted proactive extension is recorded as an extension, not staff turnover.
+
+User-controlled school:
+
+- The user explicitly decides whether to extend each coordinator.
+- The user chooses the offered contract length and program-point amount.
+- The coordinator evaluates the offer using the same bilateral offer model as a CPU-controlled coach.
+- A rejected expiring-contract offer creates a vacancy.
+
+Native-write capacity:
+
+- Accepted extensions consume in-range JobOpening event capacity even though they are not movements.
+- The game's existing schema provides 408 physical `JobOpening` rows and 408 matching `JobOpening[]` owner slots. CCR will respect this native capacity and will not attempt to resize the table or force a larger limit.
+- A newly activated opening must also be registered in `JobOpening[]` and included in that array's logical size. CAP-1B proved that synchronizing this owner array expands a save from 186 to 187 resolved opening events; the complete declared staff landscape and Staff Moves ledger committed coherently at EOS.
+- CAP-2 simultaneously filled all 408 opening/owner/offer positions and all 299 indexed Staff Moves positions and crashed, but that composition included unsupported targets. CAP-2I7 isolated the opening axis and passed with all 408 opening/offer/owner positions filled while Staff Moves remained at its native 111 entries. The full physical opening capacity is therefore usable for the tested schema-833.0 fixture.
+- CAP-2T1 advanced at the combined maximum of 408 openings and 299 indexed movements, consumed all opening topology, and preserved every Staff Moves entry. Three placeholder-Team coordinators with one contract year remaining nevertheless expired to `FreeAgent` instead of receiving coherent destination employment records. CAP-2T2 removed those unsupported movement candidates, and CAP-2T2 through CAP-2T4 then passed every assignment, employment, Staff Moves, topology, and named/autosave check at the same simultaneous maximum across all three fixtures.
+- CAP-2R1 proved that a newly added same-Coach `ContractEnding` retention can resolve coherently. CAP-2I1 proved that placeholder-Team HC retention is unsafe; CCR excludes those targets. CAP-2T1 additionally shows that placeholder-Team Coaches must not be used as movement candidates until their contract transition is separately validated. Corrected supported opening compositions passed through full 408-position saturation, so the earlier failures containing unsupported targets are not numeric-ceiling evidence.
+- Three valid National Championship-week fixtures begin with 186, 190, and 187 registered openings, with 111, 109, and 112 indexed Staff Moves entries. Those starting counts are not hard assignment ceilings. CAP-2T2, CAP-2T3, and CAP-2T4 validate the literal 408-opening/299-movement maximum across all three fixtures. For supported schema-833.0 saves, CCR therefore needs no arbitrary safety reserve below either limit; plans above either limit are rejected rather than resizing the game tables.
+- Capacity hard testing is complete for the validated event shapes and schema 833.0. Regression tests must continue to verify successful write, in-game advance, final staff assignments, Staff Moves history, contract results, and save stability whenever the compiler, schema, game version, or supported event shapes change.
+- Required expiring-contract outcomes and proactive extensions must be treated separately when the final event budget is allocated.
+- CCR will not impose routine event throttling, a safety margin, an extension cap, or Market Review reduction below the validated 408-opening/299-movement limits.
+- If a generated carousel exceeds 408 opening events, proactive extensions are the first scope candidate to reduce because they consume capacity without creating turnover. Exact reduction priority remains a separate product-policy decision rather than an assumed compiler behavior.
+- Any finalized carousel that exceeds 408 openings or 299 indexed movements must be rejected or brought within the limits through a separately approved policy; CCR will not enlarge the game's tables.
+
+9. PART 2 MARKET REVIEW OF VULNERABLE INCUMBENTS
+
+Part 1 unconditionally dismisses coaches classified as Fire. During Part 2, a school may consider replacing a Vulnerable incumbent based on the quality and attainability of the available market. This conditional process is called a Market Review.
+
+- A Fire coach has already been dismissed and does not enter Market Review.
+- A Secure coach cannot be replaced merely because an attractive candidate becomes available.
+- A Vulnerable coach remains employed while the school quietly evaluates potential replacements.
+- The school constructs a shortlist of realistically attainable candidates.
+- A candidate must pass both a Program Qualification test and an Upgrade Margin test.
+- Program Qualification asks whether the candidate is good enough for that specific school and role.
+- Upgrade Margin asks whether the candidate is sufficiently better than the incumbent to justify disrupting the staff. A deeply Vulnerable incumbent requires a smaller upgrade than a coach near the top of the Vulnerable range.
+- Candidate interest must be strong enough for the coach to accept the job; candidate quality alone cannot trigger the replacement.
+- The incumbent is not formally dismissed until the selected replacement accepts the offer.
+- If all qualifying candidates decline, become unavailable, or fail the upgrade test, the incumbent is retained.
+
+This process prevents a school from dismissing a merely disappointing coach, missing on its preferred candidates, and being forced into a worse hire. It also limits unnecessary vacancy growth while preserving market-driven turnover.
+
+When an HC is replaced through Market Review, the dismissal is a performance/direction decision and triggers the approved Cleans House rule. The handling of incumbent coordinators by an incoming outside HC remains a separate design topic.
+
+
+10. CANDIDATE ELIGIBILITY AND SHORTLISTS
+
+Candidate selection is divided into two stages:
+
+1. Eligibility determines whether a coach can realistically take that type of job.
+2. Shortlisting ranks the eligible coaches whom the school actually prefers.
+
+HC candidate pools may include:
+
+- unemployed former HCs;
+- unemployed coordinators qualified for promotion;
+- employed OCs and DCs seeking an HC promotion;
+- employed HCs considering a sufficiently attractive move; and
+- the school's own OC and DC during Internal Succession Review.
+
+Coordinator candidate pools may include:
+
+- unemployed coordinators;
+- employed coordinators making an upward move;
+- employed coordinators making a clearly beneficial lateral move;
+- former HCs willing to return as coordinators; and
+- eligible unused or generic coaches when the established market becomes thin.
+
+The following coaches or moves are initially ineligible:
+
+- coaches who retired, entered the NFL, or were otherwise removed from the dynasty universe;
+- coaches who have already accepted another job during the current carousel;
+- direct OC-to-DC or DC-to-OC switches unless reliable save evidence establishes qualification for both roles;
+- implausibly large promotions without exceptional performance or credentials;
+- same-role lateral moves that provide no meaningful career benefit; and
+- any second job change by the same coach during one carousel.
+
+Each school creates a short ordered list rather than treating every eligible coach equally. The initial design uses approximately five candidates when the market supports it:
+
+- one ambitious or high-end target;
+- two realistic primary targets;
+- one safer fallback; and
+- one emergency candidate.
+
+Shortlist preference considers Coach performance and prestige, career and prior HC experience, role-specific unit performance, the relative prestige of the current and offered jobs, whether the move is a promotion/lateral move/step backward, offered contract terms and program points, school urgency and risk tolerance, and any reliable scheme, alma-mater, or regional information available in the save.
+
+Eligibility is deterministic for a given carousel state. School preference and coach interest may use controlled seeded variation so similar schools can value candidates differently without generating nonsensical options.
+
+During an offer round, an eligible coach may receive multiple simultaneous offers. The coach then compares every offer with the option to remain in the current job. Once a coach accepts an offer, that coach is unavailable for the rest of the carousel and cannot change jobs a second time.
+
+Legacy Archetypes:
+
+- CCR adds character to the otherwise generic unused-coach pool through fictional Legacy Archetypes that evoke recognizable historical coaching philosophies without claiming to be the real coaches.
+- Examples include a Paul Johnson-inspired option specialist and a Mike Leach-inspired Air Raid innovator.
+- Each homage should express its inspiration through fictional identity, background, play style, scheme, tendencies, strengths, and career story rather than copying a real coach's identity.
+- Legacy Archetypes participate in the normal eligibility, qualification, school-interest, and coach-interest systems; they are flavorful candidates, not guaranteed hires or automatic elite coaches.
+- Their implementation is limited to identity, scheme, and biography attributes that can be safely and reliably represented in the save and tool.
+
+
+11. SCHOOL INTEREST AND COACH INTEREST
+
+Every potential school/coach match is evaluated independently from both directions. Candidate quality does not guarantee school interest, and an offer does not guarantee Coach interest.
+
+School Interest is scored from 0 to 100 using the following initial weights:
+
+- 30% recent performance relative to available talent;
+- 20% Coach prestige, career record, and credibility;
+- 20% readiness for the offered role, including prior HC experience when relevant;
+- 15% scheme or roster fit where reliable data permits;
+- 10% career trajectory, including sustained improvement; and
+- 5% alma-mater, regional, or prior-school ties when available.
+
+The qualification threshold varies by school stature and role. Elite programs require stronger credentials than rebuilding or lower-prestige programs. Controlled seeded variation may adjust how individual schools value scheme, experience, and upside, but cannot make an otherwise ineligible candidate eligible.
+
+Coach Interest is scored from 0 to 100 using the following initial weights:
+
+- 30% career advancement, with a major benefit for a coordinator receiving an HC opportunity;
+- 20% offered-program prestige and competitive outlook;
+- 20% contract length and program points;
+- 15% satisfaction with and loyalty to the current school;
+- 10% expected job security and difficulty of the offered expectations; and
+- 5% scheme, alma-mater, regional, or personal fit when supported.
+
+An offer is evaluated against the Coach's current situation rather than in isolation. An employed coach accepts only when the best available offer meaningfully exceeds remaining at the current job. An unemployed coach has a substantially lower acceptance threshold.
+
+When a Coach receives multiple simultaneous offers:
+
+1. The Coach scores every offer.
+2. An employed Coach also scores remaining at the current school.
+3. Clearly inferior outcomes are eliminated.
+4. The Coach selects the strongest remaining outcome.
+5. Controlled seeded variation may decide between genuinely close outcomes.
+
+The interface explains the leading reasons for acceptance or rejection, such as career advancement, program stature, contract terms, stability, scheme fit, or loyalty. Seeded variation must not reduce the result to unexplained random chance.
+
+
+12. PART 2 MARKET STAGES AND OFFER ROUNDS
+
+Part 2 resolves the HC market before the coordinator market. This prevents a coordinator from accepting another coordinator job immediately before receiving an HC opportunity.
+
+Stage A - HC Carousel:
+
+Each HC round contains three manually advanced turns:
+
+1. Schools Make Offers. Every open HC position may offer its highest-ranked available candidate. A school conducting a Market Review may make one conditional offer. Offers are submitted during the same round and remain unresolved until the Coach Decisions turn.
+2. Coaches Consider Offers. Each Coach compares all simultaneous offers with the option to remain at the current school and may accept no more than one offer. Rejections include an understandable leading reason.
+3. Results and New Openings. Acceptances are revealed and resolved together. A Market Review dismissal occurs only after its replacement accepts. Hiring an employed HC creates a new HC vacancy; hiring an employed coordinator queues an OC/DC vacancy for Stage B. HC departures apply the approved Internal Succession or Cleans House consequences.
+
+HC rounds repeat until every HC position is filled and every established HC Market Review is resolved.
+
+Stage B - Coordinator Carousel:
+
+OC and DC searches operate concurrently so neither side of the ball receives artificial priority. Each coordinator round contains the same three manually advanced turns:
+
+1. Schools make one offer for each vacant or conditionally reviewed position.
+2. Coaches compare all simultaneous offers and the option to remain.
+3. Results are revealed, and newly created coordinator vacancies enter the next round.
+
+Coordinator rounds repeat until every OC and DC position is filled.
+
+A newly hired outside HC prefers to bring the OC and DC from the HC's previous school when those Coaches remain eligible and available. This preference is evaluated after the HC market is settled, so a former coordinator first receives any Stage A opportunity to succeed the departing HC. Following the HC is a preference rather than an automatic package move; each coordinator still participates in the normal Stage B offer and Coach Decision process.
+
+Staff-connection implementation:
+
+- Each former OC/DC is automatically evaluated for the new HC's staff.
+- A qualified former coordinator enters the Realistic Primary Target tier of the shortlist.
+- Prior staff connection initially adds 15 points to School Interest.
+- Familiarity with the HC initially adds 10 points to Coach Interest.
+- Scheme compatibility may strengthen the preference through the normal fit component.
+- The relationship cannot override role eligibility, poor performance, affordability, an accepted HC promotion, or another accepted job.
+- The coordinator receives a normal final offer and may reject it or select another school.
+- A coordinator who follows the HC creates a normal Stage B vacancy at the previous school when that position was still occupied.
+- If a previously fired HC is later hired elsewhere, released former coordinators retain the same reunion preference while they remain available.
+
+When a user HC changes schools, CCR asks whether to invite the former OC, former DC, both, or neither. Each invitation becomes a normal offer and does not move the coordinator automatically.
+
+Round rules:
+
+- A school advances through its shortlist following rejections or candidate unavailability.
+- A Coach who accepts an offer is locked for the remainder of the carousel.
+- Market Reviews are established once at the beginning of the relevant stage. Cascades cannot continually create new opportunistic reviews.
+- If the normal shortlist is exhausted, the school expands its search to fallback and emergency candidates.
+- Part 2 cannot finish with an unfilled HC, OC, or DC position.
+- CCR maintains event and movement counts during each resolution round for validation and reporting, but those counts do not trigger an untested throttling policy.
+- Every offer, rejection, acceptance, and resulting vacancy remains visible in the round history.
+
+Offer Queue:
+
+The Schools Make Offers turn uses an ordered Offer Queue for presentation, but queue position does not give a school first-mover exclusivity. Offers remain pending until every school has acted, and Coaches compare them together during the Coach Decisions turn.
+
+Schools are ordered by:
+
+1. Actual vacancies before conditional Market Reviews.
+2. Longest-open vacancy first.
+3. Opening Priority Score, highest first.
+4. A stable seeded tiebreaker.
+
+The HC Opening Priority Score uses these initial weights:
+
+- 35% program prestige;
+- 25% recent results and competitive outlook;
+- 20% available contract and program-point strength;
+- 10% roster quality; and
+- 10% stability and reasonableness of expectations.
+
+The coordinator Opening Priority Score uses these initial weights:
+
+- 25% program prestige;
+- 25% HC quality and stability;
+- 20% relevant offensive or defensive unit opportunity;
+- 15% overall competitive outlook; and
+- 15% available contract and program-point strength.
+
+During Stage B, the queue is organized by school. A school with both OC and DC openings handles both during the same school turn, using separate candidates and offers.
+
+CPU schools do not react to offers submitted earlier in the same round. Earlier CPU offers are not fully disclosed to a user-controlled school before it submits, preventing an information-order advantage; the interface may instead show a general competition level such as Low, Moderate, or High. The complete offer results become visible during the Results and New Openings turn.
+
+
+13. USER-CONTROLLED TEAM AND COACH INTERACTION
+
+CCR distinguishes between the user Coach and the user-controlled school. When the user is the HC, the user acts as the decision-maker for coordinator staffing during Stage B.
+
+The user HC:
+
+- reviews each incumbent coordinator's evaluation;
+- chooses whether to retain or dismiss a Vulnerable coordinator;
+- may override a coordinator's Fire recommendation, with the override recorded in the carousel history;
+- handles vacancies created by dismissal, poaching, retirement, promotion, or other departures;
+- reviews the generated shortlist and may browse every otherwise eligible candidate;
+- selects no more than one candidate per open position in each offer round;
+- chooses offered contract length and program points within available limits;
+- sees only general Low, Moderate, or High competition rather than hidden CPU offer details;
+- waits until the Coach Decisions turn for the candidate's response;
+- may pass during a round while accepting the risk that candidates take other jobs; and
+- must eventually fill every position.
+
+If both coordinator positions are open, the user submits separate OC and DC offers during the same school turn.
+
+Coordinator retention and poaching:
+
+- A user cannot unconditionally block a coordinator from accepting another job.
+- When a user-school coordinator receives outside interest, the user is notified and may make one simultaneous retention offer.
+- The coordinator compares remaining under the current arrangement, the retention offer, and every outside offer during that round's final decision.
+- An accepted retention offer is an extension and consumes the same event capacity as another accepted extension.
+- A coordinator who leaves creates an opening for the following round.
+
+User Coach career decisions:
+
+- When the user Coach receives offers, CCR pauses during the Coach Decisions turn and the user personally accepts or rejects them. RNG never selects the user Coach's career move.
+- Accepting one offer rejects the others and creates the normal vacancy cascade.
+- A user playing as an OC or DC likewise chooses personally among offers while CPU logic manages the school's other staffing decisions.
+- If safely supported by the save, control follows the Coach to the new school. If not, CCR must explain the limitation before the user can accept.
+
+User override settings:
+
+- User HC Protection is configurable and enabled by default. A performance-based Fire result is still shown and recorded, but forced removal requires user confirmation when protection is enabled.
+- The already approved Unexpected Scenario nullification remains available independently.
+- A user may retain an OC/DC despite a Fire recommendation; the tool records that the user overruled the recommendation.
+
+
+14. PROGRAM POINTS AND STAFF-OFFER ECONOMY
+
+CCR includes program points in HC, OC, and DC hiring, retention, and extension offers. CPU Teams demonstrably spend variable contract program points on coordinator offers, and validated resolved HC openings also carry financially authoritative final prices. CCR therefore does not assume that CPU HC offers are free and does not remove the staff-offer economy from normal mode.
+
+Terminology:
+
+- The game's staff-offer interface may describe the offer amount as NIL, but the backend treats it as contract program points.
+- `Team.NILProgramPointsSpent` is a separate allocation and must not be used to settle or refund staff contracts.
+- CCR should label the value clearly as Staff Offer Program Points, with an explanation of the in-game terminology.
+
+Every HC, OC, and DC offer contains:
+
+- contract length;
+- offered program points;
+- the Coach's expected program points; and
+- the resulting effect on Coach Interest.
+
+Offer value affects interest as follows:
+
+- far below expectation creates a significant interest penalty;
+- slightly below expectation creates a modest penalty;
+- meeting expectation is neutral;
+- exceeding expectation provides a diminishing interest bonus; and
+- no point amount can completely overcome a lack of career, role, or school interest.
+
+CPU bids vary according to School Interest, the Coach's expected price, available staff resources, competition, and vacancy urgency. Each bid is the school's final offer for that candidate; a rejected offer cannot be revised in a later round.
+
+External offer ledger:
+
+- A displayed offer does not immediately spend program points.
+- A pending offer temporarily reserves its amount within CCR.
+- A rejected, withdrawn, or losing offer releases its reservation.
+- An accepted hire, retention offer, or extension commits its final price.
+- A Team cannot reserve or commit more than its allowed staff resources.
+
+Native financial reconciliation:
+
+- CCR does not attempt a blanket refund of all native coordinator offers.
+- For each compiled accepted outcome, CCR writes the final accepted price through the resolved opening's authoritative `FinalContractProgramPoints` field and leaves derived Team aggregates untouched.
+- EOS then charges or refunds the price difference relative to the abandoned native outcome and derives the destination role budget, staff spending, and remaining points.
+- This authoritative write path has been validated for an HC price change and for a coordinator replacement combined with a new price.
+- Full-landscape annual processing can still produce Coach-sensitive NIL, rollover, and remaining-liquidity changes beyond the isolated staff-price delta. CCR therefore uses a conservative affordability reserve and discloses that exact post-EOS spendable liquidity cannot yet be guaranteed for every Team.
+
+Economy-Neutral Compatibility Mode:
+
+- An optional compatibility mode may preserve native final staff prices while rebuilding employment for users who do not want CCR to rebalance staff spending.
+- Normal mode includes CCR pricing because financial competition is part of hiring, retention, and Coach Interest.
+
+
+15. CONTRACT LENGTHS AND FINAL-OFFER DECISIONS
+
+Initial contract-length model:
+
+- A newly hired HC normally receives three years. Exceptional hires may receive four or five years if those lengths pass save testing.
+- An established coordinator changing jobs normally receives two or three years.
+- A first-time, generic-pool, or emergency coordinator normally receives one or two years.
+- An HC extension normally covers three to five years.
+- A coordinator extension normally covers one to three years.
+
+Longer terms improve Coach Interest through stability but increase the school's commitment and the Coach's future protection from performance dismissal. Every supported term and its EOS contract behavior must be validated before production use.
+
+Offers are final within their submission round:
+
+- A Coach must Accept or Reject during that round's Coach Decisions turn.
+- Coaches cannot Wait or make a Counter.
+- Schools cannot revise a rejected offer or bid again for the same Coach later in the carousel.
+- If a Coach rejects, the school advances to another available candidate in the next round.
+- A Coach receiving several offers compares all of them and may accept one or reject all of them.
+- A user-controlled Coach personally makes the same final Accept-or-Reject decision.
+- A retention offer competes simultaneously with outside offers and receives the same final treatment; it is not a separate counteroffer stage.
+
+This one-round decision creates suspense and risk. A school must submit its best credible combination of term and program points without seeing exact competing bids, and an overly cautious offer can permanently lose the candidate.
+
+The user interface shows exact offered terms and projected Team cost but presents Coach expectations and competitive pressure as understandable ranges rather than revealing an exact acceptance threshold.
+
+
+16. NEW-HIRE GRACE AND CATASTROPHIC FAILURE
+
+Newly hired Coaches receive protection from ordinary impatience without becoming untouchable.
+
+HC grace:
+
+- First season: add 20 Job Evaluation points and prohibit Market Review.
+- Second season: add 10 Job Evaluation points; Market Review is permitted only if the adjusted result remains Vulnerable.
+- Third season onward: evaluate normally without a grace bonus.
+- An internally promoted HC receives the same grace as an outside hire.
+- During the first two seasons, unconditional performance firing requires Catastrophic Failure.
+
+Coordinator grace:
+
+- First season: add 10 Job Evaluation points and prohibit Market Review.
+- Second season onward: evaluate normally without a grace bonus.
+- A first-year coordinator may still be dismissed for Catastrophic Failure.
+- Coordinator grace does not protect the Coach when the HC is fired and the school Cleans House.
+
+Catastrophic Failure requires all of the following:
+
+- a final Job Evaluation Score from 0 through 14 after applying grace;
+- at least three independent primary failure signals; and
+- at least one severe role-specific result.
+
+Severe role-specific results may include extreme HC failure against program expectations, a near-winless season at a capable program, bottom-tier offensive or defensive production combined with major underperformance relative to unit talent, or a collapse that reaches the lowest evaluation tier across both current-season and multi-year measures.
+
+Grace protects only against performance dismissal and Market Review. It does not prevent retirement, NFL departure, accepting another job, promotion, contract expiration, an Unexpected Scenario, a coordinator voluntarily following a departing HC, or release when a school Cleans House.
+
+
+17. PART 3 - CAROUSEL REVIEW AND STORY BUILDING
+
+Part 3 introduces no new RNG or CPU decisions. It reviews the completed carousel, builds the upcoming season's stories, validates the compiled outcome, and obtains final user authorization before writing the save.
+
+Carousel Headlines:
+
+- Summarize HC, OC, and DC changes; retirements; NFL departures; firings; nonrenewals; Unexpected Scenarios; internal promotions; coordinators following HCs; and extensions reported separately.
+- Identify major jobs, the largest vacancy cascade, the most-contested candidate, and the overall character of the carousel.
+
+Filled Positions:
+
+- Present a browsable school/opening list inspired by the official EA carousel presentation.
+- Each position card shows the school and role, previous Coach and departure reason, new Coach and previous job, movement type, previous-season record and resume highlights, prestige and level, scheme, alma mater or available ties, contract length, accepted program points, School Interest, Coach Interest, and a concise match explanation.
+- Filters include role, conference, school, departure reason, and movement type.
+
+Departures and Events:
+
+- Review retirement, Retiring on Top, NFL departure, performance firing, Market Review replacement, Staff Not Retained, Unexpected Scenario, contract nonrenewal, and rejected extension outcomes.
+- Each receives a short, clearly labeled factual or fictional story as appropriate.
+
+Cascade Explorer:
+
+- Group every vacancy chain under its initiating event.
+- Step through which move created each vacancy, which candidates were considered, why the selected Coach accepted, which competing schools lost the candidate, and where the chain ended.
+- Display the contract length and exact program points associated with each revealed accepted, rejected, competing, retention, or extension offer relevant to the chain.
+
+Before-and-After Staffs:
+
+- Compare the previous and upcoming HC/OC/DC for every school.
+- Label each outcome, including retained, promoted, hired from another school, followed HC, Staff Not Retained, and Cleans House.
+
+User-School Review:
+
+- Show the complete upcoming staff, departing coordinators and reasons, accepted and rejected offers, exact program points and contract lengths for each offer, staff-cost changes, scheme changes, user overrides or protections, and next-season expectations.
+
+Upcoming-Season Storylines:
+
+- Generate a limited set of meaningful headlines around major promotions, staff reunions, Legacy Archetypes, redemption hires, contested candidates, full-staff overhauls, scheme changes, and other supported developments.
+- Clearly distinguish observed dynasty facts from fictional editorial flavor and never invent past dynasty accomplishments.
+
+Offer-point visibility:
+
+- Before a user submits an offer, hidden CPU bid amounts remain concealed as already approved.
+- After the Results turn reveals the round, relevant detail views show the exact offered program points, expected program points, contract length, offer result, and winning offer where applicable.
+- Part 3 retains the complete revealed offer ledger so the financial reasons behind acceptances and rejections can be reviewed.
+
+Validation and Finalization:
+
+- Verify that every HC/OC/DC position is filled, no Coach occupies multiple jobs or moves twice, opening and movement counts reconcile, contracts and program points are valid, Staff Moves history is covered, user-Coach control is correct, and all tested save constraints pass.
+- Present known limitations, output destination, and safety-backup information.
+- Write nothing to the dynasty save until validation passes and the user selects Finalize Carousel.
+
+
+18. SETTINGS AND ENGINE CONFIGURATION
+
+CCR does not use gameplay presets such as Low, Realistic, High, Stable, or Chaos. Instead, every tunable scalar, threshold, weight, probability, multiplier, boolean, and behavioral option actually consumed by the carousel engine is exposed directly in Settings.
+
+The Settings interface and backend use one shared configuration schema as their source of truth. Adding an engine setting to the schema automatically makes it available to the interface, avoiding a separately maintained preset or translation layer.
+
+Control presentation follows the underlying value:
+
+- probabilities and percentages use numeric percentage controls;
+- bounded scalar values use a slider paired with an exact numeric field;
+- integer limits use numeric fields;
+- booleans use toggles; and
+- genuine categorical engine choices use dropdowns.
+
+Settings are organized into collapsible categories for navigation only, not into modes or presets:
+
+- departures and turnover;
+- performance evaluation and grace;
+- Market Review and candidate qualification;
+- School Interest and Coach Interest;
+- offers, contracts, extensions, and program points;
+- Unexpected Scenarios;
+- user control and protection; and
+- deterministic seed and simulation behavior.
+
+Each setting displays a plain-language name, description, units, valid range, exact current value, and default value. The user may reset one value or restore all defaults. Settings persist between sessions and lock when Part 1 begins; changing them requires restarting the uncommitted carousel.
+
+There are no presentation settings. Save-format invariants, proven processing boundaries, schema identifiers, and other safety-critical implementation constraints are not user settings and cannot be overridden. A value is exposed only when it is a genuine engine tuning input; implementation constants are not converted into artificial gameplay options merely to enlarge the settings list.
+
+The default configuration represents CCR's calibrated normal behavior, but it is a single set of defaults rather than a named preset. The interface may organize and explain the full configuration without hiding or simplifying its values into qualitative modes.
+
+
+19. MVP UI AND SEASONAL WORKFLOW CONSTRAINTS
+
+CCR is a single-purpose coaching-carousel application. Its UI is inspired by the NCAA 14 coaching-carousel references in `assets/ncaa14_ref`, not by DynastyOS or a general dynasty-dashboard structure.
+
+The visual and interaction direction includes:
+
+- a prominent top tab strip modeled on the rhythm of Now Hiring, New/Unexpected Openings, and Filled Positions;
+- a left-side ordered school/opening queue with clear current, waiting, new, and completed states;
+- a large Team-branded detail area showing the opening, previous Coach, candidates, decision activity, and final hire;
+- immediate visible alerts when a hire creates a new opening;
+- a persistent bottom action and status strip for advancing, skipping CPU-only turns where permitted, current phase/round, and user-relevant status; and
+- typography and color directly inspired by the supplied NCAA 14 references: bold condensed broadcast-style headings, strong black/charcoal and silver/white structure, warm gold status accents, and prominent Team colors;
+- modernized spacing, accessibility, and CCR identity while preserving that visual character without copying EA logos, controller prompts, or other protected branding and without requiring a broader dynasty hub.
+
+Seasonal workflow:
+
+- One supported CFP National Championship week save starts one CCR carousel session.
+- CCR completes Parts 1, 2, and 3 and generates one new finalized CFP National Championship week save while preserving the input save.
+- CCR independently reopens and verifies its newly generated CFP National Championship week output before handing it to the user.
+- After successful output, the application provides the output path and concise human-operated in-game instructions, and the CCR session is complete.
+- The user is not required or expected to return to CCR after advancing the output in-game to End of Season.
+- There is no post-advance EOS import, verification screen, sync step, or continuing dynasty-dashboard workflow.
+- CCR is opened again only when the user is ready to run the following season's CFP National Championship week carousel.
+- CCR does not offer Resume Unfinished Carousel. Closing or interrupting the application before finalization discards the carousel run; the next run starts again from the original CFP National Championship week input. Persisted engine settings are separate from carousel progress and may remain available.
+
+
+20. MVP SAVE AND APPLICATION WORKFLOW
+
+Open Dynasty Save:
+
+- The opening screen provides Select CFP National Championship week Save and Settings.
+- After selection, CCR read-only validates the dynasty season/stage, user Coach/role/school, current staff, schema compatibility, required tables, and other preflight constraints.
+- A failed preflight stops before the carousel begins and explains the problem.
+
+Begin Carousel:
+
+- Before starting, the user may edit the complete engine configuration, review the deterministic seed, and confirm the detected user identity and school.
+- Begin Coaching Carousel locks the selected save and settings for that run.
+- The original input save remains untouched.
+- Carousel state is not resumable. Closing before finalization discards the run and requires a complete restart from the original input.
+
+Part 1 presentation:
+
+- Advance event by event through NFL departures, retirements, Unexpected Scenarios, performance firings, contract decisions, and Internal Succession Reviews.
+- Use the approved NCAA 14-inspired ordered list, Team-branded detail card, departure/evaluation explanation, persistent Advance action, and visible new-opening alerts.
+
+Part 2 presentation:
+
+- Center the interaction around Now Hiring, New Openings, and Filled Positions.
+- Now Hiring presents the active school, opening, shortlist, and offer activity.
+- New Openings presents vacancies created by the latest decisions.
+- Filled Positions accumulates resolved hires and extensions.
+- The left queue distinguishes waiting, active, new, and complete states; the persistent action strip shows stage, round, role counts, and the next action.
+- Skip Ahead may process CPU-only turns but stops for any user decision, user-Coach offer, user-school offer, Unexpected Scenario review, or validation problem.
+
+Part 3 presentation:
+
+- Transition directly into the approved Headlines, Filled Positions, Departures and Events, Cascade Explorer, Before/After Staffs, User-School Review, Upcoming-Season Storylines, and Final Validation views.
+- Maintain the same carousel list/detail-card language rather than switching to a general dashboard.
+
+Generate Final Save:
+
+1. The user selects Finalize Carousel after Part 3 validation.
+2. CCR compiles the complete plan into a temporary working copy.
+3. CCR independently reopens and validates the temporary output.
+4. Verification covers staff assignments, contracts, program points, openings, Staff Moves history, and user control.
+5. After validation succeeds, CCR atomically produces one new short-named CFP National Championship week save beside the input and preserves the original.
+6. CCR produces the carousel report beside the output.
+7. Existing files are never silently replaced.
+
+Completion:
+
+- Display Coaching Carousel Complete, output filename and location, HC/OC/DC movement totals, validation status, report location, and concise instructions to load the new save and advance normally in-game.
+- Completion ends the CCR workflow for that season. There is no EOS return step.
+
+
+21. TOPICS NOT YET DESIGNED
+
+- Exact extension/event-capacity allocation policy
