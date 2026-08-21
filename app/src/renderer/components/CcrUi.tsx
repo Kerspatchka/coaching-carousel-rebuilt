@@ -1,6 +1,7 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
 import type { Coach, Team } from '../../core/carousel';
 import type { NormalizedCoach, NormalizedTeam } from '../../core/dynasty';
+import { formatPrestigeGrade } from '../../core/prestige';
 import { coachPortraitByAssetId, conferenceLogoByKey, teamVisualsByKey, teamVisualsForIdentity } from '../assets/assetCatalog';
 
 const join = (...values: Array<string | false | null | undefined>) => values.filter(Boolean).join(' ');
@@ -39,6 +40,30 @@ export function Eyebrow({ children, className }: { children: ReactNode; classNam
   return <div className={join('eyebrow', className)}>{children}</div>;
 }
 
+export function PrestigeGrade({ value }: { value: string }) {
+  return <span className="prestige-grade">{formatPrestigeGrade(value)}</span>;
+}
+
+function levelColor(level: number | null): string {
+  if (level === null) return '#aeb4b4';
+  const clamped = Math.max(10, Math.min(50, level));
+  const hue = ((clamped - 10) / 40) * 120;
+  return `hsl(${hue} 78% 64%)`;
+}
+
+export function CoachStanding({ prestige, level, age, compact = false }: {
+  prestige: string;
+  level: number | null;
+  age: number | null;
+  compact?: boolean;
+}) {
+  return <span className={`coach-standing ${compact ? 'is-compact' : ''}`}>
+    <PrestigeGrade value={prestige} />{!compact && ' prestige'}
+    <i aria-hidden="true">·</i><span>lvl.</span><b style={{ '--coach-level-color': levelColor(level) } as React.CSSProperties}>{level ?? '—'}</b>
+    <i aria-hidden="true">·</i><span>age</span><b>{age ?? '—'}</b>
+  </span>;
+}
+
 export function TeamMark({ team, compact = false, variant = 'primary' }: {
   team: Team;
   compact?: boolean;
@@ -66,6 +91,34 @@ export function TeamArt({ team }: { team: Team }) {
   const art = teamVisualsByKey[team.assetKey];
   if (!art?.stickerPack) return <div className="team-art-fallback">{team.shortName}</div>;
   return <img className="team-art" src={art.stickerPack} alt={`${team.name} identity artwork`} />;
+}
+
+export function NormalizedTeamMark({ team, compact = false, variant = 'primary' }: {
+  team: NormalizedTeam;
+  compact?: boolean;
+  variant?: 'primary' | 'secondary' | 'threeDimensional';
+}) {
+  const art = teamVisualsForIdentity(team.assetKey, team.longName, team.name, team.shortName);
+  const logo = variant === 'secondary'
+    ? art?.secondaryLogo ?? art?.primaryLogo
+    : variant === 'threeDimensional'
+      ? art?.threeDimensionalLogo ?? art?.primaryLogo
+      : art?.primaryLogo;
+  return (
+    <span
+      className={join('team-mark', compact && 'team-mark-compact')}
+      style={{ '--mark-primary': team.colors[0], '--mark-secondary': team.colors[1] } as React.CSSProperties}
+      aria-label={team.longName}
+    >
+      {logo ? <img src={logo} alt="" /> : <strong>{team.shortName || team.name.slice(0, 3).toUpperCase()}</strong>}
+    </span>
+  );
+}
+
+export function NormalizedTeamArt({ team }: { team: NormalizedTeam }) {
+  const art = teamVisualsForIdentity(team.assetKey, team.longName, team.name, team.shortName);
+  if (!art?.stickerPack) return <div className="team-art-fallback">{team.shortName || team.name}</div>;
+  return <img className="team-art" src={art.stickerPack} alt={`${team.longName} identity artwork`} />;
 }
 
 export function CoachHead({ coach, team, size = 'medium' }: { coach: Coach; team: Team; size?: 'small' | 'medium' | 'large' }) {

@@ -187,6 +187,21 @@ export interface IntegrityFinding {
   detail: string;
 }
 
+export interface NormalizedNationalChampionship {
+  sourceRow: number;
+  seasonWeek: number;
+  weekType: string;
+  homeTeamId: string;
+  awayTeamId: string;
+  homeScore: number;
+  awayScore: number;
+  winnerTeamId: string;
+  loserTeamId: string;
+  status: 'HomeWon' | 'AwayWon';
+  overtime: boolean;
+  simulated: boolean;
+}
+
 export interface DynastySnapshot {
   sourceFingerprint: string;
   seasonYear: number;
@@ -196,6 +211,7 @@ export interface DynastySnapshot {
   openings: NormalizedOpening[];
   nativeOffers: NormalizedNativeOffer[];
   staffMoves: NormalizedStaffMove[];
+  nationalChampionship: NormalizedNationalChampionship | null;
   integrity: {
     valid: boolean;
     checks: number;

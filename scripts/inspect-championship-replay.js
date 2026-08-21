@@ -26,16 +26,20 @@ function selectedValues(record) {
   const pattern = /(week|season|game|team|score|status|playoff|champ|bowl|winner|home|away)/i;
   return Object.fromEntries(fields(record).filter((field) => pattern.test(field)).map((field) => [field, record[field]]));
 }
+function isChampionshipGame(values) {
+  const weekType = String(values.SeasonWeekType ?? values.WeekType ?? '');
+  const week = Number(values.SeasonWeek ?? values.Week ?? -1);
+  return /nationalchampionship/i.test(weekType) || week === 20;
+}
 async function summarize(savePath, schemaPath) {
   const franchise = await createFranchise(savePath, schemaPath);
   const table = franchise.getTableByUniqueId(SEASON_GAME_TABLE);
   assert(table, 'SeasonGame table is missing.');
   await table.readRecords();
   const active = table.records.filter((record) => record && !record.isEmpty);
-  const candidates = active.map((record) => ({ row: record.index, values: selectedValues(record) })).filter(({ values }) => {
-    const text = JSON.stringify(values);
-    return /champ|national|playoff/i.test(text) || Object.entries(values).some(([key, value]) => /week/i.test(key) && Number(value) >= 15);
-  });
+  const candidates = active
+    .map((record) => ({ row: record.index, values: selectedValues(record) }))
+    .filter(({ values }) => isChampionshipGame(values));
   return { save: savePath, activeGames: active.length, fields: active[0] ? fields(active[0]) : [], candidates };
 }
 async function main() {

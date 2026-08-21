@@ -68,6 +68,8 @@ If a head coach is fired for performance, the school does not conduct an Interna
 
 NFL departures are rare, seeded, explainable events. NFL poaching should target successful college coordinators more frequently than college head coaches.
 
+NFL departure simulation targets FBS programs only. Generic FCS programs remain in the normalized staffing landscape where the save requires them, but their Coaches receive zero NFL-departure eligibility.
+
 Relative frequency:
 
 - OC/DC to NFL: the normal form of NFL poaching represented by CCR.
@@ -133,6 +135,7 @@ Core retirement rules:
 Retiring on Top:
 
 - Retiring on Top is exclusive to a coach whose team won the National Championship that season.
+- The supported CFP National Championship week save already contains the finalized week-20 `SeasonGame` result. CCR resolves its winner reference through the Team table and supplies that Team ID directly to retirement planning; it does not infer the champion from Coach career totals or external data.
 - No other winning season, conference championship, bowl victory, playoff appearance, or runner-up finish can trigger this special retirement modifier.
 - The modifier applies only to an otherwise age-eligible older coach and remains subordinate to the age-based retirement model.
 
@@ -155,12 +158,14 @@ Seasonal frequency:
 - CCR first determines a small seasonal event allowance and then selects eligible coaches through weighted seeded RNG.
 - The default should produce zero or one scenario in most seasons, occasionally two, with a default maximum of two.
 - The system must not apply a near-5% independent roll to every coach because that could create an implausibly large number of events across the full coaching population.
-- Exact frequencies and weights remain to be calibrated.
+- The initial calibrated default targets approximately 0.5 Unexpected Scenarios per season: a 45% chance of a first scenario and, only when the first occurs, an 11% chance of a second. The default maximum remains two. Exact controls remain visible and tunable through the shared settings schema.
+- Fictional Unexpected Scenarios target FBS programs only. Generic FCS programs remain part of the normalized staffing landscape where the save requires them, but they receive zero fictional-event target weight.
 
 Approved scenario categories:
 
-1. Unexpected Resignation
-   - The coach unexpectedly steps away from college coaching.
+1. Looking for a Change
+   - The coach voluntarily resigns from the current school and immediately enters the available Coaches pool.
+   - This is a voluntary departure and does not incur a school-initiated early-termination buyout.
    - An HC departure triggers an Internal Succession Review.
    - An OC/DC departure opens only that coordinator position.
 
@@ -831,7 +836,7 @@ Open Dynasty Save:
 
 Begin Carousel:
 
-- Before starting, the user may edit the complete engine configuration, review the deterministic seed, and confirm the detected user identity and school.
+- Before starting, the user may edit the complete engine configuration, review the run seed, and confirm the detected user identity and school. A normal run receives a fresh native seed containing the current Unix time in milliseconds when the carousel is initialized; the exact recorded seed may be reused to reproduce that run.
 - Begin Coaching Carousel locks the selected save and settings for that run.
 - The original input save remains untouched.
 - Carousel state is not resumable. Closing before finalization discards the run and requires a complete restart from the original input.
@@ -845,12 +850,12 @@ Part 2 presentation:
 
 - Center the interaction around Now Hiring, New Openings, and Filled Positions.
 - Now Hiring presents the active school, opening, shortlist, and offer activity.
-- The active Team header shows previous-season record, national ranking when available, program prestige, and conference. Candidate and Coach-decision treatments show previous-season record, career record, and prestige.
+- The active Team header shows the current-season record, national ranking when available, program prestige, and conference. Every visible Coach treatment labels that record with the actual loaded dynasty year (for example, `2026`) when relevant and also shows career record, symbolic prestige, age, and numeric Coach level. Compact metadata uses `lvl.`; the level number receives a low-to-high color scale calibrated from level 10 through level 50, with out-of-range values clamped to the nearest endpoint color. Level and its color remain presentation evidence for the MVP and do not affect scoring until separately approved.
 - New Openings presents vacancies created by the latest decisions.
 - Filled Positions accumulates resolved hires and extensions.
 - The left queue distinguishes waiting, active, new, and complete states; the persistent action strip shows stage, round, role counts, and the next action.
 - Skip Ahead may process CPU-only turns but stops for any user decision, user-Coach offer, user-school offer, Unexpected Scenario review, or validation problem.
-- Consequential multi-stage event vignettes do not auto-advance. Space or the visible Advance action progresses exactly one stage at a time; reduced-motion presentation retains the same manual control.
+- Consequential multi-stage event vignettes do not auto-advance. The first event reveal may use distinct choreography for NFL departures, retirements, Unexpected Scenarios, and performance actions, but advancing within the event queue updates the existing stage directly; it must not remount the whole screen, flash the previous state, or delay the next Coach card. Space or the visible Advance action progresses exactly one stage at a time; reduced-motion presentation retains the same manual control. Grouped `Cleans House` events show each affected coordinator as a readable supporting Coach card with portrait, role, prestige, `lvl.`, and age.
 
 Part 3 presentation:
 

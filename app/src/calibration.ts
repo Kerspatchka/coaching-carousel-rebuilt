@@ -2,6 +2,10 @@ import crypto from 'node:crypto';
 import path from 'node:path';
 import { evaluatePartOne, ROLE_FIRE_SCORE_THRESHOLD, type CoachEvaluation, type JobEvaluationClassification } from './core/evaluation';
 import { initializeMarket, type MarketRole } from './core/market';
+import { planNflDepartures } from './core/nfl-departures';
+import { planPartOneDepartures } from './core/part-one-departures';
+import type { UnexpectedScenarioCategory } from './core/unexpected-scenarios';
+import { planPerformanceActions } from './core/performance-actions';
 import type { DynastySnapshot } from './core/dynasty';
 import type { SavePreflightResult } from './shared/desktop-api';
 
@@ -17,6 +21,7 @@ export interface CalibrationSaveSummary {
   fingerprint: string | null;
   evaluationFingerprint: string | null;
   seasonYear: number | null;
+  nationalChampionship: { winnerTeamId: string; winnerTeam: string; loserTeamId: string; homeScore: number; awayScore: number; status: string } | null;
   seatCount: number;
   counts: (Record<JobEvaluationClassification, number> & { catastrophic: number; graceProtected: number; gracePreventedFire: number }) | null;
   byRole: RoleCounts | null;
@@ -28,6 +33,14 @@ export interface CalibrationSaveSummary {
   tenureDistributionByRole: Record<MarketRole, Record<string, number>> | null;
   graceProtectedByRole: Record<MarketRole, number> | null;
   appliedFireThresholdByRole: Record<MarketRole, number> | null;
+  nflDepartures: { total: number; byRole: Record<MarketRole, number>; eligible: number; passedRoll: number; events: Array<{ coachId: string; teamId: string; role: MarketRole; probability: number; roll: number }> } | null;
+  nflMultiSeed: { seeds: number; meanTotal: number; minimum: number; maximum: number; zeroRate: number; cappedRate: number; meanByRole: Record<MarketRole, number> } | null;
+  retirements: { total: number; retiringOnTop: number; byRole: Record<MarketRole, number>; eligible: number; passedRoll: number; excludedByNfl: number; events: Array<{ coachId: string; teamId: string; role: MarketRole; reason: string; probability: number; roll: number }> } | null;
+  retirementMultiSeed: { seeds: number; meanTotal: number; meanRetiringOnTop: number; seasonsWithRetiringOnTopRate: number; minimum: number; maximum: number; zeroRate: number; cappedRate: number; meanByRole: Record<MarketRole, number> } | null;
+  unexpectedScenarios: { allowance: number; selected: number; applied: number; pendingUserDecisions: number; cleansHouse: number; categories: Record<UnexpectedScenarioCategory, number> } | null;
+  unexpectedScenarioMultiSeed: { seeds: number; meanSelected: number; zeroRate: number; oneRate: number; twoRate: number; meanCleansHouse: number; categories: Record<UnexpectedScenarioCategory, number> } | null;
+  combinedDepartureMultiSeed: { seeds: number; meanDepartedCoaches: number; minimum: number; maximum: number; meanByRole: Record<MarketRole, number> } | null;
+  combinedInitialTurnoverMultiSeed: { seeds: number; meanChangedSeats: number; minimum: number; maximum: number; meanByRole: Record<MarketRole, number> } | null;
   fireThresholdSensitivityByRole: Record<string, Record<MarketRole, number>> | null;
   secureThresholdSensitivityByRole: Record<string, Record<MarketRole, number>> | null;
   thresholdNeighborhoods: Record<string, number> | null;
@@ -124,6 +137,7 @@ export function summarizeCalibrationSave(result: SavePreflightResult): Calibrati
     fingerprint: result.snapshot?.sourceFingerprint ?? null,
     evaluationFingerprint: null,
     seasonYear: result.snapshot?.seasonYear ?? result.checkpoint.seasonYear,
+    nationalChampionship: null,
     seatCount: 0,
     counts: null,
     byRole: null,
@@ -135,6 +149,14 @@ export function summarizeCalibrationSave(result: SavePreflightResult): Calibrati
     tenureDistributionByRole: null,
     graceProtectedByRole: null,
     appliedFireThresholdByRole: null,
+    nflDepartures: null,
+    nflMultiSeed: null,
+    retirements: null,
+    retirementMultiSeed: null,
+    unexpectedScenarios: null,
+    unexpectedScenarioMultiSeed: null,
+    combinedDepartureMultiSeed: null,
+    combinedInitialTurnoverMultiSeed: null,
     fireThresholdSensitivityByRole: null,
     secureThresholdSensitivityByRole: null,
     thresholdNeighborhoods: null,
@@ -144,6 +166,26 @@ export function summarizeCalibrationSave(result: SavePreflightResult): Calibrati
 
   const market = initializeMarket(result.snapshot);
   const evaluation = evaluatePartOne(result.snapshot, market);
+  const defaultDepartures = planPartOneDepartures(result.snapshot, market, evaluation);
+  const nflDepartures = defaultDepartures.nfl;
+  const retirements = defaultDepartures.retirements;
+  const unexpectedScenarios = defaultDepartures.unexpectedScenarios;
+  const nflSeedPlans = Array.from({ length: 100 }, (_, index) => {
+    const seededMarket = initializeMarket(result.snapshot!, `${market.seed}|NFL-CAL-${String(index).padStart(3, '0')}`);
+    return planNflDepartures(result.snapshot!, seededMarket, evaluatePartOne(result.snapshot!, seededMarket));
+  });
+  const partOneSeedRuns = Array.from({ length: 100 }, (_, index) => {
+    const seededMarket = initializeMarket(result.snapshot!, `${market.seed}|PART1-CAL-${String(index).padStart(3, '0')}`);
+    const seededEvaluation = evaluatePartOne(result.snapshot!, seededMarket);
+    const departures = planPartOneDepartures(result.snapshot!, seededMarket, seededEvaluation);
+    const performance = planPerformanceActions(result.snapshot!, seededMarket, seededEvaluation, {
+      departedCoachIds: departures.departedCoachIds,
+      internalSuccessionTeamIds: departures.internalSuccessionTeamIds
+    });
+    return { departures, performance };
+  });
+  const partOneSeedPlans = partOneSeedRuns.map((run) => run.departures);
+  const retirementSeedPlans = partOneSeedPlans.map((plan) => plan.retirements);
   const byRole = emptyRoleCounts();
   const signals: Record<string, number> = {};
   const signalsByRole = Object.fromEntries(roles.map((role) => [role, {}])) as Record<MarketRole, Record<string, number>>;
@@ -151,6 +193,7 @@ export function summarizeCalibrationSave(result: SavePreflightResult): Calibrati
   const tenureDistributionByRole = Object.fromEntries(roles.map((role) => [role, {}])) as Record<MarketRole, Record<string, number>>;
   const graceProtectedByRole = Object.fromEntries(roles.map((role) => [role, 0])) as Record<MarketRole, number>;
   const coachesById = new Map(result.snapshot.coaches.map((coach) => [coach.id, coach]));
+  const teamsById = new Map(result.snapshot.teams.map((team) => [team.id, team]));
   for (const item of evaluation.evaluations) {
     const coach = coachesById.get(item.coachId);
     const seasons = coach?.seasonsWithTeam;
@@ -182,6 +225,14 @@ export function summarizeCalibrationSave(result: SavePreflightResult): Calibrati
   return {
     ...base,
     status: 'ready',
+    nationalChampionship: result.snapshot.nationalChampionship ? {
+      winnerTeamId: result.snapshot.nationalChampionship.winnerTeamId,
+      winnerTeam: teamsById.get(result.snapshot.nationalChampionship.winnerTeamId)?.longName ?? result.snapshot.nationalChampionship.winnerTeamId,
+      loserTeamId: result.snapshot.nationalChampionship.loserTeamId,
+      homeScore: result.snapshot.nationalChampionship.homeScore,
+      awayScore: result.snapshot.nationalChampionship.awayScore,
+      status: result.snapshot.nationalChampionship.status
+    } : null,
     evaluationFingerprint: crypto.createHash('sha256').update(JSON.stringify(evaluation.evaluations.map((item) => ({
       seatId: item.seatId,
       score: item.score,
@@ -205,6 +256,86 @@ export function summarizeCalibrationSave(result: SavePreflightResult): Calibrati
     tenureDistributionByRole,
     graceProtectedByRole,
     appliedFireThresholdByRole: ROLE_FIRE_SCORE_THRESHOLD,
+    nflDepartures: {
+      total: nflDepartures.events.length,
+      byRole: Object.fromEntries(roles.map((role) => [role, nflDepartures.events.filter((event) => event.role === role).length])) as Record<MarketRole, number>,
+      eligible: nflDepartures.evidence.filter((item) => item.eligible).length,
+      passedRoll: nflDepartures.evidence.filter((item) => item.passedRoll).length,
+      events: nflDepartures.events.map((event) => ({ coachId: event.coachId, teamId: event.teamId, role: event.role, probability: round(event.probability, 6), roll: round(event.roll, 6) }))
+    },
+    nflMultiSeed: {
+      seeds: nflSeedPlans.length,
+      meanTotal: round(nflSeedPlans.reduce((sum, plan) => sum + plan.events.length, 0) / nflSeedPlans.length),
+      minimum: Math.min(...nflSeedPlans.map((plan) => plan.events.length)),
+      maximum: Math.max(...nflSeedPlans.map((plan) => plan.events.length)),
+      zeroRate: round(nflSeedPlans.filter((plan) => plan.events.length === 0).length / nflSeedPlans.length * 100),
+      cappedRate: round(nflSeedPlans.filter((plan) => plan.events.length === plan.config.maximumDepartures).length / nflSeedPlans.length * 100),
+      meanByRole: Object.fromEntries(roles.map((role) => [role, round(nflSeedPlans.reduce((sum, plan) => sum + plan.events.filter((event) => event.role === role).length, 0) / nflSeedPlans.length)])) as Record<MarketRole, number>
+    },
+    retirements: {
+      total: retirements.events.length,
+      retiringOnTop: retirements.events.filter((event) => event.reason === 'RetiringOnTop').length,
+      byRole: Object.fromEntries(roles.map((role) => [role, retirements.events.filter((event) => event.role === role).length])) as Record<MarketRole, number>,
+      eligible: retirements.evidence.filter((item) => item.eligible).length,
+      passedRoll: retirements.evidence.filter((item) => item.passedRoll).length,
+      excludedByNfl: retirements.evidence.filter((item) => item.exclusionReason === 'AlreadyDeparted').length,
+      events: retirements.events.map((event) => ({ coachId: event.coachId, teamId: event.teamId, role: event.role, reason: event.reason, probability: round(event.probability, 6), roll: round(event.roll, 6) }))
+    },
+    retirementMultiSeed: {
+      seeds: retirementSeedPlans.length,
+      meanTotal: round(retirementSeedPlans.reduce((sum, plan) => sum + plan.events.length, 0) / retirementSeedPlans.length),
+      meanRetiringOnTop: round(retirementSeedPlans.reduce((sum, plan) => sum + plan.events.filter((event) => event.reason === 'RetiringOnTop').length, 0) / retirementSeedPlans.length),
+      seasonsWithRetiringOnTopRate: round(retirementSeedPlans.filter((plan) => plan.events.some((event) => event.reason === 'RetiringOnTop')).length / retirementSeedPlans.length * 100),
+      minimum: Math.min(...retirementSeedPlans.map((plan) => plan.events.length)),
+      maximum: Math.max(...retirementSeedPlans.map((plan) => plan.events.length)),
+      zeroRate: round(retirementSeedPlans.filter((plan) => plan.events.length === 0).length / retirementSeedPlans.length * 100),
+      cappedRate: round(retirementSeedPlans.filter((plan) => plan.events.length === plan.config.maximumRetirements).length / retirementSeedPlans.length * 100),
+      meanByRole: Object.fromEntries(roles.map((role) => [role, round(retirementSeedPlans.reduce((sum, plan) => sum + plan.events.filter((event) => event.role === role).length, 0) / retirementSeedPlans.length)])) as Record<MarketRole, number>
+    },
+    unexpectedScenarios: {
+      allowance: unexpectedScenarios.allowance.count,
+      selected: unexpectedScenarios.outcomes.length,
+      applied: unexpectedScenarios.events.length,
+      pendingUserDecisions: unexpectedScenarios.pendingDecisions.length,
+      cleansHouse: unexpectedScenarios.outcomes.filter((outcome) => outcome.consequence === 'CleansHouse').length,
+      categories: Object.fromEntries(['LookingForAChange', 'AthleticDirectorConflict', 'RecruitingComplianceViolation', 'PersonalConductViolation', 'ProgramWideScandal'].map((category) => [category,
+        unexpectedScenarios.outcomes.filter((outcome) => outcome.category === category).length
+      ])) as Record<UnexpectedScenarioCategory, number>
+    },
+    unexpectedScenarioMultiSeed: {
+      seeds: partOneSeedPlans.length,
+      meanSelected: round(partOneSeedPlans.reduce((sum, plan) => sum + plan.unexpectedScenarios.outcomes.length, 0) / partOneSeedPlans.length),
+      zeroRate: round(partOneSeedPlans.filter((plan) => plan.unexpectedScenarios.outcomes.length === 0).length / partOneSeedPlans.length * 100),
+      oneRate: round(partOneSeedPlans.filter((plan) => plan.unexpectedScenarios.outcomes.length === 1).length / partOneSeedPlans.length * 100),
+      twoRate: round(partOneSeedPlans.filter((plan) => plan.unexpectedScenarios.outcomes.length === 2).length / partOneSeedPlans.length * 100),
+      meanCleansHouse: round(partOneSeedPlans.reduce((sum, plan) => sum + plan.unexpectedScenarios.outcomes.filter((outcome) => outcome.consequence === 'CleansHouse').length, 0) / partOneSeedPlans.length),
+      categories: Object.fromEntries(['LookingForAChange', 'AthleticDirectorConflict', 'RecruitingComplianceViolation', 'PersonalConductViolation', 'ProgramWideScandal'].map((category) => [category,
+        partOneSeedPlans.reduce((sum, plan) => sum + plan.unexpectedScenarios.outcomes.filter((outcome) => outcome.category === category).length, 0)
+      ])) as Record<UnexpectedScenarioCategory, number>
+    },
+    combinedDepartureMultiSeed: {
+      seeds: partOneSeedPlans.length,
+      meanDepartedCoaches: round(partOneSeedPlans.reduce((sum, plan) => sum + plan.departedCoachIds.length, 0) / partOneSeedPlans.length),
+      minimum: Math.min(...partOneSeedPlans.map((plan) => plan.departedCoachIds.length)),
+      maximum: Math.max(...partOneSeedPlans.map((plan) => plan.departedCoachIds.length)),
+      meanByRole: Object.fromEntries(roles.map((role) => [role, round(partOneSeedPlans.reduce((sum, plan) => sum + plan.departedCoachIds.filter((coachId) => {
+        const coachRole = result.snapshot!.coaches.find((coach) => coach.id === coachId)?.role;
+        return role === 'HC' ? coachRole === 'HeadCoach' : role === 'OC' ? coachRole === 'OffensiveCoordinator' : coachRole === 'DefensiveCoordinator';
+      }).length, 0) / partOneSeedPlans.length)])) as Record<MarketRole, number>
+    },
+    combinedInitialTurnoverMultiSeed: {
+      seeds: partOneSeedRuns.length,
+      meanChangedSeats: round(partOneSeedRuns.reduce((sum, run) => sum + run.departures.departedCoachIds.length + run.performance.actions.length, 0) / partOneSeedRuns.length),
+      minimum: Math.min(...partOneSeedRuns.map((run) => run.departures.departedCoachIds.length + run.performance.actions.length)),
+      maximum: Math.max(...partOneSeedRuns.map((run) => run.departures.departedCoachIds.length + run.performance.actions.length)),
+      meanByRole: Object.fromEntries(roles.map((role) => [role, round(partOneSeedRuns.reduce((sum, run) => {
+        const departureCount = run.departures.departedCoachIds.filter((coachId) => {
+          const coachRole = result.snapshot!.coaches.find((coach) => coach.id === coachId)?.role;
+          return role === 'HC' ? coachRole === 'HeadCoach' : role === 'OC' ? coachRole === 'OffensiveCoordinator' : coachRole === 'DefensiveCoordinator';
+        }).length;
+        return sum + departureCount + run.performance.actions.filter((action) => action.role === role).length;
+      }, 0) / partOneSeedRuns.length)])) as Record<MarketRole, number>
+    },
     fireThresholdSensitivityByRole,
     secureThresholdSensitivityByRole,
     thresholdNeighborhoods: {
@@ -286,8 +417,8 @@ export function calibrationError(filePath: string, error: unknown): CalibrationS
   return {
     file: { name: path.basename(filePath), path: filePath, sizeBytes: 0 },
     status: 'error', cohort: cohortFor(path.basename(filePath)), checkpoint: null, issueCodes: [], fingerprint: null, evaluationFingerprint: null,
-    seasonYear: null, seatCount: 0, counts: null, byRole: null, scoreDistribution: null, scoreDistributionByRole: null,
-    failureSignals: null, failureSignalsByRole: null, componentAveragesByRole: null, tenureDistributionByRole: null, graceProtectedByRole: null, appliedFireThresholdByRole: null,
+    seasonYear: null, nationalChampionship: null, seatCount: 0, counts: null, byRole: null, scoreDistribution: null, scoreDistributionByRole: null,
+    failureSignals: null, failureSignalsByRole: null, componentAveragesByRole: null, tenureDistributionByRole: null, graceProtectedByRole: null, appliedFireThresholdByRole: null, nflDepartures: null, nflMultiSeed: null, retirements: null, retirementMultiSeed: null, unexpectedScenarios: null, unexpectedScenarioMultiSeed: null, combinedDepartureMultiSeed: null, combinedInitialTurnoverMultiSeed: null,
     fireThresholdSensitivityByRole: null, secureThresholdSensitivityByRole: null, thresholdNeighborhoods: null, lowestEvaluations: [],
     error: error instanceof Error ? error.message : String(error)
   };

@@ -7,6 +7,7 @@ import type {
   CoachRole, DynastyRecord, DynastySnapshot, IntegrityFinding, NormalizedCoach,
   NormalizedConference, NormalizedNativeOffer, NormalizedOpening, NormalizedStaffMove, NormalizedTeam
 } from './core/dynasty';
+import { formatPrestigeGrade } from './core/prestige';
 import type { LoadedUserCoach, PreflightIssue, SavePreflightResult } from './shared/desktop-api';
 
 const EXPECTED_SCHEMA = '833.0';
@@ -24,7 +25,8 @@ const TABLES = {
   transactions: 2701814500,
   transactionArrays: 1261824345,
   seasonCoachStats: 564984853,
-  careerCoachStats: 1758861850
+  careerCoachStats: 1758861850,
+  seasonGames: 4049338978
 } as const;
 
 type RecordLike = Record<string, unknown> & {
@@ -257,7 +259,7 @@ function normalizeSnapshot(savePath: string, tables: Tables, seasonYear: number)
       assetKey: text(team, ['AssetName', 'ShortName']),
       conferenceId: conferenceByTeamReference.get(sourceReference) ?? null,
       prestige: nullableNumber(team, ['TeamPrestige']),
-      prestigeDisplay: text(team, ['PrestigeDisplay']),
+      prestigeDisplay: formatPrestigeGrade(text(team, ['PrestigeDisplay'])),
       nationalRanking: ranking > 0 && ranking <= 25 ? ranking : null,
       currentRecord: record(
         numeric(team, ['ConfWin']) + numeric(team, ['NonConfWin']),
@@ -330,7 +332,7 @@ function normalizeSnapshot(savePath: string, tables: Tables, seasonYear: number)
       userControlled: value<boolean>(coach, ['IsUserControlled'], false) === true,
       created: value<boolean>(coach, ['IsCreated'], false) === true,
       legend: value<boolean>(coach, ['IsLegend'], false) === true,
-      prestige: text(coach, ['CoachPrestige'], '—'),
+      prestige: formatPrestigeGrade(text(coach, ['CoachPrestige'], '—')),
       prestigeScore: nullableNumber(coach, ['CoachPrestigeScore']),
       level: nullableNumber(coach, ['Level']),
       contract: {
@@ -470,6 +472,54 @@ function normalizeSnapshot(savePath: string, tables: Tables, seasonYear: number)
     });
   }
 
+  const championshipGames = active(tables.seasonGames).filter((game) =>
+    text(game, ['SeasonWeekType']) === 'NationalChampionship' && numeric(game, ['SeasonWeek'], -1) === 20
+  );
+  checks += 1;
+  if (championshipGames.length !== 1) {
+    finding(
+      'NATIONAL_CHAMPIONSHIP_NOT_UNIQUE',
+      'error',
+      'national-championship',
+      `Expected exactly one National Championship game in week 20; found ${championshipGames.length}.`
+    );
+  }
+  const championshipGame = championshipGames.length === 1 ? championshipGames[0] : undefined;
+  const championshipStatus = text(championshipGame, ['GameStatus']);
+  const homeTeamId = championshipGame
+    ? checkReference(value(championshipGame, ['HomeTeam'], EMPTY_REF), teamIds, 'INVALID_CHAMPIONSHIP_HOME_TEAM', 'national-championship', 'HomeTeam')
+    : null;
+  const awayTeamId = championshipGame
+    ? checkReference(value(championshipGame, ['AwayTeam'], EMPTY_REF), teamIds, 'INVALID_CHAMPIONSHIP_AWAY_TEAM', 'national-championship', 'AwayTeam')
+    : null;
+  const homeScore = numeric(championshipGame, ['HomeScore'], -1);
+  const awayScore = numeric(championshipGame, ['AwayScore'], -1);
+  const validChampionshipStatus = championshipStatus === 'HomeWon' || championshipStatus === 'AwayWon';
+  const scoreMatchesStatus = championshipStatus === 'HomeWon'
+    ? homeScore > awayScore
+    : championshipStatus === 'AwayWon' && awayScore > homeScore;
+  if (championshipGame && !validChampionshipStatus) {
+    finding('CHAMPIONSHIP_NOT_FINAL', 'error', 'national-championship', `GameStatus is ${championshipStatus || 'empty'} rather than HomeWon or AwayWon.`);
+  } else if (championshipGame && !scoreMatchesStatus) {
+    finding('CHAMPIONSHIP_RESULT_MISMATCH', 'error', 'national-championship', `Final score ${awayScore}-${homeScore} conflicts with ${championshipStatus}.`);
+  }
+  const nationalChampionship = championshipGame && homeTeamId && awayTeamId && validChampionshipStatus && scoreMatchesStatus
+    ? {
+        sourceRow: championshipGame.index,
+        seasonWeek: numeric(championshipGame, ['SeasonWeek']),
+        weekType: text(championshipGame, ['SeasonWeekType']),
+        homeTeamId,
+        awayTeamId,
+        homeScore,
+        awayScore,
+        winnerTeamId: championshipStatus === 'HomeWon' ? homeTeamId : awayTeamId,
+        loserTeamId: championshipStatus === 'HomeWon' ? awayTeamId : homeTeamId,
+        status: championshipStatus as 'HomeWon' | 'AwayWon',
+        overtime: value<boolean>(championshipGame, ['IsOvertimeGame'], false) === true,
+        simulated: value<boolean>(championshipGame, ['IsSimmed'], false) === true
+      }
+    : null;
+
   const errors = findings.filter((item) => item.severity === 'error').length;
   const warnings = findings.length - errors;
   return {
@@ -481,6 +531,7 @@ function normalizeSnapshot(savePath: string, tables: Tables, seasonYear: number)
     openings,
     nativeOffers,
     staffMoves,
+    nationalChampionship,
     integrity: { valid: errors === 0, checks, errors, warnings, findings }
   };
 }
@@ -541,6 +592,8 @@ export async function inspectSave(savePath: string, packaged = app.isPackaged): 
         name: coach.name,
         role: coach.role,
         prestige: coach.prestige,
+        level: coach.level,
+        age: coach.age,
         seasonRecord: `${coach.resume.season.wins}-${coach.resume.season.losses}`,
         careerRecord: `${coach.resume.career.wins}-${coach.resume.career.losses}`,
         contractYearsRemaining: coach.contract.yearsRemaining,

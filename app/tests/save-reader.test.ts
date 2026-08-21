@@ -2,6 +2,8 @@ import path from 'node:path';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { initializeMarket } from '../src/core/market';
 import { evaluatePartOne } from '../src/core/evaluation';
+import { planPerformanceActions } from '../src/core/performance-actions';
+import { planPartOneDepartures } from '../src/core/part-one-departures';
 
 vi.mock('electron', () => ({
   app: {
@@ -48,6 +50,16 @@ describe('read-only save preflight', () => {
     expect(snapshot?.openings).toHaveLength(192);
     expect(snapshot?.nativeOffers).toHaveLength(0);
     expect(snapshot?.staffMoves).toHaveLength(124);
+    expect(snapshot?.nationalChampionship).toMatchObject({
+      sourceRow: 401,
+      seasonWeek: 20,
+      weekType: 'NationalChampionship',
+      homeScore: 31,
+      awayScore: 27,
+      status: 'HomeWon'
+    });
+    expect(snapshot?.nationalChampionship?.winnerTeamId).toBe(snapshot?.nationalChampionship?.homeTeamId);
+    expect(snapshot?.teams.some((team) => team.id === snapshot?.nationalChampionship?.winnerTeamId)).toBe(true);
 
     const userCoach = snapshot?.coaches.find((coach) => coach.userControlled);
     const userTeam = snapshot?.teams.find((team) => team.id === userCoach?.employerTeamId);
@@ -86,6 +98,19 @@ describe('read-only save preflight', () => {
     expect(evaluation.evaluations.filter((item) => item.role === 'HC' && item.classification === 'Fire')).toHaveLength(12);
     expect(evaluation.evaluations.filter((item) => item.role === 'OC' && item.classification === 'Fire')).toHaveLength(11);
     expect(evaluation.evaluations.filter((item) => item.role === 'DC' && item.classification === 'Fire')).toHaveLength(10);
+
+    const departures = planPartOneDepartures(snapshot!, market, evaluation);
+    expect(departures.invariants.valid).toBe(true);
+    expect(new Set(departures.departedCoachIds).size).toBe(departures.departedCoachIds.length);
+    const performancePlan = planPerformanceActions(snapshot!, market, evaluation, {
+      departedCoachIds: departures.departedCoachIds,
+      internalSuccessionTeamIds: departures.internalSuccessionTeamIds
+    });
+    expect(performancePlan.invariants.valid).toBe(true);
+    expect(performancePlan.actions.length).toBe(performancePlan.vacancies.length);
+    expect(performancePlan.actions.length).toBeGreaterThanOrEqual(30);
+    expect(performancePlan.requiresBuyoutPricing).toBe(true);
+    expect(new Set(performancePlan.actions.map((item) => item.coachId)).size).toBe(performancePlan.actions.length);
   });
 
   it('blocks a valid dynasty save captured before the supported checkpoint', async () => {
@@ -93,5 +118,17 @@ describe('read-only save preflight', () => {
 
     expect(result.status).toBe('blocked');
     expect(result.issues.some((item) => item.code === 'WRONG_CHECKPOINT')).toBe(true);
+  });
+
+  it.each([
+    ['DYNASTY-TEST1NATCHAMP', 23, 26, 'AwayWon'],
+    ['DYNASTY-TEST2NATCHAMP', 29, 31, 'AwayWon'],
+    ['DYNASTY-TEST3NATCHAMP', 40, 20, 'HomeWon']
+  ] as const)('normalizes the finalized championship result in %s', async (name, homeScore, awayScore, status) => {
+    const result = await inspectSave(fixture(name), false);
+    expect(result.status, JSON.stringify(result.issues, null, 2)).toBe('ready');
+    expect(result.snapshot?.nationalChampionship).toMatchObject({ homeScore, awayScore, status });
+    const game = result.snapshot?.nationalChampionship;
+    expect(game?.winnerTeamId).toBe(status === 'HomeWon' ? game?.homeTeamId : game?.awayTeamId);
   });
 });

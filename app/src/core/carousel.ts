@@ -20,6 +20,8 @@ export interface Coach {
   role: 'HC' | 'OC' | 'DC';
   teamId: string;
   prestige: string;
+  level: number;
+  age: number;
   lastSeasonRecord: string;
   careerRecord: string;
   portraitAssetId: number;
@@ -52,6 +54,7 @@ export interface FilledPosition {
 }
 
 export interface CarouselState {
+  seasonYear: number;
   round: number;
   turn: Turn;
   teams: Team[];
@@ -71,13 +74,14 @@ const teams: Team[] = [
 ];
 
 const coaches: Coach[] = [
-  { id: 'navarro', name: 'Eli Navarro', role: 'OC', teamId: 'louisiana-tech', prestige: 'A-', lastSeasonRecord: '11-3', careerRecord: '43-18', portraitAssetId: 6 },
-  { id: 'reed', name: 'Marcus Reed', role: 'DC', teamId: 'air-force', prestige: 'B+', lastSeasonRecord: '9-4', careerRecord: '35-21', portraitAssetId: 12 },
-  { id: 'grant', name: 'Theo Grant', role: 'HC', teamId: 'alabama', prestige: 'A', lastSeasonRecord: '10-3', careerRecord: '96-39', portraitAssetId: 18 },
-  { id: 'price', name: 'Jordan Price', role: 'HC', teamId: 'alabama', prestige: 'A', lastSeasonRecord: '10-4', careerRecord: '78-31', portraitAssetId: 24, userControlled: true }
+  { id: 'navarro', name: 'Eli Navarro', role: 'OC', teamId: 'louisiana-tech', prestige: 'A-', level: 31, age: 39, lastSeasonRecord: '11-3', careerRecord: '43-18', portraitAssetId: 6 },
+  { id: 'reed', name: 'Marcus Reed', role: 'DC', teamId: 'air-force', prestige: 'B+', level: 24, age: 42, lastSeasonRecord: '9-4', careerRecord: '35-21', portraitAssetId: 12 },
+  { id: 'grant', name: 'Theo Grant', role: 'HC', teamId: 'alabama', prestige: 'A', level: 47, age: 54, lastSeasonRecord: '10-3', careerRecord: '96-39', portraitAssetId: 18 },
+  { id: 'price', name: 'Jordan Price', role: 'HC', teamId: 'alabama', prestige: 'A', level: 42, age: 49, lastSeasonRecord: '10-4', careerRecord: '78-31', portraitAssetId: 24, userControlled: true }
 ];
 
 export const createFixtureState = (): CarouselState => ({
+  seasonYear: 2026,
   round: 1,
   turn: 'school-offers',
   teams,

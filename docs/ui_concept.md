@@ -128,7 +128,7 @@ The Team-branded header establishes school, open role, previous-season record, n
 - headline and plain-language summary;
 - previous Coach or incumbent context;
 - current candidates, offers, decision, or final hire;
-- each Coach's current role/school, previous-season record, career record, and prestige wherever the Coach is presented as a candidate or decision subject;
+- each Coach's current role/school, previous-season record, career record, prestige, and numeric level wherever the Coach is presented as a candidate or decision subject;
 - leading reasons and scores;
 - contract length and Staff Offer Program Points when relevant;
 - an `Explain this result` section with component breakdowns and reason codes; and
@@ -164,7 +164,7 @@ The successful preflight summary includes:
 - schema compatibility status;
 - source filename and read-only fingerprint;
 - current opening/transaction headroom status; and
-- deterministic seed and settings summary.
+- freshly generated Unix-time run seed and settings summary, with the exact seed retained for deterministic reruns.
 
 A failed preflight stops the flow and groups errors by `Unsupported`, `Unsafe`, or `Needs user correction` with specific next actions.
 
@@ -199,11 +199,17 @@ Event cards should use a consistent structure:
 - newly created openings; and
 - expandable model evidence.
 
-Unexpected Scenarios require a persistent `CCR fictional scenario` label. User-HC protection presents Accept/Nullify as a deliberate decision card rather than a transient modal.
+Unexpected Scenarios require a persistent `CCR fictional scenario` label. User-HC protection presents Accept/Nullify as a deliberate decision card rather than a transient modal. Generic FCS programs are excluded from fictional-scenario targeting.
+
+`Looking for a Change` must read as a voluntary resignation rather than a firing: the reveal states that the Coach has entered the available Coaches pool, the vacancy is created normally, and the financial panel shows no school-initiated buyout.
+
+The implemented departure review mirrors Staff Review: four complete tabs—`NFL`, `Retirements`, `Unexpected`, and `Performance`—use compact counts and an active downward indicator. Each tab exposes its full event list with combinable `All`/`HC`/`OC`/`DC` and Conference filters, staggered card arrival, Team-color/helmet Coach portraits, contract impact, staff consequence, result, and event evidence. Only the card-list region scrolls. Protected scenario and performance recommendations must be resolved before review begins.
+
+Each event then receives a full-screen NCAA-inspired presentation using the same Coach portrait treatment, Team identity art, a high-contrast result badge, and any additional staff affected by a `Cleans House` outcome. NFL call-ups rise into view, retirements settle through a restrained legacy fade, fictional scenarios use a brief disrupted reveal, and performance actions arrive with a firmer impact motion; these are presentation distinctions only and never alter the precomputed result. Additional affected coordinators use readable portrait/name/role treatments and arrive in sequence. Space and the visible Advance button move exactly one event; Skip Remaining returns to the reviewed manifest, and Replay Event Review does not reroll the seed.
 
 Performance evaluation uses a 0-100 score visualization with `Fire`, `Vulnerable`, or `Secure`, but the classification text and failure-signal count are primary. Coordinator cards must identify linked Team unit evidence rather than implying unsupported Coach-only statistics.
 
-The performance-review screen consolidates its title, explanation, loaded-save identity, seat count, completion state, and green validation mark into one compact panel header rather than repeating a separate page hero above the data. The summary uses four compact, keyboard-accessible tabs: `Fire`, `Vulnerable`, `Secure`, and `New-Hire Grace`. Counts remain prominent, with the active downward indicator aligned directly beside its count; restrained padding and short supporting labels keep the strip vertically efficient. Each tab exposes the complete matching Coach list rather than a fixed sample. Secondary controls inside the list filter the active classification by `All`, `HC`, `OC`, or `DC`, display live role counts, and optionally isolate one Conference. Role and Conference filters combine. Coach rows size to their complete content and use the standard portrait-over-Team-color-and-flat-helmet treatment while showing role, Team/current record, career record, prestige, role-specific unit rank/rating, current earned-versus-expected contract points, job security, tenure/grace, score, classification, and primary failure signals. Every tab or secondary-filter change receives one staggered arrival animation, and reduced-motion mode suppresses the list animation. Only the Staff Action List region scrolls; the evaluation header and classification tabs remain fixed. The view omits a separate recommendations notice so the list receives the maximum practical height; the persistent read-only footer and page-level Back/Advance actions retain the safety and navigation context without consuming an additional notice row.
+The performance-review screen consolidates its title, explanation, loaded-save identity, seat count, completion state, and green validation mark into one compact panel header rather than repeating a separate page hero above the data. The summary uses four compact, keyboard-accessible tabs: `Fire`, `Vulnerable`, `Secure`, and `New-Hire Grace`. Counts remain prominent, with the active downward indicator aligned directly beside its count; restrained padding and short supporting labels keep the strip vertically efficient. Each tab exposes the complete matching Coach list rather than a fixed sample. Secondary controls inside the list filter the active classification by `All`, `HC`, `OC`, or `DC`, display live role counts, and optionally isolate one Conference. Role and Conference filters combine. Coach rows size to their complete content and use the standard portrait-over-Team-color-and-flat-helmet treatment while showing role, Team/current record, career record, prestige, numeric level, role-specific unit rank/rating, current earned-versus-expected contract points, job security, tenure/grace, score, classification, and primary failure signals. Every tab or secondary-filter change receives one staggered arrival animation, and reduced-motion mode suppresses the list animation. Only the Staff Action List region scrolls; the evaluation header and classification tabs remain fixed. The view omits a separate recommendations notice so the list receives the maximum practical height; the persistent read-only footer and page-level Back/Advance actions retain the safety and navigation context without consuming an additional notice row.
 
 The evaluation surface is vertically scrollable with a clearly visible scrollbar and keeps its navigation actions in the normal document flow so every Coach and the final Advance action remain reachable. At high-resolution desktop widths, the content frame, type, portraits, controls, and evidence panels scale into a larger layout tier rather than remaining fixed at the 1080p pixel size in the center of the display.
 
@@ -381,7 +387,9 @@ Before the run, Settings shows unsaved/changed state and supports config import/
 - allow active Team colors to become the dominant detail-card accent and oversized background watermark while keeping text surfaces readable;
 - use restrained gradients, metallic/satin highlights, inset borders, and shallow shadows to capture the reference screens' broadcast presentation without reproducing their exact chrome;
 - reserve green for validated/success, amber for attention/new, and red for failure or destructive consequence when Team colors are not already carrying the visual emphasis; and
-- keep motion brief and functional so the stronger presentation styling does not slow repeated turns.
+- keep motion brief and functional so the stronger presentation styling does not slow repeated turns;
+- use dark foreground text without a light shadow on every bright gold, orange, green, or warning badge so small status labels meet the same contrast standard throughout the app; and
+- translate native Coach prestige labels into compact football grades (`Aplus` → `A+`, `Cminus` → `C-`), render every displayed grade in a bold, subtly shadowed treatment, and keep prestige, `lvl.`, and age together on one compact metadata line wherever a Coach appears. Color the level number on a low-to-high scale from 10 through 50 while preserving text contrast and clamping values outside that display range. Label the displayed current-season record with the actual loaded dynasty year consistently across cards, shortlists, decisions, and event reveals. Level and its color remain informational until backend weighting is separately approved.
 
 Provisional neutral tokens for the first prototype should stay close to this family rather than becoming a final locked palette:
 
@@ -405,11 +413,17 @@ The strongest daisyUI candidates are buttons, tabs, steps, badges/status, cards,
 
 Reuse daisyUI's restrained component transitions where they fit—such as swaps, loading indicators, progress changes, collapses, dialogs, and drawers. The multi-stage turn-event vignettes remain CCR-owned choreography built from engine events, Team assets, and explicit animation states; daisyUI effects may support individual beats but must not determine event order or simulation timing. Every imported motion pattern must follow the same manual-stage progression and reduced-motion requirements as the broader reveal system.
 
+NFL, retirement, fictional-scenario, and performance events may use distinct motion treatments when the event stage first appears. Moving from one queued Coach to the next updates the mounted stage in place: do not replay the full entrance, briefly restore the prior event, blank the stage, or postpone the new Coach card. A grouped `Cleans House` reveal gives the departing HC visual priority while presenting both affected coordinators as full supporting mini-cards with larger portraits, readable names and roles, and the same prestige / `lvl.` / age metadata as every other Coach treatment.
+
+For an individual Coach departure, keep the identity card focused on the Coach, record, and Team identity. Move the outcome badge and explanatory sentence into a distinct centered consequence panel directly beneath the card, visually connected by a small notch. Grouped staff changes retain the outcome inside the primary card because the supporting-staff row already occupies the lower consequence region.
+
 Coach portraits use the Coach's contextual Team primary color as their background and place the Team's left-facing `teamhelmets_flat` illustration as a subdued layer behind the Coach head. The helmet is centered on the square portrait frame and scaled to fill it, with intentional edge cropping rather than unused transparent padding. The primary school logo remains the fallback for a missing helmet. The portrait remains the foreground subject, and contrast/fallback treatments must keep the Coach readable when Team colors or helmet art are unusually light, dark, detailed, or unavailable.
 
 The cascade reveal makes both consequences immediately legible: the departing Coach's old role sits below a destination `New Role` card with a strong upward connector, while the newly vacated opening receives the largest consequence card on the right and explicitly states that it was added to the Offer Queue.
 
 ### Typography and density
+
+Readability is a product constraint rather than a per-screen polish item. At the supported minimum window size, functional labels and secondary evidence should ordinarily remain at least 11–12 px, normal supporting copy at least 13–14 px, and prominent Coach identity metadata at least 16 px. Larger displays scale those classes upward rather than leaving microcopy fixed at desktop-minimum sizes. Compact layout work should reclaim spacing, wrapping, and hierarchy before reducing type below these floors.
 
 - Bahnschrift is the approved CCR type family. Use its SemiCondensed or Condensed width with bold/heavy weights for the wordmark, top tabs, school names, role headings, major event headlines, numeric callouts, and primary actions;
 - use regular-width Bahnschrift at regular through semibold weights for explanations, settings descriptions, offer details, dense tables, and other sustained reading;
@@ -488,7 +502,8 @@ Initial reusable components:
 
 ### UI-3 — Part 1 and Settings
 
-- Add departure/evaluation/contract event cards and user-protection decisions.
+- Departure/evaluation event cards, the locked event manifest, protected scenario/performance decisions, manual reveal pacing, replay, and skip are implemented against normalized save data.
+- Add buyout/contract event cards and financial authority.
 - Render the complete settings interface from a provisional shared schema.
 - Verify lock behavior at `Begin Coaching Carousel`.
 

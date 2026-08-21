@@ -28,7 +28,8 @@ function fixture(): DynastySnapshot {
   return {
     sourceFingerprint: 'A'.repeat(64), seasonYear: 2026, conferences: [], teams: [team],
     coaches: [makeCoach('coach:1', 'HeadCoach'), makeCoach('coach:2', 'OffensiveCoordinator'), makeCoach('coach:3', 'DefensiveCoordinator')],
-    openings: [], nativeOffers: [], staffMoves: [], integrity: { valid: true, checks: 10, errors: 0, warnings: 0, findings: [] }
+    openings: [], nativeOffers: [], staffMoves: [], nationalChampionship: null,
+    integrity: { valid: true, checks: 10, errors: 0, warnings: 0, findings: [] }
   };
 }
 

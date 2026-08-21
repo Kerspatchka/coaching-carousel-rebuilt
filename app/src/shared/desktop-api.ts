@@ -14,6 +14,8 @@ export interface LoadedUserCoach {
   name: string;
   role: string;
   prestige: string;
+  level: number | null;
+  age: number | null;
   careerRecord: string;
   seasonRecord: string;
   contractYearsRemaining: number | null;

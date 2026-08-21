@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { DynastySnapshot } from '../src/core/dynasty';
-import { initializeMarket, MarketInitializationError } from '../src/core/market';
+import { createMarketRunSeed, initializeMarket, MarketInitializationError } from '../src/core/market';
 
 const snapshot = (): DynastySnapshot => ({
   sourceFingerprint: 'A'.repeat(64),
@@ -42,6 +42,14 @@ describe('deterministic market initialization', () => {
 
     expect(second).toEqual(first);
     expect(different.seats.map((seat) => seat.seededTiebreaker)).not.toEqual(first.seats.map((seat) => seat.seededTiebreaker));
+  });
+
+  it('creates a fresh auditable native run seed from Unix time', () => {
+    const first = createMarketRunSeed(snapshot(), 1_787_188_400_000);
+    const second = createMarketRunSeed(snapshot(), 1_787_188_400_001);
+    expect(first).toContain('1787188400000');
+    expect(second).not.toBe(first);
+    expect(initializeMarket(snapshot(), first)).toEqual(initializeMarket(snapshot(), first));
   });
 
   it('fails closed when one Coach occupies multiple staff seats', () => {

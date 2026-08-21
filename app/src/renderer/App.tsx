@@ -11,16 +11,87 @@ import {
   type Team,
   type Turn
 } from '../core/carousel';
-import { initializeMarket, type MarketBaseline } from '../core/market';
+import { createMarketRunSeed, initializeMarket, type MarketBaseline } from '../core/market';
 import { evaluatePartOne, type JobEvaluationClassification, type PartOneEvaluation } from '../core/evaluation';
+import { planPartOneDepartures } from '../core/part-one-departures';
+import { planPerformanceActions, type PerformanceDecisionChoice } from '../core/performance-actions';
+import type { UnexpectedScenarioDecision } from '../core/unexpected-scenarios';
+import type { DynastySnapshot } from '../core/dynasty';
 import '../shared/desktop-api';
 import type { SavePreflightResult } from '../shared/desktop-api';
 import { shellBackground } from './assets/assetCatalog';
-import { CcrBadge, CcrButton, CoachHead, ConferenceMark, Eyebrow, NormalizedCoachHead, TeamArt, TeamMark } from './components/CcrUi';
+import { CcrBadge, CcrButton, CoachHead, CoachStanding, ConferenceMark, Eyebrow, NormalizedCoachHead, NormalizedTeamArt, NormalizedTeamMark, TeamArt, TeamMark } from './components/CcrUi';
+import { createPreviewPreflight } from './previewFixture';
 
 type View = 'hiring' | 'new' | 'filled';
 type RevealPhase = 'idle' | 'deliberating' | 'selected' | 'cascade';
-type AppMode = 'start' | 'inspecting' | 'preflight' | 'market-ready' | 'evaluation-ready' | 'carousel';
+type AppMode = 'start' | 'inspecting' | 'preflight' | 'market-ready' | 'evaluation-ready' | 'departures-ready' | 'carousel';
+type DeparturePlan = ReturnType<typeof planPartOneDepartures>;
+type PerformancePlan = ReturnType<typeof planPerformanceActions>;
+type PartOneEventKind = 'NFL' | 'RETIREMENT' | 'SCENARIO' | 'PERFORMANCE';
+
+interface PartOneUiEvent {
+  id: string;
+  kind: PartOneEventKind;
+  teamId: string;
+  coachIds: string[];
+  eyebrow: string;
+  title: string;
+  detail: string;
+  result: string;
+  fictional: boolean;
+  tone: 'gold' | 'new' | 'success' | 'warning' | 'neutral';
+}
+
+const scenarioLabel = (value: string) => value === 'LookingForAChange'
+  ? 'LOOKING FOR A CHANGE'
+  : value.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
+
+function buildPartOneEvents(snapshot: DynastySnapshot, departures: DeparturePlan, performance: PerformancePlan): PartOneUiEvent[] {
+  const events: PartOneUiEvent[] = departures.nfl.events.map((event) => ({
+    id: event.id, kind: 'NFL', teamId: event.teamId, coachIds: [event.coachId], eyebrow: 'NFL DEPARTURE',
+    title: 'THE NEXT LEVEL CALLS',
+    detail: event.consequence === 'InternalSuccessionReview' ? 'The program will evaluate its coordinators for an internal Head Coach promotion.' : `A new ${roleLabel(event.role)} vacancy enters the carousel.`,
+    result: 'DEPARTS FOR NFL', fictional: false, tone: 'new'
+  }));
+  events.push(...departures.retirements.events.map((event) => ({
+    id: event.id, kind: 'RETIREMENT' as const, teamId: event.teamId, coachIds: [event.coachId], eyebrow: event.reason === 'RetiringOnTop' ? 'RETIRING ON TOP' : 'COACH RETIREMENT',
+    title: event.reason === 'RetiringOnTop' ? 'A CHAMPION WALKS AWAY' : 'THE FINAL WHISTLE',
+    detail: event.consequence === 'InternalSuccessionReview' ? 'The program moves into Internal Succession Review.' : `A new ${roleLabel(event.role)} vacancy enters the carousel.`,
+    result: event.reason === 'RetiringOnTop' ? 'RETIRES AS CHAMPION' : 'RETIRES', fictional: false, tone: event.reason === 'RetiringOnTop' ? 'gold' as const : 'neutral' as const
+  })));
+  events.push(...departures.unexpectedScenarios.outcomes.filter((outcome) => outcome.decision !== 'nullify').map((outcome) => {
+    const affected = [...outcome.affectedCoachIds].sort((left, right) => {
+      const leftRole = snapshot.coaches.find((coach) => coach.id === left)?.role;
+      const rightRole = snapshot.coaches.find((coach) => coach.id === right)?.role;
+      return leftRole === 'HeadCoach' ? -1 : rightRole === 'HeadCoach' ? 1 : 0;
+    });
+    return {
+      id: outcome.id, kind: 'SCENARIO' as const, teamId: outcome.teamId, coachIds: affected,
+      eyebrow: 'UNEXPECTED SCENARIO · FICTIONAL SIMULATION', title: scenarioLabel(outcome.category),
+      detail: outcome.decision === 'nullify' ? 'User protection was exercised. The selected event is consumed without rerolling.' : outcome.category === 'LookingForAChange' ? 'The Coach resigns voluntarily, creates a vacancy, and enters the available Coaches pool.' : outcome.consequence === 'CleansHouse' ? 'The scenario removes the complete coaching staff and creates three vacancies.' : 'The affected Coach leaves the program and creates a vacancy.',
+      result: outcome.decision === 'nullify' ? 'NULLIFIED' : outcome.category === 'LookingForAChange' ? 'AVAILABLE COACH' : outcome.consequence === 'CleansHouse' ? 'CLEANS HOUSE' : 'COACH REMOVED', fictional: true,
+      tone: outcome.decision === 'nullify' ? 'success' as const : 'warning' as const
+    };
+  }));
+  const groupedPerformance = new Map<string, typeof performance.actions>();
+  for (const action of performance.actions) {
+    const key = action.trigger === 'CleansHouse' ? `cleans-house:${action.teamId}` : action.id;
+    groupedPerformance.set(key, [...(groupedPerformance.get(key) ?? []), action]);
+  }
+  events.push(...[...groupedPerformance.entries()].map(([id, actions]) => {
+    const primary = actions.find((action) => action.role === 'HC') ?? actions[0]!;
+    const cleansHouse = actions.some((action) => action.trigger === 'CleansHouse');
+    return {
+      id, kind: 'PERFORMANCE' as const, teamId: primary.teamId, coachIds: actions.map((action) => action.coachId),
+      eyebrow: cleansHouse ? 'PERFORMANCE DECISION · PROGRAM RESET' : 'PERFORMANCE DECISION',
+      title: cleansHouse ? 'THE PROGRAM CLEANS HOUSE' : 'A STAFF CHANGE IS MADE',
+      detail: cleansHouse ? 'The Head Coach is dismissed and both coordinators are not retained. Buyout pricing remains pending.' : `${roleLabel(primary.role)} performance falls below the evidence-gated standard. Buyout pricing remains pending.`,
+      result: cleansHouse ? '3 SEATS OPEN' : `${roleLabel(primary.role).toUpperCase()} FIRED`, fictional: false, tone: 'warning' as const
+    };
+  }));
+  return events;
+}
 
 const turns: Turn[] = ['school-offers', 'coach-decisions', 'results'];
 const turnLabels: Record<Turn, string> = {
@@ -31,6 +102,9 @@ const turnLabels: Record<Turn, string> = {
 
 const roleLabel = (role: 'HC' | 'OC' | 'DC') => (
   role === 'HC' ? 'Head Coach' : role === 'OC' ? 'Offensive Coordinator' : 'Defensive Coordinator'
+);
+const normalizedRoleLabel = (role: string) => (
+  role === 'HeadCoach' ? 'Head Coach' : role === 'OffensiveCoordinator' ? 'Offensive Coordinator' : role === 'DefensiveCoordinator' ? 'Defensive Coordinator' : role
 );
 
 const scrollEvaluationListOnKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -65,6 +139,12 @@ export function App() {
   const [preflight, setPreflight] = useState<SavePreflightResult | null>(null);
   const [market, setMarket] = useState<MarketBaseline | null>(null);
   const [evaluation, setEvaluation] = useState<PartOneEvaluation | null>(null);
+  const [departures, setDepartures] = useState<DeparturePlan | null>(null);
+  const [performance, setPerformance] = useState<PerformancePlan | null>(null);
+  const [scenarioDecisions, setScenarioDecisions] = useState<Record<string, UnexpectedScenarioDecision>>({});
+  const [performanceDecisions, setPerformanceDecisions] = useState<Record<string, PerformanceDecisionChoice>>({});
+  const [partOneEventIndex, setPartOneEventIndex] = useState<number | null>(null);
+  const [partOneReviewComplete, setPartOneReviewComplete] = useState(false);
   const [state, setState] = useState<CarouselState>(() => createFixtureState());
   const [view, setView] = useState<View>('hiring');
   const [years, setYears] = useState(3);
@@ -72,6 +152,11 @@ export function App() {
   const [version, setVersion] = useState('fixture build');
   const [revealPhase, setRevealPhase] = useState<RevealPhase>('idle');
   const reducedMotion = useReducedMotion();
+  const partOneEvents = useMemo(() => (
+    preflight?.snapshot && departures && performance
+      ? buildPartOneEvents(preflight.snapshot, departures, performance)
+      : []
+  ), [departures, performance, preflight?.snapshot]);
 
   const newOpenings = state.openings.filter((opening) => opening.status === 'new');
   const activeOpening = state.openings.find((opening) => opening.status === 'active') ?? state.openings[0]!;
@@ -83,19 +168,31 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    if (new URLSearchParams(window.location.search).get('preview') !== 'evaluation') return;
+    const preview = new URLSearchParams(window.location.search).get('preview');
+    if (preview !== 'evaluation' && preview !== 'departures') return;
     void fetch('/evaluation-preview.json')
       .then((response) => {
-        if (!response.ok) throw new Error(`Preview fixture unavailable (${response.status})`);
+        if (!response.ok || !response.headers.get('content-type')?.includes('application/json')) return createPreviewPreflight();
         return response.json() as Promise<SavePreflightResult>;
       })
       .then((result) => {
         if (!result.snapshot) throw new Error('Preview fixture has no normalized dynasty snapshot');
-        const previewMarket = initializeMarket(result.snapshot);
+        const previewMarket = initializeMarket(result.snapshot, createMarketRunSeed(result.snapshot));
+        const previewEvaluation = evaluatePartOne(result.snapshot, previewMarket);
         setPreflight(result);
         setMarket(previewMarket);
-        setEvaluation(evaluatePartOne(result.snapshot, previewMarket));
-        setMode('evaluation-ready');
+        setEvaluation(previewEvaluation);
+        if (preview === 'departures') {
+          const previewDepartures = planPartOneDepartures(result.snapshot, previewMarket, previewEvaluation);
+          setDepartures(previewDepartures);
+          setPerformance(planPerformanceActions(result.snapshot, previewMarket, previewEvaluation, {
+            departedCoachIds: previewDepartures.departedCoachIds,
+            internalSuccessionTeamIds: previewDepartures.internalSuccessionTeamIds
+          }));
+          setMode('departures-ready');
+        } else {
+          setMode('evaluation-ready');
+        }
       })
       .catch((error) => console.error('Unable to load evaluation preview', error));
   }, []);
@@ -131,6 +228,27 @@ export function App() {
     return () => window.removeEventListener('keydown', advanceOnSpace);
   }, [advanceReveal, revealPhase]);
 
+  const advancePartOneEvent = useCallback(() => {
+    setPartOneEventIndex((current) => {
+      if (current === null) return null;
+      if (current + 1 < partOneEvents.length) return current + 1;
+      setPartOneReviewComplete(true);
+      return null;
+    });
+  }, [partOneEvents.length]);
+
+  useEffect(() => {
+    if (partOneEventIndex === null) return undefined;
+    const advanceOnSpace = (event: KeyboardEvent) => {
+      if (event.key === ' ' && !event.repeat) {
+        event.preventDefault();
+        advancePartOneEvent();
+      }
+    };
+    window.addEventListener('keydown', advanceOnSpace);
+    return () => window.removeEventListener('keydown', advanceOnSpace);
+  }, [advancePartOneEvent, partOneEventIndex]);
+
   const submitOffer = () => setState((current) => submitUserOffer(current, years, points));
   const decide = (decision: 'accept' | 'reject') => setState((current) => recordUserCoachDecision(current, decision));
   const reset = () => {
@@ -153,6 +271,12 @@ export function App() {
       setPreflight(result);
       setMarket(null);
       setEvaluation(null);
+      setDepartures(null);
+      setPerformance(null);
+      setScenarioDecisions({});
+      setPerformanceDecisions({});
+      setPartOneEventIndex(null);
+      setPartOneReviewComplete(false);
       setMode('preflight');
     } catch {
       setMode('start');
@@ -161,7 +285,7 @@ export function App() {
 
   const initializeSelectedMarket = () => {
     if (!preflight?.snapshot) return;
-    setMarket(initializeMarket(preflight.snapshot));
+    setMarket(initializeMarket(preflight.snapshot, createMarketRunSeed(preflight.snapshot)));
     setMode('market-ready');
   };
 
@@ -169,6 +293,49 @@ export function App() {
     if (!preflight?.snapshot || !market) return;
     setEvaluation(evaluatePartOne(preflight.snapshot, market));
     setMode('evaluation-ready');
+  };
+
+  const calculatePartOne = (
+    nextScenarioDecisions: Record<string, UnexpectedScenarioDecision>,
+    nextPerformanceDecisions: Record<string, PerformanceDecisionChoice>
+  ) => {
+    if (!preflight?.snapshot || !market || !evaluation) return;
+    const nextDepartures = planPartOneDepartures(preflight.snapshot, market, evaluation, { unexpectedScenarioDecisions: nextScenarioDecisions });
+    const nextPerformance = planPerformanceActions(preflight.snapshot, market, evaluation, {
+      departedCoachIds: nextDepartures.departedCoachIds,
+      internalSuccessionTeamIds: nextDepartures.internalSuccessionTeamIds,
+      userDecisions: nextPerformanceDecisions
+    });
+    setDepartures(nextDepartures);
+    setPerformance(nextPerformance);
+  };
+
+  const runPartOne = () => {
+    const nextScenarioDecisions = {};
+    const nextPerformanceDecisions = {};
+    setScenarioDecisions(nextScenarioDecisions);
+    setPerformanceDecisions(nextPerformanceDecisions);
+    setPartOneEventIndex(null);
+    setPartOneReviewComplete(false);
+    calculatePartOne(nextScenarioDecisions, nextPerformanceDecisions);
+    setMode('departures-ready');
+  };
+
+  const decideScenario = (scenarioId: string, choice: UnexpectedScenarioDecision) => {
+    const next = { ...scenarioDecisions, [scenarioId]: choice };
+    setScenarioDecisions(next);
+    calculatePartOne(next, performanceDecisions);
+  };
+
+  const decidePerformance = (decisionId: string, choice: PerformanceDecisionChoice) => {
+    if (!preflight?.snapshot || !market || !evaluation || !departures) return;
+    const next = { ...performanceDecisions, [decisionId]: choice };
+    setPerformanceDecisions(next);
+    setPerformance(planPerformanceActions(preflight.snapshot, market, evaluation, {
+      departedCoachIds: departures.departedCoachIds,
+      internalSuccessionTeamIds: departures.internalSuccessionTeamIds,
+      userDecisions: next
+    }));
   };
 
   if (mode === 'market-ready') {
@@ -179,7 +346,37 @@ export function App() {
 
   if (mode === 'evaluation-ready') {
     return preflight?.snapshot && market && evaluation
-      ? <EvaluationReady result={preflight} evaluation={evaluation} version={version} onBack={() => setMode('market-ready')} onPreview={() => setMode('carousel')} />
+      ? <EvaluationReady result={preflight} evaluation={evaluation} version={version} onBack={() => setMode('market-ready')} onPlan={runPartOne} />
+      : <StartAndPreflight mode="preflight" result={preflight} version={version} onSelect={selectSave} onBegin={initializeSelectedMarket} />;
+  }
+
+  if (mode === 'departures-ready') {
+    return preflight?.snapshot && departures && performance
+      ? <>
+          <PartOneDeparturesReady
+            result={preflight}
+            departures={departures}
+            performance={performance}
+            events={partOneEvents}
+            version={version}
+            reviewComplete={partOneReviewComplete}
+            onBack={() => setMode('evaluation-ready')}
+            onBegin={() => partOneEvents.length ? setPartOneEventIndex(0) : setPartOneReviewComplete(true)}
+            onScenarioDecision={decideScenario}
+            onPerformanceDecision={decidePerformance}
+          />
+          {partOneEventIndex !== null && partOneEvents[partOneEventIndex] && (
+            <PartOneEventStage
+              event={partOneEvents[partOneEventIndex]!}
+              index={partOneEventIndex}
+              total={partOneEvents.length}
+              snapshot={preflight.snapshot}
+              reducedMotion={reducedMotion}
+              onAdvance={advancePartOneEvent}
+              onSkip={() => { setPartOneEventIndex(null); setPartOneReviewComplete(true); }}
+            />
+          )}
+        </>
       : <StartAndPreflight mode="preflight" result={preflight} version={version} onSelect={selectSave} onBegin={initializeSelectedMarket} />;
   }
 
@@ -255,7 +452,7 @@ export function App() {
         </div>
       </footer>
 
-      {revealPhase !== 'idle' && <RevealStage phase={revealPhase} team={activeTeam} finalists={finalists} finalistTeams={finalists.map((coach) => teamById(state, coach.teamId))} selected={coachById(state, 'navarro')} priorTeam={teamById(state, 'louisiana-tech')} reducedMotion={reducedMotion} onAdvance={advanceReveal} />}
+      {revealPhase !== 'idle' && <RevealStage phase={revealPhase} seasonYear={state.seasonYear} team={activeTeam} finalists={finalists} finalistTeams={finalists.map((coach) => teamById(state, coach.teamId))} selected={coachById(state, 'navarro')} priorTeam={teamById(state, 'louisiana-tech')} reducedMotion={reducedMotion} onAdvance={advanceReveal} />}
     </main>
   );
 }
@@ -309,7 +506,7 @@ function StartAndPreflight({ mode, result, version, onSelect, onBegin }: {
             {user && (
               <section className="user-context" style={{ '--loaded-team-primary': user.team?.primaryColor ?? '#d7ad32', '--loaded-team-secondary': user.team?.secondaryColor ?? '#ffffff' } as React.CSSProperties}>
                 <div className="user-team-mark">{user.team?.name.slice(0, 2).toUpperCase() ?? 'CC'}</div>
-                <div><Eyebrow>PRIMARY USER CONTEXT</Eyebrow><h3>{user.team?.longName ?? 'Unassigned Team'}</h3><p>{user.name} · {user.role} · {user.prestige} prestige</p></div>
+                <div><Eyebrow>PRIMARY USER CONTEXT</Eyebrow><h3>{user.team?.longName ?? 'Unassigned Team'}</h3><p>{user.name} · {user.role} · <CoachStanding prestige={user.prestige} level={user.level} age={user.age} /></p></div>
                 <div className="user-records"><span><small>SEASON</small><strong>{user.seasonRecord}</strong></span><span><small>CAREER</small><strong>{user.careerRecord}</strong></span><span><small>CONTRACT</small><strong>{user.contractYearsRemaining ?? '—'} YRS</strong></span></div>
               </section>
             )}
@@ -369,12 +566,12 @@ function MarketReady({ result, market, version, onBack, onEvaluate }: {
   );
 }
 
-function EvaluationReady({ result, evaluation, version, onBack, onPreview }: {
+function EvaluationReady({ result, evaluation, version, onBack, onPlan }: {
   result: SavePreflightResult;
   evaluation: PartOneEvaluation;
   version: string;
   onBack: () => void;
-  onPreview: () => void;
+  onPlan: () => void;
 }) {
   const snapshot = result.snapshot!;
   const [filter, setFilter] = useState<JobEvaluationClassification | 'Grace'>('Fire');
@@ -442,7 +639,7 @@ function EvaluationReady({ result, evaluation, version, onBack, onPreview }: {
                 const expected = team.performance.expectedContractPoints[0];
                 return <article className={`evaluation-row classification-${item.classification.toLowerCase()}`} key={item.seatId} style={{ '--evaluation-team-color': team.colors[0], '--evaluation-delay': `${Math.min(index, 18) * 55}ms` } as React.CSSProperties}>
                   <NormalizedCoachHead coach={coach} team={team} size="large" />
-                  <div className="evaluation-person"><Eyebrow>{roleLabel(item.role)} · {team.longName}</Eyebrow><strong>{coach.name}</strong><span>Team {team.currentRecord.wins}-{team.currentRecord.losses} · Career {coach.resume.career.wins}-{coach.resume.career.losses} · {coach.prestige} prestige</span></div>
+                  <div className="evaluation-person"><Eyebrow>{roleLabel(item.role)} · {team.longName}</Eyebrow><strong>{coach.name}</strong><span>{snapshot.seasonYear} {team.currentRecord.wins}-{team.currentRecord.losses} · Career {coach.resume.career.wins}-{coach.resume.career.losses} · <CoachStanding prestige={coach.prestige} level={coach.level} age={coach.age} /></span></div>
                   <div className="evaluation-evidence">
                     <div><small>{isCoordinator ? `${unitName} PERFORMANCE` : 'PROGRAM PERFORMANCE'}</small><strong>{isCoordinator ? (unitRank === null ? 'UNRANKED' : `#${unitRank + 1} · ${unitRating ?? '—'} OVR`) : `${team.currentRecord.wins}-${team.currentRecord.losses} · ${team.ratings.overall ?? '—'} OVR`}</strong><span>{isCoordinator ? item.components.find((component) => component.id === 'unit-performance')?.detail : item.components.find((component) => component.id === 'program-season')?.detail}</span></div>
                     <div><small>CONTRACT EXPECTATION</small><strong>{earned ?? '—'} / {expected ?? '—'} PTS</strong><span>{item.components.find((component) => component.id === (item.role === 'HC' ? 'contract-current' : 'team-contract'))?.detail}</span></div>
@@ -458,10 +655,158 @@ function EvaluationReady({ result, evaluation, version, onBack, onPreview }: {
             </div>
           </section>
         </section>
-        <footer className="evaluation-page-actions"><CcrButton tone="neutral" onClick={onBack}>BACK TO ENGINE BASELINE</CcrButton><CcrButton tone="primary" onClick={onPreview}>OPEN INTERACTION PREVIEW <span aria-hidden="true">›</span></CcrButton></footer>
+        <footer className="evaluation-page-actions"><CcrButton tone="neutral" onClick={onBack}>BACK TO ENGINE BASELINE</CcrButton><CcrButton tone="primary" onClick={onPlan}>RUN PART 1 DEPARTURES <span aria-hidden="true">›</span></CcrButton></footer>
       </section>
-      <footer className="launch-footer"><span>PART 1 PERFORMANCE MODEL · READ ONLY</span><span>DEPARTURES + CONTRACT DECISIONS NEXT</span></footer>
+      <footer className="launch-footer"><span>PART 1 PERFORMANCE MODEL · READ ONLY</span><span>NFL DEPARTURES + RETIREMENTS + EVENTS NEXT</span></footer>
     </main>
+  );
+}
+
+function PartOneDeparturesReady({ result, departures, performance, events, version, reviewComplete, onBack, onBegin, onScenarioDecision, onPerformanceDecision }: {
+  result: SavePreflightResult;
+  departures: DeparturePlan;
+  performance: PerformancePlan;
+  events: PartOneUiEvent[];
+  version: string;
+  reviewComplete: boolean;
+  onBack: () => void;
+  onBegin: () => void;
+  onScenarioDecision: (scenarioId: string, choice: UnexpectedScenarioDecision) => void;
+  onPerformanceDecision: (decisionId: string, choice: PerformanceDecisionChoice) => void;
+}) {
+  const snapshot = result.snapshot!;
+  const [activeKind, setActiveKind] = useState<PartOneEventKind>(() => (
+    (['NFL', 'RETIREMENT', 'SCENARIO', 'PERFORMANCE'] as PartOneEventKind[]).find((kind) => events.some((event) => event.kind === kind)) ?? 'NFL'
+  ));
+  const [roleFilter, setRoleFilter] = useState<'ALL' | 'HC' | 'OC' | 'DC'>('ALL');
+  const [conferenceFilter, setConferenceFilter] = useState('ALL');
+  const pendingCount = departures.unexpectedScenarios.pendingDecisions.length + performance.pendingDecisions.length;
+  const teamsById = new Map(snapshot.teams.map((team) => [team.id, team]));
+  const coachesById = new Map(snapshot.coaches.map((coach) => [coach.id, coach]));
+  const eventTabs: Array<{ kind: PartOneEventKind; label: string; caption: string }> = [
+    { kind: 'NFL', label: 'NFL', caption: 'Pro departures' },
+    { kind: 'RETIREMENT', label: 'RETIREMENTS', caption: 'Coaches stepping away' },
+    { kind: 'SCENARIO', label: 'UNEXPECTED', caption: 'Fictional simulated events' },
+    { kind: 'PERFORMANCE', label: 'PERFORMANCE', caption: 'School staff actions' }
+  ];
+  const roleForEvent = (event: PartOneUiEvent) => {
+    const role = coachesById.get(event.coachIds[0]!)?.role;
+    return role === 'HeadCoach' ? 'HC' : role === 'OffensiveCoordinator' ? 'OC' : 'DC';
+  };
+  const tabEvents = events.filter((event) => event.kind === activeKind);
+  const roleCounts = Object.fromEntries(['ALL', 'HC', 'OC', 'DC'].map((role) => [role, role === 'ALL' ? tabEvents.length : tabEvents.filter((event) => roleForEvent(event) === role).length])) as Record<'ALL' | 'HC' | 'OC' | 'DC', number>;
+  const visibleEvents = tabEvents.filter((event) => {
+    const team = teamsById.get(event.teamId)!;
+    return (roleFilter === 'ALL' || roleForEvent(event) === roleFilter)
+      && (conferenceFilter === 'ALL' || team.conferenceId === conferenceFilter);
+  });
+  const conferences = snapshot.conferences.filter((conference) => events.some((event) => teamsById.get(event.teamId)?.conferenceId === conference.id));
+  const activeTab = eventTabs.find((tab) => tab.kind === activeKind)!;
+  const chooseTab = (kind: PartOneEventKind) => { setActiveKind(kind); setRoleFilter('ALL'); setConferenceFilter('ALL'); };
+  return (
+    <main className="launch-shell part-one-shell" data-theme="ccr" style={{ '--shell-background': `url(${shellBackground})` } as React.CSSProperties}>
+      <header className="launch-header">
+        <div className="brand-lockup"><span className="ccr-shield">CCR</span><div><Eyebrow>DYNASTY UTILITY</Eyebrow><strong>COACHING CAROUSEL REBUILT</strong></div></div>
+        <div className="launch-version"><span className="status status-success" /><span>{version}</span></div>
+      </header>
+      <section className="launch-stage part-one-stage">
+        <section className="preflight-card card is-ready part-one-card">
+          <header className="preflight-file part-one-file-header">
+            <div className="preflight-emblem ready">✓</div>
+            <div className="evaluation-file-copy"><Eyebrow>M3 · PART 1 MARKET FORMATION</Eyebrow><h1>DEPARTURES PLANNED</h1><p>Seeded NFL departures, retirements, Unexpected Scenarios, and evidence-gated performance actions are locked to this save and run seed.</p><div className="evaluation-file-meta"><strong>{result.file.name}</strong><span>Seed {departures.seed}</span></div></div>
+            <CcrBadge tone={pendingCount ? 'warning' : reviewComplete ? 'success' : 'gold'}>{pendingCount ? `${pendingCount} DECISION${pendingCount === 1 ? '' : 'S'}` : reviewComplete ? 'REVIEWED' : `${events.length} EVENTS`}</CcrBadge>
+          </header>
+          <div className="preflight-grid evaluation-counts part-one-counts tabs" role="tablist" aria-label="Part 1 departure categories">
+            {eventTabs.map((tab) => <button type="button" role="tab" aria-selected={activeKind === tab.kind} className={`preflight-stat evaluation-filter-tab departure-filter-tab departure-${tab.kind.toLowerCase()} ${activeKind === tab.kind ? 'is-active' : ''}`} key={tab.kind} onClick={() => chooseTab(tab.kind)}><span>{tab.label}</span><strong>{events.filter((event) => event.kind === tab.kind).length}{activeKind === tab.kind && <span className="evaluation-tab-arrow" aria-hidden="true">▼</span>}</strong><small>{tab.caption}</small></button>)}
+          </div>
+          <section className="part-one-manifest">
+            {pendingCount > 0 && <div className="part-one-decisions">
+              <header><Eyebrow>USER CONTROL</Eyebrow><h2>DECISIONS REQUIRED</h2></header>
+              {departures.unexpectedScenarios.pendingDecisions.map((decision) => {
+                const outcome = departures.unexpectedScenarios.outcomes.find((item) => item.id === decision.scenarioId)!;
+                const team = teamsById.get(decision.teamId)!;
+                const coach = coachesById.get(decision.userCoachId)!;
+                return <article className="part-one-decision" key={decision.id}><NormalizedCoachHead coach={coach} team={team} size="medium" /><div><Eyebrow>FICTIONAL UNEXPECTED SCENARIO</Eyebrow><strong>{scenarioLabel(outcome.category)}</strong><p>{coach.name} and {team.longName} are affected. Accept the simulated event or use user-HC protection to consume it without rerolling.</p></div><div><CcrButton tone="neutral" onClick={() => onScenarioDecision(outcome.id, 'nullify')}>NULLIFY</CcrButton><CcrButton tone="danger" onClick={() => onScenarioDecision(outcome.id, 'accept')}>ACCEPT EVENT</CcrButton></div></article>;
+              })}
+              {performance.pendingDecisions.map((decision) => {
+                const team = teamsById.get(decision.teamId)!;
+                const coach = coachesById.get(decision.coachId)!;
+                return <article className="part-one-decision" key={decision.id}><NormalizedCoachHead coach={coach} team={team} size="medium" /><div><Eyebrow>{decision.kind === 'ConfirmUserHcFiring' ? 'USER HEAD COACH PROTECTION' : 'USER STAFF DECISION'}</Eyebrow><strong>{coach.name} · {normalizedRoleLabel(coach.role)}</strong><p>The model recommends dismissal. Retaining the Coach records a visible override and does not reroll another firing.</p></div><div><CcrButton tone="neutral" onClick={() => onPerformanceDecision(decision.id, 'retain')}>RETAIN</CcrButton><CcrButton tone="danger" onClick={() => onPerformanceDecision(decision.id, 'dismiss')}>DISMISS</CcrButton></div></article>;
+              })}
+            </div>}
+            <header className="part-one-manifest-header"><div><Eyebrow>{activeTab.caption}</Eyebrow><h2>{activeTab.label} DEPARTURE LIST</h2></div><span>{visibleEvents.length} SHOWN · {events.length} TOTAL PRESENTATION EVENTS</span></header>
+            <div className="evaluation-secondary-filters departure-secondary-filters">
+              <div className="evaluation-role-filters" aria-label="Filter departures by role">{(['ALL', 'HC', 'OC', 'DC'] as const).map((role) => <button type="button" className={roleFilter === role ? 'is-active' : ''} key={role} onClick={() => setRoleFilter(role)}><strong>{role}</strong><span>{roleCounts[role]}</span></button>)}</div>
+              <label className="evaluation-conference-filter">CONFERENCE<select value={conferenceFilter} onChange={(event) => setConferenceFilter(event.target.value)}><option value="ALL">ALL CONFERENCES</option>{conferences.map((conference) => <option value={conference.id} key={conference.id}>{conference.name}</option>)}</select></label>
+            </div>
+            <div className="evaluation-list departure-card-list animate-list" key={`${activeKind}:${roleFilter}:${conferenceFilter}`} tabIndex={0} onKeyDown={scrollEvaluationListOnKeyDown}>
+              {visibleEvents.map((event, index) => <DepartureCoachCard event={event} snapshot={snapshot} index={index} key={event.id} />)}
+              {visibleEvents.length === 0 && <div className="empty-state departure-empty"><span>0</span><p>No {activeTab.label.toLowerCase()} events match these filters.</p></div>}
+            </div>
+          </section>
+        </section>
+        <footer className="evaluation-page-actions"><CcrButton tone="neutral" onClick={onBack}>BACK TO STAFF REVIEW</CcrButton><CcrButton tone="primary" disabled={pendingCount > 0} onClick={onBegin}>{reviewComplete ? 'REPLAY EVENT REVIEW' : 'BEGIN EVENT REVIEW'} <span aria-hidden="true">›</span></CcrButton></footer>
+      </section>
+      <footer className="launch-footer"><span>PART 1 DEPARTURE LEDGER · READ ONLY</span><span>{pendingCount ? 'USER DECISIONS REQUIRED' : reviewComplete ? 'CONTRACT DECISIONS NEXT' : 'SPACE OR ADVANCE · SKIP AVAILABLE'}</span></footer>
+    </main>
+  );
+}
+
+function DepartureCoachCard({ event, snapshot, index }: { event: PartOneUiEvent; snapshot: DynastySnapshot; index: number }) {
+  const team = snapshot.teams.find((candidate) => candidate.id === event.teamId)!;
+  const coach = snapshot.coaches.find((candidate) => candidate.id === event.coachIds[0]!)!;
+  const role = coach.role === 'HeadCoach' ? 'HC' : coach.role === 'OffensiveCoordinator' ? 'OC' : 'DC';
+  const contractYears = coach.contract.yearsRemaining;
+  const contractValue = event.kind === 'PERFORMANCE' ? 'BUYOUT PENDING' : 'NO BUYOUT';
+  const contractDetail = event.kind === 'PERFORMANCE'
+    ? `${contractYears ?? 'Unknown'} contract year${contractYears === 1 ? '' : 's'} remaining`
+    : event.kind === 'SCENARIO' && event.result === 'AVAILABLE COACH' ? 'Voluntary resignation' : 'Non-dismissal departure';
+  const consequence = event.coachIds.length > 1 ? 'CLEANS HOUSE' : role === 'HC' ? 'SUCCESSION REVIEW' : `${role} VACANCY`;
+  const consequenceDetail = event.coachIds.length > 1 ? `${event.coachIds.length} staff seats affected` : 'One position opens';
+  const kindCode = event.kind === 'RETIREMENT' ? 'RET' : event.kind === 'PERFORMANCE' ? 'ACT' : event.kind === 'SCENARIO' ? 'EVT' : 'NFL';
+  const departureType = event.kind === 'NFL' ? 'NFL DEPARTURE'
+    : event.kind === 'RETIREMENT' ? event.eyebrow
+    : event.kind === 'SCENARIO' ? event.title
+    : 'PERFORMANCE ACTION';
+  return <article className={`evaluation-row departure-coach-card departure-card-${event.kind.toLowerCase()}`} style={{ '--evaluation-team-color': team.colors[0], '--evaluation-delay': `${Math.min(index, 18) * 55}ms` } as React.CSSProperties}>
+    <NormalizedCoachHead coach={coach} team={team} size="large" />
+    <div className="evaluation-person"><Eyebrow>{normalizedRoleLabel(coach.role)} · {team.longName}</Eyebrow><strong>{coach.name}</strong><span>{snapshot.seasonYear} {team.currentRecord.wins}-{team.currentRecord.losses} · Career {coach.resume.career.wins}-{coach.resume.career.losses} · <CoachStanding prestige={coach.prestige} level={coach.level} age={coach.age} /></span></div>
+    <div className="evaluation-evidence departure-evidence"><div><small>DEPARTURE TYPE</small><strong>{departureType}</strong><span>{event.fictional ? 'CCR fictional simulation' : 'Seeded Part 1 outcome'}</span></div><div><small>CONTRACT IMPACT</small><strong>{contractValue}</strong><span>{contractDetail}</span></div><div><small>STAFF CONSEQUENCE</small><strong>{consequence}</strong><span>{consequenceDetail}</span></div></div>
+    <div className="evaluation-reasons departure-reason"><small>EVENT OUTCOME</small><span>{event.detail}</span></div>
+    <div className="evaluation-result departure-card-result"><div className="evaluation-score"><small>EVENT</small><strong>{kindCode}</strong><span>{String(index + 1).padStart(2, '0')}</span></div><CcrBadge tone={event.tone}>{event.result}</CcrBadge></div>
+  </article>;
+}
+
+function PartOneEventStage({ event, index, total, snapshot, reducedMotion, onAdvance, onSkip }: {
+  event: PartOneUiEvent;
+  index: number;
+  total: number;
+  snapshot: DynastySnapshot;
+  reducedMotion: boolean;
+  onAdvance: () => void;
+  onSkip: () => void;
+}) {
+  const team = snapshot.teams.find((candidate) => candidate.id === event.teamId)!;
+  const coaches = event.coachIds.map((id) => snapshot.coaches.find((candidate) => candidate.id === id)!).filter(Boolean);
+  const primary = coaches[0]!;
+  const isIndividualChange = coaches.length === 1;
+  return (
+    <section className={`event-stage part-one-event-stage event-${event.kind.toLowerCase()} ${reducedMotion ? 'event-reduced' : ''}`} role="dialog" aria-modal="true" aria-label={`Part 1 event ${index + 1} of ${total}`} style={{ '--team-primary': team.colors[0], '--team-secondary': team.colors[1] } as React.CSSProperties}>
+      <div className="event-backdrop-art"><NormalizedTeamArt team={team} /></div>
+      <header className="event-header"><div><Eyebrow>{event.eyebrow}</Eyebrow><strong>{event.title}</strong></div><div className="event-progress"><span>{index + 1}</span><i /><span>{total}</span></div></header>
+      <div className="event-body part-one-event-body">
+        <div className="event-team-lockup"><NormalizedTeamMark team={team} variant="threeDimensional" /><span><Eyebrow>{team.conferenceId ? snapshot.conferences.find((conference) => conference.id === team.conferenceId)?.name ?? 'PROGRAM' : 'PROGRAM'}</Eyebrow><strong>{team.longName}</strong></span></div>
+        <article className="departure-reveal-card">
+          <NormalizedCoachHead coach={primary} team={team} size="large" />
+          <div className="departure-reveal-copy"><Eyebrow>{normalizedRoleLabel(primary.role)} · <CoachStanding prestige={primary.prestige} level={primary.level} age={primary.age} compact /></Eyebrow><h2>{primary.name}</h2><p>{snapshot.seasonYear} {team.currentRecord.wins}-{team.currentRecord.losses} · Career {primary.resume.career.wins}-{primary.resume.career.losses}</p>{!isIndividualChange && <div className="departure-result"><CcrBadge tone={event.tone}>{event.result}</CcrBadge><span>{event.detail}</span></div>}</div>
+          <NormalizedTeamMark team={team} />
+        </article>
+        {isIndividualChange && <div className="departure-result departure-result-detached"><CcrBadge tone={event.tone}>{event.result}</CcrBadge><span>{event.detail}</span></div>}
+        {coaches.length > 1 && <div className="departure-supporting"><Eyebrow>ADDITIONAL STAFF AFFECTED</Eyebrow>{coaches.slice(1).map((coach) => <span key={coach.id}><NormalizedCoachHead coach={coach} team={team} size="small" /><strong>{coach.name}</strong><small><em>{normalizedRoleLabel(coach.role)} · STAFF NOT RETAINED</em><CoachStanding prestige={coach.prestige} level={coach.level} age={coach.age} compact /></small></span>)}</div>}
+        {event.fictional && <div className="departure-fiction-notice">FICTIONAL SIMULATION EVENT · NOT NATIVE DYNASTY HISTORY</div>}
+      </div>
+      <footer className="event-footer"><span>{reducedMotion ? 'REDUCED-MOTION REVEAL · PRESS SPACE TO ADVANCE' : 'PRESS SPACE TO ADVANCE'}</span><div><CcrButton tone="ghost" onClick={onSkip}>SKIP REMAINING</CcrButton><CcrButton tone="ghost" onClick={onAdvance}>{index + 1 === total ? 'ADVANCE · COMPLETE REVIEW' : 'ADVANCE · NEXT EVENT'} <span aria-hidden="true">›</span></CcrButton></div></footer>
+    </section>
   );
 }
 
@@ -494,7 +839,7 @@ function HiringView({ state, years, points, setYears, setPoints, submitOffer, de
         </div>
         <div className="hero-conference"><ConferenceMark conferenceKey={team.conferenceKey} label={team.conferenceName} /><span>{team.conferenceName}</span></div>
         <div className="hero-stats stats">
-          <div className="stat"><span className="stat-title">LAST SEASON</span><strong className="stat-value">{team.lastSeasonRecord}</strong></div>
+          <div className="stat"><span className="stat-title">{state.seasonYear}</span><strong className="stat-value">{team.lastSeasonRecord}</strong></div>
           <div className="stat"><span className="stat-title">NATIONAL</span><strong className="stat-value">{team.nationalRanking ? `#${team.nationalRanking}` : 'NR'}</strong></div>
           <div className="stat"><span className="stat-title">PRESTIGE</span><strong className="stat-value">{team.prestige}</strong></div>
         </div>
@@ -512,7 +857,7 @@ function HiringView({ state, years, points, setYears, setPoints, submitOffer, de
           <header className="story-header"><div><Eyebrow>USER SCHOOL DECISION</Eyebrow><h2>SUBMIT A FINAL OFFER</h2></div><CcrBadge tone="warning">FINAL OFFER</CcrBadge></header>
           <div className="candidate-feature">
             <CoachHead coach={coach} team={currentTeam} size="large" />
-            <div className="candidate-identity"><Eyebrow>PRIMARY TARGET</Eyebrow><h3>{coach.name}</h3><p>{roleLabel(coach.role)} · {currentTeam.name}</p><p className="coach-records">LAST SEASON {coach.lastSeasonRecord} · CAREER {coach.careerRecord}</p><div className="candidate-tags"><CcrBadge tone="gold">{coach.prestige} PRESTIGE</CcrBadge><CcrBadge>FIRST HC OPPORTUNITY</CcrBadge></div></div>
+            <div className="candidate-identity"><Eyebrow>PRIMARY TARGET</Eyebrow><h3>{coach.name}</h3><p>{roleLabel(coach.role)} · {currentTeam.name}</p><p className="coach-records">{state.seasonYear} {coach.lastSeasonRecord} · CAREER {coach.careerRecord}</p><div className="candidate-tags"><CcrBadge tone="gold"><CoachStanding prestige={coach.prestige} level={coach.level} age={coach.age} compact /></CcrBadge><CcrBadge>FIRST HC OPPORTUNITY</CcrBadge></div></div>
             <div className="score-grid stats">
               <div className="stat"><span className="stat-title">SCHOOL INTEREST</span><strong className="stat-value">84</strong><span className="stat-desc">STRONG MATCH</span></div>
               <div className="stat"><span className="stat-title">COACH INTEREST</span><strong className="stat-value">77</strong><span className="stat-desc">INTERESTED</span></div>
@@ -520,7 +865,7 @@ function HiringView({ state, years, points, setYears, setPoints, submitOffer, de
           </div>
           <div className="shortlist-row">
             <Eyebrow>FINAL SHORTLIST</Eyebrow>
-            {otherFinalists.map((finalist) => <div className="shortlist-coach" key={finalist.id}><CoachHead coach={finalist} team={teamById(state, finalist.teamId)} size="small" /><span><strong>{finalist.name}</strong><small>{roleLabel(finalist.role)} · {teamById(state, finalist.teamId).name}</small><small className="shortlist-record">LAST {finalist.lastSeasonRecord} · CAREER {finalist.careerRecord}</small></span><CcrBadge>{finalist.prestige}</CcrBadge></div>)}
+            {otherFinalists.map((finalist) => <div className="shortlist-coach" key={finalist.id}><CoachHead coach={finalist} team={teamById(state, finalist.teamId)} size="small" /><span><strong>{finalist.name}</strong><small>{roleLabel(finalist.role)} · {teamById(state, finalist.teamId).name}</small><small className="shortlist-record">{state.seasonYear} {finalist.lastSeasonRecord} · CAREER {finalist.careerRecord}</small></span><CcrBadge><CoachStanding prestige={finalist.prestige} level={finalist.level} age={finalist.age} compact /></CcrBadge></div>)}
           </div>
           <div className="reason alert"><span className="reason-icon">FIT</span><p>Elite unit production, first-time head-coach readiness, and strong scheme fit make Navarro the leading realistic target.</p></div>
           <div className="offer-form">
@@ -535,7 +880,7 @@ function HiringView({ state, years, points, setYears, setPoints, submitOffer, de
       {state.turn === 'coach-decisions' && (
         <section className="story-card card">
           <header className="story-header"><div><Eyebrow>USER COACH DECISION</Eyebrow><h2>{userCoach.name.toUpperCase()} HAS AN OFFER</h2></div><CcrBadge tone="new">ACTION REQUIRED</CcrBadge></header>
-          <div className="coach-decision-profile"><CoachHead coach={userCoach} team={userCoachTeam} size="large" /><div><Eyebrow>YOUR COACH</Eyebrow><h3>{userCoach.name}</h3><p>Last season {userCoach.lastSeasonRecord} · Career {userCoach.careerRecord} · {userCoach.prestige} prestige</p></div></div>
+          <div className="coach-decision-profile"><CoachHead coach={userCoach} team={userCoachTeam} size="large" /><div><Eyebrow>YOUR COACH</Eyebrow><h3>{userCoach.name}</h3><p>{state.seasonYear} {userCoach.lastSeasonRecord} · Career {userCoach.careerRecord} · <CoachStanding prestige={userCoach.prestige} level={userCoach.level} age={userCoach.age} /></p></div></div>
           <div className="decision-grid">
             <div className="decision-option"><TeamMark team={userCoachTeam} variant="secondary" /><span><Eyebrow>CURRENT POSITION</Eyebrow><strong>{userCoachTeam.name} HC</strong><p>Remain after a {userCoach.lastSeasonRecord} season</p></span></div>
             <div className="decision-option offer-highlight"><TeamMark team={offerTeam} variant="threeDimensional" /><span><Eyebrow>NEW OFFER</Eyebrow><strong>{offerTeam.name} HC</strong><p>4 years · 145 program points</p></span></div>
@@ -582,14 +927,15 @@ function FilledView({ state }: { state: CarouselState }) {
         const team = teamById(state, opening.teamId);
         const coach = coachById(state, filled.coachId);
         const prior = teamById(state, filled.priorTeamId);
-        return <div className="result-row" key={filled.openingId}><CoachHead coach={coach} team={team} size="medium" /><div><strong>{team.name} {opening.role}: {coach.name}</strong><p>Hired from {prior.name} · Career {coach.careerRecord} · {coach.prestige} prestige</p></div><TeamMark team={team} compact /></div>;
+        return <div className="result-row" key={filled.openingId}><CoachHead coach={coach} team={team} size="medium" /><div><strong>{team.name} {opening.role}: {coach.name}</strong><p>Hired from {prior.name} · Career {coach.careerRecord} · <CoachStanding prestige={coach.prestige} level={coach.level} age={coach.age} /></p></div><TeamMark team={team} compact /></div>;
       })}</div>}
     </section>
   );
 }
 
-function RevealStage({ phase, team, finalists, finalistTeams, selected, priorTeam, reducedMotion, onAdvance }: {
+function RevealStage({ phase, seasonYear, team, finalists, finalistTeams, selected, priorTeam, reducedMotion, onAdvance }: {
   phase: Exclude<RevealPhase, 'idle'>;
+  seasonYear: number;
   team: Team;
   finalists: Coach[];
   finalistTeams: Team[];
@@ -612,7 +958,7 @@ function RevealStage({ phase, team, finalists, finalistTeams, selected, priorTea
               {finalists.map((coach, index) => (
                 <article className={`finalist-card ${coach.id === selected.id ? 'winner' : ''}`} style={{ '--candidate-index': index } as React.CSSProperties} key={coach.id}>
                   <CoachHead coach={coach} team={coach.id === selected.id && phase === 'selected' ? team : finalistTeams[index]!} size="large" />
-                  <div><Eyebrow>{coach.role} FINALIST</Eyebrow><h3>{coach.name}</h3><p>Last season {coach.lastSeasonRecord} · Career {coach.careerRecord} · {coach.prestige} prestige</p></div>
+                  <div><Eyebrow>{coach.role} FINALIST</Eyebrow><h3>{coach.name}</h3><p>{seasonYear} {coach.lastSeasonRecord} · Career {coach.careerRecord} · <CoachStanding prestige={coach.prestige} level={coach.level} age={coach.age} /></p></div>
                   {phase === 'selected' && <CcrBadge tone={coach.id === selected.id ? 'success' : 'neutral'}>{coach.id === selected.id ? 'SELECTED' : 'NOT SELECTED'}</CcrBadge>}
                 </article>
               ))}

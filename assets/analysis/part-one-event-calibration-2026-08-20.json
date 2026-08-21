@@ -1,0 +1,6526 @@
+{
+  "generatedAt": "2026-08-21T10:51:25.801Z",
+  "inventory": {
+    "files": 47,
+    "ready": 4,
+    "blocked": 43,
+    "errors": 0,
+    "uniqueReadyFingerprints": 4,
+    "duplicateReadyFiles": 0,
+    "uniqueEvaluationLandscapes": 4,
+    "duplicateEvaluationLandscapes": 0,
+    "blockedReasons": {
+      "WRONG_CHECKPOINT": 43,
+      "READ_ONLY_COMPLETE": 38,
+      "REFERENCE_INTEGRITY_FAILED": 5
+    }
+  },
+  "aggregates": {
+    "allUniqueReady": {
+      "uniqueSaveCount": 4,
+      "seats": 1716,
+      "classificationCounts": {
+        "Fire": 142,
+        "Vulnerable": 461,
+        "Secure": 1113
+      },
+      "classificationRates": {
+        "Fire": 8.28,
+        "Vulnerable": 26.86,
+        "Secure": 64.86
+      },
+      "byRole": {
+        "HC": {
+          "Fire": 44,
+          "Vulnerable": 138,
+          "Secure": 390
+        },
+        "OC": {
+          "Fire": 49,
+          "Vulnerable": 178,
+          "Secure": 345
+        },
+        "DC": {
+          "Fire": 49,
+          "Vulnerable": 145,
+          "Secure": 378
+        }
+      },
+      "approximateScoreDistribution": {
+        "count": 1716,
+        "minimum": 12,
+        "p10": 27,
+        "p25": 37,
+        "median": 52,
+        "mean": 54.36,
+        "p75": 67,
+        "p90": 82,
+        "maximum": 100,
+        "histogram": {
+          "10-14": 6,
+          "15-19": 29,
+          "20-24": 84,
+          "25-29": 110,
+          "30-34": 122,
+          "35-39": 106,
+          "40-44": 146,
+          "45-49": 134,
+          "50-54": 142,
+          "55-59": 140,
+          "60-64": 131,
+          "65-69": 158,
+          "70-74": 96,
+          "75-79": 91,
+          "80-84": 61,
+          "85-89": 75,
+          "90-94": 35,
+          "95-99": 32,
+          "100-100": 18
+        }
+      },
+      "failureSignals": {
+        "job-security": 633,
+        "contract-expectation": 497,
+        "unit-underachievement": 226,
+        "program-record": 129,
+        "unit-rank": 104,
+        "negative-trend": 69
+      },
+      "saves": [
+        {
+          "name": "DYNASTY-CCRY1BW3",
+          "fingerprint": "A3FF8B089762A4095A40D6EF6093413CE477A8047B201C4BB8176696A3E277B0",
+          "evaluationFingerprint": "91BB9A02363D1390C56DD19226CADE48191F3BB913A739E8CB22C9FDE17D4692",
+          "counts": {
+            "Fire": 33,
+            "Vulnerable": 119,
+            "Secure": 277,
+            "catastrophic": 3,
+            "userProtected": 0,
+            "graceProtected": 188,
+            "gracePreventedFire": 11
+          },
+          "byRole": {
+            "HC": {
+              "Fire": 12,
+              "Vulnerable": 34,
+              "Secure": 97
+            },
+            "OC": {
+              "Fire": 11,
+              "Vulnerable": 46,
+              "Secure": 86
+            },
+            "DC": {
+              "Fire": 10,
+              "Vulnerable": 39,
+              "Secure": 94
+            }
+          },
+          "scores": {
+            "count": 429,
+            "minimum": 13,
+            "p10": 27.8,
+            "p25": 38,
+            "median": 53,
+            "mean": 54.75,
+            "p75": 70,
+            "p90": 84,
+            "maximum": 100,
+            "histogram": {
+              "10-14": 3,
+              "15-19": 3,
+              "20-24": 23,
+              "25-29": 27,
+              "30-34": 26,
+              "35-39": 37,
+              "40-44": 33,
+              "45-49": 30,
+              "50-54": 38,
+              "55-59": 27,
+              "60-64": 30,
+              "65-69": 42,
+              "70-74": 27,
+              "75-79": 27,
+              "80-84": 17,
+              "85-89": 19,
+              "90-94": 10,
+              "95-99": 7,
+              "100-100": 3
+            }
+          },
+          "failureSignalsByRole": {
+            "HC": {
+              "contract-expectation": 42,
+              "job-security": 11,
+              "negative-trend": 9,
+              "program-record": 8
+            },
+            "OC": {
+              "job-security": 72,
+              "contract-expectation": 42,
+              "unit-underachievement": 18,
+              "unit-rank": 13,
+              "program-record": 8,
+              "negative-trend": 3
+            },
+            "DC": {
+              "job-security": 73,
+              "contract-expectation": 42,
+              "unit-underachievement": 37,
+              "unit-rank": 13,
+              "program-record": 8,
+              "negative-trend": 8
+            }
+          },
+          "componentAveragesByRole": {
+            "HC": {
+              "contract-current": 13.27,
+              "contract-trend": 8.22,
+              "job-security": 11.8,
+              "program-season": 4.97,
+              "tenure": 7.43,
+              "credibility": 6.27
+            },
+            "OC": {
+              "unit-performance": 18.06,
+              "team-contract": 8.41,
+              "contract-trend": 6.13,
+              "job-security": 4.79,
+              "team-record": 5.37,
+              "tenure": 3.49,
+              "credibility": 2.45
+            },
+            "DC": {
+              "unit-performance": 17.96,
+              "team-contract": 8.41,
+              "contract-trend": 5.99,
+              "job-security": 4.8,
+              "team-record": 5.37,
+              "tenure": 3.44,
+              "credibility": 2.44
+            }
+          },
+          "tenureDistributionByRole": {
+            "HC": {
+              "0": 30,
+              "1": 24,
+              "2": 26,
+              "3": 14,
+              "4": 16,
+              "5+": 33
+            },
+            "OC": {
+              "0": 67,
+              "1": 24,
+              "2": 23,
+              "3": 11,
+              "4": 9,
+              "5+": 9
+            },
+            "DC": {
+              "0": 67,
+              "1": 27,
+              "2": 25,
+              "3": 10,
+              "4": 6,
+              "5+": 8
+            }
+          },
+          "graceProtectedByRole": {
+            "HC": 54,
+            "OC": 67,
+            "DC": 67
+          },
+          "fireThresholdSensitivityByRole": {
+            "22": {
+              "HC": 3,
+              "OC": 9,
+              "DC": 3
+            },
+            "24": {
+              "HC": 8,
+              "OC": 11,
+              "DC": 3
+            },
+            "26": {
+              "HC": 10,
+              "OC": 15,
+              "DC": 5
+            },
+            "28": {
+              "HC": 11,
+              "OC": 17,
+              "DC": 7
+            },
+            "30": {
+              "HC": 12,
+              "OC": 23,
+              "DC": 8
+            },
+            "32": {
+              "HC": 12,
+              "OC": 23,
+              "DC": 10
+            },
+            "34": {
+              "HC": 14,
+              "OC": 23,
+              "DC": 12
+            }
+          },
+          "secureThresholdSensitivityByRole": {
+            "42": {
+              "HC": 103,
+              "OC": 91,
+              "DC": 105
+            },
+            "45": {
+              "HC": 97,
+              "OC": 86,
+              "DC": 94
+            },
+            "48": {
+              "HC": 93,
+              "OC": 83,
+              "DC": 84
+            }
+          },
+          "thresholdNeighborhoods": {
+            "score20to24": 23,
+            "score25to29": 27,
+            "score40to44": 33,
+            "score45to49": 30,
+            "belowRoleFireThresholdInsufficientSignals": 7,
+            "gracePreventedFire": 11
+          }
+        },
+        {
+          "name": "DYNASTY-TEST1NATCHAMP",
+          "fingerprint": "FB090BE76CCE6D51E24CEC3FCB66F3AABF66B124FAADE8CD03565CFACE50E4A2",
+          "evaluationFingerprint": "DEB148C07FC97F35C7F07935DEF931BE74400D835A7EF565619CE47D632C5030",
+          "counts": {
+            "Fire": 34,
+            "Vulnerable": 119,
+            "Secure": 276,
+            "catastrophic": 2,
+            "userProtected": 1,
+            "graceProtected": 188,
+            "gracePreventedFire": 10
+          },
+          "byRole": {
+            "HC": {
+              "Fire": 9,
+              "Vulnerable": 40,
+              "Secure": 94
+            },
+            "OC": {
+              "Fire": 12,
+              "Vulnerable": 45,
+              "Secure": 86
+            },
+            "DC": {
+              "Fire": 13,
+              "Vulnerable": 34,
+              "Secure": 96
+            }
+          },
+          "scores": {
+            "count": 429,
+            "minimum": 13,
+            "p10": 27,
+            "p25": 38,
+            "median": 54,
+            "mean": 54.07,
+            "p75": 68,
+            "p90": 83,
+            "maximum": 100,
+            "histogram": {
+              "10-14": 2,
+              "15-19": 10,
+              "20-24": 18,
+              "25-29": 25,
+              "30-34": 34,
+              "35-39": 27,
+              "40-44": 37,
+              "45-49": 32,
+              "50-54": 38,
+              "55-59": 28,
+              "60-64": 39,
+              "65-69": 40,
+              "70-74": 25,
+              "75-79": 18,
+              "80-84": 19,
+              "85-89": 18,
+              "90-94": 9,
+              "95-99": 7,
+              "100-100": 3
+            }
+          },
+          "failureSignalsByRole": {
+            "HC": {
+              "contract-expectation": 41,
+              "job-security": 11,
+              "program-record": 10,
+              "negative-trend": 6
+            },
+            "OC": {
+              "job-security": 77,
+              "contract-expectation": 41,
+              "unit-underachievement": 18,
+              "unit-rank": 13,
+              "program-record": 10,
+              "negative-trend": 4
+            },
+            "DC": {
+              "job-security": 74,
+              "contract-expectation": 41,
+              "unit-underachievement": 37,
+              "unit-rank": 13,
+              "program-record": 10,
+              "negative-trend": 5
+            }
+          },
+          "componentAveragesByRole": {
+            "HC": {
+              "contract-current": 12.73,
+              "contract-trend": 7.94,
+              "job-security": 11.71,
+              "program-season": 4.88,
+              "tenure": 7.43,
+              "credibility": 6.3
+            },
+            "OC": {
+              "unit-performance": 18,
+              "team-contract": 8.15,
+              "contract-trend": 5.91,
+              "job-security": 4.67,
+              "team-record": 5.28,
+              "tenure": 3.49,
+              "credibility": 2.5
+            },
+            "DC": {
+              "unit-performance": 18.16,
+              "team-contract": 8.15,
+              "contract-trend": 5.8,
+              "job-security": 4.73,
+              "team-record": 5.28,
+              "tenure": 3.44,
+              "credibility": 2.47
+            }
+          },
+          "tenureDistributionByRole": {
+            "HC": {
+              "0": 30,
+              "1": 24,
+              "2": 26,
+              "3": 14,
+              "4": 16,
+              "5+": 33
+            },
+            "OC": {
+              "0": 67,
+              "1": 24,
+              "2": 23,
+              "3": 11,
+              "4": 9,
+              "5+": 9
+            },
+            "DC": {
+              "0": 67,
+              "1": 27,
+              "2": 25,
+              "3": 10,
+              "4": 6,
+              "5+": 8
+            }
+          },
+          "graceProtectedByRole": {
+            "HC": 54,
+            "OC": 67,
+            "DC": 67
+          },
+          "fireThresholdSensitivityByRole": {
+            "22": {
+              "HC": 6,
+              "OC": 10,
+              "DC": 5
+            },
+            "24": {
+              "HC": 7,
+              "OC": 12,
+              "DC": 7
+            },
+            "26": {
+              "HC": 8,
+              "OC": 15,
+              "DC": 8
+            },
+            "28": {
+              "HC": 8,
+              "OC": 18,
+              "DC": 10
+            },
+            "30": {
+              "HC": 8,
+              "OC": 19,
+              "DC": 11
+            },
+            "32": {
+              "HC": 9,
+              "OC": 22,
+              "DC": 13
+            },
+            "34": {
+              "HC": 9,
+              "OC": 23,
+              "DC": 16
+            }
+          },
+          "secureThresholdSensitivityByRole": {
+            "42": {
+              "HC": 103,
+              "OC": 89,
+              "DC": 105
+            },
+            "45": {
+              "HC": 94,
+              "OC": 86,
+              "DC": 96
+            },
+            "48": {
+              "HC": 91,
+              "OC": 81,
+              "DC": 87
+            }
+          },
+          "thresholdNeighborhoods": {
+            "score20to24": 18,
+            "score25to29": 25,
+            "score40to44": 37,
+            "score45to49": 32,
+            "belowRoleFireThresholdInsufficientSignals": 14,
+            "gracePreventedFire": 10
+          }
+        },
+        {
+          "name": "DYNASTY-TEST2NATCHAMP",
+          "fingerprint": "2D0C17DA5F1240BE4C28342846AC2A84BF99955046D0CFD0E18F8F4F1D755636",
+          "evaluationFingerprint": "6B0FA9FC28C216FF25CF878FE8651601A79BD23025BC10DE63DFC7A8F25CA511",
+          "counts": {
+            "Fire": 35,
+            "Vulnerable": 117,
+            "Secure": 277,
+            "catastrophic": 1,
+            "userProtected": 0,
+            "graceProtected": 188,
+            "gracePreventedFire": 15
+          },
+          "byRole": {
+            "HC": {
+              "Fire": 10,
+              "Vulnerable": 38,
+              "Secure": 95
+            },
+            "OC": {
+              "Fire": 10,
+              "Vulnerable": 45,
+              "Secure": 88
+            },
+            "DC": {
+              "Fire": 15,
+              "Vulnerable": 34,
+              "Secure": 94
+            }
+          },
+          "scores": {
+            "count": 429,
+            "minimum": 11,
+            "p10": 28,
+            "p25": 38,
+            "median": 54,
+            "mean": 54.31,
+            "p75": 68,
+            "p90": 85,
+            "maximum": 100,
+            "histogram": {
+              "10-14": 1,
+              "15-19": 3,
+              "20-24": 20,
+              "25-29": 34,
+              "30-34": 38,
+              "35-39": 22,
+              "40-44": 34,
+              "45-49": 35,
+              "50-54": 33,
+              "55-59": 42,
+              "60-64": 34,
+              "65-69": 31,
+              "70-74": 25,
+              "75-79": 22,
+              "80-84": 7,
+              "85-89": 25,
+              "90-94": 5,
+              "95-99": 11,
+              "100-100": 7
+            }
+          },
+          "failureSignalsByRole": {
+            "HC": {
+              "contract-expectation": 43,
+              "program-record": 12,
+              "job-security": 8,
+              "negative-trend": 5
+            },
+            "OC": {
+              "job-security": 72,
+              "contract-expectation": 43,
+              "unit-underachievement": 21,
+              "unit-rank": 13,
+              "program-record": 12,
+              "negative-trend": 3
+            },
+            "DC": {
+              "job-security": 79,
+              "contract-expectation": 43,
+              "unit-underachievement": 39,
+              "unit-rank": 13,
+              "program-record": 12,
+              "negative-trend": 4
+            }
+          },
+          "componentAveragesByRole": {
+            "HC": {
+              "contract-current": 12.73,
+              "contract-trend": 7.95,
+              "job-security": 11.78,
+              "program-season": 4.95,
+              "tenure": 7.43,
+              "credibility": 6.33
+            },
+            "OC": {
+              "unit-performance": 18.13,
+              "team-contract": 8.18,
+              "contract-trend": 5.97,
+              "job-security": 4.83,
+              "team-record": 5.38,
+              "tenure": 3.49,
+              "credibility": 2.48
+            },
+            "DC": {
+              "unit-performance": 18.08,
+              "team-contract": 8.18,
+              "contract-trend": 5.8,
+              "job-security": 4.77,
+              "team-record": 5.38,
+              "tenure": 3.44,
+              "credibility": 2.47
+            }
+          },
+          "tenureDistributionByRole": {
+            "HC": {
+              "0": 30,
+              "1": 24,
+              "2": 26,
+              "3": 14,
+              "4": 16,
+              "5+": 33
+            },
+            "OC": {
+              "0": 67,
+              "1": 24,
+              "2": 23,
+              "3": 11,
+              "4": 9,
+              "5+": 9
+            },
+            "DC": {
+              "0": 67,
+              "1": 27,
+              "2": 25,
+              "3": 10,
+              "4": 6,
+              "5+": 8
+            }
+          },
+          "graceProtectedByRole": {
+            "HC": 54,
+            "OC": 67,
+            "DC": 67
+          },
+          "fireThresholdSensitivityByRole": {
+            "22": {
+              "HC": 5,
+              "OC": 6,
+              "DC": 0
+            },
+            "24": {
+              "HC": 6,
+              "OC": 10,
+              "DC": 4
+            },
+            "26": {
+              "HC": 7,
+              "OC": 13,
+              "DC": 8
+            },
+            "28": {
+              "HC": 7,
+              "OC": 16,
+              "DC": 10
+            },
+            "30": {
+              "HC": 8,
+              "OC": 20,
+              "DC": 12
+            },
+            "32": {
+              "HC": 10,
+              "OC": 22,
+              "DC": 15
+            },
+            "34": {
+              "HC": 10,
+              "OC": 23,
+              "DC": 16
+            }
+          },
+          "secureThresholdSensitivityByRole": {
+            "42": {
+              "HC": 101,
+              "OC": 92,
+              "DC": 102
+            },
+            "45": {
+              "HC": 95,
+              "OC": 88,
+              "DC": 94
+            },
+            "48": {
+              "HC": 89,
+              "OC": 82,
+              "DC": 86
+            }
+          },
+          "thresholdNeighborhoods": {
+            "score20to24": 20,
+            "score25to29": 34,
+            "score40to44": 34,
+            "score45to49": 35,
+            "belowRoleFireThresholdInsufficientSignals": 8,
+            "gracePreventedFire": 15
+          }
+        },
+        {
+          "name": "DYNASTY-TEST3NATCHAMP",
+          "fingerprint": "05C21801FD502657BC691597C8E4C3833B677D0EF21757A98FA131B4391E4365",
+          "evaluationFingerprint": "0615F25360F4D21DBB74AB510827C42BC9A3ECD9F66A441D84C68353B17602B3",
+          "counts": {
+            "Fire": 40,
+            "Vulnerable": 106,
+            "Secure": 283,
+            "catastrophic": 0,
+            "userProtected": 1,
+            "graceProtected": 188,
+            "gracePreventedFire": 10
+          },
+          "byRole": {
+            "HC": {
+              "Fire": 13,
+              "Vulnerable": 26,
+              "Secure": 104
+            },
+            "OC": {
+              "Fire": 16,
+              "Vulnerable": 42,
+              "Secure": 85
+            },
+            "DC": {
+              "Fire": 11,
+              "Vulnerable": 38,
+              "Secure": 94
+            }
+          },
+          "scores": {
+            "count": 429,
+            "minimum": 15,
+            "p10": 27,
+            "p25": 40,
+            "median": 54,
+            "mean": 54.34,
+            "p75": 68,
+            "p90": 82.2,
+            "maximum": 100,
+            "histogram": {
+              "15-19": 13,
+              "20-24": 23,
+              "25-29": 24,
+              "30-34": 24,
+              "35-39": 20,
+              "40-44": 42,
+              "45-49": 37,
+              "50-54": 33,
+              "55-59": 43,
+              "60-64": 28,
+              "65-69": 45,
+              "70-74": 19,
+              "75-79": 24,
+              "80-84": 18,
+              "85-89": 13,
+              "90-94": 11,
+              "95-99": 7,
+              "100-100": 5
+            }
+          },
+          "failureSignalsByRole": {
+            "HC": {
+              "contract-expectation": 40,
+              "program-record": 13,
+              "negative-trend": 10,
+              "job-security": 8
+            },
+            "OC": {
+              "job-security": 74,
+              "contract-expectation": 40,
+              "unit-underachievement": 18,
+              "program-record": 13,
+              "unit-rank": 13,
+              "negative-trend": 4
+            },
+            "DC": {
+              "job-security": 74,
+              "contract-expectation": 39,
+              "unit-underachievement": 38,
+              "program-record": 13,
+              "unit-rank": 13,
+              "negative-trend": 8
+            }
+          },
+          "componentAveragesByRole": {
+            "HC": {
+              "contract-current": 12.84,
+              "contract-trend": 7.99,
+              "job-security": 11.96,
+              "program-season": 4.92,
+              "tenure": 7.43,
+              "credibility": 6.29
+            },
+            "OC": {
+              "unit-performance": 18.15,
+              "team-contract": 8.24,
+              "contract-trend": 5.99,
+              "job-security": 4.92,
+              "team-record": 5.34,
+              "tenure": 3.49,
+              "credibility": 2.52
+            },
+            "DC": {
+              "unit-performance": 17.79,
+              "team-contract": 8.26,
+              "contract-trend": 5.78,
+              "job-security": 4.85,
+              "team-record": 5.34,
+              "tenure": 3.44,
+              "credibility": 2.48
+            }
+          },
+          "tenureDistributionByRole": {
+            "HC": {
+              "0": 30,
+              "1": 24,
+              "2": 26,
+              "3": 14,
+              "4": 16,
+              "5+": 33
+            },
+            "OC": {
+              "0": 67,
+              "1": 24,
+              "2": 23,
+              "3": 11,
+              "4": 9,
+              "5+": 9
+            },
+            "DC": {
+              "0": 67,
+              "1": 27,
+              "2": 25,
+              "3": 10,
+              "4": 6,
+              "5+": 8
+            }
+          },
+          "graceProtectedByRole": {
+            "HC": 54,
+            "OC": 67,
+            "DC": 67
+          },
+          "fireThresholdSensitivityByRole": {
+            "22": {
+              "HC": 6,
+              "OC": 12,
+              "DC": 3
+            },
+            "24": {
+              "HC": 9,
+              "OC": 16,
+              "DC": 5
+            },
+            "26": {
+              "HC": 11,
+              "OC": 16,
+              "DC": 6
+            },
+            "28": {
+              "HC": 12,
+              "OC": 19,
+              "DC": 8
+            },
+            "30": {
+              "HC": 12,
+              "OC": 21,
+              "DC": 9
+            },
+            "32": {
+              "HC": 13,
+              "OC": 22,
+              "DC": 11
+            },
+            "34": {
+              "HC": 13,
+              "OC": 24,
+              "DC": 12
+            }
+          },
+          "secureThresholdSensitivityByRole": {
+            "42": {
+              "HC": 111,
+              "OC": 92,
+              "DC": 105
+            },
+            "45": {
+              "HC": 104,
+              "OC": 85,
+              "DC": 94
+            },
+            "48": {
+              "HC": 95,
+              "OC": 80,
+              "DC": 87
+            }
+          },
+          "thresholdNeighborhoods": {
+            "score20to24": 23,
+            "score25to29": 24,
+            "score40to44": 42,
+            "score45to49": 37,
+            "belowRoleFireThresholdInsufficientSignals": 9,
+            "gracePreventedFire": 10
+          }
+        }
+      ]
+    },
+    "naturalUniqueReady": {
+      "uniqueSaveCount": 4,
+      "seats": 1716,
+      "classificationCounts": {
+        "Fire": 142,
+        "Vulnerable": 461,
+        "Secure": 1113
+      },
+      "classificationRates": {
+        "Fire": 8.28,
+        "Vulnerable": 26.86,
+        "Secure": 64.86
+      },
+      "byRole": {
+        "HC": {
+          "Fire": 44,
+          "Vulnerable": 138,
+          "Secure": 390
+        },
+        "OC": {
+          "Fire": 49,
+          "Vulnerable": 178,
+          "Secure": 345
+        },
+        "DC": {
+          "Fire": 49,
+          "Vulnerable": 145,
+          "Secure": 378
+        }
+      },
+      "approximateScoreDistribution": {
+        "count": 1716,
+        "minimum": 12,
+        "p10": 27,
+        "p25": 37,
+        "median": 52,
+        "mean": 54.36,
+        "p75": 67,
+        "p90": 82,
+        "maximum": 100,
+        "histogram": {
+          "10-14": 6,
+          "15-19": 29,
+          "20-24": 84,
+          "25-29": 110,
+          "30-34": 122,
+          "35-39": 106,
+          "40-44": 146,
+          "45-49": 134,
+          "50-54": 142,
+          "55-59": 140,
+          "60-64": 131,
+          "65-69": 158,
+          "70-74": 96,
+          "75-79": 91,
+          "80-84": 61,
+          "85-89": 75,
+          "90-94": 35,
+          "95-99": 32,
+          "100-100": 18
+        }
+      },
+      "failureSignals": {
+        "job-security": 633,
+        "contract-expectation": 497,
+        "unit-underachievement": 226,
+        "program-record": 129,
+        "unit-rank": 104,
+        "negative-trend": 69
+      },
+      "saves": [
+        {
+          "name": "DYNASTY-CCRY1BW3",
+          "fingerprint": "A3FF8B089762A4095A40D6EF6093413CE477A8047B201C4BB8176696A3E277B0",
+          "evaluationFingerprint": "91BB9A02363D1390C56DD19226CADE48191F3BB913A739E8CB22C9FDE17D4692",
+          "counts": {
+            "Fire": 33,
+            "Vulnerable": 119,
+            "Secure": 277,
+            "catastrophic": 3,
+            "userProtected": 0,
+            "graceProtected": 188,
+            "gracePreventedFire": 11
+          },
+          "byRole": {
+            "HC": {
+              "Fire": 12,
+              "Vulnerable": 34,
+              "Secure": 97
+            },
+            "OC": {
+              "Fire": 11,
+              "Vulnerable": 46,
+              "Secure": 86
+            },
+            "DC": {
+              "Fire": 10,
+              "Vulnerable": 39,
+              "Secure": 94
+            }
+          },
+          "scores": {
+            "count": 429,
+            "minimum": 13,
+            "p10": 27.8,
+            "p25": 38,
+            "median": 53,
+            "mean": 54.75,
+            "p75": 70,
+            "p90": 84,
+            "maximum": 100,
+            "histogram": {
+              "10-14": 3,
+              "15-19": 3,
+              "20-24": 23,
+              "25-29": 27,
+              "30-34": 26,
+              "35-39": 37,
+              "40-44": 33,
+              "45-49": 30,
+              "50-54": 38,
+              "55-59": 27,
+              "60-64": 30,
+              "65-69": 42,
+              "70-74": 27,
+              "75-79": 27,
+              "80-84": 17,
+              "85-89": 19,
+              "90-94": 10,
+              "95-99": 7,
+              "100-100": 3
+            }
+          },
+          "failureSignalsByRole": {
+            "HC": {
+              "contract-expectation": 42,
+              "job-security": 11,
+              "negative-trend": 9,
+              "program-record": 8
+            },
+            "OC": {
+              "job-security": 72,
+              "contract-expectation": 42,
+              "unit-underachievement": 18,
+              "unit-rank": 13,
+              "program-record": 8,
+              "negative-trend": 3
+            },
+            "DC": {
+              "job-security": 73,
+              "contract-expectation": 42,
+              "unit-underachievement": 37,
+              "unit-rank": 13,
+              "program-record": 8,
+              "negative-trend": 8
+            }
+          },
+          "componentAveragesByRole": {
+            "HC": {
+              "contract-current": 13.27,
+              "contract-trend": 8.22,
+              "job-security": 11.8,
+              "program-season": 4.97,
+              "tenure": 7.43,
+              "credibility": 6.27
+            },
+            "OC": {
+              "unit-performance": 18.06,
+              "team-contract": 8.41,
+              "contract-trend": 6.13,
+              "job-security": 4.79,
+              "team-record": 5.37,
+              "tenure": 3.49,
+              "credibility": 2.45
+            },
+            "DC": {
+              "unit-performance": 17.96,
+              "team-contract": 8.41,
+              "contract-trend": 5.99,
+              "job-security": 4.8,
+              "team-record": 5.37,
+              "tenure": 3.44,
+              "credibility": 2.44
+            }
+          },
+          "tenureDistributionByRole": {
+            "HC": {
+              "0": 30,
+              "1": 24,
+              "2": 26,
+              "3": 14,
+              "4": 16,
+              "5+": 33
+            },
+            "OC": {
+              "0": 67,
+              "1": 24,
+              "2": 23,
+              "3": 11,
+              "4": 9,
+              "5+": 9
+            },
+            "DC": {
+              "0": 67,
+              "1": 27,
+              "2": 25,
+              "3": 10,
+              "4": 6,
+              "5+": 8
+            }
+          },
+          "graceProtectedByRole": {
+            "HC": 54,
+            "OC": 67,
+            "DC": 67
+          },
+          "fireThresholdSensitivityByRole": {
+            "22": {
+              "HC": 3,
+              "OC": 9,
+              "DC": 3
+            },
+            "24": {
+              "HC": 8,
+              "OC": 11,
+              "DC": 3
+            },
+            "26": {
+              "HC": 10,
+              "OC": 15,
+              "DC": 5
+            },
+            "28": {
+              "HC": 11,
+              "OC": 17,
+              "DC": 7
+            },
+            "30": {
+              "HC": 12,
+              "OC": 23,
+              "DC": 8
+            },
+            "32": {
+              "HC": 12,
+              "OC": 23,
+              "DC": 10
+            },
+            "34": {
+              "HC": 14,
+              "OC": 23,
+              "DC": 12
+            }
+          },
+          "secureThresholdSensitivityByRole": {
+            "42": {
+              "HC": 103,
+              "OC": 91,
+              "DC": 105
+            },
+            "45": {
+              "HC": 97,
+              "OC": 86,
+              "DC": 94
+            },
+            "48": {
+              "HC": 93,
+              "OC": 83,
+              "DC": 84
+            }
+          },
+          "thresholdNeighborhoods": {
+            "score20to24": 23,
+            "score25to29": 27,
+            "score40to44": 33,
+            "score45to49": 30,
+            "belowRoleFireThresholdInsufficientSignals": 7,
+            "gracePreventedFire": 11
+          }
+        },
+        {
+          "name": "DYNASTY-TEST1NATCHAMP",
+          "fingerprint": "FB090BE76CCE6D51E24CEC3FCB66F3AABF66B124FAADE8CD03565CFACE50E4A2",
+          "evaluationFingerprint": "DEB148C07FC97F35C7F07935DEF931BE74400D835A7EF565619CE47D632C5030",
+          "counts": {
+            "Fire": 34,
+            "Vulnerable": 119,
+            "Secure": 276,
+            "catastrophic": 2,
+            "userProtected": 1,
+            "graceProtected": 188,
+            "gracePreventedFire": 10
+          },
+          "byRole": {
+            "HC": {
+              "Fire": 9,
+              "Vulnerable": 40,
+              "Secure": 94
+            },
+            "OC": {
+              "Fire": 12,
+              "Vulnerable": 45,
+              "Secure": 86
+            },
+            "DC": {
+              "Fire": 13,
+              "Vulnerable": 34,
+              "Secure": 96
+            }
+          },
+          "scores": {
+            "count": 429,
+            "minimum": 13,
+            "p10": 27,
+            "p25": 38,
+            "median": 54,
+            "mean": 54.07,
+            "p75": 68,
+            "p90": 83,
+            "maximum": 100,
+            "histogram": {
+              "10-14": 2,
+              "15-19": 10,
+              "20-24": 18,
+              "25-29": 25,
+              "30-34": 34,
+              "35-39": 27,
+              "40-44": 37,
+              "45-49": 32,
+              "50-54": 38,
+              "55-59": 28,
+              "60-64": 39,
+              "65-69": 40,
+              "70-74": 25,
+              "75-79": 18,
+              "80-84": 19,
+              "85-89": 18,
+              "90-94": 9,
+              "95-99": 7,
+              "100-100": 3
+            }
+          },
+          "failureSignalsByRole": {
+            "HC": {
+              "contract-expectation": 41,
+              "job-security": 11,
+              "program-record": 10,
+              "negative-trend": 6
+            },
+            "OC": {
+              "job-security": 77,
+              "contract-expectation": 41,
+              "unit-underachievement": 18,
+              "unit-rank": 13,
+              "program-record": 10,
+              "negative-trend": 4
+            },
+            "DC": {
+              "job-security": 74,
+              "contract-expectation": 41,
+              "unit-underachievement": 37,
+              "unit-rank": 13,
+              "program-record": 10,
+              "negative-trend": 5
+            }
+          },
+          "componentAveragesByRole": {
+            "HC": {
+              "contract-current": 12.73,
+              "contract-trend": 7.94,
+              "job-security": 11.71,
+              "program-season": 4.88,
+              "tenure": 7.43,
+              "credibility": 6.3
+            },
+            "OC": {
+              "unit-performance": 18,
+              "team-contract": 8.15,
+              "contract-trend": 5.91,
+              "job-security": 4.67,
+              "team-record": 5.28,
+              "tenure": 3.49,
+              "credibility": 2.5
+            },
+            "DC": {
+              "unit-performance": 18.16,
+              "team-contract": 8.15,
+              "contract-trend": 5.8,
+              "job-security": 4.73,
+              "team-record": 5.28,
+              "tenure": 3.44,
+              "credibility": 2.47
+            }
+          },
+          "tenureDistributionByRole": {
+            "HC": {
+              "0": 30,
+              "1": 24,
+              "2": 26,
+              "3": 14,
+              "4": 16,
+              "5+": 33
+            },
+            "OC": {
+              "0": 67,
+              "1": 24,
+              "2": 23,
+              "3": 11,
+              "4": 9,
+              "5+": 9
+            },
+            "DC": {
+              "0": 67,
+              "1": 27,
+              "2": 25,
+              "3": 10,
+              "4": 6,
+              "5+": 8
+            }
+          },
+          "graceProtectedByRole": {
+            "HC": 54,
+            "OC": 67,
+            "DC": 67
+          },
+          "fireThresholdSensitivityByRole": {
+            "22": {
+              "HC": 6,
+              "OC": 10,
+              "DC": 5
+            },
+            "24": {
+              "HC": 7,
+              "OC": 12,
+              "DC": 7
+            },
+            "26": {
+              "HC": 8,
+              "OC": 15,
+              "DC": 8
+            },
+            "28": {
+              "HC": 8,
+              "OC": 18,
+              "DC": 10
+            },
+            "30": {
+              "HC": 8,
+              "OC": 19,
+              "DC": 11
+            },
+            "32": {
+              "HC": 9,
+              "OC": 22,
+              "DC": 13
+            },
+            "34": {
+              "HC": 9,
+              "OC": 23,
+              "DC": 16
+            }
+          },
+          "secureThresholdSensitivityByRole": {
+            "42": {
+              "HC": 103,
+              "OC": 89,
+              "DC": 105
+            },
+            "45": {
+              "HC": 94,
+              "OC": 86,
+              "DC": 96
+            },
+            "48": {
+              "HC": 91,
+              "OC": 81,
+              "DC": 87
+            }
+          },
+          "thresholdNeighborhoods": {
+            "score20to24": 18,
+            "score25to29": 25,
+            "score40to44": 37,
+            "score45to49": 32,
+            "belowRoleFireThresholdInsufficientSignals": 14,
+            "gracePreventedFire": 10
+          }
+        },
+        {
+          "name": "DYNASTY-TEST2NATCHAMP",
+          "fingerprint": "2D0C17DA5F1240BE4C28342846AC2A84BF99955046D0CFD0E18F8F4F1D755636",
+          "evaluationFingerprint": "6B0FA9FC28C216FF25CF878FE8651601A79BD23025BC10DE63DFC7A8F25CA511",
+          "counts": {
+            "Fire": 35,
+            "Vulnerable": 117,
+            "Secure": 277,
+            "catastrophic": 1,
+            "userProtected": 0,
+            "graceProtected": 188,
+            "gracePreventedFire": 15
+          },
+          "byRole": {
+            "HC": {
+              "Fire": 10,
+              "Vulnerable": 38,
+              "Secure": 95
+            },
+            "OC": {
+              "Fire": 10,
+              "Vulnerable": 45,
+              "Secure": 88
+            },
+            "DC": {
+              "Fire": 15,
+              "Vulnerable": 34,
+              "Secure": 94
+            }
+          },
+          "scores": {
+            "count": 429,
+            "minimum": 11,
+            "p10": 28,
+            "p25": 38,
+            "median": 54,
+            "mean": 54.31,
+            "p75": 68,
+            "p90": 85,
+            "maximum": 100,
+            "histogram": {
+              "10-14": 1,
+              "15-19": 3,
+              "20-24": 20,
+              "25-29": 34,
+              "30-34": 38,
+              "35-39": 22,
+              "40-44": 34,
+              "45-49": 35,
+              "50-54": 33,
+              "55-59": 42,
+              "60-64": 34,
+              "65-69": 31,
+              "70-74": 25,
+              "75-79": 22,
+              "80-84": 7,
+              "85-89": 25,
+              "90-94": 5,
+              "95-99": 11,
+              "100-100": 7
+            }
+          },
+          "failureSignalsByRole": {
+            "HC": {
+              "contract-expectation": 43,
+              "program-record": 12,
+              "job-security": 8,
+              "negative-trend": 5
+            },
+            "OC": {
+              "job-security": 72,
+              "contract-expectation": 43,
+              "unit-underachievement": 21,
+              "unit-rank": 13,
+              "program-record": 12,
+              "negative-trend": 3
+            },
+            "DC": {
+              "job-security": 79,
+              "contract-expectation": 43,
+              "unit-underachievement": 39,
+              "unit-rank": 13,
+              "program-record": 12,
+              "negative-trend": 4
+            }
+          },
+          "componentAveragesByRole": {
+            "HC": {
+              "contract-current": 12.73,
+              "contract-trend": 7.95,
+              "job-security": 11.78,
+              "program-season": 4.95,
+              "tenure": 7.43,
+              "credibility": 6.33
+            },
+            "OC": {
+              "unit-performance": 18.13,
+              "team-contract": 8.18,
+              "contract-trend": 5.97,
+              "job-security": 4.83,
+              "team-record": 5.38,
+              "tenure": 3.49,
+              "credibility": 2.48
+            },
+            "DC": {
+              "unit-performance": 18.08,
+              "team-contract": 8.18,
+              "contract-trend": 5.8,
+              "job-security": 4.77,
+              "team-record": 5.38,
+              "tenure": 3.44,
+              "credibility": 2.47
+            }
+          },
+          "tenureDistributionByRole": {
+            "HC": {
+              "0": 30,
+              "1": 24,
+              "2": 26,
+              "3": 14,
+              "4": 16,
+              "5+": 33
+            },
+            "OC": {
+              "0": 67,
+              "1": 24,
+              "2": 23,
+              "3": 11,
+              "4": 9,
+              "5+": 9
+            },
+            "DC": {
+              "0": 67,
+              "1": 27,
+              "2": 25,
+              "3": 10,
+              "4": 6,
+              "5+": 8
+            }
+          },
+          "graceProtectedByRole": {
+            "HC": 54,
+            "OC": 67,
+            "DC": 67
+          },
+          "fireThresholdSensitivityByRole": {
+            "22": {
+              "HC": 5,
+              "OC": 6,
+              "DC": 0
+            },
+            "24": {
+              "HC": 6,
+              "OC": 10,
+              "DC": 4
+            },
+            "26": {
+              "HC": 7,
+              "OC": 13,
+              "DC": 8
+            },
+            "28": {
+              "HC": 7,
+              "OC": 16,
+              "DC": 10
+            },
+            "30": {
+              "HC": 8,
+              "OC": 20,
+              "DC": 12
+            },
+            "32": {
+              "HC": 10,
+              "OC": 22,
+              "DC": 15
+            },
+            "34": {
+              "HC": 10,
+              "OC": 23,
+              "DC": 16
+            }
+          },
+          "secureThresholdSensitivityByRole": {
+            "42": {
+              "HC": 101,
+              "OC": 92,
+              "DC": 102
+            },
+            "45": {
+              "HC": 95,
+              "OC": 88,
+              "DC": 94
+            },
+            "48": {
+              "HC": 89,
+              "OC": 82,
+              "DC": 86
+            }
+          },
+          "thresholdNeighborhoods": {
+            "score20to24": 20,
+            "score25to29": 34,
+            "score40to44": 34,
+            "score45to49": 35,
+            "belowRoleFireThresholdInsufficientSignals": 8,
+            "gracePreventedFire": 15
+          }
+        },
+        {
+          "name": "DYNASTY-TEST3NATCHAMP",
+          "fingerprint": "05C21801FD502657BC691597C8E4C3833B677D0EF21757A98FA131B4391E4365",
+          "evaluationFingerprint": "0615F25360F4D21DBB74AB510827C42BC9A3ECD9F66A441D84C68353B17602B3",
+          "counts": {
+            "Fire": 40,
+            "Vulnerable": 106,
+            "Secure": 283,
+            "catastrophic": 0,
+            "userProtected": 1,
+            "graceProtected": 188,
+            "gracePreventedFire": 10
+          },
+          "byRole": {
+            "HC": {
+              "Fire": 13,
+              "Vulnerable": 26,
+              "Secure": 104
+            },
+            "OC": {
+              "Fire": 16,
+              "Vulnerable": 42,
+              "Secure": 85
+            },
+            "DC": {
+              "Fire": 11,
+              "Vulnerable": 38,
+              "Secure": 94
+            }
+          },
+          "scores": {
+            "count": 429,
+            "minimum": 15,
+            "p10": 27,
+            "p25": 40,
+            "median": 54,
+            "mean": 54.34,
+            "p75": 68,
+            "p90": 82.2,
+            "maximum": 100,
+            "histogram": {
+              "15-19": 13,
+              "20-24": 23,
+              "25-29": 24,
+              "30-34": 24,
+              "35-39": 20,
+              "40-44": 42,
+              "45-49": 37,
+              "50-54": 33,
+              "55-59": 43,
+              "60-64": 28,
+              "65-69": 45,
+              "70-74": 19,
+              "75-79": 24,
+              "80-84": 18,
+              "85-89": 13,
+              "90-94": 11,
+              "95-99": 7,
+              "100-100": 5
+            }
+          },
+          "failureSignalsByRole": {
+            "HC": {
+              "contract-expectation": 40,
+              "program-record": 13,
+              "negative-trend": 10,
+              "job-security": 8
+            },
+            "OC": {
+              "job-security": 74,
+              "contract-expectation": 40,
+              "unit-underachievement": 18,
+              "program-record": 13,
+              "unit-rank": 13,
+              "negative-trend": 4
+            },
+            "DC": {
+              "job-security": 74,
+              "contract-expectation": 39,
+              "unit-underachievement": 38,
+              "program-record": 13,
+              "unit-rank": 13,
+              "negative-trend": 8
+            }
+          },
+          "componentAveragesByRole": {
+            "HC": {
+              "contract-current": 12.84,
+              "contract-trend": 7.99,
+              "job-security": 11.96,
+              "program-season": 4.92,
+              "tenure": 7.43,
+              "credibility": 6.29
+            },
+            "OC": {
+              "unit-performance": 18.15,
+              "team-contract": 8.24,
+              "contract-trend": 5.99,
+              "job-security": 4.92,
+              "team-record": 5.34,
+              "tenure": 3.49,
+              "credibility": 2.52
+            },
+            "DC": {
+              "unit-performance": 17.79,
+              "team-contract": 8.26,
+              "contract-trend": 5.78,
+              "job-security": 4.85,
+              "team-record": 5.34,
+              "tenure": 3.44,
+              "credibility": 2.48
+            }
+          },
+          "tenureDistributionByRole": {
+            "HC": {
+              "0": 30,
+              "1": 24,
+              "2": 26,
+              "3": 14,
+              "4": 16,
+              "5+": 33
+            },
+            "OC": {
+              "0": 67,
+              "1": 24,
+              "2": 23,
+              "3": 11,
+              "4": 9,
+              "5+": 9
+            },
+            "DC": {
+              "0": 67,
+              "1": 27,
+              "2": 25,
+              "3": 10,
+              "4": 6,
+              "5+": 8
+            }
+          },
+          "graceProtectedByRole": {
+            "HC": 54,
+            "OC": 67,
+            "DC": 67
+          },
+          "fireThresholdSensitivityByRole": {
+            "22": {
+              "HC": 6,
+              "OC": 12,
+              "DC": 3
+            },
+            "24": {
+              "HC": 9,
+              "OC": 16,
+              "DC": 5
+            },
+            "26": {
+              "HC": 11,
+              "OC": 16,
+              "DC": 6
+            },
+            "28": {
+              "HC": 12,
+              "OC": 19,
+              "DC": 8
+            },
+            "30": {
+              "HC": 12,
+              "OC": 21,
+              "DC": 9
+            },
+            "32": {
+              "HC": 13,
+              "OC": 22,
+              "DC": 11
+            },
+            "34": {
+              "HC": 13,
+              "OC": 24,
+              "DC": 12
+            }
+          },
+          "secureThresholdSensitivityByRole": {
+            "42": {
+              "HC": 111,
+              "OC": 92,
+              "DC": 105
+            },
+            "45": {
+              "HC": 104,
+              "OC": 85,
+              "DC": 94
+            },
+            "48": {
+              "HC": 95,
+              "OC": 80,
+              "DC": 87
+            }
+          },
+          "thresholdNeighborhoods": {
+            "score20to24": 23,
+            "score25to29": 24,
+            "score40to44": 42,
+            "score45to49": 37,
+            "belowRoleFireThresholdInsufficientSignals": 9,
+            "gracePreventedFire": 10
+          }
+        }
+      ]
+    },
+    "experimentalUniqueReady": {
+      "uniqueSaveCount": 0,
+      "seats": 0,
+      "classificationCounts": {
+        "Fire": 0,
+        "Vulnerable": 0,
+        "Secure": 0
+      },
+      "classificationRates": {
+        "Fire": 0,
+        "Vulnerable": 0,
+        "Secure": 0
+      },
+      "byRole": {
+        "HC": {
+          "Fire": 0,
+          "Vulnerable": 0,
+          "Secure": 0
+        },
+        "OC": {
+          "Fire": 0,
+          "Vulnerable": 0,
+          "Secure": 0
+        },
+        "DC": {
+          "Fire": 0,
+          "Vulnerable": 0,
+          "Secure": 0
+        }
+      },
+      "approximateScoreDistribution": {
+        "count": 0,
+        "minimum": 0,
+        "p10": 0,
+        "p25": 0,
+        "median": 0,
+        "mean": 0,
+        "p75": 0,
+        "p90": 0,
+        "maximum": 0,
+        "histogram": {}
+      },
+      "failureSignals": {},
+      "saves": []
+    }
+  },
+  "saves": [
+    {
+      "file": {
+        "name": "DYNASTY-CCRE1BROLEEOS",
+        "path": "ref_saves/DYNASTY-CCRE1BROLEEOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "7DE6DC9A3D09AB615B21B5FFB1C1CBABA5173CD0113DAFC49294B77A49AF928E",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRE1CROLLEOS",
+        "path": "ref_saves/DYNASTY-CCRE1CROLLEOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "04ADAE4AF540420FE0949AAB612AC02CA895D58813DB11E7AE63A5E9E2D95514",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRE1DBUDGETEOS",
+        "path": "ref_saves/DYNASTY-CCRE1DBUDGETEOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "163ABB04E8F0E7006F2E6B97C9D1DC20D0C4830AEE6BC000DAC13DDC7E9EBBDF",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRE1EGOALS-AUTOSAVE",
+        "path": "ref_saves/DYNASTY-CCRE1EGOALS-AUTOSAVE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "E22AC469E6B35BA6AFC16F87C40C73B92D7E877ABB6404643D5949A42E155689",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRE1EGOALSEOS",
+        "path": "ref_saves/DYNASTY-CCRE1EGOALSEOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "A922C988F2FC438A9228C10E69468FE6FA77B05577A4568ABA4639FD4F8200DD",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRE1FFINAL-AUTOSAVE",
+        "path": "ref_saves/DYNASTY-CCRE1FFINAL-AUTOSAVE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "EBBE51B1D9DD4565C34A6F837385EA9F6981BA12A199B037A39BAF6D832997C5",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRE1FFINALEOS",
+        "path": "ref_saves/DYNASTY-CCRE1FFINALEOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "9A61E5A5AC84D957B68D33DC40CE33BAB0FA255076F5C5E70E2A8DD3A9F4F3F3",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRE1POINTSEOS",
+        "path": "ref_saves/DYNASTY-CCRE1POINTSEOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "BE8AA1F34BFDD396A974B6070F2A3EFBA474B301D1883E84A525F45A17320835",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRE2DC25-AUTOSAVE",
+        "path": "ref_saves/DYNASTY-CCRE2DC25-AUTOSAVE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "366E53438C794216C1DFB36892F911E255BA42BB581FF6B2AEC083CF0A6A9669",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRE2DC25EOS",
+        "path": "ref_saves/DYNASTY-CCRE2DC25EOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "FDF11FCA0F6A0CDD54A68C69844FF5F018885A98BDD19BBB35CE8857935950B7",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRG4SUBGRAPH-AUTOSAVE",
+        "path": "ref_saves/DYNASTY-CCRG4SUBGRAPH-AUTOSAVE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "2E3998ED4C546090F8869279E1312113CF7E0E1BD93DED7626C61E678326F31B",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRG4SUBGRAPHEOS",
+        "path": "ref_saves/DYNASTY-CCRG4SUBGRAPHEOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "2DEBE956A68A1583FFC93E54C88C46D4F923672D3AB2549A1D96A6A37A6581C1",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRG5BTX-AUTOSAVE",
+        "path": "ref_saves/DYNASTY-CCRG5BTX-AUTOSAVE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "54D5260195A77307669C84D0D5D2A3CC19ACCCF03139C47033C06BAC7BA8FC30",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRG5BTXEOS",
+        "path": "ref_saves/DYNASTY-CCRG5BTXEOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "E148F87DE4D9BB8C0390F8F28CA013694971EE000726811CCC20406D24E9795E",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRG5NATIVE-AUTOSAVE",
+        "path": "ref_saves/DYNASTY-CCRG5NATIVE-AUTOSAVE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "C67B03141D332908FDD61026097F7225C08902DB8B5694F1A4079C716C324A75",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRG5NATIVEEOS",
+        "path": "ref_saves/DYNASTY-CCRG5NATIVEEOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "E637859CCD13290FC08878A4811C2C16B8A4533614ADF9CDAE1BB7981D282C35",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRG6BNATIVE-AUTOSAVE",
+        "path": "ref_saves/DYNASTY-CCRG6BNATIVE-AUTOSAVE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "BBCFE0E13EA8B5DBEF243A71D3B9D01089E347F20F58ED1A3A7238C9D4DFF427",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRG6BNATIVEEOS",
+        "path": "ref_saves/DYNASTY-CCRG6BNATIVEEOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "DAB1F3221395B05DCECE7A3D223B2FE8A38032D6B98508FA4F6D65C610875BDC",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRG6SYNTH-AUTOSAVE",
+        "path": "ref_saves/DYNASTY-CCRG6SYNTH-AUTOSAVE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "DA2A235EA3C6E6B089DAB6E481B67BA67C9BF68762352378777FC507FB79C81C",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRG6SYNTHEOS",
+        "path": "ref_saves/DYNASTY-CCRG6SYNTHEOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "4EC5AF1623F74A255DC0766A8741261FDAA846B29C70C3533CDAA2F0DBA93F95",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1BW1",
+        "path": "ref_saves/DYNASTY-CCRY1BW1",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "NFLSeason",
+        "weekType": "BowlSeason1",
+        "week": 17,
+        "carouselActive": true
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "REFERENCE_INTEGRITY_FAILED"
+      ],
+      "fingerprint": "2B81F62F42A4521FDD97F9AACA3A9EDAEB0F4427E6F47E8467FE3D6881255E86",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1BW2",
+        "path": "ref_saves/DYNASTY-CCRY1BW2",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "NFLSeason",
+        "weekType": "BowlSeason3",
+        "week": 19,
+        "carouselActive": true
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "REFERENCE_INTEGRITY_FAILED"
+      ],
+      "fingerprint": "AB4E8204FF3C76868841CA2681832086ACB08803304401C722F27D80E2D6E685",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1BW3",
+        "path": "ref_saves/DYNASTY-CCRY1BW3",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "NFLSeason",
+        "weekType": "NationalChampionship",
+        "week": 20,
+        "carouselActive": true
+      },
+      "issueCodes": [
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "A3FF8B089762A4095A40D6EF6093413CE477A8047B201C4BB8176696A3E277B0",
+      "evaluationFingerprint": "91BB9A02363D1390C56DD19226CADE48191F3BB913A739E8CB22C9FDE17D4692",
+      "seasonYear": 2026,
+      "nationalChampionship": {
+        "winnerTeamId": "team:16",
+        "winnerTeam": "BYU",
+        "loserTeamId": "team:2",
+        "homeScore": 31,
+        "awayScore": 27,
+        "status": "HomeWon"
+      },
+      "seatCount": 429,
+      "counts": {
+        "Fire": 33,
+        "Vulnerable": 119,
+        "Secure": 277,
+        "catastrophic": 3,
+        "userProtected": 0,
+        "graceProtected": 188,
+        "gracePreventedFire": 11
+      },
+      "byRole": {
+        "HC": {
+          "Fire": 12,
+          "Vulnerable": 34,
+          "Secure": 97
+        },
+        "OC": {
+          "Fire": 11,
+          "Vulnerable": 46,
+          "Secure": 86
+        },
+        "DC": {
+          "Fire": 10,
+          "Vulnerable": 39,
+          "Secure": 94
+        }
+      },
+      "scoreDistribution": {
+        "count": 429,
+        "minimum": 13,
+        "p10": 27.8,
+        "p25": 38,
+        "median": 53,
+        "mean": 54.75,
+        "p75": 70,
+        "p90": 84,
+        "maximum": 100,
+        "histogram": {
+          "10-14": 3,
+          "15-19": 3,
+          "20-24": 23,
+          "25-29": 27,
+          "30-34": 26,
+          "35-39": 37,
+          "40-44": 33,
+          "45-49": 30,
+          "50-54": 38,
+          "55-59": 27,
+          "60-64": 30,
+          "65-69": 42,
+          "70-74": 27,
+          "75-79": 27,
+          "80-84": 17,
+          "85-89": 19,
+          "90-94": 10,
+          "95-99": 7,
+          "100-100": 3
+        }
+      },
+      "scoreDistributionByRole": {
+        "HC": {
+          "count": 143,
+          "minimum": 20,
+          "p10": 27,
+          "p25": 39,
+          "median": 58,
+          "mean": 57.8,
+          "p75": 74.5,
+          "p90": 88,
+          "maximum": 100,
+          "histogram": {
+            "20-24": 11,
+            "25-29": 8,
+            "30-34": 6,
+            "35-39": 12,
+            "40-44": 9,
+            "45-49": 8,
+            "50-54": 13,
+            "55-59": 6,
+            "60-64": 6,
+            "65-69": 17,
+            "70-74": 11,
+            "75-79": 11,
+            "80-84": 6,
+            "85-89": 5,
+            "90-94": 7,
+            "95-99": 5,
+            "100-100": 2
+          }
+        },
+        "OC": {
+          "count": 143,
+          "minimum": 13,
+          "p10": 25.2,
+          "p25": 34.5,
+          "median": 55,
+          "mean": 53.37,
+          "p75": 69.5,
+          "p90": 84,
+          "maximum": 100,
+          "histogram": {
+            "10-14": 3,
+            "15-19": 3,
+            "20-24": 7,
+            "25-29": 12,
+            "30-34": 11,
+            "35-39": 15,
+            "40-44": 6,
+            "45-49": 5,
+            "50-54": 9,
+            "55-59": 9,
+            "60-64": 12,
+            "65-69": 15,
+            "70-74": 8,
+            "75-79": 9,
+            "80-84": 6,
+            "85-89": 9,
+            "90-94": 1,
+            "95-99": 2,
+            "100-100": 1
+          }
+        },
+        "DC": {
+          "count": 143,
+          "minimum": 20,
+          "p10": 32,
+          "p25": 41,
+          "median": 51,
+          "mean": 53.08,
+          "p75": 65,
+          "p90": 76,
+          "maximum": 93,
+          "histogram": {
+            "20-24": 5,
+            "25-29": 7,
+            "30-34": 9,
+            "35-39": 10,
+            "40-44": 18,
+            "45-49": 17,
+            "50-54": 16,
+            "55-59": 12,
+            "60-64": 12,
+            "65-69": 10,
+            "70-74": 8,
+            "75-79": 7,
+            "80-84": 5,
+            "85-89": 5,
+            "90-94": 2
+          }
+        }
+      },
+      "failureSignals": {
+        "job-security": 156,
+        "contract-expectation": 126,
+        "unit-underachievement": 55,
+        "unit-rank": 26,
+        "program-record": 24,
+        "negative-trend": 20
+      },
+      "failureSignalsByRole": {
+        "HC": {
+          "contract-expectation": 42,
+          "job-security": 11,
+          "negative-trend": 9,
+          "program-record": 8
+        },
+        "OC": {
+          "job-security": 72,
+          "contract-expectation": 42,
+          "unit-underachievement": 18,
+          "unit-rank": 13,
+          "program-record": 8,
+          "negative-trend": 3
+        },
+        "DC": {
+          "job-security": 73,
+          "contract-expectation": 42,
+          "unit-underachievement": 37,
+          "unit-rank": 13,
+          "program-record": 8,
+          "negative-trend": 8
+        }
+      },
+      "componentAveragesByRole": {
+        "HC": {
+          "contract-current": 13.27,
+          "contract-trend": 8.22,
+          "job-security": 11.8,
+          "program-season": 4.97,
+          "tenure": 7.43,
+          "credibility": 6.27
+        },
+        "OC": {
+          "unit-performance": 18.06,
+          "team-contract": 8.41,
+          "contract-trend": 6.13,
+          "job-security": 4.79,
+          "team-record": 5.37,
+          "tenure": 3.49,
+          "credibility": 2.45
+        },
+        "DC": {
+          "unit-performance": 17.96,
+          "team-contract": 8.41,
+          "contract-trend": 5.99,
+          "job-security": 4.8,
+          "team-record": 5.37,
+          "tenure": 3.44,
+          "credibility": 2.44
+        }
+      },
+      "tenureDistributionByRole": {
+        "HC": {
+          "0": 30,
+          "1": 24,
+          "2": 26,
+          "3": 14,
+          "4": 16,
+          "5+": 33
+        },
+        "OC": {
+          "0": 67,
+          "1": 24,
+          "2": 23,
+          "3": 11,
+          "4": 9,
+          "5+": 9
+        },
+        "DC": {
+          "0": 67,
+          "1": 27,
+          "2": 25,
+          "3": 10,
+          "4": 6,
+          "5+": 8
+        }
+      },
+      "graceProtectedByRole": {
+        "HC": 54,
+        "OC": 67,
+        "DC": 67
+      },
+      "appliedFireThresholdByRole": {
+        "HC": 32,
+        "OC": 24,
+        "DC": 32
+      },
+      "nflDepartures": {
+        "total": 4,
+        "byRole": {
+          "HC": 0,
+          "OC": 3,
+          "DC": 1
+        },
+        "eligible": 181,
+        "passedRoll": 4,
+        "events": [
+          {
+            "coachId": "coach:142",
+            "teamId": "team:34",
+            "role": "OC",
+            "probability": 0.013734,
+            "roll": 0.006697
+          },
+          {
+            "coachId": "coach:237",
+            "teamId": "team:32",
+            "role": "OC",
+            "probability": 0.014286,
+            "roll": 0.001564
+          },
+          {
+            "coachId": "coach:317",
+            "teamId": "team:28",
+            "role": "OC",
+            "probability": 0.014882,
+            "roll": 0.00617
+          },
+          {
+            "coachId": "coach:325",
+            "teamId": "team:57",
+            "role": "DC",
+            "probability": 0.016963,
+            "roll": 0.009796
+          }
+        ]
+      },
+      "nflMultiSeed": {
+        "seeds": 100,
+        "meanTotal": 1.93,
+        "minimum": 0,
+        "maximum": 5,
+        "zeroRate": 16,
+        "cappedRate": 4,
+        "meanByRole": {
+          "HC": 0.36,
+          "OC": 0.96,
+          "DC": 0.61
+        }
+      },
+      "retirements": {
+        "total": 4,
+        "retiringOnTop": 0,
+        "byRole": {
+          "HC": 1,
+          "OC": 0,
+          "DC": 3
+        },
+        "eligible": 36,
+        "passedRoll": 4,
+        "excludedByNfl": 4,
+        "events": [
+          {
+            "coachId": "coach:311",
+            "teamId": "team:126",
+            "role": "DC",
+            "reason": "Retirement",
+            "probability": 0.086,
+            "roll": 0.050344
+          },
+          {
+            "coachId": "coach:206",
+            "teamId": "team:44",
+            "role": "DC",
+            "reason": "Retirement",
+            "probability": 0.051,
+            "roll": 0.028014
+          },
+          {
+            "coachId": "coach:180",
+            "teamId": "team:46",
+            "role": "DC",
+            "reason": "Retirement",
+            "probability": 0.043,
+            "roll": 0.010131
+          },
+          {
+            "coachId": "coach:152",
+            "teamId": "team:45",
+            "role": "HC",
+            "reason": "Retirement",
+            "probability": 0.107,
+            "roll": 0.056091
+          }
+        ]
+      },
+      "retirementMultiSeed": {
+        "seeds": 100,
+        "meanTotal": 2.24,
+        "meanRetiringOnTop": 0,
+        "seasonsWithRetiringOnTopRate": 0,
+        "minimum": 0,
+        "maximum": 6,
+        "zeroRate": 8,
+        "cappedRate": 0,
+        "meanByRole": {
+          "HC": 0.73,
+          "OC": 0.68,
+          "DC": 0.83
+        }
+      },
+      "unexpectedScenarios": {
+        "allowance": 0,
+        "selected": 0,
+        "applied": 0,
+        "pendingUserDecisions": 0,
+        "cleansHouse": 0,
+        "categories": {
+          "LookingForAChange": 0,
+          "AthleticDirectorConflict": 0,
+          "RecruitingComplianceViolation": 0,
+          "PersonalConductViolation": 0,
+          "ProgramWideScandal": 0
+        }
+      },
+      "unexpectedScenarioMultiSeed": {
+        "seeds": 100,
+        "meanSelected": 0.47,
+        "zeroRate": 59,
+        "oneRate": 35,
+        "twoRate": 6,
+        "meanCleansHouse": 0.07,
+        "categories": {
+          "LookingForAChange": 21,
+          "AthleticDirectorConflict": 2,
+          "RecruitingComplianceViolation": 13,
+          "PersonalConductViolation": 9,
+          "ProgramWideScandal": 2
+        }
+      },
+      "combinedDepartureMultiSeed": {
+        "seeds": 100,
+        "meanDepartedCoaches": 5.03,
+        "minimum": 1,
+        "maximum": 10,
+        "meanByRole": {
+          "HC": 1.34,
+          "OC": 1.93,
+          "DC": 1.76
+        }
+      },
+      "combinedInitialTurnoverMultiSeed": {
+        "seeds": 100,
+        "meanChangedSeats": 53.85,
+        "minimum": 46,
+        "maximum": 60,
+        "meanByRole": {
+          "HC": 12.7,
+          "OC": 20.22,
+          "DC": 20.93
+        }
+      },
+      "fireThresholdSensitivityByRole": {
+        "22": {
+          "HC": 3,
+          "OC": 9,
+          "DC": 3
+        },
+        "24": {
+          "HC": 8,
+          "OC": 11,
+          "DC": 3
+        },
+        "26": {
+          "HC": 10,
+          "OC": 15,
+          "DC": 5
+        },
+        "28": {
+          "HC": 11,
+          "OC": 17,
+          "DC": 7
+        },
+        "30": {
+          "HC": 12,
+          "OC": 23,
+          "DC": 8
+        },
+        "32": {
+          "HC": 12,
+          "OC": 23,
+          "DC": 10
+        },
+        "34": {
+          "HC": 14,
+          "OC": 23,
+          "DC": 12
+        }
+      },
+      "secureThresholdSensitivityByRole": {
+        "42": {
+          "HC": 103,
+          "OC": 91,
+          "DC": 105
+        },
+        "45": {
+          "HC": 97,
+          "OC": 86,
+          "DC": 94
+        },
+        "48": {
+          "HC": 93,
+          "OC": 83,
+          "DC": 84
+        }
+      },
+      "thresholdNeighborhoods": {
+        "score20to24": 23,
+        "score25to29": 27,
+        "score40to44": 33,
+        "score45to49": 30,
+        "belowRoleFireThresholdInsufficientSignals": 7,
+        "gracePreventedFire": 11
+      },
+      "lowestEvaluations": [
+        {
+          "coach": "Barry Lunney Jr.",
+          "team": "Illinois",
+          "role": "OC",
+          "score": 13,
+          "rawScore": 13,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-rank",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Mike Thiessen",
+          "team": "Air Force",
+          "role": "OC",
+          "score": 14,
+          "rawScore": 14,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-rank",
+            "negative-trend"
+          ]
+        },
+        {
+          "coach": "Thomas DiCitro",
+          "team": "Rutgers",
+          "role": "OC",
+          "score": 14,
+          "rawScore": 14,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Kurt Roper",
+          "team": "NC State",
+          "role": "OC",
+          "score": 17,
+          "rawScore": 17,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Cody Worley",
+          "team": "Army",
+          "role": "OC",
+          "score": 17,
+          "rawScore": 17,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-rank",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Nick Sheridan",
+          "team": "Michigan State",
+          "role": "OC",
+          "score": 19,
+          "rawScore": 9,
+          "graceBonus": 10,
+          "classification": "Vulnerable",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-rank",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Gerad Parker",
+          "team": "Troy",
+          "role": "HC",
+          "score": 20,
+          "rawScore": 20,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "contract-expectation",
+            "negative-trend"
+          ]
+        },
+        {
+          "coach": "Bobby Hauck",
+          "team": "Illinois",
+          "role": "DC",
+          "score": 20,
+          "rawScore": 10,
+          "graceBonus": 10,
+          "classification": "Vulnerable",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-rank",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Josh Henson",
+          "team": "Purdue",
+          "role": "OC",
+          "score": 20,
+          "rawScore": 20,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record"
+          ]
+        },
+        {
+          "coach": "Vince Munch",
+          "team": "Rice",
+          "role": "OC",
+          "score": 20,
+          "rawScore": 20,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "negative-trend"
+          ]
+        },
+        {
+          "coach": "Stephen Gregory",
+          "team": "Vanderbilt",
+          "role": "DC",
+          "score": 21,
+          "rawScore": 21,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "James Chapin",
+          "team": "Central Michigan",
+          "role": "OC",
+          "score": 21,
+          "rawScore": 21,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-rank"
+          ]
+        }
+      ],
+      "status": "ready"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1CONFCHAMP",
+        "path": "ref_saves/DYNASTY-CCRY1CONFCHAMP",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "NFLSeason",
+        "weekType": "RegularSeason",
+        "week": 16,
+        "carouselActive": true
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "REFERENCE_INTEGRITY_FAILED"
+      ],
+      "fingerprint": "F1D941B40854561C63962F9D13CC872419BC983F59F9C12EFA9C24FDA862B913",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOS",
+        "path": "ref_saves/DYNASTY-CCRY1EOS",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "787D708347B5CF538FA775150C361F44764237C2A857C530A9AE2CE42CFE76D8",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSEXP2CONTROL",
+        "path": "ref_saves/DYNASTY-CCRY1EOSEXP2CONTROL",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "9990C0666C93D2872B83ECD5B546FAAFFCC615BA27370BF05D29C76C6DC9EBFF",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSEXP2SHAM",
+        "path": "ref_saves/DYNASTY-CCRY1EOSEXP2SHAM",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "BEAA677156C37397FF3DCBE833BB6F2BE368FF715563FE5806CAF1ED1D1C8A69",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSEXP2TESTSYNC",
+        "path": "ref_saves/DYNASTY-CCRY1EOSEXP2TESTSYNC",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "9DC6B021A845950B039595D482A61E6F32433A2547CBBCBDE79F79D9580F0A92",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSEXPCONTROL",
+        "path": "ref_saves/DYNASTY-CCRY1EOSEXPCONTROL",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "7FFB2D71F0FF8F26C0AE83C0E3BDAFF04E74D336DD151A012BE3FC65E1291785",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSEXPSHAM",
+        "path": "ref_saves/DYNASTY-CCRY1EOSEXPSHAM",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "07AC8BC729C71F2CC9263DDE73BBF13033F0A9C2B3B122A21FA930EAE9580E6B",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSEXPTESTSWAP",
+        "path": "ref_saves/DYNASTY-CCRY1EOSEXPTESTSWAP",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "DEEA7A0CBC49EA4E47EF9A5443EA323C8CECFA94998D4E194180A0F2AC42B9AE",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSG1CONTROL",
+        "path": "ref_saves/DYNASTY-CCRY1EOSG1CONTROL",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "BD6151EC4D724E4249F92291E5C4DF4698162519E5ED2D14840F5B6FBCC1FFE4",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSG1RCORE",
+        "path": "ref_saves/DYNASTY-CCRY1EOSG1RCORE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "B446E6CEE7651F8AE6BA2944A4A3EFCE9F8A3F282F6D016890B62BEC79EE3D9F",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSG1RHIDE",
+        "path": "ref_saves/DYNASTY-CCRY1EOSG1RHIDE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "38EB0991A2C739AB4C72EFFE6A0422F6B36A8C9722A25C3977C7D3F2F7116C38",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSG1RSHAM",
+        "path": "ref_saves/DYNASTY-CCRY1EOSG1RSHAM",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "3848185E26868A88A5C5CB69021FEEC4DB4887DF90F625215FA80E32F0843756",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSG2BAUSBY",
+        "path": "ref_saves/DYNASTY-CCRY1EOSG2BAUSBY",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "97FA305717F0CF5C279C2A8BAD4B4049D2BB4C324F2F94F00C7B0611429498E1",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSG3ATXROW",
+        "path": "ref_saves/DYNASTY-CCRY1EOSG3ATXROW",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "EB2B9C77D54BD6C7D713B8AEA3F5EF99F2381C5F4FED90BF6AAC7583E8F2B391",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSG3BOPEN",
+        "path": "ref_saves/DYNASTY-CCRY1EOSG3BOPEN",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "E6FC19CC124CAAE89C6F169C68E04F584DA456BB971E19B297EADD51D671E115",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSG3CCASCADE",
+        "path": "ref_saves/DYNASTY-CCRY1EOSG3CCASCADE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "3396063F8D82BBD28921ED002D5216E1FB57FDB6890F5B38D8B3DB8C7B350A39",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSG3DINRANGE",
+        "path": "ref_saves/DYNASTY-CCRY1EOSG3DINRANGE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "DAA0989BC97D6A8E470993DEBD3B3A0BE0898000D55DA948DA70D5DE769E468A",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1EOSG4SUBGRAPH",
+        "path": "ref_saves/DYNASTY-CCRY1EOSG4SUBGRAPH",
+        "sizeBytes": 9646981
+      },
+      "cohort": "experimental",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "2DEBE956A68A1583FFC93E54C88C46D4F923672D3AB2549A1D96A6A37A6581C1",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1LEAVING",
+        "path": "ref_saves/DYNASTY-CCRY1LEAVING",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "OffSeason",
+        "weekType": "OffSeason",
+        "week": 1,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "AE83B91181B5FEE0D65E263BC4085BC1AB9FBDA54532F36C83593B73D270514D",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1PRE",
+        "path": "ref_saves/DYNASTY-CCRY1PRE",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "PreSeason",
+        "weekType": "PreSeason",
+        "week": 0,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "REFERENCE_INTEGRITY_FAILED"
+      ],
+      "fingerprint": "ADF28B9719BFE04E829D38D884BD4862004FDF832F1187FE464B963A7F94EF59",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-CCRY1W15",
+        "path": "ref_saves/DYNASTY-CCRY1W15",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "NFLSeason",
+        "weekType": "RegularSeason",
+        "week": 15,
+        "carouselActive": false
+      },
+      "issueCodes": [
+        "WRONG_CHECKPOINT",
+        "REFERENCE_INTEGRITY_FAILED"
+      ],
+      "fingerprint": "1FD83539B39B90B76C0D8790AB1D551691357E18D643EB4B767C550122163723",
+      "evaluationFingerprint": null,
+      "seasonYear": 2026,
+      "nationalChampionship": null,
+      "seatCount": 0,
+      "counts": null,
+      "byRole": null,
+      "scoreDistribution": null,
+      "scoreDistributionByRole": null,
+      "failureSignals": null,
+      "failureSignalsByRole": null,
+      "componentAveragesByRole": null,
+      "tenureDistributionByRole": null,
+      "graceProtectedByRole": null,
+      "appliedFireThresholdByRole": null,
+      "nflDepartures": null,
+      "nflMultiSeed": null,
+      "retirements": null,
+      "retirementMultiSeed": null,
+      "unexpectedScenarios": null,
+      "unexpectedScenarioMultiSeed": null,
+      "combinedDepartureMultiSeed": null,
+      "combinedInitialTurnoverMultiSeed": null,
+      "fireThresholdSensitivityByRole": null,
+      "secureThresholdSensitivityByRole": null,
+      "thresholdNeighborhoods": null,
+      "lowestEvaluations": [],
+      "status": "blocked"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-TEST1NATCHAMP",
+        "path": "ref_saves/DYNASTY-TEST1NATCHAMP",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "NFLSeason",
+        "weekType": "NationalChampionship",
+        "week": 20,
+        "carouselActive": true
+      },
+      "issueCodes": [
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "FB090BE76CCE6D51E24CEC3FCB66F3AABF66B124FAADE8CD03565CFACE50E4A2",
+      "evaluationFingerprint": "DEB148C07FC97F35C7F07935DEF931BE74400D835A7EF565619CE47D632C5030",
+      "seasonYear": 2026,
+      "nationalChampionship": {
+        "winnerTeamId": "team:47",
+        "winnerTeam": "Indiana",
+        "loserTeamId": "team:87",
+        "homeScore": 23,
+        "awayScore": 26,
+        "status": "AwayWon"
+      },
+      "seatCount": 429,
+      "counts": {
+        "Fire": 34,
+        "Vulnerable": 119,
+        "Secure": 276,
+        "catastrophic": 2,
+        "userProtected": 1,
+        "graceProtected": 188,
+        "gracePreventedFire": 10
+      },
+      "byRole": {
+        "HC": {
+          "Fire": 9,
+          "Vulnerable": 40,
+          "Secure": 94
+        },
+        "OC": {
+          "Fire": 12,
+          "Vulnerable": 45,
+          "Secure": 86
+        },
+        "DC": {
+          "Fire": 13,
+          "Vulnerable": 34,
+          "Secure": 96
+        }
+      },
+      "scoreDistribution": {
+        "count": 429,
+        "minimum": 13,
+        "p10": 27,
+        "p25": 38,
+        "median": 54,
+        "mean": 54.07,
+        "p75": 68,
+        "p90": 83,
+        "maximum": 100,
+        "histogram": {
+          "10-14": 2,
+          "15-19": 10,
+          "20-24": 18,
+          "25-29": 25,
+          "30-34": 34,
+          "35-39": 27,
+          "40-44": 37,
+          "45-49": 32,
+          "50-54": 38,
+          "55-59": 28,
+          "60-64": 39,
+          "65-69": 40,
+          "70-74": 25,
+          "75-79": 18,
+          "80-84": 19,
+          "85-89": 18,
+          "90-94": 9,
+          "95-99": 7,
+          "100-100": 3
+        }
+      },
+      "scoreDistributionByRole": {
+        "HC": {
+          "count": 143,
+          "minimum": 20,
+          "p10": 28.2,
+          "p25": 39.5,
+          "median": 56,
+          "mean": 56.85,
+          "p75": 72,
+          "p90": 87.8,
+          "maximum": 100,
+          "histogram": {
+            "20-24": 9,
+            "25-29": 8,
+            "30-34": 11,
+            "35-39": 8,
+            "40-44": 13,
+            "45-49": 6,
+            "50-54": 12,
+            "55-59": 10,
+            "60-64": 11,
+            "65-69": 13,
+            "70-74": 11,
+            "75-79": 5,
+            "80-84": 8,
+            "85-89": 7,
+            "90-94": 5,
+            "95-99": 5,
+            "100-100": 1
+          }
+        },
+        "OC": {
+          "count": 143,
+          "minimum": 14,
+          "p10": 25,
+          "p25": 33.5,
+          "median": 51,
+          "mean": 52.67,
+          "p75": 68,
+          "p90": 83,
+          "maximum": 100,
+          "histogram": {
+            "10-14": 1,
+            "15-19": 7,
+            "20-24": 4,
+            "25-29": 12,
+            "30-34": 14,
+            "35-39": 11,
+            "40-44": 8,
+            "45-49": 9,
+            "50-54": 10,
+            "55-59": 7,
+            "60-64": 12,
+            "65-69": 16,
+            "70-74": 6,
+            "75-79": 8,
+            "80-84": 6,
+            "85-89": 6,
+            "90-94": 3,
+            "95-99": 2,
+            "100-100": 1
+          }
+        },
+        "DC": {
+          "count": 143,
+          "minimum": 13,
+          "p10": 30,
+          "p25": 41,
+          "median": 53,
+          "mean": 52.7,
+          "p75": 64.5,
+          "p90": 77.6,
+          "maximum": 100,
+          "histogram": {
+            "10-14": 1,
+            "15-19": 3,
+            "20-24": 5,
+            "25-29": 5,
+            "30-34": 9,
+            "35-39": 8,
+            "40-44": 16,
+            "45-49": 17,
+            "50-54": 16,
+            "55-59": 11,
+            "60-64": 16,
+            "65-69": 11,
+            "70-74": 8,
+            "75-79": 5,
+            "80-84": 5,
+            "85-89": 5,
+            "90-94": 1,
+            "100-100": 1
+          }
+        }
+      },
+      "failureSignals": {
+        "job-security": 162,
+        "contract-expectation": 123,
+        "unit-underachievement": 55,
+        "program-record": 30,
+        "unit-rank": 26,
+        "negative-trend": 15
+      },
+      "failureSignalsByRole": {
+        "HC": {
+          "contract-expectation": 41,
+          "job-security": 11,
+          "program-record": 10,
+          "negative-trend": 6
+        },
+        "OC": {
+          "job-security": 77,
+          "contract-expectation": 41,
+          "unit-underachievement": 18,
+          "unit-rank": 13,
+          "program-record": 10,
+          "negative-trend": 4
+        },
+        "DC": {
+          "job-security": 74,
+          "contract-expectation": 41,
+          "unit-underachievement": 37,
+          "unit-rank": 13,
+          "program-record": 10,
+          "negative-trend": 5
+        }
+      },
+      "componentAveragesByRole": {
+        "HC": {
+          "contract-current": 12.73,
+          "contract-trend": 7.94,
+          "job-security": 11.71,
+          "program-season": 4.88,
+          "tenure": 7.43,
+          "credibility": 6.3
+        },
+        "OC": {
+          "unit-performance": 18,
+          "team-contract": 8.15,
+          "contract-trend": 5.91,
+          "job-security": 4.67,
+          "team-record": 5.28,
+          "tenure": 3.49,
+          "credibility": 2.5
+        },
+        "DC": {
+          "unit-performance": 18.16,
+          "team-contract": 8.15,
+          "contract-trend": 5.8,
+          "job-security": 4.73,
+          "team-record": 5.28,
+          "tenure": 3.44,
+          "credibility": 2.47
+        }
+      },
+      "tenureDistributionByRole": {
+        "HC": {
+          "0": 30,
+          "1": 24,
+          "2": 26,
+          "3": 14,
+          "4": 16,
+          "5+": 33
+        },
+        "OC": {
+          "0": 67,
+          "1": 24,
+          "2": 23,
+          "3": 11,
+          "4": 9,
+          "5+": 9
+        },
+        "DC": {
+          "0": 67,
+          "1": 27,
+          "2": 25,
+          "3": 10,
+          "4": 6,
+          "5+": 8
+        }
+      },
+      "graceProtectedByRole": {
+        "HC": 54,
+        "OC": 67,
+        "DC": 67
+      },
+      "appliedFireThresholdByRole": {
+        "HC": 32,
+        "OC": 24,
+        "DC": 32
+      },
+      "nflDepartures": {
+        "total": 2,
+        "byRole": {
+          "HC": 0,
+          "OC": 1,
+          "DC": 1
+        },
+        "eligible": 178,
+        "passedRoll": 2,
+        "events": [
+          {
+            "coachId": "coach:129",
+            "teamId": "team:42",
+            "role": "DC",
+            "probability": 0.012984,
+            "roll": 0.009631
+          },
+          {
+            "coachId": "coach:204",
+            "teamId": "team:86",
+            "role": "OC",
+            "probability": 0.014451,
+            "roll": 0.011329
+          }
+        ]
+      },
+      "nflMultiSeed": {
+        "seeds": 100,
+        "meanTotal": 2.3,
+        "minimum": 0,
+        "maximum": 5,
+        "zeroRate": 10,
+        "cappedRate": 9,
+        "meanByRole": {
+          "HC": 0.39,
+          "OC": 1.01,
+          "DC": 0.9
+        }
+      },
+      "retirements": {
+        "total": 2,
+        "retiringOnTop": 0,
+        "byRole": {
+          "HC": 1,
+          "OC": 1,
+          "DC": 0
+        },
+        "eligible": 37,
+        "passedRoll": 2,
+        "excludedByNfl": 2,
+        "events": [
+          {
+            "coachId": "coach:276",
+            "teamId": "team:24",
+            "role": "HC",
+            "reason": "Retirement",
+            "probability": 0.103,
+            "roll": 0.058464
+          },
+          {
+            "coachId": "coach:312",
+            "teamId": "team:71",
+            "role": "OC",
+            "reason": "Retirement",
+            "probability": 0.095,
+            "roll": 0.057898
+          }
+        ]
+      },
+      "retirementMultiSeed": {
+        "seeds": 100,
+        "meanTotal": 2,
+        "meanRetiringOnTop": 0.1,
+        "seasonsWithRetiringOnTopRate": 10,
+        "minimum": 0,
+        "maximum": 8,
+        "zeroRate": 15,
+        "cappedRate": 0,
+        "meanByRole": {
+          "HC": 0.79,
+          "OC": 0.52,
+          "DC": 0.69
+        }
+      },
+      "unexpectedScenarios": {
+        "allowance": 0,
+        "selected": 0,
+        "applied": 0,
+        "pendingUserDecisions": 0,
+        "cleansHouse": 0,
+        "categories": {
+          "LookingForAChange": 0,
+          "AthleticDirectorConflict": 0,
+          "RecruitingComplianceViolation": 0,
+          "PersonalConductViolation": 0,
+          "ProgramWideScandal": 0
+        }
+      },
+      "unexpectedScenarioMultiSeed": {
+        "seeds": 100,
+        "meanSelected": 0.5,
+        "zeroRate": 59,
+        "oneRate": 32,
+        "twoRate": 9,
+        "meanCleansHouse": 0.02,
+        "categories": {
+          "LookingForAChange": 28,
+          "AthleticDirectorConflict": 0,
+          "RecruitingComplianceViolation": 16,
+          "PersonalConductViolation": 6,
+          "ProgramWideScandal": 0
+        }
+      },
+      "combinedDepartureMultiSeed": {
+        "seeds": 100,
+        "meanDepartedCoaches": 4.66,
+        "minimum": 0,
+        "maximum": 10,
+        "meanByRole": {
+          "HC": 1.46,
+          "OC": 1.65,
+          "DC": 1.55
+        }
+      },
+      "combinedInitialTurnoverMultiSeed": {
+        "seeds": 100,
+        "meanChangedSeats": 44.31,
+        "minimum": 37,
+        "maximum": 49,
+        "meanByRole": {
+          "HC": 9.12,
+          "OC": 16.16,
+          "DC": 19.03
+        }
+      },
+      "fireThresholdSensitivityByRole": {
+        "22": {
+          "HC": 6,
+          "OC": 10,
+          "DC": 5
+        },
+        "24": {
+          "HC": 7,
+          "OC": 12,
+          "DC": 7
+        },
+        "26": {
+          "HC": 8,
+          "OC": 15,
+          "DC": 8
+        },
+        "28": {
+          "HC": 8,
+          "OC": 18,
+          "DC": 10
+        },
+        "30": {
+          "HC": 8,
+          "OC": 19,
+          "DC": 11
+        },
+        "32": {
+          "HC": 9,
+          "OC": 22,
+          "DC": 13
+        },
+        "34": {
+          "HC": 9,
+          "OC": 23,
+          "DC": 16
+        }
+      },
+      "secureThresholdSensitivityByRole": {
+        "42": {
+          "HC": 103,
+          "OC": 89,
+          "DC": 105
+        },
+        "45": {
+          "HC": 94,
+          "OC": 86,
+          "DC": 96
+        },
+        "48": {
+          "HC": 91,
+          "OC": 81,
+          "DC": 87
+        }
+      },
+      "thresholdNeighborhoods": {
+        "score20to24": 18,
+        "score25to29": 25,
+        "score40to44": 37,
+        "score45to49": 32,
+        "belowRoleFireThresholdInsufficientSignals": 14,
+        "gracePreventedFire": 10
+      },
+      "lowestEvaluations": [
+        {
+          "coach": "Stephen Belichick",
+          "team": "North Carolina",
+          "role": "DC",
+          "score": 13,
+          "rawScore": 13,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "James Chapin",
+          "team": "Central Michigan",
+          "role": "OC",
+          "score": 14,
+          "rawScore": 14,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-rank",
+            "negative-trend"
+          ]
+        },
+        {
+          "coach": "Andre Brown",
+          "team": "Boston College",
+          "role": "OC",
+          "score": 16,
+          "rawScore": 16,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Alex Grinch",
+          "team": "UCF",
+          "role": "DC",
+          "score": 17,
+          "rawScore": 17,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Cody Worley",
+          "team": "Army",
+          "role": "OC",
+          "score": 17,
+          "rawScore": 17,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-rank",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "DJ Durkin",
+          "team": "Auburn",
+          "role": "DC",
+          "score": 17,
+          "rawScore": 17,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-rank",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Jeff Grimes",
+          "team": "Wisconsin",
+          "role": "OC",
+          "score": 18,
+          "rawScore": 18,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Vince Munch",
+          "team": "Rice",
+          "role": "OC",
+          "score": 18,
+          "rawScore": 18,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-rank",
+            "negative-trend"
+          ]
+        },
+        {
+          "coach": "Andrew Strongin",
+          "team": "Cincinnati",
+          "role": "OC",
+          "score": 19,
+          "rawScore": 19,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Clay Patterson",
+          "team": "Kent State",
+          "role": "OC",
+          "score": 19,
+          "rawScore": 19,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation"
+          ]
+        },
+        {
+          "coach": "Blake Baker",
+          "team": "LSU",
+          "role": "DC",
+          "score": 19,
+          "rawScore": 19,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-rank",
+            "unit-underachievement",
+            "negative-trend"
+          ]
+        },
+        {
+          "coach": "David Yost",
+          "team": "New Mexico State",
+          "role": "OC",
+          "score": 19,
+          "rawScore": 19,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-rank"
+          ]
+        }
+      ],
+      "status": "ready"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-TEST2NATCHAMP",
+        "path": "ref_saves/DYNASTY-TEST2NATCHAMP",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "NFLSeason",
+        "weekType": "NationalChampionship",
+        "week": 20,
+        "carouselActive": true
+      },
+      "issueCodes": [
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "2D0C17DA5F1240BE4C28342846AC2A84BF99955046D0CFD0E18F8F4F1D755636",
+      "evaluationFingerprint": "6B0FA9FC28C216FF25CF878FE8651601A79BD23025BC10DE63DFC7A8F25CA511",
+      "seasonYear": 2026,
+      "nationalChampionship": {
+        "winnerTeamId": "team:87",
+        "winnerTeam": "Ohio State",
+        "loserTeamId": "team:65",
+        "homeScore": 29,
+        "awayScore": 31,
+        "status": "AwayWon"
+      },
+      "seatCount": 429,
+      "counts": {
+        "Fire": 35,
+        "Vulnerable": 117,
+        "Secure": 277,
+        "catastrophic": 1,
+        "userProtected": 0,
+        "graceProtected": 188,
+        "gracePreventedFire": 15
+      },
+      "byRole": {
+        "HC": {
+          "Fire": 10,
+          "Vulnerable": 38,
+          "Secure": 95
+        },
+        "OC": {
+          "Fire": 10,
+          "Vulnerable": 45,
+          "Secure": 88
+        },
+        "DC": {
+          "Fire": 15,
+          "Vulnerable": 34,
+          "Secure": 94
+        }
+      },
+      "scoreDistribution": {
+        "count": 429,
+        "minimum": 11,
+        "p10": 28,
+        "p25": 38,
+        "median": 54,
+        "mean": 54.31,
+        "p75": 68,
+        "p90": 85,
+        "maximum": 100,
+        "histogram": {
+          "10-14": 1,
+          "15-19": 3,
+          "20-24": 20,
+          "25-29": 34,
+          "30-34": 38,
+          "35-39": 22,
+          "40-44": 34,
+          "45-49": 35,
+          "50-54": 33,
+          "55-59": 42,
+          "60-64": 34,
+          "65-69": 31,
+          "70-74": 25,
+          "75-79": 22,
+          "80-84": 7,
+          "85-89": 25,
+          "90-94": 5,
+          "95-99": 11,
+          "100-100": 7
+        }
+      },
+      "scoreDistributionByRole": {
+        "HC": {
+          "count": 143,
+          "minimum": 19,
+          "p10": 30,
+          "p25": 38,
+          "median": 56,
+          "mean": 57.01,
+          "p75": 74.5,
+          "p90": 87,
+          "maximum": 100,
+          "histogram": {
+            "15-19": 1,
+            "20-24": 5,
+            "25-29": 6,
+            "30-34": 14,
+            "35-39": 11,
+            "40-44": 11,
+            "45-49": 9,
+            "50-54": 9,
+            "55-59": 17,
+            "60-64": 10,
+            "65-69": 7,
+            "70-74": 7,
+            "75-79": 15,
+            "85-89": 10,
+            "90-94": 2,
+            "95-99": 6,
+            "100-100": 3
+          }
+        },
+        "OC": {
+          "count": 143,
+          "minimum": 11,
+          "p10": 26,
+          "p25": 32,
+          "median": 52,
+          "mean": 53.09,
+          "p75": 68.5,
+          "p90": 85.8,
+          "maximum": 100,
+          "histogram": {
+            "10-14": 1,
+            "15-19": 2,
+            "20-24": 11,
+            "25-29": 17,
+            "30-34": 12,
+            "35-39": 6,
+            "40-44": 6,
+            "45-49": 11,
+            "50-54": 10,
+            "55-59": 7,
+            "60-64": 11,
+            "65-69": 14,
+            "70-74": 11,
+            "75-79": 3,
+            "80-84": 3,
+            "85-89": 10,
+            "90-94": 2,
+            "95-99": 2,
+            "100-100": 4
+          }
+        },
+        "DC": {
+          "count": 143,
+          "minimum": 23,
+          "p10": 28.4,
+          "p25": 41,
+          "median": 52,
+          "mean": 52.81,
+          "p75": 63.5,
+          "p90": 76,
+          "maximum": 96,
+          "histogram": {
+            "20-24": 4,
+            "25-29": 11,
+            "30-34": 12,
+            "35-39": 5,
+            "40-44": 17,
+            "45-49": 15,
+            "50-54": 14,
+            "55-59": 18,
+            "60-64": 13,
+            "65-69": 10,
+            "70-74": 7,
+            "75-79": 4,
+            "80-84": 4,
+            "85-89": 5,
+            "90-94": 1,
+            "95-99": 3
+          }
+        }
+      },
+      "failureSignals": {
+        "job-security": 159,
+        "contract-expectation": 129,
+        "unit-underachievement": 60,
+        "program-record": 36,
+        "unit-rank": 26,
+        "negative-trend": 12
+      },
+      "failureSignalsByRole": {
+        "HC": {
+          "contract-expectation": 43,
+          "program-record": 12,
+          "job-security": 8,
+          "negative-trend": 5
+        },
+        "OC": {
+          "job-security": 72,
+          "contract-expectation": 43,
+          "unit-underachievement": 21,
+          "unit-rank": 13,
+          "program-record": 12,
+          "negative-trend": 3
+        },
+        "DC": {
+          "job-security": 79,
+          "contract-expectation": 43,
+          "unit-underachievement": 39,
+          "unit-rank": 13,
+          "program-record": 12,
+          "negative-trend": 4
+        }
+      },
+      "componentAveragesByRole": {
+        "HC": {
+          "contract-current": 12.73,
+          "contract-trend": 7.95,
+          "job-security": 11.78,
+          "program-season": 4.95,
+          "tenure": 7.43,
+          "credibility": 6.33
+        },
+        "OC": {
+          "unit-performance": 18.13,
+          "team-contract": 8.18,
+          "contract-trend": 5.97,
+          "job-security": 4.83,
+          "team-record": 5.38,
+          "tenure": 3.49,
+          "credibility": 2.48
+        },
+        "DC": {
+          "unit-performance": 18.08,
+          "team-contract": 8.18,
+          "contract-trend": 5.8,
+          "job-security": 4.77,
+          "team-record": 5.38,
+          "tenure": 3.44,
+          "credibility": 2.47
+        }
+      },
+      "tenureDistributionByRole": {
+        "HC": {
+          "0": 30,
+          "1": 24,
+          "2": 26,
+          "3": 14,
+          "4": 16,
+          "5+": 33
+        },
+        "OC": {
+          "0": 67,
+          "1": 24,
+          "2": 23,
+          "3": 11,
+          "4": 9,
+          "5+": 9
+        },
+        "DC": {
+          "0": 67,
+          "1": 27,
+          "2": 25,
+          "3": 10,
+          "4": 6,
+          "5+": 8
+        }
+      },
+      "graceProtectedByRole": {
+        "HC": 54,
+        "OC": 67,
+        "DC": 67
+      },
+      "appliedFireThresholdByRole": {
+        "HC": 32,
+        "OC": 24,
+        "DC": 32
+      },
+      "nflDepartures": {
+        "total": 2,
+        "byRole": {
+          "HC": 1,
+          "OC": 1,
+          "DC": 0
+        },
+        "eligible": 166,
+        "passedRoll": 2,
+        "events": [
+          {
+            "coachId": "coach:184",
+            "teamId": "team:41",
+            "role": "HC",
+            "probability": 0.005888,
+            "roll": 0.005517
+          },
+          {
+            "coachId": "coach:414",
+            "teamId": "team:61",
+            "role": "OC",
+            "probability": 0.016578,
+            "roll": 0.005058
+          }
+        ]
+      },
+      "nflMultiSeed": {
+        "seeds": 100,
+        "meanTotal": 2.06,
+        "minimum": 0,
+        "maximum": 5,
+        "zeroRate": 17,
+        "cappedRate": 7,
+        "meanByRole": {
+          "HC": 0.36,
+          "OC": 0.97,
+          "DC": 0.73
+        }
+      },
+      "retirements": {
+        "total": 0,
+        "retiringOnTop": 0,
+        "byRole": {
+          "HC": 0,
+          "OC": 0,
+          "DC": 0
+        },
+        "eligible": 37,
+        "passedRoll": 0,
+        "excludedByNfl": 2,
+        "events": []
+      },
+      "retirementMultiSeed": {
+        "seeds": 100,
+        "meanTotal": 1.73,
+        "meanRetiringOnTop": 0,
+        "seasonsWithRetiringOnTopRate": 0,
+        "minimum": 0,
+        "maximum": 6,
+        "zeroRate": 13,
+        "cappedRate": 0,
+        "meanByRole": {
+          "HC": 0.64,
+          "OC": 0.47,
+          "DC": 0.62
+        }
+      },
+      "unexpectedScenarios": {
+        "allowance": 1,
+        "selected": 1,
+        "applied": 1,
+        "pendingUserDecisions": 0,
+        "cleansHouse": 0,
+        "categories": {
+          "LookingForAChange": 1,
+          "AthleticDirectorConflict": 0,
+          "RecruitingComplianceViolation": 0,
+          "PersonalConductViolation": 0,
+          "ProgramWideScandal": 0
+        }
+      },
+      "unexpectedScenarioMultiSeed": {
+        "seeds": 100,
+        "meanSelected": 0.43,
+        "zeroRate": 61,
+        "oneRate": 35,
+        "twoRate": 4,
+        "meanCleansHouse": 0.06,
+        "categories": {
+          "LookingForAChange": 21,
+          "AthleticDirectorConflict": 4,
+          "RecruitingComplianceViolation": 7,
+          "PersonalConductViolation": 10,
+          "ProgramWideScandal": 1
+        }
+      },
+      "combinedDepartureMultiSeed": {
+        "seeds": 100,
+        "meanDepartedCoaches": 4.42,
+        "minimum": 0,
+        "maximum": 10,
+        "meanByRole": {
+          "HC": 1.17,
+          "OC": 1.77,
+          "DC": 1.48
+        }
+      },
+      "combinedInitialTurnoverMultiSeed": {
+        "seeds": 100,
+        "meanChangedSeats": 50,
+        "minimum": 46,
+        "maximum": 54,
+        "meanByRole": {
+          "HC": 10.85,
+          "OC": 18.33,
+          "DC": 20.82
+        }
+      },
+      "fireThresholdSensitivityByRole": {
+        "22": {
+          "HC": 5,
+          "OC": 6,
+          "DC": 0
+        },
+        "24": {
+          "HC": 6,
+          "OC": 10,
+          "DC": 4
+        },
+        "26": {
+          "HC": 7,
+          "OC": 13,
+          "DC": 8
+        },
+        "28": {
+          "HC": 7,
+          "OC": 16,
+          "DC": 10
+        },
+        "30": {
+          "HC": 8,
+          "OC": 20,
+          "DC": 12
+        },
+        "32": {
+          "HC": 10,
+          "OC": 22,
+          "DC": 15
+        },
+        "34": {
+          "HC": 10,
+          "OC": 23,
+          "DC": 16
+        }
+      },
+      "secureThresholdSensitivityByRole": {
+        "42": {
+          "HC": 101,
+          "OC": 92,
+          "DC": 102
+        },
+        "45": {
+          "HC": 95,
+          "OC": 88,
+          "DC": 94
+        },
+        "48": {
+          "HC": 89,
+          "OC": 82,
+          "DC": 86
+        }
+      },
+      "thresholdNeighborhoods": {
+        "score20to24": 20,
+        "score25to29": 34,
+        "score40to44": 34,
+        "score45to49": 35,
+        "belowRoleFireThresholdInsufficientSignals": 8,
+        "gracePreventedFire": 15
+      },
+      "lowestEvaluations": [
+        {
+          "coach": "Jeff Grimes",
+          "team": "Wisconsin",
+          "role": "OC",
+          "score": 11,
+          "rawScore": 11,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "George P. Burdell",
+          "team": "Georgia Tech",
+          "role": "OC",
+          "score": 18,
+          "rawScore": 18,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Josh Davis",
+          "team": "Fresno State",
+          "role": "OC",
+          "score": 19,
+          "rawScore": 19,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record"
+          ]
+        },
+        {
+          "coach": "Jeff Lebby",
+          "team": "Mississippi State",
+          "role": "HC",
+          "score": 19,
+          "rawScore": 19,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation"
+          ]
+        },
+        {
+          "coach": "Gerad Parker",
+          "team": "Troy",
+          "role": "HC",
+          "score": 20,
+          "rawScore": 20,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "contract-expectation",
+            "negative-trend"
+          ]
+        },
+        {
+          "coach": "Luke Fickell",
+          "team": "Wisconsin",
+          "role": "HC",
+          "score": 20,
+          "rawScore": 20,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "negative-trend"
+          ]
+        },
+        {
+          "coach": "Brent Key",
+          "team": "Georgia Tech",
+          "role": "HC",
+          "score": 20,
+          "rawScore": 20,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record"
+          ]
+        },
+        {
+          "coach": "Tyler Roehl",
+          "team": "Iowa State",
+          "role": "OC",
+          "score": 20,
+          "rawScore": 10,
+          "graceBonus": 10,
+          "classification": "Vulnerable",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-rank",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Todd Fitch",
+          "team": "Charlotte",
+          "role": "OC",
+          "score": 21,
+          "rawScore": 21,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation"
+          ]
+        },
+        {
+          "coach": "Quinn Sanders",
+          "team": "Northern Illinois",
+          "role": "OC",
+          "score": 21,
+          "rawScore": 21,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-rank"
+          ]
+        },
+        {
+          "coach": "Sonny Dykes",
+          "team": "TCU",
+          "role": "HC",
+          "score": 22,
+          "rawScore": 22,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record"
+          ]
+        },
+        {
+          "coach": "Nick Sheridan",
+          "team": "Michigan State",
+          "role": "OC",
+          "score": 22,
+          "rawScore": 12,
+          "graceBonus": 10,
+          "classification": "Vulnerable",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement"
+          ]
+        }
+      ],
+      "status": "ready"
+    },
+    {
+      "file": {
+        "name": "DYNASTY-TEST3NATCHAMP",
+        "path": "ref_saves/DYNASTY-TEST3NATCHAMP",
+        "sizeBytes": 9646981
+      },
+      "cohort": "natural",
+      "checkpoint": {
+        "seasonYear": 2026,
+        "stage": "NFLSeason",
+        "weekType": "NationalChampionship",
+        "week": 20,
+        "carouselActive": true
+      },
+      "issueCodes": [
+        "READ_ONLY_COMPLETE"
+      ],
+      "fingerprint": "05C21801FD502657BC691597C8E4C3833B677D0EF21757A98FA131B4391E4365",
+      "evaluationFingerprint": "0615F25360F4D21DBB74AB510827C42BC9A3ECD9F66A441D84C68353B17602B3",
+      "seasonYear": 2026,
+      "nationalChampionship": {
+        "winnerTeamId": "team:111",
+        "winnerTeam": "Tennessee",
+        "loserTeamId": "team:53",
+        "homeScore": 40,
+        "awayScore": 20,
+        "status": "HomeWon"
+      },
+      "seatCount": 429,
+      "counts": {
+        "Fire": 40,
+        "Vulnerable": 106,
+        "Secure": 283,
+        "catastrophic": 0,
+        "userProtected": 1,
+        "graceProtected": 188,
+        "gracePreventedFire": 10
+      },
+      "byRole": {
+        "HC": {
+          "Fire": 13,
+          "Vulnerable": 26,
+          "Secure": 104
+        },
+        "OC": {
+          "Fire": 16,
+          "Vulnerable": 42,
+          "Secure": 85
+        },
+        "DC": {
+          "Fire": 11,
+          "Vulnerable": 38,
+          "Secure": 94
+        }
+      },
+      "scoreDistribution": {
+        "count": 429,
+        "minimum": 15,
+        "p10": 27,
+        "p25": 40,
+        "median": 54,
+        "mean": 54.34,
+        "p75": 68,
+        "p90": 82.2,
+        "maximum": 100,
+        "histogram": {
+          "15-19": 13,
+          "20-24": 23,
+          "25-29": 24,
+          "30-34": 24,
+          "35-39": 20,
+          "40-44": 42,
+          "45-49": 37,
+          "50-54": 33,
+          "55-59": 43,
+          "60-64": 28,
+          "65-69": 45,
+          "70-74": 19,
+          "75-79": 24,
+          "80-84": 18,
+          "85-89": 13,
+          "90-94": 11,
+          "95-99": 7,
+          "100-100": 5
+        }
+      },
+      "scoreDistributionByRole": {
+        "HC": {
+          "count": 143,
+          "minimum": 18,
+          "p10": 28,
+          "p25": 43,
+          "median": 56,
+          "mean": 57.13,
+          "p75": 73.5,
+          "p90": 84.8,
+          "maximum": 100,
+          "histogram": {
+            "15-19": 3,
+            "20-24": 7,
+            "25-29": 10,
+            "30-34": 4,
+            "35-39": 4,
+            "40-44": 11,
+            "45-49": 15,
+            "50-54": 12,
+            "55-59": 14,
+            "60-64": 10,
+            "65-69": 12,
+            "70-74": 8,
+            "75-79": 11,
+            "80-84": 7,
+            "85-89": 3,
+            "90-94": 7,
+            "95-99": 3,
+            "100-100": 2
+          }
+        },
+        "OC": {
+          "count": 143,
+          "minimum": 16,
+          "p10": 23,
+          "p25": 34,
+          "median": 53,
+          "mean": 53.3,
+          "p75": 69.5,
+          "p90": 84.8,
+          "maximum": 100,
+          "histogram": {
+            "15-19": 7,
+            "20-24": 13,
+            "25-29": 8,
+            "30-34": 11,
+            "35-39": 6,
+            "40-44": 13,
+            "45-49": 8,
+            "50-54": 7,
+            "55-59": 8,
+            "60-64": 10,
+            "65-69": 16,
+            "70-74": 5,
+            "75-79": 8,
+            "80-84": 8,
+            "85-89": 8,
+            "90-94": 2,
+            "95-99": 3,
+            "100-100": 2
+          }
+        },
+        "DC": {
+          "count": 143,
+          "minimum": 15,
+          "p10": 32,
+          "p25": 41,
+          "median": 52,
+          "mean": 52.6,
+          "p75": 65,
+          "p90": 73.8,
+          "maximum": 100,
+          "histogram": {
+            "15-19": 3,
+            "20-24": 3,
+            "25-29": 6,
+            "30-34": 9,
+            "35-39": 10,
+            "40-44": 18,
+            "45-49": 14,
+            "50-54": 14,
+            "55-59": 21,
+            "60-64": 8,
+            "65-69": 17,
+            "70-74": 6,
+            "75-79": 5,
+            "80-84": 3,
+            "85-89": 2,
+            "90-94": 2,
+            "95-99": 1,
+            "100-100": 1
+          }
+        }
+      },
+      "failureSignals": {
+        "job-security": 156,
+        "contract-expectation": 119,
+        "unit-underachievement": 56,
+        "program-record": 39,
+        "unit-rank": 26,
+        "negative-trend": 22
+      },
+      "failureSignalsByRole": {
+        "HC": {
+          "contract-expectation": 40,
+          "program-record": 13,
+          "negative-trend": 10,
+          "job-security": 8
+        },
+        "OC": {
+          "job-security": 74,
+          "contract-expectation": 40,
+          "unit-underachievement": 18,
+          "program-record": 13,
+          "unit-rank": 13,
+          "negative-trend": 4
+        },
+        "DC": {
+          "job-security": 74,
+          "contract-expectation": 39,
+          "unit-underachievement": 38,
+          "program-record": 13,
+          "unit-rank": 13,
+          "negative-trend": 8
+        }
+      },
+      "componentAveragesByRole": {
+        "HC": {
+          "contract-current": 12.84,
+          "contract-trend": 7.99,
+          "job-security": 11.96,
+          "program-season": 4.92,
+          "tenure": 7.43,
+          "credibility": 6.29
+        },
+        "OC": {
+          "unit-performance": 18.15,
+          "team-contract": 8.24,
+          "contract-trend": 5.99,
+          "job-security": 4.92,
+          "team-record": 5.34,
+          "tenure": 3.49,
+          "credibility": 2.52
+        },
+        "DC": {
+          "unit-performance": 17.79,
+          "team-contract": 8.26,
+          "contract-trend": 5.78,
+          "job-security": 4.85,
+          "team-record": 5.34,
+          "tenure": 3.44,
+          "credibility": 2.48
+        }
+      },
+      "tenureDistributionByRole": {
+        "HC": {
+          "0": 30,
+          "1": 24,
+          "2": 26,
+          "3": 14,
+          "4": 16,
+          "5+": 33
+        },
+        "OC": {
+          "0": 67,
+          "1": 24,
+          "2": 23,
+          "3": 11,
+          "4": 9,
+          "5+": 9
+        },
+        "DC": {
+          "0": 67,
+          "1": 27,
+          "2": 25,
+          "3": 10,
+          "4": 6,
+          "5+": 8
+        }
+      },
+      "graceProtectedByRole": {
+        "HC": 54,
+        "OC": 67,
+        "DC": 67
+      },
+      "appliedFireThresholdByRole": {
+        "HC": 32,
+        "OC": 24,
+        "DC": 32
+      },
+      "nflDepartures": {
+        "total": 3,
+        "byRole": {
+          "HC": 1,
+          "OC": 1,
+          "DC": 1
+        },
+        "eligible": 170,
+        "passedRoll": 3,
+        "events": [
+          {
+            "coachId": "coach:321",
+            "teamId": "team:12",
+            "role": "OC",
+            "probability": 0.018005,
+            "roll": 0.010165
+          },
+          {
+            "coachId": "coach:325",
+            "teamId": "team:57",
+            "role": "DC",
+            "probability": 0.013999,
+            "roll": 0.008428
+          },
+          {
+            "coachId": "coach:337",
+            "teamId": "team:138",
+            "role": "HC",
+            "probability": 0.005601,
+            "roll": 0.003181
+          }
+        ]
+      },
+      "nflMultiSeed": {
+        "seeds": 100,
+        "meanTotal": 2.14,
+        "minimum": 0,
+        "maximum": 5,
+        "zeroRate": 15,
+        "cappedRate": 11,
+        "meanByRole": {
+          "HC": 0.4,
+          "OC": 1.03,
+          "DC": 0.71
+        }
+      },
+      "retirements": {
+        "total": 2,
+        "retiringOnTop": 0,
+        "byRole": {
+          "HC": 1,
+          "OC": 1,
+          "DC": 0
+        },
+        "eligible": 36,
+        "passedRoll": 2,
+        "excludedByNfl": 3,
+        "events": [
+          {
+            "coachId": "coach:2",
+            "teamId": "team:19",
+            "role": "HC",
+            "reason": "Retirement",
+            "probability": 0.052,
+            "roll": 0.00325
+          },
+          {
+            "coachId": "coach:312",
+            "teamId": "team:71",
+            "role": "OC",
+            "reason": "Retirement",
+            "probability": 0.095,
+            "roll": 0.053519
+          }
+        ]
+      },
+      "retirementMultiSeed": {
+        "seeds": 100,
+        "meanTotal": 1.91,
+        "meanRetiringOnTop": 0,
+        "seasonsWithRetiringOnTopRate": 0,
+        "minimum": 0,
+        "maximum": 5,
+        "zeroRate": 13,
+        "cappedRate": 0,
+        "meanByRole": {
+          "HC": 0.68,
+          "OC": 0.58,
+          "DC": 0.65
+        }
+      },
+      "unexpectedScenarios": {
+        "allowance": 1,
+        "selected": 1,
+        "applied": 1,
+        "pendingUserDecisions": 0,
+        "cleansHouse": 0,
+        "categories": {
+          "LookingForAChange": 0,
+          "AthleticDirectorConflict": 0,
+          "RecruitingComplianceViolation": 1,
+          "PersonalConductViolation": 0,
+          "ProgramWideScandal": 0
+        }
+      },
+      "unexpectedScenarioMultiSeed": {
+        "seeds": 100,
+        "meanSelected": 0.64,
+        "zeroRate": 45,
+        "oneRate": 46,
+        "twoRate": 9,
+        "meanCleansHouse": 0.04,
+        "categories": {
+          "LookingForAChange": 31,
+          "AthleticDirectorConflict": 2,
+          "RecruitingComplianceViolation": 15,
+          "PersonalConductViolation": 15,
+          "ProgramWideScandal": 1
+        }
+      },
+      "combinedDepartureMultiSeed": {
+        "seeds": 100,
+        "meanDepartedCoaches": 4.67,
+        "minimum": 0,
+        "maximum": 10,
+        "meanByRole": {
+          "HC": 1.47,
+          "OC": 1.68,
+          "DC": 1.52
+        }
+      },
+      "combinedInitialTurnoverMultiSeed": {
+        "seeds": 100,
+        "meanChangedSeats": 54.99,
+        "minimum": 46,
+        "maximum": 61,
+        "meanByRole": {
+          "HC": 13,
+          "OC": 23.04,
+          "DC": 18.95
+        }
+      },
+      "fireThresholdSensitivityByRole": {
+        "22": {
+          "HC": 6,
+          "OC": 12,
+          "DC": 3
+        },
+        "24": {
+          "HC": 9,
+          "OC": 16,
+          "DC": 5
+        },
+        "26": {
+          "HC": 11,
+          "OC": 16,
+          "DC": 6
+        },
+        "28": {
+          "HC": 12,
+          "OC": 19,
+          "DC": 8
+        },
+        "30": {
+          "HC": 12,
+          "OC": 21,
+          "DC": 9
+        },
+        "32": {
+          "HC": 13,
+          "OC": 22,
+          "DC": 11
+        },
+        "34": {
+          "HC": 13,
+          "OC": 24,
+          "DC": 12
+        }
+      },
+      "secureThresholdSensitivityByRole": {
+        "42": {
+          "HC": 111,
+          "OC": 92,
+          "DC": 105
+        },
+        "45": {
+          "HC": 104,
+          "OC": 85,
+          "DC": 94
+        },
+        "48": {
+          "HC": 95,
+          "OC": 80,
+          "DC": 87
+        }
+      },
+      "thresholdNeighborhoods": {
+        "score20to24": 23,
+        "score25to29": 24,
+        "score40to44": 42,
+        "score45to49": 37,
+        "belowRoleFireThresholdInsufficientSignals": 9,
+        "gracePreventedFire": 10
+      },
+      "lowestEvaluations": [
+        {
+          "coach": "Jayson Perry",
+          "team": "Maryland",
+          "role": "DC",
+          "score": 15,
+          "rawScore": 15,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement",
+            "negative-trend"
+          ]
+        },
+        {
+          "coach": "Stephen Belichick",
+          "team": "North Carolina",
+          "role": "DC",
+          "score": 15,
+          "rawScore": 15,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Jim Zebrowski",
+          "team": "Kansas",
+          "role": "OC",
+          "score": 16,
+          "rawScore": 16,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement",
+            "negative-trend"
+          ]
+        },
+        {
+          "coach": "Vince Munch",
+          "team": "Rice",
+          "role": "OC",
+          "score": 16,
+          "rawScore": 16,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-rank",
+            "negative-trend"
+          ]
+        },
+        {
+          "coach": "DJ Eliot",
+          "team": "NC State",
+          "role": "DC",
+          "score": 17,
+          "rawScore": 17,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Josh Davis",
+          "team": "Fresno State",
+          "role": "OC",
+          "score": 18,
+          "rawScore": 18,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "unit-rank"
+          ]
+        },
+        {
+          "coach": "George P. Burdell",
+          "team": "Georgia Tech",
+          "role": "OC",
+          "score": 18,
+          "rawScore": 18,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Tony Sanchez",
+          "team": "New Mexico State",
+          "role": "HC",
+          "score": 18,
+          "rawScore": 18,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "negative-trend"
+          ]
+        },
+        {
+          "coach": "Jake Spavital",
+          "team": "Baylor",
+          "role": "OC",
+          "score": 19,
+          "rawScore": 19,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record",
+            "unit-underachievement"
+          ]
+        },
+        {
+          "coach": "Bryant Vincent",
+          "team": "UL Monroe",
+          "role": "HC",
+          "score": 19,
+          "rawScore": 19,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation"
+          ]
+        },
+        {
+          "coach": "Barry Lunney Jr.",
+          "team": "Illinois",
+          "role": "OC",
+          "score": 19,
+          "rawScore": 19,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation",
+            "program-record"
+          ]
+        },
+        {
+          "coach": "Jeff Lebby",
+          "team": "Mississippi State",
+          "role": "HC",
+          "score": 19,
+          "rawScore": 19,
+          "graceBonus": 0,
+          "classification": "Fire",
+          "signals": [
+            "job-security",
+            "contract-expectation"
+          ]
+        }
+      ],
+      "status": "ready"
+    }
+  ]
+}

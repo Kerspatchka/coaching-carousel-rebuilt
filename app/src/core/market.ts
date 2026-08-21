@@ -67,6 +67,16 @@ const stableRank = (value: string): number => {
 export const defaultMarketSeed = (snapshot: DynastySnapshot): string =>
   `CCR-${snapshot.seasonYear}-${snapshot.sourceFingerprint.slice(0, 16)}`;
 
+// Normal app runs should feel like a new season simulation each time the user
+// initializes the carousel. The exact Unix-millisecond seed remains visible in
+// the audit, while callers can still provide an explicit seed for exact reruns.
+export const createMarketRunSeed = (snapshot: DynastySnapshot, unixTimeMilliseconds = Date.now()): string => {
+  if (!Number.isFinite(unixTimeMilliseconds) || unixTimeMilliseconds < 0) {
+    throw new MarketInitializationError('The run seed requires a valid Unix timestamp.');
+  }
+  return `CCR-${snapshot.seasonYear}-${Math.floor(unixTimeMilliseconds)}-${snapshot.sourceFingerprint.slice(0, 16)}`;
+};
+
 export function initializeMarket(snapshot: DynastySnapshot, requestedSeed = defaultMarketSeed(snapshot)): MarketBaseline {
   const seed = requestedSeed.trim();
   if (!seed) throw new MarketInitializationError('A non-empty market seed is required.');

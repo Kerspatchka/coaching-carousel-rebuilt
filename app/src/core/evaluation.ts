@@ -157,7 +157,7 @@ function evaluateSeat(snapshot: DynastySnapshot, seat: MarketBaseline['seats'][n
       weighted('job-security', 'Native job-security state', 15, securityRetention(coach), `${coach.jobSecurity.status || 'Unknown'} · ${coach.jobSecurity.percentage ?? '—'}%`),
       weighted('program-season', 'Program-adjusted season performance', 10, recordRetention, `${team.currentRecord.wins}-${team.currentRecord.losses} vs. ${round(expectedWins * 100)}% expected win rate`),
       weighted('tenure', 'Tenure', 10, tenureRetention(coach), `${coach.seasonsWithTeam ?? 0} completed season(s) with Team`),
-      weighted('credibility', 'Career and current-school credibility', 10, credibilityRetention(coach, snapshot), `${coach.resume.career.wins}-${coach.resume.career.losses} career · ${coach.prestige} prestige`)
+      weighted('credibility', 'Career and current-school credibility', 10, credibilityRetention(coach, snapshot), `${coach.resume.career.wins}-${coach.resume.career.losses} career · ${coach.prestige} prestige · Level ${coach.level ?? '—'}`)
     );
   } else {
     const isOffense = seat.role === 'OC';
@@ -173,7 +173,7 @@ function evaluateSeat(snapshot: DynastySnapshot, seat: MarketBaseline['seats'][n
       weighted('job-security', 'Native job-security state', 10, securityRetention(coach), `${coach.jobSecurity.status || 'Unknown'} · ${coach.jobSecurity.percentage ?? '—'}%`),
       weighted('team-record', 'Team record', 10, teamRecordRetention, `${team.currentRecord.wins}-${team.currentRecord.losses}`),
       weighted('tenure', 'Tenure', 5, tenureRetention(coach), `${coach.seasonsWithTeam ?? 0} completed season(s) with Team`),
-      weighted('credibility', 'Career and prestige credibility', 5, credibilityRetention(coach, snapshot), `${coach.resume.career.wins}-${coach.resume.career.losses} career · ${coach.prestige} prestige`)
+      weighted('credibility', 'Career and prestige credibility', 5, credibilityRetention(coach, snapshot), `${coach.resume.career.wins}-${coach.resume.career.losses} career · ${coach.prestige} prestige · Level ${coach.level ?? '—'}`)
     );
   }
 

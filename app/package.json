@@ -16,7 +16,7 @@
     "premake": "npm run assets:prepare",
     "make": "electron-forge make --platform=win32 --arch=x64",
     "test": "vitest run",
-    "test:ci": "vitest run tests/carousel.test.ts tests/market.test.ts tests/evaluation.test.ts tests/performance-actions.test.ts",
+    "test:ci": "vitest run tests/carousel.test.ts tests/market.test.ts tests/evaluation.test.ts tests/performance-actions.test.ts tests/seeded-random.test.ts tests/prestige.test.ts tests/nfl-departures.test.ts tests/retirements.test.ts tests/unexpected-scenarios.test.ts tests/part-one-departures.test.ts",
     "typecheck": "tsc --noEmit",
     "check": "npm run typecheck && npm test"
   },
