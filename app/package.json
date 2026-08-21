@@ -1,0 +1,43 @@
+{
+  "name": "coaching-carousel-rebuilt",
+  "productName": "Coaching Carousel Rebuilt",
+  "version": "0.1.0-alpha.1",
+  "description": "A transparent external coaching carousel for EA Sports College Football 27 dynasty saves.",
+  "main": ".vite/build/main.js",
+  "private": true,
+  "scripts": {
+    "assets:prepare": "powershell -NoProfile -ExecutionPolicy Bypass -File ../scripts/assets/prepare-app-ui-assets.ps1",
+    "prestart": "npm run assets:prepare",
+    "start": "electron-forge start",
+    "prebuild": "npm run assets:prepare",
+    "build": "vite build --config vite.renderer.config.mjs",
+    "prepackage": "npm run assets:prepare",
+    "package": "electron-forge package",
+    "premake": "npm run assets:prepare",
+    "make": "electron-forge make --platform=win32 --arch=x64",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm test"
+  },
+  "dependencies": {
+    "madden-franchise": "4.3.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "7.11.2",
+    "@electron-forge/maker-zip": "7.11.2",
+    "@electron-forge/plugin-vite": "7.11.2",
+    "@tailwindcss/vite": "4.3.3",
+    "@types/node": "26.2.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "6.0.5",
+    "daisyui": "5.7.19",
+    "electron": "43.4.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2",
+    "vite": "8.2.1",
+    "vitest": "4.1.11"
+  }
+}

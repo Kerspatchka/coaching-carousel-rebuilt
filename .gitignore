@@ -3,4 +3,32 @@ ref_saves/
 experiments/
 docs/research/
 assets/mod_exports/
+/assets/image_table_exports/
+/assets/image_table_previews/
 /assets/ref_mod/
+
+# Curated UI assets are committed as one archive, then expanded locally for Vite.
+/assets/ui_pack/*
+!/assets/ui_pack/README.md
+!/assets/ui_pack/ccr-ui-assets.zip
+!/assets/ui_pack/SHA256SUMS.txt
+/app/src/renderer/assets/**/*.webp
+/app/src/renderer/assets/.asset-pack.sha256
+
+# Production app build output and local dependencies
+/app/node_modules/
+/app/.vite/
+/app/src/renderer/.vite/
+/app/out/
+/app/coverage/
+/app/*.log
+/.asset-tools/
+
+# Local third-party source reviews are evidence inputs, not product source
+/assets/reference-tools/
+
+# Local environment and signing material
+.env
+.env.*
+*.pfx
+*.p12

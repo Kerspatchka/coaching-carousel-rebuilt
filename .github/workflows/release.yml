@@ -1,0 +1,54 @@
+name: Publish Windows Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install dependencies
+        working-directory: app
+        run: npm ci
+      - name: Verify app
+        working-directory: app
+        run: npm run check
+      - name: Build portable Windows ZIP
+        working-directory: app
+        run: npm run make
+      - name: Stage release artifacts
+        shell: pwsh
+        run: |
+          $releaseDirectory = Join-Path $PWD 'release-artifacts'
+          New-Item -ItemType Directory -Path $releaseDirectory -Force | Out-Null
+          $source = Get-ChildItem -LiteralPath 'app/out/make' -Recurse -File -Filter '*.zip' | Select-Object -First 1
+          if (-not $source) { throw 'Electron Forge did not produce a ZIP artifact.' }
+          $artifactName = "Coaching-Carousel-Rebuilt-$env:GITHUB_REF_NAME-win-x64-portable.zip"
+          $artifactPath = Join-Path $releaseDirectory $artifactName
+          Copy-Item -LiteralPath $source.FullName -Destination $artifactPath
+          $hash = Get-FileHash -LiteralPath $artifactPath -Algorithm SHA256
+          "$($hash.Hash)  $artifactName" | Set-Content -LiteralPath (Join-Path $releaseDirectory 'SHA256SUMS.txt') -Encoding ascii
+      - name: Create GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $assets = Get-ChildItem -LiteralPath 'release-artifacts' -File |
+            ForEach-Object { $_.FullName }
+          $arguments = @('release', 'create', $env:GITHUB_REF_NAME) + $assets + @(
+            '--title', "Coaching Carousel Rebuilt $env:GITHUB_REF_NAME",
+            '--generate-notes'
+          )
+          if ($env:GITHUB_REF_NAME.Contains('-')) { $arguments += '--prerelease' }
+          & gh @arguments

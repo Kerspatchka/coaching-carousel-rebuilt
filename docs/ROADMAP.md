@@ -1,7 +1,7 @@
 # Coaching Carousel Rebuilt roadmap
 
 **Document type:** Living product and engineering roadmap
-**Last updated:** 2026-08-18
+**Last updated:** 2026-08-20
 **Current phase:** Phase 2 — CCR Brainstorming & Product Design
 
 **Terminology correction:** The supported interception checkpoint is **CFP National Championship week** (`SeasonInfo.CurrentWeekType = NationalChampionship`, week 20), not Bowl Week 3. Existing filenames, script names, experiment IDs, link targets, and machine evidence containing `bw3` are retained only as legacy identifiers so the established research trail remains reproducible.
@@ -23,6 +23,7 @@ The evolving product specification is recorded in [`docs/Concept.txt`](Concept.t
 - `Unexpected Scenarios` provide rare, seeded fictional disruptions, normally zero or one and at most two under default settings. Scenarios can remove one coach or cause the school to **Clean House**; rich fiction is allowed for all coaches when clearly labeled as unofficial simulated content. A user-controlled HC may nullify a scenario that would remove them, without rerolling it onto another coach.
 - Unexpected Scenario controls must be clearly visible in the tool's normal Settings menu as direct values from the shared configuration schema, without presets or a separate advanced layer.
 - Performance review assigns every incumbent to `Fire`, `Vulnerable`, or `Secure`. Evaluation is relative to program expectations and role; an HC firing automatically **Cleans House**, while an independently fired coordinator opens only that role.
+- A school-initiated dismissal before contract expiration incurs a deterministic Staff Offer Program Point buyout. Cost increases with full contract years remaining and career wins, commits before replacement offers, and applies to performance firings, completed Market Review replacements, user dismissals, and under-contract `Cleans House` releases. Natural expiration, nonrenewal, retirement, NFL departure, and voluntary moves carry no buyout. Exact calibration and the native settlement representation remain open; production compilation must fail closed until that settlement path is causally validated.
 - CFP National Championship week evidence requires role-specific coordinator evaluation: current-year earned contract points are identical across HC/OC/DC at 137 of 138 active programs, and Coach-side scoring totals are zero for every active coordinator, so OC/DC assessment must use linked Team offensive/defensive performance.
 - The initial approved model exposes a 0-100 Job Evaluation Score with role-specific component weights. Scores 0-24 are `Fire`, 25-44 are `Vulnerable`, and 45-100 are `Secure`; an unconditional firing also requires at least two independent primary failure signals.
 - Normal turnover calibration targets are 22-30 changed HC seats, 45-55 changed OC seats, and 45-55 changed DC seats. These are causal multi-seed calibration bands rather than per-season quotas; extensions are tracked separately.
@@ -42,7 +43,10 @@ The evolving product specification is recorded in [`docs/Concept.txt`](Concept.t
 - New HCs receive +20 first-season and +10 second-season Job Evaluation grace; first-year HCs cannot enter Market Review, and first-two-season performance firing requires Catastrophic Failure. First-year coordinators receive +10 and Market Review protection. Catastrophic Failure requires an adjusted 0-14 score, three independent failure signals, and a severe role-specific result. Grace does not block voluntary departures, contract decisions, Unexpected Scenarios, or Cleans House consequences.
 - Part 3 is a decision-free review, storytelling, validation, and authorization stage. It provides carousel headlines, detailed filled-position cards, departures/events, connected cascade exploration, before/after staffs, a dedicated user-school review, upcoming-season storylines, and final save validation. After each offer round is revealed, relevant views retain exact offered/expected program points, contract length, result, and winning offer; hidden CPU amounts remain concealed only before user submission.
 - Settings expose every genuine backend tuning scalar, threshold, weight, probability, multiplier, boolean, category, and seed directly through one shared configuration schema. CCR has no Low/Realistic/High modes or preset layer and no presentation settings. Controls retain exact values, ranges, descriptions, defaults, persistence, and reset behavior; safety-critical save invariants remain non-overridable implementation constraints.
-- The MVP is a single-purpose carousel app visually and interactively inspired by the NCAA 14 reference screens, including their bold condensed broadcast-style typography, black/charcoal and silver/white structure, warm gold status accents, prominent Team colors, top carousel tab rhythm, ordered opening queue, Team-branded detail card, new-opening alerts, and persistent advance/status controls. CCR modernizes spacing and accessibility without copying EA branding; DynastyOS is not a UI reference. Each season is one read-only-preflight → Parts 1-3 → temporary compile/reopen verification → new short-named CFP National Championship week output session that preserves the input and emits a report. There is no unfinished-carousel resume: closing before finalization discards the run. After handoff, the user does not return for EOS import, verification, sync, or dashboard use and opens CCR again only for the following season's carousel.
+- The MVP is a single-purpose carousel app visually and interactively inspired by the NCAA 14 reference screens, including their bold condensed broadcast-style typography, black/charcoal and silver/white structure, warm gold status accents, prominent Team colors, top carousel tab rhythm, ordered opening queue, Team-branded detail card, new-opening alerts, and persistent advance/status controls. Bahnschrift is the approved family: semi-condensed/condensed bold weights carry display text and regular-width weights carry body text, using the Windows 10/11 system font rather than redistributing the font file. CCR modernizes spacing and accessibility without copying EA branding; DynastyOS is not a UI reference. Each season is one read-only-preflight → Parts 1-3 → temporary compile/reopen verification → new short-named CFP National Championship week output session that preserves the input and emits a report. There is no unfinished-carousel resume: closing before finalization discards the run. After handoff, the user does not return for EOS import, verification, sync, or dashboard use and opens CCR again only for the following season's carousel.
+- Consequential turn events use brief NCAA-inspired in-shell animations. The signature sequence presents a school's identity and finalist Coach cards, communicates deliberation, reveals the deterministic selection, and flows into any cascading vacancy. The same animation vocabulary covers departures, offers, Coach decisions, hires, retentions, promotions, and `Cleans House`; it never changes or prematurely reveals an outcome. Vignettes never auto-advance: Space or the visible Advance button progresses one stage at a time. Routine CPU events may collapse under Skip Ahead, reduced-motion equivalents preserve the same manual control and all information, and durable result text remains after every reveal.
+- MVP implementation uses an isolated `app/` workspace with Electron Forge, React, TypeScript, and Vite. The renderer adopts Tailwind CSS 4 and daisyUI 5 behind CCR-owned React components and a custom `ccr` theme: daisyUI supplies reusable controls, states, and small transition patterns, while NCAA-inspired assets, typography, geometry, color, and event choreography remain CCR-owned. Electron's main process owns filesystem and finalization authority behind a narrow sandboxed preload API; the deterministic engine remains framework-independent. The initial release artifact is a portable Windows x64 ZIP published from version tags through GitHub Releases.
+- CCR uses its own self-contained UI asset pack and has no runtime or distribution dependency on DynastyOS. MMC export produced 5,480 BC7 DDS files across 14 Coach, Team, conference, helmet, photography, and presentation-background libraries. The Coach library's 1,089 numeric IDs represent exactly 697 unique textures: one blank texture is repeated across 393 exported IDs, while the other 696 are unique. Lossless sample conversion and a complete 5,480-file preview conversion both preserve alpha and XML-backed identifiers; the complete quality-88 WebP review set is about 352 MB and has a searchable/paginated local gallery. The added TeamAssets library contributes 1,469 Team hero, historic, team-photo, sign, sticker, and branding images; TeamBackgrounds contributes 600 school-specific 1080p/4K backgrounds and side panels. The production renderer catalog now packages all 1,089 Coach portrait references, 232 primary school logos, 149 secondary school logos, 209 3D school logos, 150 left-facing flat Team helmets, 63 conference marks, all 150 transparent 952×300 `tast_stickerpacks_<School>` composites, and the neutral 3840×2160 `tbak_Default` shell background through a semantic manifest. It contains 2,043 WebP files (about 67 MB unpacked) and remains deliberately limited to those carousel-relevant families rather than the complete photography/background review library. Git stores those production images as one `assets/ui_pack/ccr-ui-assets.zip`; npm lifecycle hooks expand it into the ignored renderer working directory for local, CI, and release builds. Physical deduplication and public-distribution licensing remain follow-up work, but the identity mapping and app integration are complete.
 - Exact probabilities, broader user-controlled-team behavior, grace rules, catastrophic overrides, and the detailed Part 2 market remain open until separately discussed and approved.
 
 ## Fixed product constraints
@@ -253,6 +257,7 @@ Design workstreams:
 - Define user applications, unsolicited offers, simultaneous offers, declines, and acceptance.
 - Define global market rounds, conflict resolution, downstream vacancy recascading, and deterministic seeding.
 - Define affordability reserves, landscape-driven liquidity disclosure, and insufficient-budget behavior.
+- Define and calibrate early-termination buyouts, including remaining-contract and career-win components, CPU dismissal affordability, and a validated native settlement path.
 - Define generic-Coach lore, fictional labeling, configurable rules, and directly exposed tuning defaults.
 - Define the normalized domain model, application boundaries, audit ledger, and UI concepts needed to implement the design.
 
@@ -422,9 +427,13 @@ modeled delta = CCR final staff price - native staged final staff price
 
 ### External user experience — Phase 2 design and Phase 3 implementation
 
-**Status:** Initial UI concept drafted; implementation not started
+**Status:** UI concept drafted; M0 executable shell, M1 fixture vertical slice, visual foundation, and M2 read-only preflight slice implemented
 
 The working interface plan is documented in [`docs/ui_concept.md`](ui_concept.md). It combines the NCAA 14 carousel's event-driven queue/detail rhythm and approved typography/color character with selected clarity and safety patterns from Fang's RO27 desktop app, while retaining CCR's single-purpose three-Part workflow.
+
+The implementation boundary is now locked in [`docs/MVP_SPEC.md`](MVP_SPEC.md), with process boundaries and the normalized domain model in [`docs/architecture.md`](architecture.md). The first fixture-driven Part 2 slice covers user offer submission, user-Coach decision, simultaneous result reveal, filled positions, and cascading openings. Typecheck and six automated tests pass. Its visual foundation is integrated: Bahnschrift typography, pinned Tailwind CSS 4 and daisyUI 5, a custom `ccr` theme and CCR-owned wrappers, the neutral `tbak_Default` shell background, Team sticker headers, Coach portraits, primary/secondary/3D school logos, flat helmets, conference marks, and reduced-motion-aware decision reveals with manual Space/Advance progression. The active Team header now shows previous-season record, national ranking/`NR`, and prestige; every Coach treatment includes career record and prestige; and portrait frames use contextual Team color plus enlarged flat-helmet art. Cascade reveals connect the old role upward to the new role and emphasize the resulting new opening. The semantic production manifest carries 2,043 WebP assets (1,089 Coach portrait references, 590 school logos across three families, 150 flat helmets, 63 conference marks, 150 sticker packs, and one background) without a DynastyOS dependency. The full fixture flow was visually exercised through two accepted hires and two cascading vacancies.
+
+The M2 preflight slice now opens on an NCAA-inspired save-selection surface and exposes only one read-only IPC command. The main process bundles schema 833.0 and the tested `madden-franchise` runtime, parses the selected file in memory, fails closed on unsupported checkpoint/schema/missing tables/no user Coach, and returns checkpoint, capacity, user Coach, Team, record, prestige, contract, and Team-color context. A supported CFP National Championship week fixture and an earlier W15 fixture exercise the ready and blocked paths. The packaged Windows executable also passed a hidden runtime smoke test against `DYNASTY-CCRY1BW3`: schema 833.0, National Championship week 20, active carousel, 143 Teams, 497 Coaches, Lance Taylor, and Western Michigan were all recovered with exit code 0. The selected save is never passed to `save()` and no production write IPC exists. After a successful preflight the app enters the existing fixture carousel, explicitly labeled `CAROUSEL PREVIEW`; replacing that fixture with the complete normalized market remains the next implementation boundary.
 
 - Import and validate one CFP National Championship week save.
 - Present openings, candidates, interest, program-point budgets, and offers.
@@ -437,7 +446,7 @@ The working interface plan is documented in [`docs/ui_concept.md`](ui_concept.md
 
 ### Compatibility, safety, and release readiness — Phases 3 and 4
 
-**Status:** Not started
+**Status:** In progress — schema/parser packaging and supported-fixture smoke test complete
 
 - Add fixture-based regression tests for supported game updates and schemas.
 - Detect title-update incompatibilities and refuse unsafe writes.
@@ -451,6 +460,7 @@ The working interface plan is documented in [`docs/ui_concept.md`](ui_concept.md
 ## Open decisions
 
 - Final coach valuation formula and calibration targets.
+- Exact buyout base, remaining-year multiplier, career-win curve/bands, role modifiers, rounding/cap policy, and native financial settlement representation.
 - Exact user-offer reservation and settlement semantics within the external ledger.
 - Whether CCR should expose native-like offer rounds or a more transparent turn-based market.
 - Rules for Teams whose CFP National Championship week remaining balance cannot absorb a positive modeled delta.
@@ -458,17 +468,16 @@ The working interface plan is documented in [`docs/ui_concept.md`](ui_concept.md
 - Whether to offer optional non-authoritative longitudinal reports without implying that CCR depends on them for simulation.
 - Which synthetic generic-coach attributes are presentation-only and which, if any, may become explicit configurable fit/personality inputs.
 - How much native `JobOpening` offer metadata should be reconstructed for history versus kept only in CCR's audit ledger.
-- Application architecture, distribution format, and user-interface technology.
+- Final code-signing provider, whether to add an installer beside the portable ZIP, and the post-MVP update mechanism.
 
 ## Immediate next steps
 
-1. Define the Phase 2 MVP boundary and the complete user journey from CFP National Championship week import through validated export.
-2. Decide the carousel's market structure: job-opening generation, candidate eligibility, rounds, bidding, user decisions, acceptance, and vacancy recascading.
-3. Finalize the explainable interest, valuation, pricing, affordability-reserve, and generic-Coach fallback models.
-4. Decide which native behaviors CCR reproduces, calibrates, or intentionally redesigns, and document the rationale for each departure.
-5. Define the normalized domain model, audit ledger, and application architecture needed by Phase 3, then prototype the Part 2 queue/offer/decision/new-opening vertical slice described in [`docs/ui_concept.md`](ui_concept.md).
-6. Convert the Phase 2 decisions into an implementation-ready MVP specification and ordered Phase 3 backlog.
-7. Perform additional source analysis or human-operated game experiments only when a specific unresolved decision cannot be answered from existing evidence.
+1. Expand the read adapter from the completed checkpoint/user-context preflight into the full normalized Team, Coach, résumé, staff, resource, opening, and reference-integrity snapshot required by the market engine.
+2. Replace the post-preflight fixture preview with the complete deterministic Part 2 engine and finalize the explainable interest, valuation, pricing, affordability-reserve, and generic-Coach fallback models through multi-seed tests.
+3. Add Part 1, schema-driven Settings, approved user-control/protection decisions, and the deterministic early-termination buyout model; do not enable production buyout settlement until its native financial write path is validated.
+4. Connect the proven compiler and automated copy/write/reopen verification behind Part 3 final authorization, then complete reports, handoff, and clean-machine packaging tests.
+5. Optimize and, where safe, physically deduplicate the production asset pack while preserving Coach, school, and conference identity mappings; finalize licensing/public-distribution policy before a public release.
+6. Perform additional source analysis or human-operated game experiments only when a specific unresolved implementation decision cannot be answered from existing evidence.
 
 ## Roadmap maintenance rules
 

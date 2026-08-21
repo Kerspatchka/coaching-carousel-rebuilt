@@ -1,7 +1,7 @@
 # Coaching Carousel Rebuilt UI concept
 
 **Document status:** Phase 2 working UI plan  
-**Last updated:** 2026-08-18  
+**Last updated:** 2026-08-20
 **Product source:** [`Concept.txt`](Concept.txt)  
 **Reference images:** [`../assets/ncaa14_ref`](../assets/ncaa14_ref)
 
@@ -123,11 +123,12 @@ The main carousel window uses four persistent regions:
 
 ### Main detail surface
 
-The Team-branded header establishes school, open role, record, program context, vacancy age, and opening reason. The content beneath it changes by turn while preserving the same visual hierarchy:
+The Team-branded header establishes school, open role, previous-season record, national ranking when available (otherwise `NR`), program prestige, conference, vacancy age, and opening reason. The content beneath it changes by turn while preserving the same visual hierarchy:
 
 - headline and plain-language summary;
 - previous Coach or incumbent context;
 - current candidates, offers, decision, or final hire;
+- each Coach's current role/school, previous-season record, career record, and prestige wherever the Coach is presented as a candidate or decision subject;
 - leading reasons and scores;
 - contract length and Staff Offer Program Points when relevant;
 - an `Explain this result` section with component breakdowns and reason codes; and
@@ -194,12 +195,15 @@ Event cards should use a consistent structure:
 - outcome headline;
 - leading reasons;
 - staff consequence: one vacancy, Internal Succession Review, or `Cleans House`;
+- early-termination buyout and post-buyout hiring resources when applicable;
 - newly created openings; and
 - expandable model evidence.
 
 Unexpected Scenarios require a persistent `CCR fictional scenario` label. User-HC protection presents Accept/Nullify as a deliberate decision card rather than a transient modal.
 
 Performance evaluation uses a 0-100 score visualization with `Fire`, `Vulnerable`, or `Secure`, but the classification text and failure-signal count are primary. Coordinator cards must identify linked Team unit evidence rather than implying unsupported Coach-only statistics.
+
+Any school-initiated dismissal before contract expiration includes a Buyout panel before confirmation. It shows full contract years remaining, career wins, base cost, remaining-term cost, career-wins premium, total Staff Offer Program Points, resources after dismissal, and the resulting replacement-offer constraint. Expiring-contract nonrenewals and voluntary departures explicitly show `No buyout` so users can distinguish the cases. CPU events use the same calculation and preserve the breakdown in expandable evidence.
 
 Contract decisions show current term, proposed term, expected and offered program points, school rationale, and the staff consequence of each result.
 
@@ -221,6 +225,31 @@ Each round visibly moves through:
 3. `Results & New Openings`.
 
 The round stepper belongs near the top of the detail surface. All offers remain pending until the Coach Decisions turn, so the UI must never visually imply that an earlier school has exclusive first choice.
+
+### Turn event animations
+
+Advancing a turn should trigger a brief in-shell event vignette for each consequential carousel event. This is a core storytelling layer inspired by the older NCAA carousel presentation, especially its animation of a school considering multiple Coach options and settling on its choice. The stable application shell remains visible so the animation feels like the carousel progressing rather than a disconnected video or loading screen.
+
+The standard school-selection sequence should:
+
+1. bring the school identity strip and open role into focus;
+2. introduce the final Coach options as portrait/name cards;
+3. move deliberate visual emphasis across the options to communicate consideration;
+4. resolve onto the selected Coach with school color, role, and accepted-offer treatment; and
+5. transition directly into the result card and any downstream `New Opening` alert.
+
+The animation presents an outcome already resolved by the deterministic engine; it must not look like a roulette wheel or imply that timing, clicks, or animation order influence the result. It must also respect simultaneous-offer information boundaries: a Coach's acceptance is not revealed until the Results turn.
+
+Use a small reusable event-animation vocabulary across the carousel:
+
+- departure, firing, retirement, extension, and `Cleans House`;
+- buyout commitment and reduced replacement budget;
+- school shortlist/offer submission;
+- Coach considering simultaneous offers;
+- accepted hire, rejected offer, retention, and internal promotion; and
+- cascading vacancy and newly opened position.
+
+Ordinary beats should remain measured but short enough for repeated use, while rare headline events may receive a slightly larger treatment. Multi-stage vignettes never auto-advance: each stage remains visible until the user presses Space or clicks the visible `Advance` button. Space and Advance move exactly one stage—deliberation, selection, cascade, then return—so the user controls the storytelling pace. Skip Ahead may still summarize routine CPU events before a vignette begins. Reduced-motion mode replaces travel, cycling, and scale effects with a brief crossfade and the same manual stage controls and final information. Every result remains visible as text after the animation finishes.
 
 ### School offer turn
 
@@ -250,7 +279,7 @@ The default CPU presentation can advance Coach by Coach or summarize noncompetit
 
 ### Results and new openings
 
-Reveal acceptances and rejections together. Animate only hierarchy and state change; avoid artificial delays. A newly created vacancy should:
+Reveal acceptances and rejections together through the turn-event animation system without artificial delay. A newly created vacancy should:
 
 - add a durable badge to `New Openings`;
 - insert a visibly marked queue row;
@@ -319,7 +348,7 @@ Categories follow the approved concept:
 - Market Review & Candidate Qualification;
 - School Interest;
 - Coach Interest;
-- Offers, Contracts, Extensions & Program Points;
+- Offers, Contracts, Extensions, Buyouts & Program Points;
 - Unexpected Scenarios;
 - User Control & Protection; and
 - Seed & Simulation Behavior.
@@ -364,11 +393,24 @@ CCR status accent      warm gold
 Team accent            derived per active Team
 ```
 
+### Component foundation
+
+Use Tailwind CSS 4 and daisyUI 5 as the renderer's component foundation. daisyUI is a source of reusable structure, interaction states, and small transition patterns—not the product's visual identity. Define a custom `ccr` theme that maps daisyUI semantic variables onto the approved charcoal, silver/white, warm-gold, success/warning/error, and active-Team tokens, then override shape, border, shadow, density, and typography where the NCAA-inspired presentation requires it. Do not ship an unchanged built-in daisyUI theme or allow generic rounded dashboard styling to dominate the app.
+
+The strongest daisyUI candidates are buttons, tabs, steps, badges/status, cards, dialogs, drawers, collapses, alerts, progress/loading indicators, form controls, tables/lists, tooltips, and keyboard-hint treatments. Wrap the chosen class combinations in CCR-owned React components so screens use stable domain components rather than scattering framework classes and theme assumptions throughout the renderer.
+
+Reuse daisyUI's restrained component transitions where they fit—such as swaps, loading indicators, progress changes, collapses, dialogs, and drawers. The multi-stage turn-event vignettes remain CCR-owned choreography built from engine events, Team assets, and explicit animation states; daisyUI effects may support individual beats but must not determine event order or simulation timing. Every imported motion pattern must follow the same manual-stage progression and reduced-motion requirements as the broader reveal system.
+
+Coach portraits use the Coach's contextual Team primary color as their background and place the Team's left-facing `teamhelmets_flat` illustration as a subdued layer behind the Coach head. The helmet is centered on the square portrait frame and scaled to fill it, with intentional edge cropping rather than unused transparent padding. The primary school logo remains the fallback for a missing helmet. The portrait remains the foreground subject, and contrast/fallback treatments must keep the Coach readable when Team colors or helmet art are unusually light, dark, detailed, or unavailable.
+
+The cascade reveal makes both consequences immediately legible: the departing Coach's old role sits below a destination `New Role` card with a strong upward connector, while the newly vacated opening receives the largest consequence card on the right and explicitly states that it was added to the Offer Queue.
+
 ### Typography and density
 
-- use a bold condensed athletic/broadcast sans for the wordmark, top tabs, school names, role headings, major event headlines, and primary actions;
-- prototype with licensed/open candidates such as Barlow Condensed, Roboto Condensed, or Archivo Narrow, then compare them directly over the supplied screenshots before selecting the final family;
-- use a compatible regular-width sans from the chosen family or a close companion for explanations, settings descriptions, offer details, and dense tables;
+- Bahnschrift is the approved CCR type family. Use its SemiCondensed or Condensed width with bold/heavy weights for the wordmark, top tabs, school names, role headings, major event headlines, numeric callouts, and primary actions;
+- use regular-width Bahnschrift at regular through semibold weights for explanations, settings descriptions, offer details, dense tables, and other sustained reading;
+- consume the Windows system installation rather than redistributing Microsoft's font file. CCR targets Windows 10/11, which supply Bahnschrift; retain Segoe UI Variable/Segoe UI as the defensive body fallback and Arial Narrow/sans-serif as display fallbacks;
+- define shared display and body font tokens so width, weight, tracking, and line-height choices remain consistent across daisyUI wrappers and custom event surfaces;
 - use uppercase confidently for top tabs, major headings, state labels, and short actions, matching the NCAA reference character;
 - keep longer explanations and narrative copy in sentence case with more generous line height so the broadcast-style display face does not harm readability;
 - maintain comfortable modern row heights while using weight, condensation, and contrast to retain the references' compact football presentation;
@@ -377,7 +419,11 @@ Team accent            derived per active Team
 
 ### Team assets
 
-Logo, conference-mark, and Team-color sources are not yet established for production. The UI must include a first-class fallback using a school monogram, neutral role icon, and accessible generated accent. Asset licensing and patch compatibility must be resolved before branded assets become a release dependency.
+The leading application-shell background is the neutral 3840×2160 `tbak_Default` export (`assets/image_table_previews/teambackgrounds/0.webp`). Its near-black football texture and restrained orange details establish the NCAA-style atmosphere while leaving room for readable panels and active-Team colors. Treat it as a provisional production candidate: optimize a curated copy for the app rather than loading the ignored review file at runtime, and verify crops at every supported window size.
+
+For Team-specific presentation, prioritize the 150 transparent 952×300 `tast_stickerpacks_<School>` composites from TeamAssets. Their converted numeric filenames all end in `3` (for example `13.webp`, `533.webp`, and `543.webp`), and each combines helmet, wordmarks, mascot marks, and pennant art into a strong school identity strip. Use these primarily in Team-branded detail headers or opening cards, with enough empty space and contrast protection that they support rather than compete with decision text.
+
+Primary logos, conference marks, the sticker-pack school mapping, and Team colors must be connected through a generated production manifest rather than numeric preview filenames. The UI must retain a first-class fallback using a school monogram, neutral role icon, and accessible generated accent. Asset licensing and patch compatibility must be resolved before branded assets become a release dependency.
 
 ## 12. Component inventory
 
@@ -394,6 +440,7 @@ Initial reusable components:
 - Job Evaluation Score breakdown;
 - contract and program-point offer editor;
 - round stepper and revealed-offer ledger;
+- reusable turn-event animation stage and reduced-motion reveal;
 - new-opening alert and cascade link;
 - factual / fictional content label;
 - validation checklist group;
@@ -424,6 +471,7 @@ Initial reusable components:
 ### UI-1 — static shell prototype
 
 - Build the start/preflight surface and the persistent carousel shell using fixture data.
+- Add Tailwind CSS 4 and daisyUI 5, define the initial custom `ccr` theme, and establish CCR-owned wrappers for the first shared controls.
 - Implement top Part progress, contextual tabs, queue, Team detail card, and bottom action bar.
 - Validate window scaling, typography, contrast, keyboard order, and long school/Coach names.
 
@@ -431,6 +479,7 @@ Initial reusable components:
 
 - Use a deterministic fake carousel fixture to implement one HC round that produces a downstream opening.
 - Include one user-school offer, one user-Coach decision, one rejection, one accepted hire, and one new-opening cascade.
+- Implement the school-deliberation/Coach-selection animation and the reduced-motion/skipped paths against the same event fixture.
 - This slice should establish the state machine and action semantics before broad screen production.
 
 ### UI-3 — Part 1 and Settings
@@ -459,7 +508,7 @@ Initial reusable components:
 ## 15. Decisions still required
 
 - Desktop framework and packaging technology.
-- Exact licensed font family, CCR wordmark/icon treatment, and final color-token values within the approved NCAA 14-inspired direction.
+- Exact CCR wordmark/icon treatment and final color-token values within the approved NCAA 14-inspired direction.
 - Production source and licensing policy for Team/conference logos and colors.
 - Supported minimum window size and whether the window may enter a compact layout.
 - Whether config import/export is MVP or post-MVP.

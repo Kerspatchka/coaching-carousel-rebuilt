@@ -228,6 +228,16 @@ Consequences:
 - A Vulnerable coach remains in place unless the school completes an approved replacement during Part 2.
 - A Secure coach is not shopped by the current school but remains eligible to consider other jobs.
 
+Early-termination buyouts:
+
+- When a school initiates a Coach's dismissal before the current contract expires, the school must pay a buyout in Staff Offer Program Points.
+- The buyout rises with the number of full contract years remaining and the Coach's career wins. Remaining term represents the school's unfulfilled commitment; career wins represent the premium required to dismiss a more accomplished Coach.
+- The initial model applies to HC, OC, and DC performance firings, a completed Market Review replacement, a user-initiated dismissal, and a `Cleans House` release when the affected Coach still has contract time remaining.
+- No buyout is charged for an expiring-contract nonrenewal, a declined extension, retirement, NFL departure, or a Coach voluntarily accepting another job.
+- The exact base cost, remaining-year multiplier, career-win curve or bands, role modifier, rounding, and maximum cost are configurable calibration values. The same deterministic formula applies to CPU and user-controlled schools. When career-win evidence is unavailable, CCR uses an explicit confidence-aware fallback rather than silently treating the Coach as winless.
+- A buyout commits immediately in CCR's external program-point ledger and reduces the resources available for replacement offers. It cannot take the Team below the conservative affordability boundary; the exact insufficient-budget response must be resolved alongside buyout calibration and cannot silently waive or undercharge the expense.
+- User protection and override decisions must show the complete buyout before confirmation. CPU firing and Market Review policy must consider both the buyout and the likely replacement cost rather than treating dismissal as free.
+
 Newly hired coaches receive reasonable grace unless performance is catastrophic. The exact grace period, catastrophic-performance override, score construction, thresholds, and user-controlled-coach protections remain to be approved.
 
 Approved Job Evaluation Score:
@@ -312,6 +322,8 @@ Expiring contracts:
 - Extend: the school offers a new contract term and program-point amount.
 - Do Not Renew: the incumbent enters the coaching pool and the position becomes vacant.
 - Offer Declined: the incumbent rejects the extension, enters the coaching pool, and the position becomes vacant.
+
+An expiration or nonrenewal at the natural end of the contract carries no early-termination buyout. A dismissal with contract time remaining is financially distinct and follows the buyout rules in the performance-evaluation section.
 
 HC consequences:
 
@@ -620,6 +632,7 @@ External offer ledger:
 - A pending offer temporarily reserves its amount within CCR.
 - A rejected, withdrawn, or losing offer releases its reservation.
 - An accepted hire, retention offer, or extension commits its final price.
+- An approved early-termination buyout commits as a separate expense before replacement offers are reserved.
 - A Team cannot reserve or commit more than its allowed staff resources.
 
 Native financial reconciliation:
@@ -629,6 +642,7 @@ Native financial reconciliation:
 - EOS then charges or refunds the price difference relative to the abandoned native outcome and derives the destination role budget, staff spending, and remaining points.
 - This authoritative write path has been validated for an HC price change and for a coordinator replacement combined with a new price.
 - Full-landscape annual processing can still produce Coach-sensitive NIL, rollover, and remaining-liquidity changes beyond the isolated staff-price delta. CCR therefore uses a conservative affordability reserve and discloses that exact post-EOS spendable liquidity cannot yet be guaranteed for every Team.
+- The simulation and audit ledger must preserve buyouts as distinct expenses rather than hiding them inside a replacement offer. The production compiler must not write derived Team balance fields directly. A coherent native settlement representation for buyouts must be causally validated before the feature is permitted to alter a production save; until then, buyout calculations may be implemented and tested in the deterministic engine but the save compiler must fail closed rather than silently omit or mischarge them.
 
 Economy-Neutral Compatibility Mode:
 
@@ -699,13 +713,13 @@ Part 3 introduces no new RNG or CPU decisions. It reviews the completed carousel
 
 Carousel Headlines:
 
-- Summarize HC, OC, and DC changes; retirements; NFL departures; firings; nonrenewals; Unexpected Scenarios; internal promotions; coordinators following HCs; and extensions reported separately.
+- Summarize HC, OC, and DC changes; retirements; NFL departures; firings; nonrenewals; Unexpected Scenarios; internal promotions; coordinators following HCs; extensions; and buyout expenses reported separately.
 - Identify major jobs, the largest vacancy cascade, the most-contested candidate, and the overall character of the carousel.
 
 Filled Positions:
 
 - Present a browsable school/opening list inspired by the official EA carousel presentation.
-- Each position card shows the school and role, previous Coach and departure reason, new Coach and previous job, movement type, previous-season record and resume highlights, prestige and level, scheme, alma mater or available ties, contract length, accepted program points, School Interest, Coach Interest, and a concise match explanation.
+- Each position card shows the school and role, previous Coach and departure reason, any early-termination buyout, new Coach and previous job, movement type, previous-season record and resume highlights, prestige and level, scheme, alma mater or available ties, contract length, accepted program points, School Interest, Coach Interest, and a concise match explanation.
 - Filters include role, conference, school, departure reason, and movement type.
 
 Departures and Events:
@@ -726,7 +740,7 @@ Before-and-After Staffs:
 
 User-School Review:
 
-- Show the complete upcoming staff, departing coordinators and reasons, accepted and rejected offers, exact program points and contract lengths for each offer, staff-cost changes, scheme changes, user overrides or protections, and next-season expectations.
+- Show the complete upcoming staff, departing coordinators and reasons, accepted and rejected offers, exact program points and contract lengths for each offer, buyout expenses and their formula breakdowns, staff-cost changes, scheme changes, user overrides or protections, and next-season expectations.
 
 Upcoming-Season Storylines:
 
@@ -741,7 +755,7 @@ Offer-point visibility:
 
 Validation and Finalization:
 
-- Verify that every HC/OC/DC position is filled, no Coach occupies multiple jobs or moves twice, opening and movement counts reconcile, contracts and program points are valid, Staff Moves history is covered, user-Coach control is correct, and all tested save constraints pass.
+- Verify that every HC/OC/DC position is filled, no Coach occupies multiple jobs or moves twice, opening and movement counts reconcile, contracts, buyouts, and program points are valid and affordable, Staff Moves history is covered, user-Coach control is correct, and all tested save constraints pass.
 - Present known limitations, output destination, and safety-backup information.
 - Write nothing to the dynasty save until validation passes and the user selects Finalize Carousel.
 
@@ -766,7 +780,7 @@ Settings are organized into collapsible categories for navigation only, not into
 - performance evaluation and grace;
 - Market Review and candidate qualification;
 - School Interest and Coach Interest;
-- offers, contracts, extensions, and program points;
+- offers, contracts, extensions, buyouts, and program points;
 - Unexpected Scenarios;
 - user control and protection; and
 - deterministic seed and simulation behavior.
@@ -828,10 +842,12 @@ Part 2 presentation:
 
 - Center the interaction around Now Hiring, New Openings, and Filled Positions.
 - Now Hiring presents the active school, opening, shortlist, and offer activity.
+- The active Team header shows previous-season record, national ranking when available, program prestige, and conference. Candidate and Coach-decision treatments show previous-season record, career record, and prestige.
 - New Openings presents vacancies created by the latest decisions.
 - Filled Positions accumulates resolved hires and extensions.
 - The left queue distinguishes waiting, active, new, and complete states; the persistent action strip shows stage, round, role counts, and the next action.
 - Skip Ahead may process CPU-only turns but stops for any user decision, user-Coach offer, user-school offer, Unexpected Scenario review, or validation problem.
+- Consequential multi-stage event vignettes do not auto-advance. Space or the visible Advance action progresses exactly one stage at a time; reduced-motion presentation retains the same manual control.
 
 Part 3 presentation:
 
