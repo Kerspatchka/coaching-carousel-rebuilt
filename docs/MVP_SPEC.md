@@ -112,13 +112,14 @@ Closing before finalization discards the run. Settings persist independently; ca
 - Supported fixture loads read-only into the normalized model.
 - Preflight identifies checkpoint, schema, user context, and structural integrity.
 - No production write path is exposed.
-- **Current status:** the packaged preflight boundary is implemented and smoke-tested for checkpoint/schema, required table presence, capacity counts, user Coach identity/résumé/contract, and Team identity/prestige/rank/colors. Full Team/Coach/resource/opening normalization remains before M2 is complete.
+- **Current status:** complete. The read-only adapter produces a source-fingerprinted normalized snapshot of Conferences, all Teams and staffs, Coaches, résumé/contract/job-security/scheme data, records and ratings, program-point resources and role budgets, staged openings, native offers, and indexed Staff Moves. The supported fixture passes more than 2,000 reference, ownership, and employment-coherence checks with zero findings; the earlier-week negative fixture remains blocked. No production write path is exposed.
 
 ### M3 — complete deterministic engine
 
 - Parts 1 and 2 complete from normalized state.
 - Multi-seed calibration and invariant suites pass.
 - Settings are generated from the shared configuration schema.
+- **Current status:** in progress. The pure initialization boundary converts a validated snapshot into one deterministic seat per HC/OC/DC role, rejects missing, duplicate, or role-incoherent incumbents, records user context and seed, and retains native staged outcomes only as non-authoritative comparison evidence. The first Part 1 layer now evaluates every incumbent with the approved role-specific 100-point weights, Team-linked unit performance/talent for coordinators, exact grace bonuses, calibrated HC 32 / OC 24 / DC 32 Fire cutoffs, independent failure-signal gates, catastrophic-failure checks, and visible component/reason evidence. On the locked research fixture it deterministically evaluates 429 seats as 33 Fire, 119 Vulnerable, and 277 Secure; these are evidence-driven classifications, not turnover quotas. Departures, buyout affordability, contract decisions, shortlists, offers, and round resolution remain next.
 
 ### M4 — compiler and verification
 

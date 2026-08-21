@@ -1,6 +1,7 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
 import type { Coach, Team } from '../../core/carousel';
-import { coachPortraitByAssetId, conferenceLogoByKey, teamVisualsByKey } from '../assets/assetCatalog';
+import type { NormalizedCoach, NormalizedTeam } from '../../core/dynasty';
+import { coachPortraitByAssetId, conferenceLogoByKey, teamVisualsByKey, teamVisualsForIdentity } from '../assets/assetCatalog';
 
 const join = (...values: Array<string | false | null | undefined>) => values.filter(Boolean).join(' ');
 
@@ -70,6 +71,19 @@ export function TeamArt({ team }: { team: Team }) {
 export function CoachHead({ coach, team, size = 'medium' }: { coach: Coach; team: Team; size?: 'small' | 'medium' | 'large' }) {
   const portrait = coachPortraitByAssetId[coach.portraitAssetId];
   const teamVisuals = teamVisualsByKey[team.assetKey];
+  const backgroundMark = teamVisuals?.flatHelmet ?? teamVisuals?.primaryLogo;
+  return (
+    <span className={join('coach-head', `coach-head-${size}`)} style={{ '--portrait-team-color': team.colors[0] } as React.CSSProperties}>
+      {backgroundMark && <img className="coach-head-team-logo" src={backgroundMark} alt="" />}
+      {portrait ? <img className="coach-head-portrait" src={portrait} alt={`${coach.name} portrait`} /> : <strong>{coach.name.split(' ').map((part) => part[0]).join('')}</strong>}
+    </span>
+  );
+}
+
+export function NormalizedCoachHead({ coach, team, size = 'medium' }: { coach: NormalizedCoach; team: NormalizedTeam; size?: 'small' | 'medium' | 'large' }) {
+  const portraitId = typeof coach.portrait === 'number' ? coach.portrait : coach.presentationId;
+  const portrait = portraitId === null ? undefined : coachPortraitByAssetId[portraitId];
+  const teamVisuals = teamVisualsForIdentity(team.assetKey, team.longName, team.name, team.shortName);
   const backgroundMark = teamVisuals?.flatHelmet ?? teamVisuals?.primaryLogo;
   return (
     <span className={join('coach-head', `coach-head-${size}`)} style={{ '--portrait-team-color': team.colors[0] } as React.CSSProperties}>

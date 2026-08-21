@@ -14,9 +14,13 @@ offer queue -> user offer -> Coach decision -> results -> cascading vacancy
 
 It includes the NCAA-inspired visual foundation, Coach portraits, school and
 conference branding, animated decision reveals, and a packaged read-only save
-preflight. The preflight validates schema/checkpoint compatibility and displays
-the detected user Coach and Team context; the carousel after it is still an
-explicit fixture preview. CCR does not yet modify a dynasty save.
+adapter. Preflight validates schema/checkpoint compatibility and builds the
+complete normalized Team, Coach, staff, résumé, resource, opening, native-offer,
+and Staff Moves snapshot required by the engine. Real saves now advance through
+deterministic 429-seat market initialization and the first explainable Part 1
+performance review, including role-specific scores, coordinator unit context,
+grace, and independent firing signals. The offer-and-hire flow after that point
+remains an explicit fixture preview. CCR does not yet modify a dynasty save.
 
 ## Desktop app
 

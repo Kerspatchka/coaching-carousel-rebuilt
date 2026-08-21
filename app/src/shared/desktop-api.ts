@@ -1,3 +1,5 @@
+import type { DynastySnapshot } from '../core/dynasty';
+
 export type PreflightSeverity = 'blocking' | 'warning' | 'info';
 
 export interface PreflightIssue {
@@ -56,6 +58,7 @@ export interface SavePreflightResult {
     indexedStaffMoves: number;
   };
   users: LoadedUserCoach[];
+  snapshot: DynastySnapshot | null;
   issues: PreflightIssue[];
 }
 

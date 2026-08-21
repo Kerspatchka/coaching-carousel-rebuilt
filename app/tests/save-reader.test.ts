@@ -1,5 +1,7 @@
 import path from 'node:path';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
+import { initializeMarket } from '../src/core/market';
+import { evaluatePartOne } from '../src/core/evaluation';
 
 vi.mock('electron', () => ({
   app: {
@@ -20,18 +22,70 @@ describe('read-only save preflight', () => {
   it('accepts the validated National Championship week fixture and identifies its user context', async () => {
     const result = await inspectSave(fixture('DYNASTY-CCRY1BW3'), false);
 
-    expect(result.status).toBe('ready');
+    expect(result.status, JSON.stringify({ issues: result.issues, integrity: result.snapshot?.integrity }, null, 2)).toBe('ready');
     expect(result.schema.detected).toBe('833.0');
     expect(result.checkpoint.weekType).toBe('NationalChampionship');
     expect(result.checkpoint.carouselActive).toBe(true);
     expect(result.inventory.teams).toBe(143);
     expect(result.inventory.coaches).toBe(497);
+    expect(result.inventory.openings).toBe(192);
+    expect(result.inventory.indexedStaffMoves).toBe(124);
     expect(result.users[0]).toMatchObject({
       name: 'Lance Taylor',
       role: 'HeadCoach',
       seasonRecord: '9-5',
       team: { longName: 'Western Michigan' }
     });
+
+    const snapshot = result.snapshot;
+    expect(snapshot).not.toBeNull();
+    expect(snapshot?.sourceFingerprint).toMatch(/^[A-F0-9]{64}$/);
+    expect(snapshot?.integrity).toMatchObject({ valid: true, errors: 0, warnings: 0 });
+    expect(snapshot?.integrity.checks).toBeGreaterThan(2_000);
+    expect(snapshot?.conferences).toHaveLength(12);
+    expect(snapshot?.teams).toHaveLength(143);
+    expect(snapshot?.coaches).toHaveLength(497);
+    expect(snapshot?.openings).toHaveLength(192);
+    expect(snapshot?.nativeOffers).toHaveLength(0);
+    expect(snapshot?.staffMoves).toHaveLength(124);
+
+    const userCoach = snapshot?.coaches.find((coach) => coach.userControlled);
+    const userTeam = snapshot?.teams.find((team) => team.id === userCoach?.employerTeamId);
+    expect(userCoach).toMatchObject({
+      name: 'Lance Taylor',
+      role: 'HeadCoach',
+      resume: { season: { wins: 9, losses: 5 }, career: { wins: 29, losses: 24 } }
+    });
+    expect(userTeam).toMatchObject({
+      longName: 'Western Michigan',
+      staff: { headCoachId: userCoach?.id }
+    });
+    expect(userTeam?.conferenceId).not.toBeNull();
+    expect(userTeam?.ratings.overall).not.toBeNull();
+    expect(userTeam?.performance.offensiveRank).not.toBeNull();
+    expect(userTeam?.performance.defensiveRank).not.toBeNull();
+    expect(userCoach?.contractPerformance.earnedPoints[0]).not.toBeNull();
+    expect(userTeam?.resources.staffAccessiblePool).toBe(
+      (userTeam?.resources.remainingProgramPoints ?? 0) + (userTeam?.resources.staffProgramPointsSpent ?? 0)
+    );
+
+    const coachIds = new Set(snapshot?.coaches.map((coach) => coach.id));
+    for (const team of snapshot?.teams ?? []) {
+      expect(coachIds.has(team.staff.headCoachId)).toBe(true);
+      expect(coachIds.has(team.staff.offensiveCoordinatorId)).toBe(true);
+      expect(coachIds.has(team.staff.defensiveCoordinatorId)).toBe(true);
+    }
+
+    const market = initializeMarket(snapshot!, 'CCR-M2-M3-BOUNDARY');
+    expect(market.seats).toHaveLength(429);
+    expect(market.invariants).toEqual({ valid: true, expectedSeatCount: 429, uniqueIncumbentCount: 429 });
+    expect(market.nativeOutcomeEvidence).toHaveLength(192);
+    const evaluation = evaluatePartOne(snapshot!, market);
+    expect(evaluation.evaluations).toHaveLength(429);
+    expect(evaluation.counts).toEqual({ Fire: 33, Vulnerable: 119, Secure: 277, catastrophic: 3, userProtected: 0 });
+    expect(evaluation.evaluations.filter((item) => item.role === 'HC' && item.classification === 'Fire')).toHaveLength(12);
+    expect(evaluation.evaluations.filter((item) => item.role === 'OC' && item.classification === 'Fire')).toHaveLength(11);
+    expect(evaluation.evaluations.filter((item) => item.role === 'DC' && item.classification === 'Fire')).toHaveLength(10);
   });
 
   it('blocks a valid dynasty save captured before the supported checkpoint', async () => {

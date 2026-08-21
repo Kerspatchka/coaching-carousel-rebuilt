@@ -11,14 +11,16 @@ import {
   type Team,
   type Turn
 } from '../core/carousel';
+import { initializeMarket, type MarketBaseline } from '../core/market';
+import { evaluatePartOne, type JobEvaluationClassification, type PartOneEvaluation } from '../core/evaluation';
 import '../shared/desktop-api';
 import type { SavePreflightResult } from '../shared/desktop-api';
 import { shellBackground } from './assets/assetCatalog';
-import { CcrBadge, CcrButton, CoachHead, ConferenceMark, Eyebrow, TeamArt, TeamMark } from './components/CcrUi';
+import { CcrBadge, CcrButton, CoachHead, ConferenceMark, Eyebrow, NormalizedCoachHead, TeamArt, TeamMark } from './components/CcrUi';
 
 type View = 'hiring' | 'new' | 'filled';
 type RevealPhase = 'idle' | 'deliberating' | 'selected' | 'cascade';
-type AppMode = 'start' | 'inspecting' | 'preflight' | 'carousel';
+type AppMode = 'start' | 'inspecting' | 'preflight' | 'market-ready' | 'evaluation-ready' | 'carousel';
 
 const turns: Turn[] = ['school-offers', 'coach-decisions', 'results'];
 const turnLabels: Record<Turn, string> = {
@@ -30,6 +32,19 @@ const turnLabels: Record<Turn, string> = {
 const roleLabel = (role: 'HC' | 'OC' | 'DC') => (
   role === 'HC' ? 'Head Coach' : role === 'OC' ? 'Offensive Coordinator' : 'Defensive Coordinator'
 );
+
+const scrollEvaluationListOnKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  const list = event.currentTarget;
+  const page = Math.max(120, list.clientHeight * 0.85);
+  if (event.key === 'ArrowDown') list.scrollBy({ top: 72 });
+  else if (event.key === 'ArrowUp') list.scrollBy({ top: -72 });
+  else if (event.key === 'PageDown') list.scrollBy({ top: page });
+  else if (event.key === 'PageUp') list.scrollBy({ top: -page });
+  else if (event.key === 'Home') list.scrollTo({ top: 0 });
+  else if (event.key === 'End') list.scrollTo({ top: list.scrollHeight });
+  else return;
+  event.preventDefault();
+};
 
 function useReducedMotion() {
   const [reduced, setReduced] = useState(false);
@@ -48,6 +63,8 @@ function useReducedMotion() {
 export function App() {
   const [mode, setMode] = useState<AppMode>('start');
   const [preflight, setPreflight] = useState<SavePreflightResult | null>(null);
+  const [market, setMarket] = useState<MarketBaseline | null>(null);
+  const [evaluation, setEvaluation] = useState<PartOneEvaluation | null>(null);
   const [state, setState] = useState<CarouselState>(() => createFixtureState());
   const [view, setView] = useState<View>('hiring');
   const [years, setYears] = useState(3);
@@ -63,6 +80,24 @@ export function App() {
 
   useEffect(() => {
     window.ccr?.getAppInfo().then((info) => setVersion(`v${info.version}`)).catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('preview') !== 'evaluation') return;
+    void fetch('/evaluation-preview.json')
+      .then((response) => {
+        if (!response.ok) throw new Error(`Preview fixture unavailable (${response.status})`);
+        return response.json() as Promise<SavePreflightResult>;
+      })
+      .then((result) => {
+        if (!result.snapshot) throw new Error('Preview fixture has no normalized dynasty snapshot');
+        const previewMarket = initializeMarket(result.snapshot);
+        setPreflight(result);
+        setMarket(previewMarket);
+        setEvaluation(evaluatePartOne(result.snapshot, previewMarket));
+        setMode('evaluation-ready');
+      })
+      .catch((error) => console.error('Unable to load evaluation preview', error));
   }, []);
 
   const statusCopy = useMemo(() => {
@@ -116,14 +151,40 @@ export function App() {
         return;
       }
       setPreflight(result);
+      setMarket(null);
+      setEvaluation(null);
       setMode('preflight');
     } catch {
       setMode('start');
     }
   };
 
+  const initializeSelectedMarket = () => {
+    if (!preflight?.snapshot) return;
+    setMarket(initializeMarket(preflight.snapshot));
+    setMode('market-ready');
+  };
+
+  const evaluateSelectedMarket = () => {
+    if (!preflight?.snapshot || !market) return;
+    setEvaluation(evaluatePartOne(preflight.snapshot, market));
+    setMode('evaluation-ready');
+  };
+
+  if (mode === 'market-ready') {
+    return preflight && market
+      ? <MarketReady result={preflight} market={market} version={version} onBack={() => setMode('preflight')} onEvaluate={evaluateSelectedMarket} />
+      : <StartAndPreflight mode="preflight" result={preflight} version={version} onSelect={selectSave} onBegin={initializeSelectedMarket} />;
+  }
+
+  if (mode === 'evaluation-ready') {
+    return preflight?.snapshot && market && evaluation
+      ? <EvaluationReady result={preflight} evaluation={evaluation} version={version} onBack={() => setMode('market-ready')} onPreview={() => setMode('carousel')} />
+      : <StartAndPreflight mode="preflight" result={preflight} version={version} onSelect={selectSave} onBegin={initializeSelectedMarket} />;
+  }
+
   if (mode !== 'carousel') {
-    return <StartAndPreflight mode={mode} result={preflight} version={version} onSelect={selectSave} onBegin={() => setMode('carousel')} />;
+    return <StartAndPreflight mode={mode} result={preflight} version={version} onSelect={selectSave} onBegin={initializeSelectedMarket} />;
   }
 
   return (
@@ -200,7 +261,7 @@ export function App() {
 }
 
 function StartAndPreflight({ mode, result, version, onSelect, onBegin }: {
-  mode: Exclude<AppMode, 'carousel'>;
+  mode: 'start' | 'inspecting' | 'preflight';
   result: SavePreflightResult | null;
   version: string;
   onSelect: () => void;
@@ -259,7 +320,7 @@ function StartAndPreflight({ mode, result, version, onSelect, onBegin }: {
 
             <footer className="preflight-actions">
               <CcrButton tone="neutral" onClick={onSelect}>CHOOSE ANOTHER SAVE</CcrButton>
-              {ready && <CcrButton tone="primary" onClick={onBegin}>BEGIN CAROUSEL PREVIEW <span aria-hidden="true">›</span></CcrButton>}
+              {ready && <CcrButton tone="primary" onClick={onBegin}>INITIALIZE CAROUSEL ENGINE <span aria-hidden="true">›</span></CcrButton>}
             </footer>
           </section>
         ) : (
@@ -272,6 +333,134 @@ function StartAndPreflight({ mode, result, version, onSelect, onBegin }: {
       </section>
 
       <footer className="launch-footer"><span>NO CHANGES ARE MADE DURING PREFLIGHT</span><span>CFB27 · WINDOWS x64</span></footer>
+    </main>
+  );
+}
+
+function MarketReady({ result, market, version, onBack, onEvaluate }: {
+  result: SavePreflightResult;
+  market: MarketBaseline;
+  version: string;
+  onBack: () => void;
+  onEvaluate: () => void;
+}) {
+  return (
+    <main className="launch-shell" data-theme="ccr" style={{ '--shell-background': `url(${shellBackground})` } as React.CSSProperties}>
+      <header className="launch-header">
+        <div className="brand-lockup"><span className="ccr-shield">CCR</span><div><Eyebrow>DYNASTY UTILITY</Eyebrow><strong>COACHING CAROUSEL REBUILT</strong></div></div>
+        <div className="launch-version"><span className="status status-success" /><span>{version}</span></div>
+      </header>
+      <section className="launch-stage">
+        <div className="launch-title"><Eyebrow>M3 · MARKET INITIALIZATION</Eyebrow><h1>ENGINE READY</h1><p>Your real dynasty landscape is loaded into deterministic engine state. Native staged results are retained only as reference evidence and have not been adopted as CCR decisions.</p></div>
+        <section className="preflight-card card is-ready">
+          <header className="preflight-file"><div className="preflight-emblem ready">✓</div><div><Eyebrow>INITIALIZED DYNASTY</Eyebrow><h2>{result.file.name}</h2><p>Seed {market.seed} · Source {market.sourceFingerprint.slice(0, 16)}</p></div><CcrBadge tone="success">429 SEATS VALID</CcrBadge></header>
+          <div className="preflight-grid">
+            <div className="preflight-stat"><span>PROGRAMS</span><strong>{market.teamCount}</strong><small>Three staff seats each</small></div>
+            <div className="preflight-stat"><span>COACH POOL</span><strong>{market.coachCount}</strong><small>{market.userCoachIds.length} user-controlled</small></div>
+            <div className="preflight-stat"><span>STAFF LANDSCAPE</span><strong>{market.seats.length}</strong><small>{market.invariants.uniqueIncumbentCount} unique incumbents</small></div>
+            <div className="preflight-stat"><span>NATIVE EVIDENCE</span><strong>{market.nativeOutcomeEvidence.length}</strong><small>Staged openings retained for comparison</small></div>
+          </div>
+          <div className="preflight-issues"><div className="preflight-issue info"><span>✓</span><div><strong>DETERMINISTIC BASELINE LOCKED</strong><p>The same save and seed will recreate this exact baseline. No carousel outcomes have been generated and no save data was changed.</p></div></div></div>
+          <footer className="preflight-actions"><CcrButton tone="neutral" onClick={onBack}>BACK TO PREFLIGHT</CcrButton><CcrButton tone="primary" onClick={onEvaluate}>RUN PART 1 EVALUATION <span aria-hidden="true">›</span></CcrButton></footer>
+        </section>
+      </section>
+      <footer className="launch-footer"><span>REAL DYNASTY BASELINE · READ ONLY</span><span>PART 1 PERFORMANCE REVIEW NEXT</span></footer>
+    </main>
+  );
+}
+
+function EvaluationReady({ result, evaluation, version, onBack, onPreview }: {
+  result: SavePreflightResult;
+  evaluation: PartOneEvaluation;
+  version: string;
+  onBack: () => void;
+  onPreview: () => void;
+}) {
+  const snapshot = result.snapshot!;
+  const [filter, setFilter] = useState<JobEvaluationClassification | 'Grace'>('Fire');
+  const [roleFilter, setRoleFilter] = useState<'ALL' | 'HC' | 'OC' | 'DC'>('ALL');
+  const [conferenceFilter, setConferenceFilter] = useState('ALL');
+  const classificationList = evaluation.evaluations.filter((item) => filter === 'Grace' ? item.graceBonus > 0 : item.classification === filter);
+  const conferenceList = classificationList.filter((item) => {
+    if (conferenceFilter === 'ALL') return true;
+    const team = snapshot.teams.find((candidate) => candidate.id === item.teamId);
+    return team?.conferenceId === conferenceFilter;
+  });
+  const actionList = conferenceList.filter((item) => roleFilter === 'ALL' || item.role === roleFilter);
+  const roleCounts = {
+    ALL: conferenceList.length,
+    HC: conferenceList.filter((item) => item.role === 'HC').length,
+    OC: conferenceList.filter((item) => item.role === 'OC').length,
+    DC: conferenceList.filter((item) => item.role === 'DC').length
+  };
+  const conferenceOptions = snapshot.conferences.filter((conference) => conference.name.trim()).sort((left, right) => left.name.localeCompare(right.name));
+  const secondaryFilterActive = roleFilter !== 'ALL' || conferenceFilter !== 'ALL';
+  const graceProtected = evaluation.evaluations.filter((item) => item.graceBonus > 0).length;
+  const listTitle = filter === 'Fire' ? 'STAFF ACTION LIST' : filter === 'Grace' ? 'NEW-HIRE GRACE LIST' : `${filter.toUpperCase()} COACHES`;
+  const listEyebrow = filter === 'Fire' ? 'COMPLETE UNCONDITIONAL FIRING LIST' : filter === 'Grace' ? 'COACHES RECEIVING EVALUATION GRACE' : `COMPLETE ${filter.toUpperCase()} CLASSIFICATION`;
+  return (
+    <main className="launch-shell evaluation-shell" data-theme="ccr" style={{ '--shell-background': `url(${shellBackground})` } as React.CSSProperties}>
+      <header className="launch-header">
+        <div className="brand-lockup"><span className="ccr-shield">CCR</span><div><Eyebrow>DYNASTY UTILITY</Eyebrow><strong>COACHING CAROUSEL REBUILT</strong></div></div>
+        <div className="launch-version"><span className="status status-success" /><span>{version}</span></div>
+      </header>
+      <section className="launch-stage evaluation-stage">
+        <section className="preflight-card card is-ready evaluation-card">
+          <header className="preflight-file evaluation-file-header">
+            <div className="preflight-emblem ready">✓</div>
+            <div className="evaluation-file-copy">
+              <Eyebrow>M3 · PART 1 PERFORMANCE REVIEW</Eyebrow>
+              <h1>STAFF EVALUATED</h1>
+              <p>Every incumbent has an explainable 0–100 Job Evaluation Score. Low scores require independent failure signals before they become an unconditional firing recommendation.</p>
+              <div className="evaluation-file-meta"><strong>{result.file.name}</strong><span>{evaluation.evaluations.length} staff seats · deterministic from the loaded save</span></div>
+            </div>
+            <CcrBadge tone="success">MODEL COMPLETE</CcrBadge>
+          </header>
+          <div className="preflight-grid evaluation-counts tabs" role="tablist" aria-label="Coach evaluation classifications">
+            <button type="button" role="tab" aria-selected={filter === 'Fire'} className={`preflight-stat evaluation-filter-tab fire-stat ${filter === 'Fire' ? 'is-active' : ''}`} onClick={() => setFilter('Fire')}><span>FIRE</span><strong>{evaluation.counts.Fire}{filter === 'Fire' && <span className="evaluation-tab-arrow" aria-hidden="true">▼</span>}</strong><small>Two or more failure signals</small></button>
+            <button type="button" role="tab" aria-selected={filter === 'Vulnerable'} className={`preflight-stat evaluation-filter-tab vulnerable-stat ${filter === 'Vulnerable' ? 'is-active' : ''}`} onClick={() => setFilter('Vulnerable')}><span>VULNERABLE</span><strong>{evaluation.counts.Vulnerable}{filter === 'Vulnerable' && <span className="evaluation-tab-arrow" aria-hidden="true">▼</span>}</strong><small>Eligible for Market Review</small></button>
+            <button type="button" role="tab" aria-selected={filter === 'Secure'} className={`preflight-stat evaluation-filter-tab secure-stat ${filter === 'Secure' ? 'is-active' : ''}`} onClick={() => setFilter('Secure')}><span>SECURE</span><strong>{evaluation.counts.Secure}{filter === 'Secure' && <span className="evaluation-tab-arrow" aria-hidden="true">▼</span>}</strong><small>No school-led search</small></button>
+            <button type="button" role="tab" aria-selected={filter === 'Grace'} className={`preflight-stat evaluation-filter-tab grace-stat ${filter === 'Grace' ? 'is-active' : ''}`} onClick={() => setFilter('Grace')}><span>NEW-HIRE GRACE</span><strong>{graceProtected}{filter === 'Grace' && <span className="evaluation-tab-arrow" aria-hidden="true">▼</span>}</strong><small>{evaluation.counts.catastrophic} catastrophic result(s)</small></button>
+          </div>
+          <section className="evaluation-watchlist">
+            <header><div><Eyebrow>{listEyebrow}</Eyebrow><h3>{listTitle}</h3></div><span>{actionList.length}{secondaryFilterActive ? ` OF ${classificationList.length}` : ''} COACHES · INITIAL MODEL · CALIBRATION CONTINUES</span></header>
+            <div className="evaluation-secondary-filters">
+              <div className="evaluation-role-filters" role="group" aria-label="Filter Coaches by role">
+                {(['ALL', 'HC', 'OC', 'DC'] as const).map((role) => <button type="button" className={roleFilter === role ? 'is-active' : ''} aria-pressed={roleFilter === role} onClick={() => setRoleFilter(role)} key={role}><span>{role}</span><strong>{roleCounts[role]}</strong></button>)}
+              </div>
+              <label className="evaluation-conference-filter"><span>CONFERENCE</span><select value={conferenceFilter} onChange={(event) => setConferenceFilter(event.target.value)}><option value="ALL">ALL CONFERENCES</option>{conferenceOptions.map((conference) => <option value={conference.id} key={conference.id}>{conference.name.toUpperCase()}</option>)}</select></label>
+            </div>
+            <div className="evaluation-list animate-list" key={`${filter}-${roleFilter}-${conferenceFilter}`} role="region" aria-label={`${listTitle} scrollable Coach list`} tabIndex={0} onKeyDown={scrollEvaluationListOnKeyDown}>
+              {actionList.map((item, index) => {
+                const coach = snapshot.coaches.find((candidate) => candidate.id === item.coachId)!;
+                const team = snapshot.teams.find((candidate) => candidate.id === item.teamId)!;
+                const isCoordinator = item.role !== 'HC';
+                const unitName = item.role === 'OC' ? 'OFFENSE' : 'DEFENSE';
+                const unitRank = item.role === 'OC' ? team.performance.offensiveRank : team.performance.defensiveRank;
+                const unitRating = item.role === 'OC' ? team.ratings.offense : team.ratings.defense;
+                const earned = coach.contractPerformance.earnedPoints[0];
+                const expected = team.performance.expectedContractPoints[0];
+                return <article className={`evaluation-row classification-${item.classification.toLowerCase()}`} key={item.seatId} style={{ '--evaluation-team-color': team.colors[0], '--evaluation-delay': `${Math.min(index, 18) * 55}ms` } as React.CSSProperties}>
+                  <NormalizedCoachHead coach={coach} team={team} size="large" />
+                  <div className="evaluation-person"><Eyebrow>{roleLabel(item.role)} · {team.longName}</Eyebrow><strong>{coach.name}</strong><span>Team {team.currentRecord.wins}-{team.currentRecord.losses} · Career {coach.resume.career.wins}-{coach.resume.career.losses} · {coach.prestige} prestige</span></div>
+                  <div className="evaluation-evidence">
+                    <div><small>{isCoordinator ? `${unitName} PERFORMANCE` : 'PROGRAM PERFORMANCE'}</small><strong>{isCoordinator ? (unitRank === null ? 'UNRANKED' : `#${unitRank + 1} · ${unitRating ?? '—'} OVR`) : `${team.currentRecord.wins}-${team.currentRecord.losses} · ${team.ratings.overall ?? '—'} OVR`}</strong><span>{isCoordinator ? item.components.find((component) => component.id === 'unit-performance')?.detail : item.components.find((component) => component.id === 'program-season')?.detail}</span></div>
+                    <div><small>CONTRACT EXPECTATION</small><strong>{earned ?? '—'} / {expected ?? '—'} PTS</strong><span>{item.components.find((component) => component.id === (item.role === 'HC' ? 'contract-current' : 'team-contract'))?.detail}</span></div>
+                    <div><small>JOB SECURITY</small><strong>{coach.jobSecurity.status || 'UNKNOWN'} · {coach.jobSecurity.percentage ?? '—'}%</strong><span>{coach.seasonsWithTeam ?? 0} seasons with Team{item.graceBonus ? ` · +${item.graceBonus} grace` : ''}</span></div>
+                  </div>
+                  <div className="evaluation-result">
+                    <div className="evaluation-score"><small>JOB SCORE</small><strong>{item.score}</strong><span>OF 100</span></div>
+                    <CcrBadge tone={item.classification === 'Fire' ? 'warning' : item.classification === 'Vulnerable' ? 'gold' : 'success'}>{item.classification}</CcrBadge>
+                  </div>
+                  <div className="evaluation-reasons"><small>PRIMARY FAILURE SIGNALS</small><span>{item.failureSignals.length ? item.failureSignals.map((signal) => signal.label).join(' · ') : 'No unconditional failure signal'}</span></div>
+                </article>;
+              })}
+            </div>
+          </section>
+        </section>
+        <footer className="evaluation-page-actions"><CcrButton tone="neutral" onClick={onBack}>BACK TO ENGINE BASELINE</CcrButton><CcrButton tone="primary" onClick={onPreview}>OPEN INTERACTION PREVIEW <span aria-hidden="true">›</span></CcrButton></footer>
+      </section>
+      <footer className="launch-footer"><span>PART 1 PERFORMANCE MODEL · READ ONLY</span><span>DEPARTURES + CONTRACT DECISIONS NEXT</span></footer>
     </main>
   );
 }

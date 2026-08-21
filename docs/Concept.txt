@@ -238,7 +238,7 @@ Early-termination buyouts:
 - A buyout commits immediately in CCR's external program-point ledger and reduces the resources available for replacement offers. It cannot take the Team below the conservative affordability boundary; the exact insufficient-budget response must be resolved alongside buyout calibration and cannot silently waive or undercharge the expense.
 - User protection and override decisions must show the complete buyout before confirmation. CPU firing and Market Review policy must consider both the buyout and the likely replacement cost rather than treating dismissal as free.
 
-Newly hired coaches receive reasonable grace unless performance is catastrophic. The exact grace period, catastrophic-performance override, score construction, thresholds, and user-controlled-coach protections remain to be approved.
+Newly hired coaches receive the approved role-specific grace described below unless performance is catastrophic. Catastrophic-performance overrides, score construction, calibrated thresholds, and user-controlled-coach protections follow the approved rules in this concept.
 
 Approved Job Evaluation Score:
 
@@ -269,15 +269,18 @@ Coordinator unit overachievement is calculated from the coordinator's linked Tea
 
 OC evaluation uses offensive rank/scoring relative to offensive roster strength. DC evaluation uses defensive rank/scoring defense relative to defensive roster strength.
 
-Approved initial classification thresholds:
+Approved calibrated classification thresholds:
 
-- 0-24: Fire;
-- 25-44: Vulnerable;
-- 45-100: Secure.
+- HC: 0-32 is Fire-eligible;
+- OC: 0-24 is Fire-eligible;
+- DC: 0-32 is Fire-eligible;
+- a Coach below the role's Fire cutoff who does not satisfy the independent-signal gate remains Vulnerable;
+- a Coach above the role's Fire cutoff and below 45 is Vulnerable;
+- 45-100 is Secure.
 
 A Fire classification additionally requires at least two independent primary failure signals. A single questionable or duplicated native signal cannot cause an unconditional dismissal. Primary failure signals can include Hot Seat or extremely low security, major failure against the contract expectation, catastrophic program-adjusted record, bottom-tier unit performance, severe unit underachievement, or a sustained negative performance trend.
 
-These weights and thresholds are the approved initial model. Calibration may adjust their numerical defaults only through an explicit later Phase 2 decision supported by full-fixture output and turnover review.
+These weights and role-specific thresholds are the approved calibrated model. `CAL-EVAL-2` established the HC 32 / OC 24 / DC 32 defaults from four unique 143-Team evaluation landscapes and an explicit realism review. They are causal cutoffs, never count quotas. Further calibration may adjust them only through an explicit decision supported by full-fixture output and final-turnover review.
 
 The CFP National Championship week evidence supports the following native inputs, subject to the role-specific limitations documented below:
 

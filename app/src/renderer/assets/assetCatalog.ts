@@ -58,6 +58,21 @@ export const teamVisualsByKey: Record<string, TeamVisuals> = Object.fromEntries(
   ])
 );
 
+const visualAlias = (value: string): string => value.toLowerCase().replace(/[^a-z0-9]/g, '');
+const teamVisualsByAlias: Record<string, TeamVisuals> = Object.fromEntries(
+  Object.values(teamVisualsByKey).flatMap((team) => [[visualAlias(team.key), team], [visualAlias(team.label), team]])
+);
+
+export const teamVisualsForIdentity = (...identities: string[]): TeamVisuals | undefined => {
+  for (const identity of identities) {
+    const exact = teamVisualsByKey[identity];
+    if (exact) return exact;
+    const aliased = teamVisualsByAlias[visualAlias(identity)];
+    if (aliased) return aliased;
+  }
+  return undefined;
+};
+
 const conferenceRecords = catalog.conferenceLogos as AssetRecord[];
 export const conferenceLogoByKey: Record<string, string> = Object.fromEntries(
   conferenceRecords.map((record) => [record.key, assetUrl(record.file)])

@@ -2,6 +2,7 @@ import { app, BrowserWindow, dialog, ipcMain, Menu } from 'electron';
 import fs from 'node:fs';
 import path from 'node:path';
 import { inspectSave } from './save-reader';
+import { buildCalibrationReport, calibrationError, summarizeCalibrationSave } from './calibration';
 
 declare const MAIN_WINDOW_VITE_DEV_SERVER_URL: string | undefined;
 declare const MAIN_WINDOW_VITE_NAME: string;
@@ -32,6 +33,31 @@ const createWindow = (): void => {
 };
 
 app.whenReady().then(() => {
+  const calibrationRoots = process.env.CCR_CALIBRATION_ROOTS;
+  const calibrationOutput = process.env.CCR_CALIBRATION_OUTPUT;
+  if (calibrationRoots && calibrationOutput) {
+    const files = [...new Set(calibrationRoots.split(path.delimiter).flatMap((root) => {
+      const resolved = path.resolve(root);
+      if (!fs.existsSync(resolved)) return [];
+      return fs.readdirSync(resolved, { withFileTypes: true })
+        .filter((entry) => entry.isFile() && entry.name.startsWith('DYNASTY-'))
+        .map((entry) => path.join(resolved, entry.name));
+    }))];
+    void (async () => {
+      const summaries = [];
+      for (const file of files) {
+        try {
+          summaries.push(summarizeCalibrationSave(await inspectSave(file, app.isPackaged)));
+        } catch (error) {
+          summaries.push(calibrationError(file, error));
+        }
+      }
+      fs.writeFileSync(calibrationOutput, `${JSON.stringify(buildCalibrationReport(summaries), null, 2)}\n`, 'utf8');
+      app.exit(summaries.some((summary) => summary.status === 'error') ? 1 : 0);
+    })();
+    return;
+  }
+
   const smokeSave = process.env.CCR_PREFLIGHT_SMOKE_SAVE;
   const smokeOutput = process.env.CCR_PREFLIGHT_SMOKE_OUTPUT;
   if (smokeSave && smokeOutput) {

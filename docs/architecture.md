@@ -28,7 +28,7 @@ Electron main process
 
 The renderer has no Node integration or arbitrary filesystem access. `contextIsolation`, sandboxing, and a narrow preload bridge are required. Save mutation is never exposed as a generic renderer command.
 
-The implemented M2 preflight bridge currently exposes `getAppInfo()` and `selectAndInspectSave()` only. Save selection and parsing occur in the main process; the renderer receives a serialized preflight result and never receives a filesystem primitive or franchise-library object. The selected save is opened read-only and is never passed to the parser's `save()` method. The portable package carries the tested schema 833.0 as an Electron resource and injects the parser plus its production dependency closure into the packaged ASAR after Vite's copy phase, preserving the parser's own runtime-path behavior.
+The implemented M2 bridge exposes `getAppInfo()` and `selectAndInspectSave()` only. Save selection and parsing occur in the main process; the renderer receives a serialized preflight result containing the normalized `DynastySnapshot` and never receives a filesystem primitive or franchise-library object. The snapshot includes a SHA-256 source fingerprint, stable source-derived IDs, Conferences, Teams, Coaches, staffs, résumé/contract/job-security/scheme context, resources, staged openings, native offers, indexed Staff Moves, and a complete integrity result. Binary references remain adapter evidence and never become market-policy inputs. The selected save is opened read-only and is never passed to the parser's `save()` method. The portable package carries the tested schema 833.0 as an Electron resource and injects the parser plus its production dependency closure into the packaged ASAR after Vite's copy phase, preserving the parser's own runtime-path behavior.
 
 ## Source boundaries
 
@@ -49,6 +49,10 @@ Stable identifiers are strings that retain source table/row identity without exp
 ```text
 DynastyContext
   season, checkpoint, schema, seed, userContext, teams, coaches
+
+DynastySnapshot
+  sourceFingerprint, season, conferences, teams, coaches,
+  stagedOpenings, nativeOffers, indexedStaffMoves, integrity
 
 Team
   id, name, conference, prestige, record, ratings, staff, resources
@@ -92,6 +96,10 @@ setup -> preflight -> ready -> part1
 -> part2.coordinators(schools -> coaches -> results)*
 -> part3 -> authorized -> compiling -> verifying -> complete
 ```
+
+The implemented transition from `ready` constructs a pure `MarketBaseline`: 3 seats per normalized Team, unique role-coherent incumbents, deterministic seeded ordering inputs, user contexts, and native staged outcomes retained only as evidence. A second pure transition produces `PartOneEvaluation` from that baseline and the same normalized snapshot. It retains every weighted component, reason detail, failure signal, grace result, catastrophic-failure result, and user-confirmation requirement; it does not yet remove a Coach or create a vacancy. This separation keeps scoring/calibration independently testable from departure, buyout, contract, and market mutations.
+
+An internal packaged batch mode reuses the production preflight, normalizer, market initializer, and evaluator without opening a window or writing to dynasty saves. Given explicit save-directory roots and an output path through environment variables, it inventories top-level dynasty files, records blocked checkpoints and integrity failures, separates natural/reference and named experiment cohorts, deduplicates byte-level files and semantically identical evaluation landscapes, and emits machine-readable classification, role, score, signal, component, tenure, grace, outlier, and threshold-sensitivity evidence. It is a calibration/diagnostic path only and is not exposed as an end-user workflow.
 
 Any user decision creates a recorded deterministic command. Events are append-only during a run. Derived screens—queue, New Openings, Filled Positions, round history, cascades, and reports—are projections of the same event/state data.
 
